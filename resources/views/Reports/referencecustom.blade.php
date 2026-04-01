@@ -152,7 +152,7 @@
                                         <td style="@if(isset($turul)) {{"display:table-cell" }} @else {{"display:none"}} @endif">{{ $result->vehicle_type_name }}</td>
                                         <td style="@if(isset($angilal)) {{"display:table-cell" }} @else {{"display:none"}} @endif">{{ $result->class_name }}</td>
                                         <td style="@if(isset($hurd)) {{"display:table-cell" }} @else {{"display:none"}} @endif">{{ $result->steering_type_name }}</td>
-                                        <td style="@if(isset($hairtsag)) {{"display:table-cell" }} @else {{"display:none"}} @endif">{{ $result->par_type_name }}</td>
+                                        <td style="@if(isset($hairtsag)) {{"display:table-cell" }} @else {{"display:none"}} @endif">{{ $result->par_type_name ?? $result->PAR_TYPE_NAME ?? $result->ParTypeName ?? "" }}</td>
                                         <td style="@if(isset($uildverlesenognoo)) {{"display:table-cell" }} @else {{"display:none"}} @endif">{{ $result->build_year }}</td>
                                         <td style="@if(isset($motor)) {{"display:table-cell" }} @else {{"display:none"}} @endif">{{ $result->engine_no }}</td>
                                         <td style="@if(isset($gasoline)) {{"display:table-cell" }} @else {{"display:none"}} @endif">{{ $result->fuel_name }}</td>
@@ -168,11 +168,11 @@
                                         <td style="@if(isset($anhniiarchive)) {{"display:table-cell" }} @else {{"display:none"}} @endif">{{ $result->first_archive_no }}</td>
                                         <td style="@if(isset($meduulgiindugaar)) {{"display:table-cell" }} @else {{"display:none"}} @endif">{{ $result->declaration_no }}</td>
                                         <td style="@if(isset($teevriinheregselturul)) {{"display:table-cell" }} @else {{"display:none"}} @endif">{{ $result->status_name }}</td>
-                                        <td style="@if(isset($uls)) {{"display:table-cell" }} @else {{"display:none"}} @endif">{{ $result->owner_country_name }}</td>
+                                        <td style="@if(isset($uls)) {{"display:table-cell" }} @else {{"display:none"}} @endif">{{ $result->owner_country_name ?? $result->OWNER_COUNTRY_NAME ?? $result->OwnerCountryName ?? "" }}</td>
                                         <td style="@if(isset($registernumber)) {{"display:table-cell" }} @else {{"display:none"}} @endif">{{ $result->register_no }}</td>
-                                        <td style="@if(isset($urgiinovog)) {{"display:table-cell" }} @else {{"display:none"}} @endif">{{ $result->family_name }}</td>
-                                        <td style="@if(isset($etsegekh)) {{"display:table-cell" }} @else {{"display:none"}} @endif">{{ $result->last_name }}</td>
-                                        <td style="@if(isset($uuriinner)) {{"display:table-cell" }} @else {{"display:none"}} @endif">{{ $result->first_name }}</td>
+                                        <td style="@if(isset($urgiinovog)) {{"display:table-cell" }} @else {{"display:none"}} @endif">{{ $result->family_name ?? $result->FAMILY_NAME ?? $result->FamilyName ?? "" }}</td>
+                                        <td style="@if(isset($etsegekh)) {{"display:table-cell" }} @else {{"display:none"}} @endif">{{ $result->last_name ?? $result->LAST_NAME ?? $result->LastName ?? "" }}</td>
+                                        <td style="@if(isset($uuriinner)) {{"display:table-cell" }} @else {{"display:none"}} @endif">{{ $result->first_name ?? $result->FIRST_NAME ?? $result->FirstName ?? "" }}</td>
                                         <td style="@if(isset($aimag)) {{"display:table-cell" }} @else {{"display:none"}} @endif">{{ $result->owner_province_id }}</td>
                                         <td style="@if(isset($duureg)) {{"display:table-cell" }} @else {{"display:none"}} @endif">{{ $result->owner_district_id }}</td>
                                         <td style="@if(isset($baghoroo)) {{"display:table-cell" }} @else {{"display:none"}} @endif">{{ $result->owner_micro_district_id }}</td>

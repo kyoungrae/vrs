@@ -520,7 +520,7 @@
                         </div>
                         <hr class="mg-y-10">
                         <div class="row">
-                            <div class="col-lg-2 col-md-6 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-6">
                                 <a href="{{ url("/vehicle/search/reference") }}" target="_blank" class="btn btn-primary btn-block">조회서 발급</a>
                             </div>
                             <div class="col-lg-3 col-md-6 col-sm-6">
@@ -766,17 +766,17 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
                         <div class="row row-xs align-items-center mg-b-5" style="{{ isset($user) ? "display:none;":""}}">
                             <div class="col-lg-12 col-md-12 col-sm-12">
                                 <textarea name="title" class="form-control" placeholder="제목 입력" style="height: 100px !important;"></textarea>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-2 col-md-6 col-sm-6">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
                         <button class="btn btn-primary btn-block" style="background-color: #1bb620; border-color: #1bb620;">조회서 발급</button>
                     </div>
-                    <div class="col-lg-2 col-md-6 col-sm-6">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
                         <button type="button" onclick="exportToExcel();" class="btn btn-info btn-block">조회서 EXCEL 다운로드</button>
                     </div>
                 </div>
