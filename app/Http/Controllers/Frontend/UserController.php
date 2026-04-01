@@ -92,7 +92,7 @@ class UserController extends BaseController
                             'LAST_CHANGE_PASSWORD' => Carbon::now()->format("Y-m-d H:i:s")
                         ]);
                     }
-                    $message = $this->message("success", "Хэрэглэгчийн мэдээлэл ам년ттай засагдлаа.");
+                    $message = $this->message("success", "Хэрэглэгчийн мэдээлэл 성공적으로 수정되었습니다.");
 //                    }
                     return redirect("/user/edit/".$key)->with("message", $message);
                 } else {
@@ -117,7 +117,7 @@ class UserController extends BaseController
                             'CreatedBy' => $userPkId,
                             'ModifiedBy' => $userPkId,
                         ]);
-                        $message = $this->message("success", "Хэрэглэгч ам년ттай бүртгэгдлээ.");
+                        $message = $this->message("success", "Хэрэглэгч 성공적으로 등록되었습니다.");
                     }
                     return view('System.user', compact('positions', 'departments', 'provinces','systemDepType', 'message'));
                 }
@@ -179,7 +179,7 @@ class UserController extends BaseController
                 $key = $this->dec($key);
                 MainUser::where("Id", $key)->delete();
             }
-            $message = $this->message("success", "Хэрэглэгчийн мэдээлэл ам년ттай устлаа.");
+            $message = $this->message("success", "Хэрэглэгчийн мэдээлэл 성공적으로 устлаа.");
         } catch (\Exception $ex){
             $this->writeLog("User delete error: ".$ex->getMessage());
             $message = $this->message("success", "Хэрэглэгчийн мэдээлэл устгахад 오류가 발생했습니다.");
@@ -324,7 +324,7 @@ class UserController extends BaseController
                         $numberText = "";
                     }
                     $order_date = Carbon::now()->format("Y-m-d H:i:s");
-                    $message_info = '<table class="table table-bordered" style="font-size: 16px;"><tbody><tr><th><div>Захиалсан дугаар</div></th><th><div>'.$numberText.'</div></th></tr><tr><th><div>등록번호</div></th><th><div>'.$register.'</div></th></tr><tr><th><div>차체번호</div></th><th><div>'.$aral.'</div></th></tr><tr><th><div>주문 일자</div></th><th><div>'.$order_date.'</div></th></tr><tr><th><div>Хүчинтэй огноо</div></th><th><div>'.Carbon::parse($order_date)->addDay(1).'</div></th></tr></tbody></table>';
+                    $message_info = '<table class="table table-bordered" style="font-size: 16px;"><tbody><tr><th><div>Захиалсан 번호</div></th><th><div>'.$numberText.'</div></th></tr><tr><th><div>등록번호</div></th><th><div>'.$register.'</div></th></tr><tr><th><div>차체번호</div></th><th><div>'.$aral.'</div></th></tr><tr><th><div>주문 일자</div></th><th><div>'.$order_date.'</div></th></tr><tr><th><div>Хүчинтэй огноо</div></th><th><div>'.Carbon::parse($order_date)->addDay(1).'</div></th></tr></tbody></table>';
                     $message = $this->message("success", '24 цагийн хугацаанд хүчинтэй.<br>'.$message_info.'<div style="color:red">Захиалгын мэдээллийг баталгаажуулах үүднээс дэлгэцийн зургийг дарж авна уу!</div>');
                 }
             }

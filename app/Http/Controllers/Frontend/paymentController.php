@@ -48,7 +48,7 @@ class PaymentController extends BaseController
             'DESCRIPTION' => $description,
            
         ]);
-        $message = $this->message("success"," ам년ттай засагдлаа.");
+        $message = $this->message("success"," 성공적으로 수정되었습니다.");
                                             return redirect(url('/payment/'))->with("message", $message);
         
         

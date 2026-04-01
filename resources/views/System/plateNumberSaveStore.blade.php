@@ -27,7 +27,7 @@
                     <h6 class="card-title">
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12">
-                              번호판 хадгалах үйлчилгээ
+                              번호판 보관 서비스
                             </div>
                         </div>
                     </h6>
@@ -104,7 +104,7 @@
                                
                                     <table class="table table-bordered" id="plateSaveDate" style="display: none" >
                                       <tr>
-                                        <td>   Эхлэл огноо
+                                        <td>   시작일
                                           
                                         </td>
                                         <td>   <input id="sdate" readonly name="startDate" type="text" class="form-control fc-datepicker" required>
@@ -260,7 +260,7 @@
                     $("#auctionTableBody").html("");
                   
                    var html = '<table class="table table-bordered" id="ntrTable ">'+
-                   '<tr>'+'<td colspan="4" style="text-align: center;font-weight: bold;">'+"Дуудлага худалдаанд ялсан ялагчийн мэдээлэл" +'</td>'+'</tr>'+
+                   '<tr>'+'<td colspan="4" style="text-align: center;font-weight: bold;">'+"경매 낙찰자 정보" +'</td>'+'</tr>'+
                    
                    '<tr >' +
                        ' <td colspan="2"> ' + '<strong> 성 </strong>'+ ' </td>' +
@@ -284,7 +284,7 @@
                      ' </tr>'+
                      '<tr >' +
                        ' <td colspan="2">' + '<strong>결제 </strong>' + ' </td>' +
-                        ' <td style="color:green;" colspan="2">'  +"Төлөгдсөн"+ ' </td>' +
+                        ' <td style="color:green;" colspan="2">'  +"결제 완료"+ ' </td>' +
                      ' </tr>'+
                  
                  
@@ -326,7 +326,7 @@
                    $("#vehicleTable").css("display", "block");
                    if ( data['last_name'] == null || data['last_name'] == "" ) {
                 $("#customerTable").css("display", "block"); 
-                usePos =="Бүртгэлийн ахлах мэргэ년тэн" ? $("#customerRegnum").prop("readonly", false) :   $("#customerRegnum").prop("readonly", false);
+                usePos =="수석 등록 전문가" ? $("#customerRegnum").prop("readonly", false) :   $("#customerRegnum").prop("readonly", false);
                 $("#customerRegnum").val(data['register_no'].substring(0,7));
                }else{
                 $("#customerRegnum").val(data['register_no']);
@@ -373,7 +373,7 @@
                  }else{
                      $("#plateSaveDate").css("display", "none");
                      $("#errorMessage").css("display", "block");
-                     $("#errorMessage").text("Дугаар захиалгын цонхноос захиалсан дугаарыг хадгалах боломжгүй !!!");
+                     $("#errorMessage").text("번호판 주문 창에서 주문한 번호판은 보관할 수 없습니다 !!!");
                     // $("#plateSaveDate").css("display", "block");
                     // $("#orderPlate").css("display", "block");
                     // $("#customerTable").css("display", "block");
@@ -385,14 +385,14 @@
                     //   $("#customerRegnum1").val(data['register_no']);
                     // $("#orderPlate").html("");
                     // var html = '<table class="table table-bordered" >'+
-                    //     '<tr>'+'<td colspan="2" style="text-align: center;font-weight: bold;">'+"Захиалсан дугаарын мэдээлэл"+'</td>'+'</tr>'+
+                    //     '<tr>'+'<td colspan="2" style="text-align: center;font-weight: bold;">'+"Захиалсан 번호ын мэдээлэл"+'</td>'+'</tr>'+
                     //     '<tr >' +
-                    //   ' <td >' + '<strong> Захиалсан 등록번호 дугаар </strong>'+ ' </td>' +
+                    //   ' <td >' + '<strong> 예약된 등록번호 </strong>'+ ' </td>' +
                     //    ' <td >'  +data['register_no']+ ' </td>' +
                                     
                     //  ' </tr>'+
                     //     '<tr >' +
-                    //   ' <td >' + '<strong> Захиалсан арлын дугаар </strong>'+ ' </td>' +
+                    //   ' <td >' + '<strong> 예약된 차대번호 </strong>'+ ' </td>' +
                     //    ' <td >'  +data['order_cabin']+ ' </td>' +
                                     
                     //  ' </tr>'+

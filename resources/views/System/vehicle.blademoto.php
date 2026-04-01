@@ -216,7 +216,7 @@
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">×</span>
                                     </button>
-                                    <h5>{{ $vehicle->plate_no }} 번호판 {{ $vehicle_count }} ТХ -д олгогдсон байна. Давхардлыг арилгасны дараа үйлчилгээ хийнэ үү!!!</h5>
+                                    <h5>{{ $vehicle->plate_no }} 번호판 {{ $vehicle_count }} 차량 -д олгогдсон байна. Давхардлыг арилгасны дараа үйлчилгээ хийнэ үү!!!</h5>
                                 </div>
                             @endif
                         @endif
@@ -292,7 +292,7 @@
                                     @if ( in_array(\Illuminate\Support\Str::substr($vehicle->plate_no, -3), ['MMA', 'ММА'], true) || $vehicle->purpose_id == 2 || $vehicle->purpose_id ==4 || $vehicle->purpose_id ==5 ||$vehicle->purpose_id ==7 || $vehicle->purpose_id ==8)
                                     <h5>차량이 검사에 참여하지 않았습니다. MNS 6278 기준을 초과한 경우 MMA를 부여합니다.</h5>
                                     @else     
-                                    <h5>ТХ заавал үзлэгт орсон байх ёстой.</h5>
+                                    <h5>차량 заавал үзлэгт орсон байх ёстой.</h5>
                                     @endif
                                   
                                  
@@ -384,7 +384,7 @@
                                 </div>
                                 <div class="row row-xs align-items-center mg-b-5">
                                     <div class="col-lg-6 col-md-12 col-sm-12">
-                                        <label class="form-label mg-b-0">VIN дугаар</label>
+                                        <label class="form-label mg-b-0">VIN 번호</label>
                                     </div>
                                     <div class="col-lg-6 col-md-12 col-sm-12">
                                         <input type="text" class="form-control" value="{{ isset($vehicle) ? $vehicle->vin_no : "" }}" readonly>
@@ -781,7 +781,7 @@
                                 <div class="media-icon bg-purple"><i class="typcn typcn-times-outline"></i></div>
                                 <a onclick="vehicleLimitHistory('{{ isset($vehicle) ? \App\Http\Controllers\BaseController::enc($vehicle->id) : "" }}');" style="cursor:pointer;" data-toggle="modal" data-effect="effect-scale">
                                     <div class="media-body">
-                                        <h6>Хязгаарлалт</h6>
+                                        <h6>제한 사항</h6>
                                         <span>해당 차량의 제한 이력</span>
                                     </div>
                                 </a>
@@ -1160,7 +1160,7 @@
                                                         <div class="media-icon bg-success"><i class="typcn typcn-delete"></i></div>
                                                         <a id="RESTRICT" style="cursor: pointer;" onclick="menu('RESTRICT')">
                                                             <div class="media-body">
-                                                                <h6>Хязгаарлах</h6>
+                                                                <h6>제한лах</h6>
                                                                 <span>DK 운송수단 제한</span>
                                                             </div>
                                                         </a>
@@ -1173,7 +1173,7 @@
                                                         <a id="DELETE_PLATE" style="cursor: pointer;" onclick="menu('DELETE_PLATE')">
                                                             <div class="media-body">
                                                                 <h6>문자 말소</h6>
-                                                                <span>ДК ТХ-н 번호판 гээсэн</span>
+                                                                <span>ДК 차량-н 번호판 гээсэн</span>
                                                             </div>
                                                         </a>
                                                     </div>
@@ -1212,7 +1212,7 @@
                                             <div class="media-icon bg-success"><i class="typcn typcn-delete"></i></div>
                                             <a id="RESTRICT" style="cursor: pointer;" onclick="menu('RESTRICT')">
                                                 <div class="media-body">
-                                                    <h6>Хязгаарлах</h6>
+                                                    <h6>제한лах</h6>
                                                     <span>운송수단 제한</span>
                                                 </div>
                                             </a>
@@ -1299,7 +1299,7 @@
                                         <div class="media-icon bg-success"><i class="typcn typcn-delete"></i></div>
                                         <a id="RESTRICT" style="cursor: pointer;" onclick="menu('RESTRICT')">
                                             <div class="media-body">
-                                                <h6>Хязгаарлах</h6>
+                                                <h6>제한лах</h6>
                                                 <span>운송수단 제한</span>
                                             </div>
                                         </a>
@@ -1379,7 +1379,7 @@
                                         <div class="media-icon bg-success"><i class="typcn typcn-delete"></i></div>
                                         <a id="RESTRICT" style="cursor: pointer;" onclick="menu('RESTRICT')">
                                             <div class="media-body">
-                                                <h6>Хязгаарлах</h6>
+                                                <h6>제한лах</h6>
                                                 <span>운송수단 제한</span>
                                             </div>
                                         </a>
@@ -1617,7 +1617,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content modal-content-demo">
             <div class="modal-header">
-                <h6 class="modal-title">Хязгаарлалт хийх</h6>
+                <h6 class="modal-title">제한 사항 хийх</h6>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -1792,7 +1792,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content modal-content-demo">
             <div class="modal-header">
-                <h6 class="modal-title">Хязгаарлалтыг сэргээх</h6>
+                <h6 class="modal-title">제한 사항ыг сэргээх</h6>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -1888,7 +1888,7 @@
                             <table class="table table-bordered table-striped mg-b-10" style="text-align: center;width: 100%">
                                 <thead>
                                 <tr>
-                                    <th>아카이브 дугаар</th>
+                                    <th>아카이브 번호</th>
                                     <th style="width: 7%;">일자</th>
                                     <th>번호판</th>
                                     <th>차체번호</th>
@@ -1936,7 +1936,7 @@
                                     <th>시작 일자</th>
                                     <th>번호판</th>
                                     <th>차체번호</th>
-                                    <th>Хөдөлгүүр дугаар</th>
+                                    <th>Хөдөлгүүр 번호</th>
                                     <th>브랜드</th>
                                     <th>모델</th>
                                     <th>제조 일자</th>
@@ -1962,7 +1962,7 @@
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content modal-content-demo">
             <div class="modal-header">
-                <h6 class="modal-title">Хязгаарлалтын мэдээлэл</h6>
+                <h6 class="modal-title">제한 사항ын мэдээлэл</h6>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -1977,8 +1977,8 @@
                                     <th>유형</th>
                                     <th>공문 №</th>
                                     <th>전화번호</th>
-                                    <th>Хязгаарласан огноо</th>
-                                    <th>Хязгаарласан 담당자</th>
+                                    <th>제한ласан огноо</th>
+                                    <th>제한ласан 담당자</th>
                                     <th>Сэргээсэн төрөл</th>
                                     <th>Сэргээсэн албан тоот №</th>
                                     <th>Сэргээсэн огноо</th>
@@ -2625,7 +2625,7 @@
                 </div>
                 <div id="ntrCheckDiv" style="display: none;margin-top:10px">
                     <span style="font-size: 11px;
-                    color: red;">Санамж: 0-р эхэлсэн гэрээний дугаарын сүүлийн 3-н орныг оруулан шалган уу!!!</span>
+                    color: red;">Санамж: 0-р эхэлсэн гэрээний 번호ын сүүлийн 3-н орныг оруулан шалган уу!!!</span>
                     <div class="row">
                        
                         <div class="col-lg-4 col-md-4 col-sm-12">
@@ -3330,13 +3330,13 @@
             data: {"plate": plate},
             success: function( response ) {
                 if(response == "false"){
-                    alert(plate + " дугаартай ТХ олдсонгүй.");
+                    alert(plate + " 번호тай 차량 찾을 수 없습니다.");
                     $("#change_plate_two_btn").css("display", "none");
                     $("#change_plate_two_pay").css("display", "none");
                 } else if(response == "limited"){
                     $("#change_plate_two_btn").css("display", "none");
                     $("#change_plate_two_pay").css("display", "none");
-                    alert(plate + " дугаартай ТХ хязгаарлалттай байна.");
+                    alert(plate + " 번호тай 차량 хязгаарлалттай байна.");
                 } else {
                     
                     $("#change_cabin_no" + type + "_id").text(response["cabin_no"]);
@@ -3504,12 +3504,12 @@
                             if(gaali_text == "DK"){
                                 if(!curr_plate.includes("ДК")){
                                     is_show_modal = 1;
-                                    alert("ДК гаалийн мэдүүлэгтэй машинд заавал ДК дугаар олгоно.");
+                                    alert("ДК гаалийн мэдүүлэгтэй машинд заавал ДК 번호 олгоно.");
                                 }
                             } else {
                                 if(curr_plate.includes("ДК") && gaali_text != "DK"){
                                     is_show_modal = 1;
-                                    alert("ДК гаалийн мэдүүлэгтэй машинд зөвхөн ДК дугаар олгоно.");
+                                    alert("ДК гаалийн мэдүүлэгтэй машинд зөвхөн ДК 번호 олгоно.");
                                 }
                             }
                         }
@@ -3523,13 +3523,13 @@
                         }
                     }
                 } else {
-                    alert("Хуудасны дугаар 0 -с их 99 -с бага байна.");
+                    alert("Хуудасны 번호 0 -с их 99 -с бага байна.");
                 }
             } else {
                 alert("저장 үйлдэл хийхийн тулд үйлчилгээнээс аль нэгийг сонгох ёстой.");
             }
         } else {
-            alert("ТХ -ийн 번호판ыг заавал оруулна уу.");
+            alert("차량 -ийн 번호판ыг заавал оруулна уу.");
         }
     }
 
@@ -4657,7 +4657,7 @@ function checkPayData() {
                 } else {
                     $( "#fingerInfo" ).css( "display", "block" );
                     $( "#fingerInfo" ).css( "color", "red" );
-                    $( "#fingerInfo" ).text( "Нотриатын гэрээний дугаарыг заавал бөглөх ёстой." );
+                    $( "#fingerInfo" ).text( "Нотриатын гэрээний 번호ыг заавал бөглөх ёстой." );
                 }
             } else if(confirm == true){
                 if($("#fingerDesc").val().length > 0){
@@ -4683,7 +4683,7 @@ function checkPayData() {
                 } else {
                     $( "#fingerInfo" ).css( "display", "block" );
                     $( "#fingerInfo" ).css( "color", "red" );
-                    $( "#fingerInfo" ).text( "Нотриатын баримтын дугаарыг заавал бөглөх ёстой." );
+                    $( "#fingerInfo" ).text( "Нотриатын баримтын 번호ыг заавал бөглөх ёстой." );
                 }
             } else {
                 $("#fingerTotalDescription").val($("#fingerDesc").val());
@@ -4942,7 +4942,7 @@ function checkPayData() {
                 $( "#ntrBookNumber" ).css( "display", "block" );
                 $( "#cabinNumberNtr" ).css( "display", "block" );
                 $( "#fingerDesc" ).focus(  );
-                $( "#ntrBookNumber" ).attr( "placeholder", "Нотриатын гэрээний дугаар." );
+                $( "#ntrBookNumber" ).attr( "placeholder", "Нотриатын гэрээний 번호." );
             } else {
                 $( "#fingerDesc" ).prop( "disabled", false );
                 $( "#notCheckFinger" ).prop( "checked", false );
@@ -5803,7 +5803,7 @@ document.getElementById("payAmount").value =newArray[1];
     //         {field: 'cabin_no', title: '차체번호', width: 80},
     //         {field: 'mark_name', title: '브랜드', width: 80},
     //         {field: 'model_name', title: '형식', width: 80},
-    //         {field: 'vehicle_type_name', title: 'ТХ төрөл', width: 80},
+    //         {field: 'vehicle_type_name', title: '차량 төрөл', width: 80},
     //         {field: 'color_name', title: '색상', width: 60},
     //         {field: 'purpose_name', title: '용도', width: 90},
     //         {field: 'build_year', title: '작업일', width: 60},

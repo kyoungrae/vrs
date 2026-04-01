@@ -65,7 +65,7 @@ if (count($checkSeir) > 0) {
       return view('System.auction',compact("message"));
          }
         }else{
-            $message = $this->message("danger", "Уг дугаарыг олгосон байна.");
+            $message = $this->message("danger", "해당 번호가 발급되었습니다.");
             return view('System.auction',compact("message"));
          }  
         

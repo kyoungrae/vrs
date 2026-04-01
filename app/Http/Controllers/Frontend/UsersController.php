@@ -46,7 +46,7 @@ class UsersController extends BaseController
                         'CreatedBy' => 0,
                         'ModifiedBy' => 0,
                     ]);
-                    $message = $this->message("success", "Хэрэглэгч ам년ттай үүслээ.");
+                    $message = $this->message("success", "Хэрэглэгч 성공적으로 үүслээ.");
                     return view('System.users', compact('positions', 'departments', 'provinces', 'message'));
 
             } else {

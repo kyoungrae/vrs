@@ -236,7 +236,7 @@ public function transactionCheck(Request $request){
     //  if (count($seriesCheck) > 0) {
     //     return response()->json([
     //         'status' => 400,
-    //         'message' => "Уг дугаарыг хадгалах боломжгүй байна."
+    //         'message' => "Уг 번호ыг хадгалах боломжгүй байна."
             
     //     ]);
     //  } else {
@@ -258,7 +258,7 @@ public function transactionCheck(Request $request){
             // return $result_json;
             return response()->json([
                 'status' => 400,
-                'message' => "Уг дугаарыг хадгалах боломжгүй байна."
+                'message' => "Уг 번호ыг хадгалах боломжгүй байна."
                 
             ]);
         }else{

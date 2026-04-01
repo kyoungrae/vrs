@@ -49,8 +49,8 @@
                                     <tr>
                                         <td>1</td>
                                         <td>2019-06-13</td>
-                                        <td>Сарнай</td>
-                                        <td>Энд тайлбар байна</td>
+                                        <td>사르나이</td>
+                                        <td>여기에 설명이 있습니다</td>
                                         <td><a href="{{asset("img/logo.png")}}" target="_blank"><img src="{{asset("img/logo.png")}}" width="50" /></a></td>
                                     </tr>
                                     </tbody>

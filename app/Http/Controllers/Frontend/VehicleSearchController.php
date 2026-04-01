@@ -89,7 +89,7 @@ class VehicleSearchController extends BaseController
                 $search = true;
             }
 
-            //섬ын дугаар
+            //섬ын 번호
             $cabin_no = $request->get("cabinnumber");
             if($cabin_no !== null && $cabin_no !== ""){
                 $cabin_no = str_replace("*", "%", $cabin_no);
@@ -119,7 +119,7 @@ class VehicleSearchController extends BaseController
                 $search = true;
             }
 
-            //Vin дугаараар
+            //Vin 번호аар
             $vin = $request->get("vin");
             if($vin !== null && $vin !== ""){
                 $vin = str_replace("*", "%", $vin);
@@ -236,7 +236,7 @@ class VehicleSearchController extends BaseController
                 $search = true;
             }
 
-            //최초 아카이브ын дугаараар
+            //최초 아카이브ын 번호аар
             $firstarchive = $request->get("firstarchive");
             if($firstarchive !== null && $firstarchive !== ""){
                 $firstarchive = str_replace("*", "%", $firstarchive);
@@ -245,7 +245,7 @@ class VehicleSearchController extends BaseController
                 $search = true;
             }
 
-            //Хязгаарлалтын төрлөөр
+            //제한 사항ын төрлөөр
             $limit = $request->get("restrict");
             if($limit !== null && $limit !== ""){
                 $limited_vehicles = DB::table("REG_LIMITED")->whereNull("RESTORE_USER_ID")->where("TYPE_ID", $limit)->orderBy("VEHICLE_ID", "ASC")->pluck("vehicle_id");
@@ -253,7 +253,7 @@ class VehicleSearchController extends BaseController
                 $search = true;
             }
 
-            //ТХ төлөвөөр
+            //차량 төлөвөөр
             $status = $request->get("status");
             if($status !== null && $status !== ""){
                 $vehicles = $vehicles->where("STATUS", $status);
@@ -364,7 +364,7 @@ class VehicleSearchController extends BaseController
                 $search = true;
             }
 
-            //호ны дугаараар
+            //호ны 번호аар
             $door = $request->get("door");
             if($door !== null && $door !== ""){
                 $door = str_replace("*", "%", $door);
@@ -373,21 +373,21 @@ class VehicleSearchController extends BaseController
                 $search = true;
             }
 
-            //직장 전화ны дугаараар
+            //직장 전화ны 번호аар
             $workphone = $request->get("workphone");
             if($workphone !== null && $workphone !== ""){
                 $vehicles = $vehicles->where("OWNER_WORKPHONE", "LIKE", "%".$workphone."%");
                 $search = true;
             }
 
-            //자택 전화ны дугаараар
+            //자택 전화ны 번호аар
             $homephone = $request->get("homephone");
             if($homephone !== null && $homephone !== ""){
                 $vehicles = $vehicles->where("OWNER_HOMEPHONE", "LIKE", "%".$homephone."%");
                 $search = true;
             }
 
-            //Гар утасны дугаараар
+            //Гар утасны 번호аар
             $mobile = $request->get("mobile");
             if($mobile !== null && $mobile !== ""){
                 $vehicles = $vehicles->where("OWNER_CELLPHONE", "LIKE", "%".$mobile."%");
@@ -414,7 +414,7 @@ class VehicleSearchController extends BaseController
                 $search = true;
             }
 
-            //Мэдүүлгийн дугаараар
+            //Мэдүүлгийн 번호аар
             $dec = $request->get("applicationNumber");
             if($dec !== null && $dec !== ""){
                 $dec = str_replace("*", "%", $dec);
@@ -457,7 +457,7 @@ class VehicleSearchController extends BaseController
                                 }
                                 elseif($delete == "vin"){
                                     array_push($columns_diff, "vin_no");
-                                    array_push($titles, "Vin дугаар");
+                                    array_push($titles, "Vin 번호");
                                 }
                                 elseif($delete == "factory"){
                                     array_push($columns_diff, "country_name");
@@ -561,15 +561,15 @@ class VehicleSearchController extends BaseController
                                 }
                                 if($delete == "meduulgiindugaar"){
                                     array_push($columns_diff, "declaration_no");
-                                    array_push($titles, "Мэдүүлэгийн дугаар");
+                                    array_push($titles, "Мэдүүлэгийн 번호");
                                 }
                                 elseif($delete == "archivedugaar"){
                                     array_push($columns_diff, "first_archive_no");
-                                    array_push($titles, "Анхны аривын дугаар");
+                                    array_push($titles, "Анхны аривын 번호");
                                 }
                                 elseif($delete == "teevriinheregselturul"){
                                     array_push($columns_diff, "status_name");
-                                    array_push($titles, "ТХ-н төлөв");
+                                    array_push($titles, "차량-н төлөв");
                                 }
                                 elseif($delete == "aimag" || $delete == "duureg" || $delete == "baghoroo" || $delete == "horoolol" || $delete == "gudamj" || $delete == "bair" || $delete == "haalga"){
                                     array_push($columns_diff, "address_detail");

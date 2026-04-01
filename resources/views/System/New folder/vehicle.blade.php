@@ -1360,7 +1360,7 @@
                                      <div class="media-icon bg-success"><i class="typcn typcn-delete"></i></div>
                                      <a id="RESTRICT" style="cursor: pointer;" onclick="menu('RESTRICT')">
                                          <div class="media-body">
-                                             <h6>Хязгаарлах</h6>
+                                             <h6>제한лах</h6>
                                              <span>DK 운송수단 제한</span>
                                          </div>
                                      </a>
@@ -1412,7 +1412,7 @@
                                         <div class="media-icon bg-success"><i class="typcn typcn-delete"></i></div>
                                         <a id="RESTRICT" style="cursor: pointer;" onclick="menu('RESTRICT')">
                                             <div class="media-body">
-                                                <h6>Хязгаарлах</h6>
+                                                <h6>제한лах</h6>
                                                 <span>운송수단 제한</span>
                                             </div>
                                         </a>
@@ -3386,13 +3386,13 @@ if (hasNYearsPassed(is_build) && total_weight < 3500 && (purposeCheck == 1 || pu
             data: {"plate": plate},
             success: function( response ) {
                 if(response == "false"){
-                    alert(plate + " дугаартай ТХ олдсонгүй.");
+                    alert(plate + " 번호тай 차량 찾을 수 없습니다.");
                     $("#change_plate_two_btn").css("display", "none");
                     $("#change_plate_two_pay").css("display", "none");
                 } else if(response == "limited"){
                     $("#change_plate_two_btn").css("display", "none");
                     $("#change_plate_two_pay").css("display", "none");
-                    alert(plate + " дугаартай ТХ хязгаарлалттай байна.");
+                    alert(plate + " 번호тай 차량 хязгаарлалттай байна.");
                 } else {
                     
                     $("#change_cabin_no" + type + "_id").text(response["cabin_no"]);
@@ -5862,7 +5862,7 @@ document.getElementById("payAmount").value =newArray[1];
     //         {field: 'cabin_no', title: '차체번호', width: 80},
     //         {field: 'mark_name', title: '브랜드', width: 80},
     //         {field: 'model_name', title: '형식', width: 80},
-    //         {field: 'vehicle_type_name', title: 'ТХ төрөл', width: 80},
+    //         {field: 'vehicle_type_name', title: '차량 төрөл', width: 80},
     //         {field: 'color_name', title: '색상', width: 60},
     //         {field: 'purpose_name', title: '용도', width: 90},
     //         {field: 'build_year', title: '작업일', width: 60},

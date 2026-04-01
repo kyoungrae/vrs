@@ -36,7 +36,7 @@
                                         <div class="col-4">
                                             <div class="row row-xs align-items-center mg-b-5">
                                                 <div class="col-lg-5 col-md-12 col-sm-12">
-                                                    <label class="form-label mg-b-0 required-input">дугаарын өнгө сонгох</label>
+                                                    <label class="form-label mg-b-0 required-input">번호ын өнгө сонгох</label>
                                                 </div>
                                                 <div class="col-lg-7 col-md-12 col-sm-12">
                                                     <select class="form-control select2" name="plateColor" value="{{ isset($plateColor) ? $plateColor : "" }}"> 

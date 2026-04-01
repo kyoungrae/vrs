@@ -116,7 +116,7 @@
                                     </tbody>
                                     <tfoot>
                                     <tr>
-                                        <td><strong>УБ</strong></td>
+                                        <td><strong>울란바토르</strong></td>
                                         <td colspan="4">{{ isset($move) ? $move[0] : 0 }}</td>
                                     </tr>
                                     <tr>

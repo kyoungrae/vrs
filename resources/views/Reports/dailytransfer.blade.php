@@ -146,11 +146,11 @@
                                         <td colspan="5">{{ isset($total_array) ? $total_array[6] : 0 }}</td>
                                     </tr>
                                     <tr>
-                                        <td><strong>УБ-지방</strong></td>
+                                        <td><strong>울란바토르-지방</strong></td>
                                         <td colspan="5">{{ isset($total_array) ? $total_array[7] : 0 }}</td>
                                     </tr>
                                     <tr>
-                                        <td><strong>지방-УБ</strong></td>
+                                        <td><strong>지방-울란바토르</strong></td>
                                         <td colspan="5">{{ isset($total_array) ? $total_array[8] : 0 }}</td>
                                     </tr>
                                     </tfoot>

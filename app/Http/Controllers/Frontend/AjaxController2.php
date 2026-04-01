@@ -854,13 +854,13 @@ class AjaxController extends BaseController
                 RegReferenceLog::create([
                     'Ref_Type' => $request->get("RefType"), //보고서 төрөл: 1 бол одоогийн өмчилж буй, 2 бол өмнөх өмчилж байсан
                     'Type_Id' => $request->get("TypeId"), //1 бол албан тоотоор буюу хурууны хээ ашиглаагүй, 2 хурууны хээгээр
-                    'User_Type_Id' => $owner->first()->type_id, //Лавлагаагаар илэрсэн ТХ -ийн өмчлөгчийн хувь хүн болон албан байгууллага төрөл Ө.Х өмчлөгчийн төрөл
+                    'User_Type_Id' => $owner->first()->type_id, //Лавлагаагаар илэрсэн 차량 -ийн өмчлөгчийн хувь хүн болон албан байгууллага төрөл Ө.Х өмчлөгчийн төрөл
                     'User_Id' => $owner->first()->id, //비율 хүн болон албан байгууллага өмчлөгчийн ID
                     'DocNumber' => $request->get("DocNumber"), //공문 번호
-                    'Vehicle_Count' => $request->get("VehicleCount"), //Нэг лавлагаагаар авсан ТХ -ийн тоо
+                    'Vehicle_Count' => $request->get("VehicleCount"), //Нэг лавлагаагаар авсан 차량 -ийн тоо
                     'Request_Type' => $request->get("RequestType"), //Хүсэлт гаргасан байгууллага ID
                     'Request_Name' => $request->get("RequestText"), //Хүсэлт гаргасан байгууллага нэр
-                    'Description' => $request->get("Description"), //Хурууны хээ болон дугаар тайлбар
+                    'Description' => $request->get("Description"), //Хурууны хээ болон 번호 тайлбар
                     'CreatedBy' => $request->get("CreatedBy"), //Лавлагаа гаргасан
                     'CreatedDate' => $request->get("CreatedDate")
                 ]);

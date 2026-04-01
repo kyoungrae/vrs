@@ -80,7 +80,7 @@
                                     <tr style="text-align: center;">
                                         <th>№</th>
                                         <th>일자</th>
-                                        <th>말소ын дугаар</th>
+                                        <th>말소ын 번호</th>
                                         <th>브랜드</th>
                                         <th>모델</th>
                                         <th>차체번호</th>

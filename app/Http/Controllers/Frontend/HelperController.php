@@ -48,7 +48,7 @@ class HelperController extends BaseController
                     'STATUS' => 1,
                     'CLOSE_DATE' => Carbon::now()->format("Y-m-d H:i:s")
                 ]);
-                $message = $this->message("success", "오류ны мессеж ам년ттай засагдлаа.");
+                $message = $this->message("success", "오류ны мессеж 성공적으로 수정되었습니다.");
             } else {
                 SystemIssue::create([
                     'OPEN_USER_ID' => $userPkId,
@@ -58,7 +58,7 @@ class HelperController extends BaseController
                     'STATUS' => 0,
                     'OPEN_DATE' => Carbon::now()->format("Y-m-d H:i:s"),
                 ]);
-                $message = $this->message("success", "오류ны мессеж ам년ттай илгээгдлээ.");
+                $message = $this->message("success", "오류ны мессеж 성공적으로 илгээгдлээ.");
             }
             return redirect(route("issue"))->with("message", $message);
         } else {

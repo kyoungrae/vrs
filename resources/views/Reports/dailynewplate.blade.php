@@ -30,7 +30,7 @@
                         <h6 class="card-title">
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12">
-                                    ТХ -ИЙН УЛСЫН ДУГААР ШИНЭЭР ОЛГОЛТЫН ТАЙЛАН
+                                    차량 -ИЙН УЛСЫН ДУГААР ШИНЭЭР ОЛГОЛТЫН ТАЙЛАН
                                 </div>
                             </div>
                         </h6>

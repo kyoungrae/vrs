@@ -25,7 +25,7 @@ class BurtgelController extends BaseController
        
             $province = DB::table("ADDRESS_PROVINCE")
                 ->where("ABBR", '!=', null)
-                ->where("NAME", '!=', "УБ")
+                ->where("NAME", '!=', "울란바토르")
                 ->orderby("NAME", "ASC")
                 ->get();
 
@@ -137,7 +137,7 @@ class BurtgelController extends BaseController
 
                         //섬 бичсэн эсэх
                         if ($aral == "00000" && $type == null) {
-                            $message = $this->message("warning", "Та арлын дугаараа зөв оруулна уу.");
+                            $message = $this->message("warning", "Та арлын 번호аа зөв оруулна уу.");
                             return view('Touch.burtgel', compact( 'limitPerDay', 'province', 'provinceID', 'type', 'message'));
                         }
 
@@ -177,7 +177,7 @@ class BurtgelController extends BaseController
                             ->count();
 
                         if ($checkDuplicate > 0) {
-                            $message = $this->message("warning", "Дугаар захиалагдсан байна. Та өөр дугаар захиална уу.");
+                            $message = $this->message("warning", "Дугаар захиалагдсан байна. Та өөр 번호 захиална уу.");
                             return view('Touch.burtgel', compact( 'limitPerDay', 'province', 'provinceID', 'type', 'message'));
                         } else {
                             $numberText = SeriesNumber::where("ID", $seriesNumberId)->where("IS_ORDER", (int)0)->get();
@@ -197,7 +197,7 @@ class BurtgelController extends BaseController
                                 'ORDER_CABIN' => $aral
                             ]);
 
-                            $message_info = '<table class="table table-bordered" style="font-size: 16px;"><tbody><tr><th><div>Захиалсан дугаар</div></th><th><div>'.$numberText.'</div></th></tr><tr><th><div>등록번호</div></th><th><div>'.$register.'</div></th></tr><tr><th><div>차체번호</div></th><th><div>'.$aral.'</div></th></tr><tr><th><div>주문 일자</div></th><th><div>'.$order_date.'</div></th></tr><tr><th><div>Хүчинтэй огноо</div></th><th><div>'.Carbon::parse($order_date)->addDay(1).'</div></th></tr></tbody></table>';
+                            $message_info = '<table class="table table-bordered" style="font-size: 16px;"><tbody><tr><th><div>Захиалсан 번호</div></th><th><div>'.$numberText.'</div></th></tr><tr><th><div>등록번호</div></th><th><div>'.$register.'</div></th></tr><tr><th><div>차체번호</div></th><th><div>'.$aral.'</div></th></tr><tr><th><div>주문 일자</div></th><th><div>'.$order_date.'</div></th></tr><tr><th><div>Хүчинтэй огноо</div></th><th><div>'.Carbon::parse($order_date)->addDay(1).'</div></th></tr></tbody></table>';
                             $message = $this->message("success", '24 цагийн хугацаанд хүчинтэй.<br>'.$message_info.'<div style="color:red">Захиалгын мэдээллийг баталгаажуулах үүднээс дэлгэцийн зургийг дарж авна уу!</div>');
                             return view('Touch.burtgel', compact('limitPerDay', 'province', 'provinceID', 'type', 'message'));
                         }
@@ -399,7 +399,7 @@ class BurtgelController extends BaseController
     }
 
     /**
-     * Самбарт харуулах дугаарыг долоо хоногийн гариг тус бүрээр тэнцүү тараах үйлдэл
+     * Самбарт харуулах 번호ыг долоо хоногийн гариг тус бүрээр тэнцүү тараах үйлдэл
      * @param $all_numbers
      * @param $selectPerDay
      * @return array

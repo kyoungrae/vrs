@@ -201,7 +201,7 @@
             </div>
             {{-- <div class="row row-xs align-items-center mg-b-5">
                 <div class="col-lg-5 col-md-12 col-sm-12">
-                    <label class="form-label mg-b-0">Зип код</label>
+                    <label class="form-label mg-b-0">우편번호</label>
                 </div>
                 <div class="col-lg-7 col-md-12 col-sm-12">
                     <input type="text" id="zipcode_own" name="zipcode" value="" class="form-control">
@@ -577,9 +577,9 @@
                         $("#owner_btn").html("소유자 등록");
                     } 
                     // if(selected_menu_name == "OWNER_REG"){
-                    //         $("#owner_btn").html("ЭЗЭМШИГЧ БҮРТГЭХ");
+                    //         $("#owner_btn").html("사용자 등록");
                     //     }else{
-                    //         $("#owner_btn").html("ӨМЧЛӨГЧ БҮРТГЭХ");
+                    //         $("#owner_btn").html("소유자 등록");
                     //     }
                     $("#editBtn").css("display", "block");
                     $("#owner_btn").css("display", "block");

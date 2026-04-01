@@ -58,7 +58,7 @@ class ReferenceController extends BaseController
                         'Fee' => $fee,
                         'ModifiedBy' => $userPkId
                     ]);
-                    $message = $this->message("success", "서비스 ам년ттай засагдлаа.");
+                    $message = $this->message("success", "서비스가 성공적으로 수정되었습니다.");
                 } else {
                     MainService::create([
                         'Code' => $code,
@@ -68,7 +68,7 @@ class ReferenceController extends BaseController
                         'CreatedBy' => $userPkId,
                         'ModifiedBy' => $userPkId
                     ]);
-                    $message = $this->message("success", "서비스 ам년ттай бүртгэгдлээ.");
+                    $message = $this->message("success", "서비스가 성공적으로 등록되었습니다.");
                 }
                 $services = MainService::orderBy("CreatedDate", "DESC")->get();
                 return view('System.service', compact('services', 'message'));
@@ -101,10 +101,10 @@ class ReferenceController extends BaseController
                     "DELETED_AT" => Carbon::now()->format("Y-m-d")
                 ]);
             }
-            $message = $this->message("success", "Үйчилгээ ам년ттай устгагдлаа.");
+            $message = $this->message("success", "서비스가 성공적으로 삭제되었습니다.");
         } catch (\Exception $ex){
             $this->writeLog("Service delete error: ".$ex->getMessage());
-            $message = $this->message("danger", "Үйчилгээ устгахад 오류가 발생했습니다.");
+            $message = $this->message("danger", "서비스 삭제 중 오류가 발생했습니다.");
         }
         return redirect(route('refservice'))->with("message", $message);
     }
@@ -150,14 +150,14 @@ class ReferenceController extends BaseController
                         'Name' => $name,
                         'ModifiedBy' => $userPkId
                     ]);
-                    $message = $this->message("success", "직위(공무) а년ттай засагдлаа.");
+                    $message = $this->message("success", "직위(공무)가 성공적으로 수정되었습니다.");
                 } else {
                     MainUserPosition::create([
                         'Name' => $name,
                         'CreatedBy' => $userPkId,
                         'ModifiedBy' => $userPkId
                     ]);
-                    $message = $this->message("success", "직위(공무) а년ттай бүртгэгдлээ.");
+                    $message = $this->message("success", "직위(공무)가 성공적으로 등록되었습니다.");
                 }
                 if(session()->get("auth")->userpositionid == 1 || session()->get("auth")->userpositionid == 103){
                     $positions = MainUserPosition::whereNull("DELETED_AT")->orderBy("CreatedDate", "DESC")->get();
@@ -201,10 +201,10 @@ class ReferenceController extends BaseController
                     ]);
                 }
             }
-            $message = $this->message("success", "직위(공무) ам년ттай устгагдлаа.");
+            $message = $this->message("success", "직위(공무)가 삭제되었습니다.");
         } catch (\Exception $ex){
             $this->writeLog("Position delete error: ".$ex->getMessage());
-            $message = $this->message("danger", "직위(공무) устгахад 오류가 발생했습니다.");
+            $message = $this->message("danger", "직위(공무) 삭제 중 오류가 발생했습니다.");
         }
         return redirect(route('refposition'))->with("message", $message);
     }
@@ -228,7 +228,7 @@ class ReferenceController extends BaseController
             }
         } catch (\Exception $ex){
             $this->writeLog("Menu permission error: ".$ex->getMessage());
-            $message = $this->message("danger", "직위(공무)ын эрх тохируулахад 오류가 발생했습니다.");
+            $message = $this->message("danger", "직위 권한 설정 중 오류가 발생했습니다.");
             return redirect(route("refposition"))->with("message", $message);
         }
     }
@@ -318,7 +318,7 @@ class ReferenceController extends BaseController
                         'Name' => $name,
                         'Updated_By_Id' => $userPkId
                     ]);
-                    $message = $this->message("success", "Баг/Хороо ам년ттай засагдлаа.");
+                    $message = $this->message("success", "바그/동이 성공적으로 수정되었습니다.");
                     return redirect(route("adrefcomm"))->with("message", $message);
                 } else {
                     AddressSubDevUnit::create([
@@ -327,7 +327,7 @@ class ReferenceController extends BaseController
                         'Created_By_Id' => $userPkId,
                         'Updated_By_Id' => $userPkId
                     ]);
-                    $message = $this->message("success", "Баг/Хороо ам년ттай бүртгэгдлээ.");
+                    $message = $this->message("success", "바그/동이 성공적으로 등록되었습니다.");
                     return view('System.addressreferencecreatecommission', compact('provinces', 'message'));
                 }
             } else {
@@ -351,7 +351,7 @@ class ReferenceController extends BaseController
             }
         } catch (\Exception $ex){
             $this->writeLog("Khoroo create error: ".$ex);
-            $message = $this->message("danger", "Хороо нэмэхэд 오류가 발생했습니다.");
+            $message = $this->message("danger", "동 추가 중 오류가 발생했습니다.");
             return redirect(route("adrefcomm"))->with("message", $message);
         }
     }
@@ -366,10 +366,10 @@ class ReferenceController extends BaseController
                 $key = $this->dec($key);
                 DB::table("ADDRESS_SUBDEV_UNIT")->where("Id", $key)->delete();
             }
-            $message = $this->message("success", "Баг/Хороо ам년ттай устгагдлаа.");
+            $message = $this->message("success", "바그/동이 성공적으로 삭제되었습니다.");
         } catch (\Exception $ex){
             $this->writeLog("Баг хороо delete error: ".$ex->getMessage());
-            $message = $this->message("danger", "Баг/Хороо устгахад 오류가 발생했습니다.");
+            $message = $this->message("danger", "바그/동 삭제 중 오류가 발생했습니다.");
         }
         return redirect(route('adrefcomm'))->with("message", $message);
     }
@@ -407,10 +407,10 @@ class ReferenceController extends BaseController
                 $key = $this->dec($key);
                 DB::table("ADDRESS_MICRODISTRICT")->where("Id", $key)->delete();
             }
-            $message = $this->message("success", "Хороолол ам년ттай устгагдлаа.");
+            $message = $this->message("success", "구역이 성공적으로 삭제되었습니다.");
         } catch (\Exception $ex){
             $this->writeLog("Position delete error: ".$ex->getMessage());
-            $message = $this->message("danger", "Хороолол устгахад 오류가 발생했습니다.");
+            $message = $this->message("danger", "구역 삭제 중 오류가 발생했습니다.");
         }
         return redirect(route('refaddresstown'))->with("message", $message);
     }
@@ -436,7 +436,7 @@ class ReferenceController extends BaseController
                         'Name' => $name,
                         'Updated_By_Id' => $userPkId
                     ]);
-                    $message = $this->message("success", "Хороолол ам년ттай засагдлаа.");
+                    $message = $this->message("success", "구역이 성공적으로 수정되었습니다.");
                     return redirect(route("refaddresstown"))->with("message", $message);
                 } else {
                     AddressMicroDistrict::create([
@@ -446,7 +446,7 @@ class ReferenceController extends BaseController
                         'Created_By_Id' => $userPkId,
                         'Updated_By_Id' => $userPkId
                     ]);
-                    $message = $this->message("success", "Хороолол ам년ттай бүртгэгдлээ.");
+                    $message = $this->message("success", "구역이 성공적으로 등록되었습니다.");
                     return view('System.addressreferencecreatetown', compact('provinces', 'message'));
                 }
             } else {
@@ -478,7 +478,7 @@ class ReferenceController extends BaseController
             }
         } catch (\Exception $ex){
             $this->writeLog("Khoroolol create error: ".$ex);
-            $message = $this->message("danger", "Хороолол нэмэхэд 오류가 발생했습니다.");
+            $message = $this->message("danger", "구역 추가 중 오류가 발생했습니다.");
             return redirect(route("createtown"))->with("message", $message);
         }
     }
@@ -638,7 +638,7 @@ class ReferenceController extends BaseController
                     ]);
                    
                   
-                    $message = $this->message("success", "소유자 정보 ам년ттай засагдлаа.");
+                    $message = $this->message("success", "소유자 정보가 성공적으로 수정되었습니다.");
                     return redirect(url("/reference/createowner/edit/".$env))->with("message", $message);
                 } else {
                     if($type == 1){
@@ -693,9 +693,9 @@ class ReferenceController extends BaseController
                             'Updated_By_Id' => $userPkId
                         ]);
 
-                        $message = $this->message("success", "소유자 정보 ам년ттай бүртгэгдлээ.");
+                        $message = $this->message("success", "소유자 정보가 성공적으로 등록되었습니다.");
                     } else {
-                        $message = $this->message("info", "소유자 정보 бүртгэлтэй байна.");
+                        $message = $this->message("info", "소유자 정보가 이미 등록되어 있습니다.");
                     }
                     return view('System.ownercreate', compact( 'types', 'provinces', 'countries', 'message'));
                 }
@@ -752,10 +752,10 @@ class ReferenceController extends BaseController
                 $key = $this->dec($key);
                 Owner::where("Id", $key)->delete();
             }
-            $message = $this->message("success", "Эзэмшигч ам년ттай устгагдлаа.");
+            $message = $this->message("success", "가등록 소유자가 성공적으로 삭제되었습니다.");
         } catch (\Exception $ex){
             $this->writeLog("Position delete error: ".$ex->getMessage());
-            $message = $this->messesage("danger", "Эзэмшигч устгахад 오류가 발생했습니다.");
+            $message = $this->messesage("danger", "소유자 삭제 중 오류가 발생했습니다.");
         }
         return redirect(route('owner'))->with("message", $message);
     }
@@ -787,7 +787,7 @@ class ReferenceController extends BaseController
                     $archive_no = $this->archiveNumberGenerate($service);
                     DB::beginTransaction();
                    
-                 $this->createArchive($vehicle->first()->id, $service->id, $certificate, $archive_no, $plate_no, $owner, $page_count, "Эзэмшигч бүртгэсэн", $finger, $fingerDescription);
+                 $this->createArchive($vehicle->first()->id, $service->id, $certificate, $archive_no, $plate_no, $owner, $page_count, "사용자 등록 완료", $finger, $fingerDescription);
                     
                     Vehicle::where("Id", $vehicle->first()->id)->update([
                         'OWNER1_ID' => $owner,
@@ -810,16 +810,16 @@ class ReferenceController extends BaseController
             
 
                 DB::commit();
-                $message = $this->message("success", "Эзэмшигч ам년ттай бүртгэгдлээ.");
+                $message = $this->message("success", "소유자가 성공적으로 등록되었습니다.");
                 return redirect(url('/vehicle/' . $this->enc($plate_no)))->with("message", $message);
             
             } else {
-                $message = $this->message("info", $plate_no . "소유자 등록 ТХ олдсонгүй.");
+                $message = $this->message("info", $plate_no . "소유자 등록할 차량을 찾을 수 없습니다.");
                 return redirect(url('/vehicle/' . $this->enc($plate_no)))->with("message", $message);
             }
         } catch (\Exception $ex){
             $this->writeLog("Register owner2 error: ".$ex->getMessage());
-            $message = $this->message("danger",  "소유자 등록эд 오류가 발생했습니다.");
+            $message = $this->message("danger",  "소유자 등록 중 오류가 발생했습니다.");
             return redirect(url('/vehicle/' . $this->enc($plate_no)))->with("message", $message);
         }
     }
@@ -1030,7 +1030,7 @@ class ReferenceController extends BaseController
             }
         }catch (\Exception $ex){
             $this->writeLog("Ordered number search: ".$ex->getMessage());
-            $message = $this->message("danger", "Регистр хайхад алдаа гарлаа");
+            $message = $this->message("danger", "가입/등록정보 검색 중 오류가 발생했습니다.");
             return view('System.orderednumbers')->with("message", $message);
         }
     }
@@ -1051,13 +1051,13 @@ class ReferenceController extends BaseController
                     "Name" => $name,
                     "UpdatedDate" => Carbon::now()->format("Y-m-d H:i:s")
                 ]);
-                $message = $this->message("success", "Албан байгууллага а년ттай засагдлаа.");
+                $message = $this->message("success", "기관이 성공적으로 수정되었습니다.");
             } else {
                 RefReferenceOrg::create([
                     "Name" => $name,
                     "CreatedBy" => $userPkId
                 ]);
-                $message = $this->message("success", "Албан байгууллага а년ттай нэмэгдлээ.");
+                $message = $this->message("success", "기관이 성공적으로 추가되었습니다.");
             }
             $archives = RefReferenceOrg::orderBy("CreatedDate", "DESC")->get();
             return view("System.archiveorg", compact('archives', 'message'));

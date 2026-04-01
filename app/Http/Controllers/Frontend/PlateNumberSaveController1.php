@@ -255,7 +255,7 @@ if (count($plateNumberOrderList) > 0) {
    
  //return $plateNumberSaveOrder;
     if ($plateNumberSaveOrder) {
-        $message = $this->message("success", "Захиалга ам년ттай цуцлагдлаа.");
+        $message = $this->message("success", "Захиалга 성공적으로 цуцлагдлаа.");
         //   return $request;
            return redirect(url('/plateSave/plateNumberOrderList'))->with("message", $message);
        //  return redirect(url('/plateSave/plateNumberOrderList'))->with("message", $message);
@@ -453,7 +453,7 @@ if (count($plateNumberOrderList) > 0) {
                     ]);
                 }
               
-                 $message = $this->message("success", "Мэдээлэл ам년ттай засагдлаа.");
+                 $message = $this->message("success", "Мэдээлэл 성공적으로 수정되었습니다.");
                  //   return $request;
                     return redirect(url('/plateSave'))->with("message", $message);
             }else{
@@ -580,7 +580,7 @@ if (count($plateNumberOrderList) > 0) {
                        
                     ]);
                       //  DB::update("UPDATE SERIES_NUMBER SET IS_HIDDEN=1, IS_SAVE=1,ORDER_USER='ДХ'  WHERE ID= $series_number->id");
-                        $message = $this->message("success", "번호판 ам년ттай хадаглагдлаа.");
+                        $message = $this->message("success", "번호판 성공적으로 хадаглагдлаа.");
                         return redirect(url('/plateSave'))->with("message", $message);
                     }else{
                         $message = $this->message("danger", "번호판 хадгалсан байна.");
@@ -690,7 +690,7 @@ if (count($plateNumberOrderList) > 0) {
 //       return view('System.auction',compact("message"));
 //          }
 //         }else{
-//             $message = $this->message("danger", "Уг дугаарыг олгосон байна.");
+//             $message = $this->message("danger", "해당 번호가 발급되었습니다.");
 //             return view('System.auction',compact("message"));
 //          }  
         

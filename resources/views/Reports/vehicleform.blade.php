@@ -127,7 +127,7 @@
                 <div class="col-3" style="padding: 21px 1px;">
 
                     <p style="text-align: end;"> Зам, тээврийн хөгжлийн сайдын
-                        ..... оны ... дугаар тушаалаар батлагдсан
+                        ..... оны ... 번호 тушаалаар батлагдсан
                         "자동차운송 хэрэгслийн бүртгэл хөтлөх,
                         번호판 олгох журам"-ын нэгдүгээр хавсралт
                     </p>
@@ -150,7 +150,7 @@
                         <div class="col-4" style="    margin-top: 4px;">
                             <span>
                                 <h6 style="font-weight: bold;">архивын
-                                    дугаар:{{ session()->has('vehicle') ? session()->get('vehicle')->archive_no : '' }}
+                                    번호:{{ session()->has('vehicle') ? session()->get('vehicle')->archive_no : '' }}
                                 </h6>
                             </span>
                         </div>
@@ -185,7 +185,7 @@
                                             
                                         </div>
                                     </td>
-                                    <td style="    text-align: center;"><p>ТХГ нөхөлт, солилт, техникийн өөрчлөлт</p>
+                                    <td style="    text-align: center;"><p>차량Г нөхөлт, солилт, техникийн өөрчлөлт</p>
                                         <div style=" width: 0;       margin: 9px 61px;">
                                         
                                                 <div class="checkbox {{$historie1->service_id == 13 || $historie1->service_id == 14 || $historie1->service_id == 4 || $historie1->service_id == 2  ? 'checked' :  '' }}"></div>
@@ -288,7 +288,7 @@
                             <tr>
                                 <td>세관 모드</td>
                                 <td><span id="dclrTypeCd"></span></td>
-                                <td>R дугаар</td>
+                                <td>R 번호</td>
                                 <td>{{ session()->get('vehicle')->declaration_no }}</td>
                             </tr>
 
@@ -396,7 +396,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>R дугаар</td>
+                                <td>R 번호</td>
                                 <td></td>
                             </tr>
 

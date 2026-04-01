@@ -372,11 +372,11 @@ class AutoboxController extends BaseController
                                             DB::commit();
                                             return response()->json([
                                                 'statusCode' =>400,
-                                                'message' =>   " ТХ ам년ттай бүртгэгдлээ"
+                                                'message' =>   " 차량 성공적으로 등록되었습니다"
                                                
                                               
                                             ]);
-                                            // $message = $this->message("success", $cabin_no . " арлын дугаартай ТХ ам년ттай бүртгэгдлээ.");
+                                            // $message = $this->message("success", $cabin_no . " 차대번호 차량이 성공적으로 등록되었습니다.");
                                             // return redirect(url('/vehicle/' . $this->enc($plate_no)))->with("message", $message);
                                         } else {
                                             return response()->json([
@@ -437,11 +437,11 @@ class AutoboxController extends BaseController
                     } else {
                         return response()->json([
                             'statusCode' =>400,
-                            'message' => $cabin_no." аралын дугаартай ТХ бүртгэлгүй байна."
+                            'message' => $cabin_no." 차대번호 차량이 등록되지 않았습니다."
                            
                           
                         ]);
-                        // $message = $this->message("info", $cabin_no." аралын дугаартай ТХ бүртгэлгүй байна.");
+                        // $message = $this->message("info", $cabin_no." 차대번호 차량이 등록되지 않았습니다.");
                         // return redirect(url('/vehicle'))->with("message", $message);
                     }
                 } else {
@@ -610,11 +610,11 @@ class AutoboxController extends BaseController
                                         DB::commit();
                                         return response()->json([
                                             'statusCode' =>200,
-                                            'message' => "Өмчлөгч хооронд шил년т ам년ттай хийгдлээ."
+                                            'message' => "소유자 간 명의이전이 성공적으로 처리되었습니다."
                                            
                                           
                                         ]);
-                                      //  $message = $this->message("success", "Өмчлөгч хооронд шил년т ам년ттай хийгдлээ.");
+                                      //  $message = $this->message("success", "소유자 간 명의이전이 성공적으로 처리되었습니다.");
                                     } catch (\Exception $ex){
                                         DB::rollBack();
                                         $this->writeLog("Move owner transaction error: ".$ex->getMessage());
@@ -672,27 +672,27 @@ class AutoboxController extends BaseController
                 } else {
                     return response()->json([
                         'statusCode' =>400,
-                        'message' => "이전 хийх ТХ олдсонгүй."
+                        'message' => "이전 хийх 차량 찾을 수 없습니다."
                        
                       
                     ]);
-                   // $message = $this->message("info", "이전 хийх ТХ олдсонгүй.");
+                   // $message = $this->message("info", "이전 хийх 차량 찾을 수 없습니다.");
                 }
             } else {
                 return response()->json([
                     'statusCode' =>400,
-                    'message' => "Шилжүүлэх өмчлөгч олдсонгүй."
+                    'message' => "Шилжүүлэх өмчлөгч 찾을 수 없습니다."
                    
                   
                 ]);
-               // $message = $this->message("info", "Шилжүүлэх өмчлөгч олдсонгүй.");
+               // $message = $this->message("info", "Шилжүүлэх өмчлөгч 찾을 수 없습니다.");
             }
           //  return redirect(url('/vehicle/'.$this->enc($plate_no)))->with("message", $message);
         } catch (\Exception $ex){
             $this->writeLog("Move owner error: ".$ex->getMessage());
             return response()->json([
                 'statusCode' =>400,
-                'message' => "Өмчлөгч хооронд шил년т хийхэд алдаа гарлаа"
+                'message' => "Өмчлөгч хооронд 이전 хийхэд алдаа гарлаа"
                
               
             ]);
@@ -839,11 +839,11 @@ class AutoboxController extends BaseController
                                                     }
                                                    
                                                   
-                                                  // $message = $this->message("success", "번호판 солилттой шилжүүлэг ам년ттай хийгдлээ.");
+                                                  // $message = $this->message("success", "번호판 교체 및 명의이전이 완료되었습니다.");
                                                     DB::commit();
                                                     return response()->json([
                                                         'statusCode' =>400,
-                                                        'message' =>  "번호판 солилттой шилжүүлэг ам년ттай хийгдлээ."
+                                                        'message' =>  "번호판 교체 및 명의이전이 완료되었습니다."
                                                        
                                                       
                                                     ]);
@@ -900,11 +900,11 @@ class AutoboxController extends BaseController
                                 } else {
                                     return response()->json([
                                         'statusCode' =>400,
-                                        'message' => "ТХ -ийн одоогийн болон шинэ өмчлөгчийн харьяалал и년 байна."
+                                        'message' => "차량의 현재 및 새 소유자 소속이 동일합니다."
                                        
                                       
                                     ]);
-                                    // $message = $this->message("info", "ТХ -ийн одоогийн болон шинэ өмчлөгчийн харьяалал и년 байна.");
+                                    // $message = $this->message("info", "차량의 현재 및 새 소유자 소속이 동일합니다.");
                                     // $plate_no = $plate_old_no;
                                 }
                             } else {
@@ -920,11 +920,11 @@ class AutoboxController extends BaseController
                         } else {
                             return response()->json([
                                 'statusCode' =>400,
-                                'message' => "번호판 солилттой шилжүүлэх ТХ олдсонгүй."
+                                'message' => "번호판 교체 및 명의이전할 차량을 찾을 수 없습니다."
                                
                               
                             ]);
-                            // $message = $this->message("info", "번호판 солилттой шилжүүлэх ТХ олдсонгүй.");
+                            // $message = $this->message("info", "번호판 교체 및 명의이전할 차량을 찾을 수 없습니다.");
                             // $plate_no = $plate_old_no;
                             // return redirect(url('/vehicle/'.$this->enc($plate_no)))->with("message", $message);
                         }
@@ -953,11 +953,11 @@ class AutoboxController extends BaseController
             } else {
                 return response()->json([
                     'statusCode' =>400,
-                    'message' => "번호판 солигдоогүй байна."
+                    'message' => "번호판이 교체되지 않았습니다."
                    
                   
                 ]);
-               // $message = $this->message("info", "번호판 солигдоогүй байна.");
+               // $message = $this->message("info", "번호판이 교체되지 않았습니다.");
               //  return redirect(url('/vehicle/'.$this->enc($plate_no)))->with("message", $message);
             }
         } catch (\Exception $ex){
@@ -1063,11 +1063,11 @@ class AutoboxController extends BaseController
                                                 DB::commit();
                                                 return response()->json([
                                                     'statusCode' =>200,
-                                                    'message' => "번호판 ам년ттай солигдлоо.."
+                                                    'message' => "번호판이 성공적으로 교체되었습니다.."
                                                    
                                                   
                                                 ]);
-                                               // $message = $this->message("success", "번호판 ам년ттай солигдлоо.");
+                                               // $message = $this->message("success", "번호판이 성공적으로 교체되었습니다.");
                                             } else {
                                                 return response()->json([
                                                     'statusCode' =>400,
@@ -1127,11 +1127,11 @@ class AutoboxController extends BaseController
                         } else {
                             return response()->json([
                                 'statusCode' =>400,
-                                'message' => "번호판 солих ТХ олдсонгүй."
+                                'message' => "번호판 교체할 차량을 찾을 수 없습니다."
                                
                               
                             ]);
-                          //  $message = $this->message("info", "번호판 солих ТХ олдсонгүй.");
+                          //  $message = $this->message("info", "번호판 교체할 차량을 찾을 수 없습니다.");
                         }
                     } else {
                      //   $message = $this->message("info", $plate_no." 번호판이 다른 차량에서 사용 중입니다.");
@@ -1156,11 +1156,11 @@ class AutoboxController extends BaseController
             } else {
                 return response()->json([
                     'statusCode' =>400,
-                    'message' =>"Солих 번호판 тухайн ТХ ашиглаж байна"
+                    'message' =>"Солих 번호판 тухайн 차량 ашиглаж байна"
                    
                   
                 ]);
-              //  $message = $this->message("info", "Солих 번호판 тухайн ТХ ашиглаж байна.");
+              //  $message = $this->message("info", "교체할 번호판을 이미 차량이 사용 중입니다.");
             }
             return redirect(url('/vehicle/'.$this->enc($plate_no)))->with("message", $message);
         } catch (\Exception $ex){
@@ -1267,11 +1267,11 @@ class AutoboxController extends BaseController
                             }
                             return response()->json([
                                 'statusCode' =>400,
-                                'message' =>  "ТХ -ийн мэдээлэл ам년ттай хасагдлаа."
+                                'message' =>  "차량 -ийн мэдээлэл 성공적으로 хасагдлаа."
                                
                               
                             ]);
-                          //  $message = $this->message("success", "ТХ -ийн мэдээлэл ам년ттай хасагдлаа.");
+                          //  $message = $this->message("success", "차량 -ийн мэдээлэл 성공적으로 хасагдлаа.");
                         } else {
                             return response()->json([
                                 'statusCode' =>400,
@@ -1296,11 +1296,11 @@ class AutoboxController extends BaseController
                 } else {
                     return response()->json([
                         'statusCode' =>400,
-                        'message' =>  "ХХ сери үүсээгүй эсвэл ХХ серитэй сул дугаар байхгүй байна."
+                        'message' =>  "ХХ сери үүсээгүй эсвэл ХХ серитэй сул 번호 байхгүй байна."
                        
                       
                     ]);
-                   // $message = $this->message("info", "ХХ сери үүсээгүй эсвэл ХХ серитэй сул дугаар байхгүй байна.");
+                   // $message = $this->message("info", "ХХ сери үүсээгүй эсвэл ХХ серитэй сул 번호 байхгүй байна.");
                     //$plate_no = $plate_old_no;
                 }
             } else {
@@ -1820,7 +1820,7 @@ public function indexBurtgelAutoBox(Request $request, $type = 0)
         
                 $province = DB::table("ADDRESS_PROVINCE")
                     ->where("ABBR", '!=', null)
-                    //->where("NAME", '!=', "УБ")
+                    //->where("NAME", '!=', "울란바토르")
                     ->orderby("NAME", "ASC")
                     ->get();
         
@@ -1957,10 +1957,10 @@ public function indexBurtgelAutoBox(Request $request, $type = 0)
                             if ($aral == "00000" && $type == null) {
                                 return response()->json([
                                     'statusCode' =>400,
-                                    'message' => "Та арлын дугаараа зөв оруулна уу.",
+                                    'message' => "Та арлын 번호аа зөв оруулна уу.",
                                   
                                     ]);
-                                // $message = $this->message("warning", "Та арлын дугаараа зөв оруулна уу.");
+                                // $message = $this->message("warning", "Та арлын 번호аа зөв оруулна уу.");
                                 // return view('Touch.burtgel', compact( 'limitPerDay', 'province', 'provinceID', 'type', 'message'));
                             }
         
@@ -2007,10 +2007,10 @@ public function indexBurtgelAutoBox(Request $request, $type = 0)
                             if ($checkDuplicate > 0) {
                                 return response()->json([
                                     'statusCode' =>400,
-                                    'message' => "Дугаар захиалагдсан байна. Та өөр дугаар захиална уу",
+                                    'message' => "Дугаар захиалагдсан байна. Та өөр 번호 захиална уу",
                                   
                                     ]);
-                                // $message = $this->message("warning", "Дугаар захиалагдсан байна. Та өөр дугаар захиална уу.");
+                                // $message = $this->message("warning", "Дугаар захиалагдсан байна. Та өөр 번호 захиална уу.");
                                 // return view('Touch.burtgel', compact( 'limitPerDay', 'province', 'provinceID', 'type', 'message'));
                             } else {
                                 $numberText = SeriesNumber::where("ID", $seriesNumberId)->where("IS_ORDER", (int)0)->get();
@@ -2033,7 +2033,7 @@ public function indexBurtgelAutoBox(Request $request, $type = 0)
         
                                 return response()->json([
                                     'statusCode' =>200,
-                                    'message' => "Дугаар захиалга ам년ттай.",
+                                    'message' => "Дугаар захиалга 성공적으로.",
                                     'data'=>[
                                         'order_plate'=>$numberText,
                                         'order_register'=>$register,
@@ -2043,7 +2043,7 @@ public function indexBurtgelAutoBox(Request $request, $type = 0)
                                         'info'=>"24 цагийн хугацаанд хүчинтэй"
                                     ],
                                     ]);
-                                // $message_info = '<table class="table table-bordered" style="font-size: 16px;"><tbody><tr><th><div>Захиалсан дугаар</div></th><th><div>'.$numberText.'</div></th></tr><tr><th><div>등록번호</div></th><th><div>'.$register.'</div></th></tr><tr><th><div>차체번호</div></th><th><div>'.$aral.'</div></th></tr><tr><th><div>주문 일자</div></th><th><div>'.$order_date.'</div></th></tr><tr><th><div>Хүчинтэй огноо</div></th><th><div>'.Carbon::parse($order_date)->addDay(1).'</div></th></tr></tbody></table>';
+                                // $message_info = '<table class="table table-bordered" style="font-size: 16px;"><tbody><tr><th><div>Захиалсан 번호</div></th><th><div>'.$numberText.'</div></th></tr><tr><th><div>등록번호</div></th><th><div>'.$register.'</div></th></tr><tr><th><div>차체번호</div></th><th><div>'.$aral.'</div></th></tr><tr><th><div>주문 일자</div></th><th><div>'.$order_date.'</div></th></tr><tr><th><div>Хүчинтэй огноо</div></th><th><div>'.Carbon::parse($order_date)->addDay(1).'</div></th></tr></tbody></table>';
                                 // $message = $this->message("success", '24 цагийн хугацаанд хүчинтэй.<br>'.$message_info.'<div style="color:red">Захиалгын мэдээллийг баталгаажуулах үүднээс дэлгэцийн зургийг дарж авна уу!</div>');
                                 // return view('Touch.burtgel', compact('limitPerDay', 'province', 'provinceID', 'type', 'message'));
                             }
@@ -2261,7 +2261,7 @@ public function selectSearchNnumber($seriesId, $number){
 }
 
 /**
- * Самбарт харуулах дугаарыг долоо хоногийн гариг тус бүрээр тэнцүү тараах үйлдэл
+ * Самбарт харуулах 번호ыг долоо хоногийн гариг тус бүрээр тэнцүү тараах үйлдэл
  * @param $all_numbers
  * @param $selectPerDay
  * @return array
@@ -2464,10 +2464,10 @@ public function plateSaveStore(Request $request)
                            
                            
                         ]);
-                        $message = $this->message("success", "번호판 ам년ттай хадаглагдлаа.");
+                        $message = $this->message("success", "번호판 성공적으로 хадаглагдлаа.");
                         return response()->json([
                             'statusCode' =>200,
-                            'message' =>"번호판 ам년ттай хадаглагдлаа."
+                            'message' =>"번호판 성공적으로 хадаглагдлаа."
                            
                           
                         ]);

@@ -60,7 +60,7 @@ class SettingsController extends BaseController
                         'dep_phone' => $compPhone,
                         'dep_address' => $compAddress
                     ]);
-                    $message = $this->message("success", "Хэлтэс ам년ттай засагдлаа.");
+                    $message = $this->message("success", "Хэлтэс 성공적으로 수정되었습니다.");
                 } else {
                   
                    // return $compRegister;
@@ -79,7 +79,7 @@ class SettingsController extends BaseController
                         'dep_address' => $compAddress
                         
                     ]);
-                    $message = $this->message("success", "Хэлтэс ам년ттай нэмэгдлээ.");
+                    $message = $this->message("success", "Хэлтэс 성공적으로 추가되었습니다.");
                 }
                 $departments = DB::table("SYSTEM_DEPARTMENT")
                     ->leftJoin("ADDRESS_PROVINCE", "SYSTEM_DEPARTMENT.PROVINCE_ID", "ADDRESS_PROVINCE.ID")
@@ -138,7 +138,7 @@ class SettingsController extends BaseController
                     'MODIFIEDBY' => $userPkId
                 ]);
             }
-            $message = $this->message("success", "Хэлтэс ам년ттай устлаа.");
+            $message = $this->message("success", "Хэлтэс 성공적으로 устлаа.");
         } catch (\Exception $ex){
             $this->writeLog("Department delete error: ".$ex->getMessage());
             $message = $this->message("danger", "Хэлтэс устгахад 오류가 발생했습니다.");
@@ -173,7 +173,7 @@ class SettingsController extends BaseController
                         'Abbr' => $abr,
                         'ModifiedBy' => $userPkId
                     ]);
-                    $message = $this->message("success", "아카이브ын салбар ам년ттай засагдлаа.");
+                    $message = $this->message("success", "아카이브ын салбар 성공적으로 수정되었습니다.");
                 } else {
                     $is_create = SystemArchive::where("Abbr", $abr)->count();
                     if($is_create < 1){
@@ -185,7 +185,7 @@ class SettingsController extends BaseController
                             'CreatedBy' => $userPkId,
                             'ModifiedBy' => $userPkId
                         ]);
-                        $message = $this->message("success", "아카이브ын салбар ам년ттай бүртгэгдлээ.");
+                        $message = $this->message("success", "아카이브ын салбар 성공적으로 등록되었습니다.");
                     } else {
                         $message = $this->message("info", "아카이브ын салбарын товч нэр давхцаж байна.");
                     }
@@ -225,7 +225,7 @@ class SettingsController extends BaseController
                     'MODIFIEDBY' => $userPkId
                 ]);
             }
-            $message = $this->message("success", "아카이브ын салбар ам년ттай устлаа.");
+            $message = $this->message("success", "아카이브ын салбар 성공적으로 устлаа.");
         } catch (\Exception $ex){
             $this->writeLog("Archive department delete error: ".$ex->getMessage());
             $message = $this->message("success", "아카이브ын салбар устгахад 오류가 발생했습니다..");

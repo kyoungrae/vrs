@@ -30,7 +30,7 @@
                         <h6 class="card-title">
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12">
-                                    АЛБАН ТУШААЛЫН ЭРХИЙН ЛОГ
+                                    직위 권한 로그
                                 </div>
                             </div>
                         </h6>
@@ -96,11 +96,11 @@
                                     <tr style="text-align: center;">
                                         <th>№</th>
                                         <th>일자</th>
-                                        <th>직위(공무)ын нэр /Хуучин/</th>
+                                        <th>직위명 /변경 전/</th>
                                         <th>직위(공무)ын нэр /신규/</th>
                                         <th>작업</th>
                                         <th>Үүсгэсэн</th>
-                                        <th>수정ласан</th>
+                                        <th>수정됨</th>
                                     </tr>
                                     </thead>
                                     <tbody style="text-align: center;">

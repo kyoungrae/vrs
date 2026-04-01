@@ -34,7 +34,7 @@
                         <h6 class="card-title">
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12">
-                                    ТХ -ИЙН ЛАВЛАГАА ӨМЧЛӨГЧӨӨР
+                                    차량 -ИЙН ЛАВЛАГАА ӨМЧЛӨГЧӨӨР
                                 </div>
                             </div>
                         </h6>

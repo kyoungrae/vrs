@@ -88,7 +88,7 @@
                                 <th style="@if(isset($ehelsenognoo)) {{"display:table-cell" }} @else {{"display:none"}} @endif">시작 일자</th>
                                 <th style="@if(isset($ulsiindugaar)) {{"display:table-cell" }} @else {{"display:none"}} @endif">번호판</th>
                                 <th style="@if(isset($arliindugaar)) {{"display:table-cell" }} @else {{"display:none"}} @endif">차체번호</th>
-                                <th style="@if(isset($vin)) {{"display:table-cell" }} @else {{"display:none"}} @endif">VIN дугаар</th>
+                                <th style="@if(isset($vin)) {{"display:table-cell" }} @else {{"display:none"}} @endif">VIN 번호</th>
                                 <th style="@if(isset($factory)) {{"display:table-cell" }} @else {{"display:none"}} @endif">제조국</th>
                                 <th style="@if(isset($mark)) {{"display:table-cell" }} @else {{"display:none"}} @endif">브랜드</th>
                                 <th style="@if(isset($model)) {{"display:table-cell" }} @else {{"display:none"}} @endif">모델</th>
@@ -102,7 +102,7 @@
                                 <th style="@if(isset($hurd)) {{"display:table-cell" }} @else {{"display:none"}} @endif">핸들 위치</th>
                                 <th style="@if(isset($hairtsag)) {{"display:table-cell" }} @else {{"display:none"}} @endif">변속기</th>
                                 <th style="@if(isset($uildverlesenognoo)) {{"display:table-cell" }} @else {{"display:none"}} @endif">제조 일자</th>
-                                <th style="@if(isset($motor)) {{"display:table-cell" }} @else {{"display:none"}} @endif">Моторын дугаар</th>
+                                <th style="@if(isset($motor)) {{"display:table-cell" }} @else {{"display:none"}} @endif">Моторын 번호</th>
                                 <th style="@if(isset($gasoline)) {{"display:table-cell" }} @else {{"display:none"}} @endif">연료 유형</th>
                                 <th style="@if(isset($urt)) {{"display:table-cell" }} @else {{"display:none"}} @endif">Урт</th>
                                 <th style="@if(isset($urgun)) {{"display:table-cell" }} @else {{"display:none"}} @endif">Өргөн</th>
@@ -114,8 +114,8 @@
                                 <th style="@if(isset($oruuljirsen)) {{"display:table-cell" }} @else {{"display:none"}} @endif">Оруулж ирсэн огноо</th>
                                 <th style="@if(isset($archivedugaar)) {{"display:table-cell" }} @else {{"display:none"}} @endif">아카이브 번호</th>
                                 <th style="@if(isset($anhniiarchive)) {{"display:table-cell" }} @else {{"display:none"}} @endif">최초 아카이브</th>
-                                <th style="@if(isset($meduulgiindugaar)) {{"display:table-cell" }} @else {{"display:none"}} @endif">Мэдүүлгийн дугаар</th>
-                                <th style="@if(isset($teevriinheregselturul)) {{"display:table-cell" }} @else {{"display:none"}} @endif">ТХ-н төлөв</th>
+                                <th style="@if(isset($meduulgiindugaar)) {{"display:table-cell" }} @else {{"display:none"}} @endif">Мэдүүлгийн 번호</th>
+                                <th style="@if(isset($teevriinheregselturul)) {{"display:table-cell" }} @else {{"display:none"}} @endif">차량-н төлөв</th>
                                 <th style="@if(isset($uls)) {{"display:table-cell" }} @else {{"display:none"}} @endif">검정ъяа улс</th>
                                 <th style="@if(isset($registernumber)) {{"display:table-cell" }} @else {{"display:none"}} @endif">등록번호</th>
                                 <th style="@if(isset($urgiinovog)) {{"display:table-cell" }} @else {{"display:none"}} @endif">본관성</th>

@@ -82,7 +82,7 @@ class VehicleController extends BaseController
             $types = OwnerType::all();
             $Printers=SystemPrinter::all();
             
-            //гар утаснаас орж байгаа эсэх
+            //모바일 접속 여부
             $isMobile=false;
             $isMobile=$this->isMobileDevice();
 
@@ -197,10 +197,10 @@ class VehicleController extends BaseController
                                 $message = $this->message("info", "차량은 ".$limit_count." 종류의 제한이 있어 서비스를 이용할 수 없습니다.");
                                 return view('System.vehicle', compact('oldNumbers', 'vehicle','systemPlateFactory', 'limits', 'services', 'provinces', 'owners', 'countries', 'types', 'plate_no', 'limit_count', 'message','Printers','Diagnostic','isMobile','userPkId'));
                             } if($vehicle->is_stolen == 1) {
-                                $message = $this->message("danger", "Хулгайд алдагдасан ТХ байна.");
+                                $message = $this->message("danger", "도난당한 차량입니다.");
                                 return view('System.vehicle', compact('oldNumbers', 'vehicle','systemPlateFactory', 'limits', 'services', 'provinces', 'owners', 'countries', 'types',  'limit_count', 'vehicle_status', 'message','Printers','Diagnostic','isMobile','userPkId'));
                             } if($vehicle->is_warning == 1){
-                                $message = $this->message("info", "Зөрчилтэй тээврийн хэрэглсэл байна.");
+                                $message = $this->message("info", "위반 차량입니다.");
                                 return view('System.vehicle', compact('oldNumbers', 'vehicle','systemPlateFactory', 'limits', 'services', 'provinces', 'owners', 'countries', 'types',  'limit_count', 'vehicle_status', 'message','Printers','Diagnostic','isMobile','userPkId'));
                             }
                             else {
@@ -276,10 +276,10 @@ class VehicleController extends BaseController
                                 $message = $this->message("info", "차량은 ".$limit_count." 종류의 제한이 있어 서비스를 이용할 수 없습니다.");
                                 return view('System.vehicle', compact( 'oldNumbers', 'vehicle', 'limits', 'services', 'provinces', 'countries', 'types',  'limit_count', 'vehicle_status', 'message','Printers', 'Diagnostic', 'isMobile','userPkId'));
                             } if($vehicle->is_stolen == 1) {
-                                $message = $this->message("danger", "Хулгайд алдагдасан ТХ байна.");
+                                $message = $this->message("danger", "도난당한 차량입니다.");
                                 return view('System.vehicle', compact('oldNumbers','vehicle', 'limits', 'services', 'provinces', 'countries', 'types',  'limit_count', 'vehicle_status', 'message','Printers', 'Diagnostic', 'isMobile','userPkId'));
                             } if($vehicle->is_warning == 1){
-                                $message = $this->message("info", "Зөрчилтэй Тх байна.");
+                                $message = $this->message("info", "위반 차량입니다.");
                                 return view('System.vehicle', compact('oldNumbers','vehicle', 'limits', 'services', 'provinces', 'countries', 'types',  'limit_count', 'vehicle_status', 'message','Printers', 'Diagnostic', 'isMobile','userPkId'));
                             }
                             else { 
@@ -295,7 +295,7 @@ class VehicleController extends BaseController
 
          } catch (\Exception $ex){
             $this->writeLog("차량 화면 호출 오류: ".$ex->getMessage());
-            $message = $this->message("danger", "ТХ -ийн цонхыг дуудхад 오류가 발생했습니다.");
+            $message = $this->message("danger", "차량 화면 호출 중 오류가 발생했습니다.");
             return view('System.vehicle', compact("message",'userPkId'));
         }
     }
@@ -353,7 +353,7 @@ class VehicleController extends BaseController
               return view('System.vehicleRemoveRecovery',compact("message"));
                  
                 }else{
-                    $message = $this->message("danger", "Уг дугаарыг олгосон байна.");
+                    $message = $this->message("danger", "해당 번호가 발급되었습니다.");
                     return view('System.vehicleRemoveRecovery',compact("message"));
                  }
             } 
@@ -390,7 +390,7 @@ class VehicleController extends BaseController
            
             $certificate = trim($request->get("certificate"));
             if ($certificate == null || $certificate == "" ) {
-                $message = $this->message("danger", "증명서 번호 оруулан уу.");
+                $message = $this->message("danger", "증명서 번호를 입력해 주세요.");
                                         return redirect(url('/vehicle/'.$this->enc($cabin_no).'/new'))->with("message", $message);
             } 
             $userPkId = session()->get("auth")->id;
@@ -487,7 +487,7 @@ class VehicleController extends BaseController
                                                }
                                             
                                             DB::commit();
-                                            $message = $this->message("success", $cabin_no . " арлын дугаартай ТХ ам년ттай бүртгэгдлээ.");
+                                            $message = $this->message("success", $cabin_no . " 차대번호 차량이 성공적으로 등록되었습니다.");
                                             return redirect(url('/vehicle/' . $this->enc($plate_no)))->with("message", $message);
                                         } else {
                                             $message = $this->message("info", $plate_no . "아카이브 번호 үүсгэхэд алдаа гарлаа дахин үйлдлээ хийнэ үү.");
@@ -520,7 +520,7 @@ class VehicleController extends BaseController
                             return redirect(url('/vehicle/'.$this->enc($cabin_no)."/new"))->with("message", $message);
                         }
                     } else {
-                        $message = $this->message("info", $cabin_no." аралын дугаартай ТХ бүртгэлгүй байна.");
+                        $message = $this->message("info", $cabin_no." 차대번호 차량이 등록되지 않았습니다.");
                         return redirect(url('/vehicle'))->with("message", $message);
                     }
                 } else {
@@ -532,7 +532,7 @@ class VehicleController extends BaseController
                 return redirect(url('/vehicle/'.$this->enc($cabin_no)."/new"))->with("message", $message);
             }
         }else{
-            $message = $this->message("info","Уг тээврийн хэрэгслийн нас년т 10 년ээс дээш тул УБ хотын 번호판 авах боломжгүй байна.");
+            $message = $this->message("info","연식이 10년 이상이라 울란바토르시 번호판을 발급할 수 없습니다.");
             return redirect(url('/vehicle/'.$this->enc($cabin_no)."/new"))->with("message", $message);
         }
         } catch (\Exception $ex){
@@ -608,26 +608,26 @@ class VehicleController extends BaseController
                             }else{
                                 session()->put('vehicleElectron',['eForm'=>'1','finger'=> $finger,'checkTorguuli'=>$checkTorguuli]);
                             }
-                            $message = $this->message("success", "증명서 교체 ам년ттай хийгдлээ.");
+                            $message = $this->message("success", "증명서 교체가 성공적으로 처리되었습니다.");
                         } else {
                             $message = $this->message("info", "아카이브 번호 үүсгэхэд алдаа гарлаа дахин үйлдлээ хийнэ үү.");
                         }
                     } catch (\Exception $ex){
                         DB::rollBack();
                         $this->writeLog("Change cert transaction error: ".$ex->getMessage());
-                        $message = $this->message("danger", "증명서 교체 хийхэд 오류가 발생했습니다.");
+                        $message = $this->message("danger", "증명서 교체 중 오류가 발생했습니다.");
                         return redirect(url('/vehicle/'.$this->enc($plate_no)))->with("message", $message);
                     }
                 } else {
                     $message = $this->message("info", "증명서 번호가 중복됩니다.");
                 }
             } else {
-                $message = $this->message("info", "증명서 교체 хийх ТХ олдсонгүй.");
+                $message = $this->message("info", "증명서 교체할 차량을 찾을 수 없습니다.");
             }
             return redirect(url('/vehicle/'.$this->enc($plate_no)))->with("message", $message);
         } catch (\Exception $ex){
             $this->writeLog("Change cert error: ".$ex->getMessage());
-            $message = $this->message("danger", "증명서 교체 хийхэд 오류가 발생했습니다.");
+            $message = $this->message("danger", "증명서 교체 중 오류가 발생했습니다.");
             return redirect(url('/vehicle/'.$this->enc($plate_no)))->with("message", $message);
         }
     }
@@ -691,7 +691,7 @@ class VehicleController extends BaseController
                             }else{
                                 session()->put('vehicleElectron',['eForm'=>'1','finger'=> $finger,'checkTorguuli'=>$checkTorguuli]);
                             }
-                            $message = $this->message("success", "증명서 재발급 ам년ттай хийгдлээ.");
+                            $message = $this->message("success", "증명서 재발급이 성공적으로 처리되었습니다.");
                             DB::commit();
                         } else {
                             $message = $this->message("info", "아카이브 번호 үүсгэхэд алдаа гарлаа дахин үйлдлээ хийнэ үү.");
@@ -699,19 +699,19 @@ class VehicleController extends BaseController
                     } catch (\Exception $ex){
                         DB::rollBack();
                         $this->writeLog("Again cert transaction error: ".$ex->getMessage());
-                        $message = $this->message("danger", "증명서 재발급 хийхэд 오류가 발생했습니다.");
+                        $message = $this->message("danger", "증명서 재발급 중 오류가 발생했습니다.");
                         return redirect(url('/vehicle/'.$this->enc($plate_no)))->with("message", $message);
                     }
                 }else {
                     $message = $this->message("info", "증명서 번호가 중복됩니다.");
                 }
             } else {
-                $message = $this->message("info", "증명서 재발급 хийх ТХ олдсонгүй.");
+                $message = $this->message("info", "증명서 재발급할 차량을 찾을 수 없습니다.");
             }
             return redirect(url('/vehicle/'.$this->enc($plate_no)))->with("message", $message);
         } catch (\Exception $ex){
             $this->writeLog("Again cert error: ".$ex->getMessage());
-            $message = $this->message("danger", "증명서 재발급 хийхэд 오류가 발생했습니다.");
+            $message = $this->message("danger", "증명서 재발급 중 오류가 발생했습니다.");
             return redirect(url('/vehicle/'.$this->enc($plate_no)))->with("message", $message);
         }
     }
@@ -827,7 +827,7 @@ public  function changePlateBuildCheck($isBuild,$prov)
                                             }else{
                                                 session()->put('vehicleElectron',['eForm'=>'1','finger'=> $finger,'checkTorguuli'=>$checkTorguuli]);
                                             }
-                                                $message = $this->message("success", "번호판 ам년ттай солигдлоо.");
+                                                $message = $this->message("success", "번호판이 성공적으로 교체되었습니다.");
                                                 DB::commit();
                                             } else {
                                                 $message = $this->message("info", "아카이브 번호 үүсгэхэд алдаа гарлаа дахин үйлдлээ хийнэ үү.");
@@ -858,7 +858,7 @@ public  function changePlateBuildCheck($isBuild,$prov)
                                 $message = $this->message("info", "증명서 번호가 중복됩니다.");
                             }
                         } else {
-                            $message = $this->message("info", "번호판 солих ТХ олдсонгүй.");
+                            $message = $this->message("info", "번호판 교체할 차량을 찾을 수 없습니다.");
                         }
                     } else {
                         $message = $this->message("info", $plate_no." 번호판이 다른 차량에서 사용 중입니다.");
@@ -869,10 +869,10 @@ public  function changePlateBuildCheck($isBuild,$prov)
                     $plate_no = $plate_old_no;
                 }
             } else {
-                $message = $this->message("info", "Солих 번호판 тухайн ТХ ашиглаж байна.");
+                $message = $this->message("info", "교체할 번호판을 이미 차량이 사용 중입니다.");
             }
         // }else{
-        //     $message = $this->message("info", "Уг тээврийн хэрэгслийн нас년т 10 년ээс дээш тул УБ хотын 번호판 солих боломжгүй байна..");
+        //     $message = $this->message("info", "연식이 10년 이상이라 울란바토르 번호판 교체가 불가능합니다.");
         // }
             return redirect(url('/vehicle/'.$this->enc($plate_no)))->with("message", $message);
         } catch (\Exception $ex){
@@ -944,7 +944,7 @@ if ($restoreStatusCheck === "1") {
                                                 ]);
                                                
                                                 $this->createPrintPlate($plate_no, $service->id, $userPkId,$plateColor);
-                                                $message = $this->message("success", "Хасагдсан ТХ ам년ттай сэргээгдлээ.");
+                                                $message = $this->message("success", "말소된 차량이 성공적으로 복구되었습니다.");
                                                 DB::commit();
                                                 return redirect(url('/vehicle/' . $this->enc($plate_no)))->with("message", $message);
                                             } else {
@@ -955,7 +955,7 @@ if ($restoreStatusCheck === "1") {
                                             DB::rollBack();
                                            // return $ex;
                                             $this->writeLog("Restore plate transaction error: ".$ex);
-                                            $message = $this->message("danger", "Хасагдсан ТХ сэргээх үйлдэл хийхэд 오류가 발생했습니다.");
+                                            $message = $this->message("danger", "말소 차량 복구 중 오류가 발생했습니다.");
                                             return redirect(url('/vehicle/'.$this->enc($plate_no)))->with("message", $message);
                                         }
                                     // } else {
@@ -977,7 +977,7 @@ if ($restoreStatusCheck === "1") {
                                 $plate_no = $plate_old_no;
                             }
                         } else {
-                            $message = $this->message("info", "Сэргээх ТХ олдсонгүй.");
+                            $message = $this->message("info", "복구할 차량을 찾을 수 없습니다.");
                             $plate_no = $plate_old_no;
                             return redirect(url('/vehicle/'.$this->enc($plate_no)))->with("message", $message);
                         }
@@ -1020,7 +1020,7 @@ if ($restoreStatusCheck === "1") {
                                                 ]);
                                                
                                                 $this->createPrintPlate($plate_no, $service->id, $userPkId,$plateColor);
-                                                $message = $this->message("success", "Хасагдсан ТХ ам년ттай сэргээгдлээ.");
+                                                $message = $this->message("success", "말소된 차량이 성공적으로 복구되었습니다.");
                                                 DB::commit();
                                                 return redirect(url('/vehicle/' . $this->enc($plate_no)))->with("message", $message);
                                             // } else {
@@ -1031,7 +1031,7 @@ if ($restoreStatusCheck === "1") {
                                             DB::rollBack();
                                            // return $ex;
                                             $this->writeLog("Restore plate transaction error: ".$ex);
-                                            $message = $this->message("danger", "Хасагдсан ТХ сэргээх үйлдэл хийхэд 오류가 발생했습니다.");
+                                            $message = $this->message("danger", "말소 차량 복구 중 오류가 발생했습니다.");
                                             return redirect(url('/vehicle/'.$this->enc($plate_no)))->with("message", $message);
                                         }
                                     // } else {
@@ -1053,7 +1053,7 @@ if ($restoreStatusCheck === "1") {
                             //     $plate_no = $plate_old_no;
                             // }
                         } else {
-                            $message = $this->message("info", "Сэргээх ТХ олдсонгүй.");
+                            $message = $this->message("info", "복구할 차량을 찾을 수 없습니다.");
                             $plate_no = $plate_old_no;
                             return redirect(url('/vehicle/'.$this->enc($plate_no)))->with("message", $message);
                         }
@@ -1124,7 +1124,7 @@ if ($restoreStatusCheck === "1") {
                                                         'UPDATED_BY_ID' => $userPkId
                                                     ]);
                                                     $this->createPrintPlate($plate_no, $service->id, $userPkId,$plateColor);
-                                                    $message = $this->message("success", "Хасагдсан ТХ ам년ттай сэргээгдлээ.");
+                                                    $message = $this->message("success", "말소된 차량이 성공적으로 복구되었습니다.");
                                                     DB::commit();
                                                     return redirect(url('/vehicle/' . $this->enc($plate_no)))->with("message", $message);
                                                 } else {
@@ -1134,7 +1134,7 @@ if ($restoreStatusCheck === "1") {
                                             } catch (\Exception $ex){
                                                 DB::rollBack();
                                                 $this->writeLog("Restore plate transaction error: ".$ex);
-                                                $message = $this->message("danger", "Хасагдсан ТХ сэргээх үйлдэл хийхэд 오류가 발생했습니다.");
+                                                $message = $this->message("danger", "말소 차량 복구 중 오류가 발생했습니다.");
                                                 return redirect(url('/vehicle/'.$this->enc($plate_no)))->with("message", $message);
                                             }
                                         } else {
@@ -1156,7 +1156,7 @@ if ($restoreStatusCheck === "1") {
                                     $plate_no = $plate_old_no;
                                 }
                             } else {
-                                $message = $this->message("info", "Сэргээх ТХ олдсонгүй.");
+                                $message = $this->message("info", "복구할 차량을 찾을 수 없습니다.");
                                 $plate_no = $plate_old_no;
                                 return redirect(url('/vehicle/'.$this->enc($plate_no)))->with("message", $message);
                             }
@@ -1170,7 +1170,7 @@ if ($restoreStatusCheck === "1") {
                     }
                     return redirect(url('/vehicle/'.$this->enc($plate_no)))->with("message", $message);
                 } else {
-                    $message = $this->message("info", "번호판 солигдоогүй байна.");
+                    $message = $this->message("info", "번호판이 교체되지 않았습니다.");
                     return redirect(url('/vehicle/'.$this->enc($plate_no)))->with("message", $message);
                 }
             }
@@ -1179,7 +1179,7 @@ if ($restoreStatusCheck === "1") {
         } catch (\Exception $ex){
             $this->writeLog("Restore plate error: ".$ex);
             return $ex;
-            $message = $this->message("danger", "Хасагдсан ТХ сэргээх үйлдэл хийхэд 오류가 발생했습니다.");
+            $message = $this->message("danger", "말소 차량 복구 중 오류가 발생했습니다.");
             return redirect(url('/vehicle/'.$this->enc($plate_no)))->with("message", $message);
         }
     }
@@ -1286,9 +1286,9 @@ if ($restoreStatusCheck === "1") {
                                 'UPDATED_BY_ID' => $userPkId
                             ]);
                             DB::commit();
-                            $message = $this->message("success", "번호판 ам년ттай солигдлоо.");
+                            $message = $this->message("success", "번호판이 성공적으로 교체되었습니다.");
                         } else {
-                            $message = $this->message("info", "ТХ -ийн аль нэг нь хязгаарлалтай байна.");
+                            $message = $this->message("info", "차량 중 하나에 제한이 있습니다.");
                         }
                     } else {
                         if(!is_array($result_one) && $result_one == false){
@@ -1298,19 +1298,19 @@ if ($restoreStatusCheck === "1") {
                         }
                     }
                 } else {
-                    $message = $this->message("info", "번호판 солих ТХ олдсонгүй.");
+                    $message = $this->message("info", "번호판 교체할 차량을 찾을 수 없습니다.");
                 }
             } else {
-                $message = $this->message("info", "Солих 번호판ууд и년 байна.");
+                $message = $this->message("info", "교체할 번호판들이 동일합니다.");
             }
         }else{
-             $message = $this->message("danger", "Уг тээврийн хэрэгслүүдийн харьяалал таарахгүй байна.");
+             $message = $this->message("danger", "차량들의 소속이 일치하지 않습니다.");
            }
             return redirect(url('/vehicle'))->with("message", $message);
         } catch (\Exception $ex){
             DB::rollBack();
             $this->writeLog("Change plate two error: ".$ex->getMessage());
-            $message = $this->message("danger", "Хоёр ТХ -ийн 번호판 солилт хийхэд 오류가 발생했습니다.");
+            $message = $this->message("danger", "번호판 교체 중 오류가 발생했습니다.");
             return redirect(url('/vehicle'))->with("message", $message);
         }
     }
@@ -1355,9 +1355,9 @@ if ($restoreStatusCheck === "1") {
                         'UPDATED_BY' => $userPkId
                     ]);
                     DB::commit();
-                    $message = $this->message("success", "ТХ -ийн мэдээлэл ам년ттай засагдлаа.");
+                    $message = $this->message("success", "차량 정보가 성공적으로 수정되었습니다.");
                 } else {
-                    $message = $this->message("info", "수정лах ТХ олдсонгүй.");
+                    $message = $this->message("info", "수정лах 차량 찾을 수 없습니다.");
                 }
                 return redirect(url('/vehicle/'.$this->enc($plate_no)))->with("message", $message);
             } else {
@@ -1404,7 +1404,7 @@ if ($restoreStatusCheck === "1") {
                                         'UPDATED_BY_ID' => $userPkId
                                     ]);
                                     DB::commit();
-                                    $message = $this->message("success", "ТХ -ийн мэдээлэл ам년ттай засагдлаа.");
+                                    $message = $this->message("success", "차량 정보가 성공적으로 수정되었습니다.");
                                 } else {
                                     $message = $this->message("info", $plate_no . " 번호판 주문이 이루어지지 않았습니다.");
                                     $plate_no = $plate_old_no;
@@ -1418,7 +1418,7 @@ if ($restoreStatusCheck === "1") {
                                 $plate_no = $plate_old_no;
                             }
                         } else {
-                            $message = $this->message("info", "수정лах ТХ олдсонгүй.");
+                            $message = $this->message("info", "수정лах 차량 찾을 수 없습니다.");
                         }
 
                     } else {
@@ -1434,7 +1434,7 @@ if ($restoreStatusCheck === "1") {
         } catch (\Exception $ex){
             DB::rollBack();
             $this->writeLog("Vehicle edit error: ".$ex->getMessage());
-            $message = $this->message("danger", "ТХ -ийн мэдээлэл засахад 오류가 발생했습니다.");
+            $message = $this->message("danger", "차량 정보 수정 중 오류가 발생했습니다.");
             return redirect(url('/vehicle/'.$this->enc($plate_no)))->with("message", $message);
         }
     }
@@ -1576,7 +1576,7 @@ if ($restoreStatusCheck === "1") {
                                                        }
                                                    
                                                 }
-                                                   $message = $this->message("success", "번호판 солилттой шилжүүлэг ам년ттай хийгдлээ.");
+                                                   $message = $this->message("success", "번호판 교체 및 명의이전이 완료되었습니다.");
                                                     DB::commit();
                                                     return redirect(url('/vehicle/' . $this->enc($plate_no)))->with("message", $message);
                                                 } else {
@@ -1605,14 +1605,14 @@ if ($restoreStatusCheck === "1") {
                                         return redirect(url('/vehicle/' . $this->enc($plate_no)))->with("message", $message);
                                     }
                                 } else {
-                                    $message = $this->message("info", "ТХ -ийн одоогийн болон шинэ өмчлөгчийн харьяалал и년 байна.");
+                                    $message = $this->message("info", "차량의 현재 및 새 소유자 소속이 동일합니다.");
                                     $plate_no = $plate_old_no;
                                 }
 
 
 
                             } else {
-                                $message = $this->message("info",  "Уг тээврийн хэрэгслийн өмчлөгч нь цахим хүсэлтээр өөр өмчлөгчрүү шилжүүлэх хүсэлт илгээсэн байна.");
+                                $message = $this->message("info",  "소유자가 전자명으로 다른 소유자에게 이전을 요청했습니다.");
                                 $plate_no = $plate_old_no;
                             }
 
@@ -1621,7 +1621,7 @@ if ($restoreStatusCheck === "1") {
                                 $plate_no = $plate_old_no;
                             }
                         } else {
-                            $message = $this->message("info", "번호판 солилттой шилжүүлэх ТХ олдсонгүй.");
+                            $message = $this->message("info", "번호판 교체 및 명의이전할 차량을 찾을 수 없습니다.");
                             $plate_no = $plate_old_no;
                             return redirect(url('/vehicle/'.$this->enc($plate_no)))->with("message", $message);
                         }
@@ -1635,11 +1635,11 @@ if ($restoreStatusCheck === "1") {
                 }
                 return redirect(url('/vehicle/'.$this->enc($plate_no)))->with("message", $message); 
             } else {
-                $message = $this->message("info", "번호판 солигдоогүй байна.");
+                $message = $this->message("info", "번호판이 교체되지 않았습니다.");
                 return redirect(url('/vehicle/'.$this->enc($plate_no)))->with("message", $message);
             }
         }else{
-            $message = $this->message("info", "Уг тээврийн хэрэгслийн нас년т 10 년ээс дээш тул УБ хотын 번호판 авах боломжгүй байна.");
+            $message = $this->message("info", "연식이 10년 이상이라 울란바토르시 번호판을 발급할 수 없습니다.");
             return redirect(url('/vehicle/'.$this->enc($plate_no)))->with("message", $message);
            }
         } catch (\Exception $ex){
@@ -1776,7 +1776,7 @@ if ($restoreStatusCheck === "1") {
                                         }
                                         DB::commit();
                                       
-                                        $message = $this->message("success", "Өмчлөгч хооронд шил년т ам년ттай хийгдлээ.");
+                                        $message = $this->message("success", "소유자 간 명의이전이 성공적으로 처리되었습니다.");
                                     } catch (\Exception $ex){
                                         DB::rollBack();
                                         $this->writeLog("Move owner transaction error: ".$ex->getMessage());
@@ -1798,7 +1798,7 @@ if ($restoreStatusCheck === "1") {
                         }
                    
                     }else{
-                        $message = $this->message("info", "Уг тээврийн хэрэгслийн өмчлөгч нь цахим хүсэлтээр өөр өмчлөгчрүү шилжүүлэх хүсэлт илгээсэн байна.");
+                        $message = $this->message("info", "소유자가 전자명으로 다른 소유자에게 이전을 요청했습니다.");
                     }
 
 
@@ -1806,10 +1806,10 @@ if ($restoreStatusCheck === "1") {
                         $message = $this->message("info", "증명서 번호가 중복됩니다.");
                     }
                 } else {
-                    $message = $this->message("info", "이전 хийх ТХ олдсонгүй.");
+                    $message = $this->message("info", "이전 хийх 차량 찾을 수 없습니다.");
                 }
             } else {
-                $message = $this->message("info", "Шилжүүлэх өмчлөгч олдсонгүй.");
+                $message = $this->message("info", "Шилжүүлэх өмчлөгч 찾을 수 없습니다.");
             }
             return redirect(url('/vehicle/'.$this->enc($plate_no)))->with("message", $message);
         } catch (\Exception $ex){
@@ -1940,12 +1940,12 @@ if ($restoreStatusCheck === "1") {
                 'UPDATED_BY' => $userPkId
             ]);
             DB::commit();
-            $message = $this->message("success", "ТХ -ийн хязгаарлалт ам년ттай хийгдлээ.");
+            $message = $this->message("success", "차량 -ийн хязгаарлалт 성공적으로 처리되었습니다.");
             return redirect(url('/vehicle/'.$this->enc($plate_no)))->with("message", $message);
         } catch (\Exception $ex){
             DB::rollBack();
             $this->writeLog("Vehicle limit error: ".$ex->getMessage());
-            $message = $this->message("danger", "ТХ -ийн хязгаарлалт хийхэд 오류가 발생했습니다.");
+            $message = $this->message("danger", "차량 -ийн хязгаарлалт хийхэд 오류가 발생했습니다.");
             return redirect(url('/vehicle/'.$this->enc($plate_no)))->with("message", $message);
         }
     }
@@ -1973,7 +1973,7 @@ if ($restoreStatusCheck === "1") {
                 'UPDATED_BY' => $userPkId
             ]);
 
-            $message = $this->message("success", "ТХ ам년ттай идэвхижлээ.");
+            $message = $this->message("success", "차량 성공적으로 идэвхижлээ.");
             DB::commit();
             return redirect(url('/vehicle/'.$this->enc($plate_no)))->with("message", $message);
         } catch (\Exception $ex){
@@ -2018,12 +2018,12 @@ if ($restoreStatusCheck === "1") {
                 ]);
             }
             DB::commit();
-            $message = $this->message("success", "ТХ -ийн хязгаарлалт ам년ттай сэргээгдлээ.");
+            $message = $this->message("success", "차량 -ийн хязгаарлалт 성공적으로 복구되었습니다.");
             return redirect(url('/vehicle/'.$this->enc($plate_no)))->with("message", $message);
         } catch (\Exception $ex){
             DB::rollBack();
             $this->writeLog("Vehicle limit restore error: ".$ex->getMessage());
-            $message = $this->message("danger", "ТХ -ийн хязгаарлалт сэргээхэд 오류가 발생했습니다.");
+            $message = $this->message("danger", "차량 -ийн хязгаарлалт сэргээхэд 오류가 발생했습니다.");
             return redirect(url('/vehicle/'.$this->enc($plate_no)))->with("message", $message);
         }
     }
@@ -2090,7 +2090,7 @@ if ($restoreStatusCheck === "1") {
 
                             session()->put('vehicleElectron',['eForm'=>'1','finger'=> $finger,'checkTorguuli'=>$checkTorguuli]);
                             
-                            $message = $this->message("success", "ТХ -ийн мэдээлэл ам년ттай хасагдлаа.");
+                            $message = $this->message("success", "차량 -ийн мэдээлэл 성공적으로 хасагдлаа.");
                         } else {
                             $message = $this->message("info", "아카이브 번호 үүсгэхэд алдаа гарлаа дахин үйлдлээ хийнэ үү.");
                         }
@@ -2101,7 +2101,7 @@ if ($restoreStatusCheck === "1") {
                         return redirect(url('/vehicle/'.$this->enc($plate_old_no)))->with("message", $message);
                     }
                 } else {
-                    $message = $this->message("info", "ХХ сери үүсээгүй эсвэл ХХ серитэй сул дугаар байхгүй байна.");
+                    $message = $this->message("info", "ХХ сери үүсээгүй эсвэл ХХ серитэй сул 번호 байхгүй байна.");
                     $plate_no = $plate_old_no;
                 }
             } else {
@@ -2149,14 +2149,14 @@ if ($restoreStatusCheck === "1") {
                         $this->createPrintPlate($vehicle->plate_no, $service->id, $userPkId,$plateColor);
                         session()->put('vehicleElectron',['eForm'=>'1','finger'=> $finger]);
                         DB::commit();
-                        $message = $this->message("success", "ТХ -ийн тэмдэгт гээлт ам년ттай бүртгэгдлээ.");
+                        $message = $this->message("success", "차량 -ийн тэмдэгт гээлт 성공적으로 등록되었습니다.");
                     } else {
                         $message = $this->message("info", "아카이브 번호 үүсгэхэд алдаа гарлаа дахин үйлдлээ хийнэ үү.");
                     }
                 } catch (\Exception $ex){
                     DB::rollBack();
                     $this->writeLog("Remove vehicle plate transaction error: ".$ex->getMessage());
-                    $message = $this->message("danger", "ТХ тэмдэгт гээлт бүртгэхэд 오류가 발생했습니다.");
+                    $message = $this->message("danger", "차량 тэмдэгт гээлт бүртгэхэд 오류가 발생했습니다.");
                     return redirect(url('/vehicle/'.$this->enc($plate_no)))->with("message", $message);
                 }
             } else {
@@ -2165,7 +2165,7 @@ if ($restoreStatusCheck === "1") {
             return redirect(url('/vehicle/'.$this->enc($plate_no)))->with("message", $message);
         } catch (\Exception $ex){
             $this->writeLog("Remove vehicle plate error: ".$ex->getMessage());
-            $message = $this->message("danger", "ТХ тэмдэгт гээлт бүртгэхэд 오류가 발생했습니다.");
+            $message = $this->message("danger", "차량 тэмдэгт гээлт бүртгэхэд 오류가 발생했습니다.");
             return redirect(url('/vehicle/'.$this->enc($plate_no)))->with("message", $message);
         }
     }
@@ -2195,12 +2195,12 @@ if ($restoreStatusCheck === "1") {
                         $this->createPrintPlate($vehicle->plate_no, $service->id, $userPkId,$plateColor);
                      //   session()->put('vehicleElectron',['eForm'=>'1','finger'=> $finger]);
                     //    DB::commit();
-                        $message = $this->message("success", "ТХ -ийн 번호판ын өнгө ам년ттай солигдлоо.");
+                        $message = $this->message("success", "차량 -ийн 번호판ын өнгө 성공적으로 교체되었습니다.");
                   
                 } catch (\Exception $ex){
                     DB::rollBack();
                     $this->writeLog("Remove vehicle plate transaction error: ".$ex->getMessage());
-                    $message = $this->message("danger", "ТХ тэмдэгт гээлт бүртгэхэд 오류가 발생했습니다.");
+                    $message = $this->message("danger", "차량 тэмдэгт гээлт бүртгэхэд 오류가 발생했습니다.");
                     return redirect(url('/vehicle/'.$this->enc($plate_no)))->with("message", $message);
                 }
             } else {
@@ -2209,7 +2209,7 @@ if ($restoreStatusCheck === "1") {
             return redirect(url('/vehicle/'.$this->enc($plate_no)))->with("message", $message);
         } catch (\Exception $ex){
             $this->writeLog("Remove vehicle plate error: ".$ex->getMessage());
-            $message = $this->message("danger", "ТХ тэмдэгт гээлт бүртгэхэд 오류가 발생했습니다.");
+            $message = $this->message("danger", "차량 тэмдэгт гээлт бүртгэхэд 오류가 발생했습니다.");
             return redirect(url('/vehicle/'.$this->enc($plate_no)))->with("message", $message);
         }
     }
@@ -2236,7 +2236,7 @@ if ($restoreStatusCheck === "1") {
                 'DESCRIPTION' => $vehicle->description."***".Carbon::now()->format("Y-m-d H:i:s")." ".$description." ".session()->get("auth")->firstname.";",
                 'UPDATED_BY' => $userPkId
             ]);
-            $message = $this->message("success", "특이사항 ам년ттай нэмэгдлээ.");
+            $message = $this->message("success", "특이사항 성공적으로 추가되었습니다.");
             return redirect(url('/vehicle/'.$this->enc($plate_no)))->with("message", $message);
         } catch (\Exception $ex){
             $this->writeLog("Vehicle description error: ".$ex->getMessage());

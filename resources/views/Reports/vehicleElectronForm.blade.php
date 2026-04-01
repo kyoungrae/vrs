@@ -111,7 +111,7 @@ table{
                                     <img src="{{asset('img/logo.png')}}" alt="" style="width:120px;  margin-left:50px; margin-bottom:15px;  padding-right: 28px;padding-left: 122px; padding-top: 15px;">
                                 </td>
                                 <td style="width: 30%; text-align: end;">   Зам, тээврийн хөгжлийн сайдын 
-                                    ..... оны  ... дугаар тушаалаар батлагдсан
+                                    ..... оны  ... 번호 тушаалаар батлагдсан
                                     "자동차운송 хэрэгслийн бүртгэл хөтлөх,
                                      번호판 олгох журам"-ын нэгдүгээр хавсралт
                                    </td>
@@ -180,7 +180,7 @@ table{
                                             {{    $vehicle->status == 3 || $vehicle->status == 14  ? 'checked'  : ''  }} disabled>
                                     </div>
                                 </td>
-                                <td style="    text-align: center;">ТХГ нөхөлт, солилт
+                                <td style="    text-align: center;">차량Г нөхөлт, солилт
                                     <div style=" width: 0;       margin: 2px 61px;">
                                         <input type="checkbox" name=""
                                             {{   $vehicle->status || $vehicle->status == 13 ? 'checked' : ''  }}
@@ -302,7 +302,7 @@ table{
                             <td>
                                 <canvas id="dclrTypeCd"></canvas>
                             </td>
-                            <td><strong>R дугаар</strong></td>
+                            <td><strong>R 번호</strong></td>
                             <td>{{ $vehicle->declaration_no }}</td>
                         </tr>
 
@@ -625,9 +625,9 @@ table{
                         <tr>
                         <td>
                             @if (isset($finger['checkTorguuli'][0]) != null)
-                            Уг тээврийн хэрэгсэлийн торгуулийг {{ Carbon\Carbon::now()->format("Y-m-d H:i:s")}}-ний 일 шалгахад <br> {{$finger['checkTorguuli'][0] }}
+                            Уг 차량ийн торгуулийг {{ Carbon\Carbon::now()->format("Y-m-d H:i:s")}}-ний 일 шалгахад <br> {{$finger['checkTorguuli'][0] }}
                             @else
-                            Уг тээврийн хэрэгсэлийн торгуулийг шалгаагүй !!!
+                            Уг 차량ийн торгуулийг шалгаагүй !!!
                             @endif
         </td>
                         </tr>

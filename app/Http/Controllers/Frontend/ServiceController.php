@@ -227,7 +227,7 @@ public function transactionCheck(Request $request){
         //$endtDate=$request->end_year;
        // return $plateNo; 
        $seriesNumberCheck = DB::table("series_number")->where("NAME", $plateNo)->first();
-        $seriesCheck = DB::select(DB::raw("SELECT * FROM series where ((substr(name,1,2) like 'УЕ%' or substr(name,1,2) like 'УА%' or substr(name,1,2) like 'УБ%' or substr(name,1,2) like 'УН%')) and type='1' and id='".$seriesNumberCheck->series_id."' "));
+        $seriesCheck = DB::select(DB::raw("SELECT * FROM series where ((substr(name,1,2) like 'УЕ%' or substr(name,1,2) like 'УА%' or substr(name,1,2) like '울란바토르%' or substr(name,1,2) like 'УН%')) and type='1' and id='".$seriesNumberCheck->series_id."' "));
                    //    return $seriesCheck;
         $auctionCheck = SeriesNumber::where("name",$plateNo)->where("is_hidden", 1)->where("isauction", 1)->where("is_given",0)->get();
         $vrsOrderCheck = SeriesNumber::where("name",$plateNo)->where("is_hidden", 0)->where("is_order",1)->whereNotNull("order_cabin")->whereNotNull("order_user")->whereNotNull("order_date")->where("isauction", 0)->get();
@@ -236,7 +236,7 @@ public function transactionCheck(Request $request){
     //  if (count($seriesCheck) > 0) {
     //     return response()->json([
     //         'status' => 400,
-    //         'message' => "Уг дугаарыг хадаглах боломжгүй байна."
+    //         'message' => "Уг 번호ыг хадаглах боломжгүй байна."
             
     //     ]);
     //  } else {
@@ -258,7 +258,7 @@ public function transactionCheck(Request $request){
             // return $result_json;
             return response()->json([
                 'status' => 400,
-                'message' => "Уг дугаарыг хадаглах боломжгүй байна."
+                'message' => "Уг 번호ыг хадаглах боломжгүй байна."
                 
             ]);
         }else{
@@ -278,7 +278,7 @@ public function transactionCheck(Request $request){
             // ]);
             return response()->json([
                 'status' => 400,
-                'message' => "Уг дугаарыг хадаглах боломжгүй байна."
+                'message' => "Уг 번호ыг хадаглах боломжгүй байна."
                 
             ]);
               // return json_encode($orderVrs);

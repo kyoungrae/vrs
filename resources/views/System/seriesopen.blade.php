@@ -69,7 +69,7 @@
                                     </div>
                                     {{--<div class="row row-xs align-items-center mg-b-5">--}}
                                     {{--<div class="col-lg-6 col-md-12 col-sm-12">--}}
-                                    {{--<label class="form-label mg-b-0 required-input">Хязгаар</label>--}}
+                                    {{--<label class="form-label mg-b-0 required-input">제한</label>--}}
                                     {{--</div>--}}
                                     {{--<div class="col-lg-3 col-md-12 col-sm-12">--}}
                                     {{--<input type="number" name="start" required class="form-control" value="{{ isset($interval) ? $interval->from_number : "" }}" {{ isset($interval) ? "disabled" : "" }}>--}}
@@ -100,7 +100,7 @@
                                     </div>
                                     {{--<div class="row row-xs align-items-center mg-b-5 checkbox">--}}
                                         {{--<div class="col-lg-6 col-md-12 col-sm-12">--}}
-                                            {{--<label class="form-label mg-b-0">Автомат унах эсэх</label>--}}
+                                            {{--<label class="form-label mg-b-0">자동 하차 여부</label>--}}
                                         {{--</div>--}}
                                         {{--<div class="col-lg-6 col-md-12 col-sm-12">--}}
                                             {{--<label class="ckbox">--}}

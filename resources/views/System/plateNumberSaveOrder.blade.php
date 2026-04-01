@@ -27,7 +27,7 @@
                     <h6 class="card-title">
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12">
-                              Хадгаласан дугаар захиалах үйлчилгээ
+                              보관된 번호판 예약 서비스
                             </div>
                         </div>
                     </h6>
@@ -74,7 +74,7 @@
                                             <label class="form-label mg-b-0 required-input">차대 번호</label>
                                         </div>
                                         <div class="col-lg-8 col-md-12 col-sm-12">
-                                            <input id="customerOrderCabin" name="customerOrderCabin"  style="display: block" placeholder="Арлын сүүлийн 5 орон"  type="text"  value="" class="form-control"  autocomplete="off" autofocus required>
+                                            <input id="customerOrderCabin" name="customerOrderCabin"  style="display: block" placeholder="차대번호 마지막 5자리"  type="text"  value="" class="form-control"  autocomplete="off" autofocus required>
                                         
                                     
                                         
@@ -257,7 +257,7 @@ var maxLength = 7;
                   
                   var html = 
                   '<table class="table table-bordered" id="vehicleTable"  ">'+
-                  '<tr>'+'<td colspan="2" style="text-align: center;font-weight: bold;">'+"Хадаглуулагч мэдээлэл" +'</td>'+'</tr>'+
+                  '<tr>'+'<td colspan="2" style="text-align: center;font-weight: bold;">'+"보관자 정보" +'</td>'+'</tr>'+
                   
                   '<tr >' +
                       ' <td > ' + '<strong> 성 </strong>'+ ' </td>' +
@@ -283,7 +283,7 @@ var maxLength = 7;
                                    
                     ' </tr>'+
                    '<tr >' +
-                     ' <td >' + '<strong> Хадгалуулсан хугацаа </strong>'+ ' </td>' +
+                     ' <td >' + '<strong> 보관 기간 </strong>'+ ' </td>' +
                       ' <td >'  +data['begin_date'].substring(0,10) + " - " + data['end_date'].substring(0,10) +' </td>' +
                                    
                     ' </tr>'+

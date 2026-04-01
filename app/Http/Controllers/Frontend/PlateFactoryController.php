@@ -37,9 +37,9 @@ class PlateFactoryController extends BaseController
                        // 'PLATECOLOR' =>$plateColor,
                         'UPDATE_DATE' => Carbon::now()
                     ]);
-                    $message = $this->message("success", $plate_no." 번호판 ам년ттай хэвлэгдлээ.");
+                    $message = $this->message("success", $plate_no." 번호판 성공적으로 хэвлэгдлээ.");
                 } else {
-                    $message = $this->message("info", $plate_no." 번호판 олдсонгүй дахин шалгана уу!");
+                    $message = $this->message("info", $plate_no." 번호판 찾을 수 없습니다 дахин шалгана уу!");
                 }
                 $numbers = SystemPlateFactory::where("PRINT_ID", $userPkId)->where("IS_PRINT", 1)->orderBy("UPDATE_DATE")->get();
                 return view("System.platefactory", compact('types', 'numbers', 'message'));

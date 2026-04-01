@@ -95,7 +95,7 @@
                                   
                    </form>
                        {{--   <div class="row">
-                            <!--Зүүн талын хэсэг   \App\Http\Controllers\BaseController::enc($curr_saved_data->id) : "" эхлэл-->
+                            <!--좌측 талын хэсэг   \App\Http\Controllers\BaseController::enc($curr_saved_data->id) : "" эхлэл-->
                             <input type="text" name="id" style="display: none; width:70%" value="{{ isset($curr_saved_data) ? \App\Http\Controllers\BaseController::enc($curr_saved_data->id) : "" }}">
                             <div class="col-lg-6 col-md-6 col-sm-12">
                                 <div class="row row-xs align-items-center mg-b-5">

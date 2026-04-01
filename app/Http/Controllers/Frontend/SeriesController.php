@@ -58,7 +58,7 @@ class SeriesController extends BaseController
                         'Created_By_Id' => $userPkId,
                         'Updated_By_Id' => $userPkId
                     ]);
-                    $message = $this->message("success", "Cерийн мэдээлэл ам년ттай засагдлаа.");
+                    $message = $this->message("success", "Cерийн мэдээлэл 성공적으로 수정되었습니다.");
                 } else {
                     $is_create = Series::where("NAME", $series)->get()->count();
                     if($is_create > 0){
@@ -74,7 +74,7 @@ class SeriesController extends BaseController
                             'Created_By_Id' => $userPkId,
                             'Updated_By_Id' => $userPkId
                         ]);
-                        $message = $this->message("success", "Сери ам년ттай үүслээ.");
+                        $message = $this->message("success", "Сери 성공적으로 үүслээ.");
                     }
                 }
                 return redirect(route("createseries"))->with("message", $message);
@@ -140,7 +140,7 @@ class SeriesController extends BaseController
                             'IS_AUTO' => $auto,
                             'Updated_By_Id' => $userPkId
                         ]);
-                    $message = $this->message("success", "Серийн мэдээлэл ам년ттай засагдлаа.");
+                    $message = $this->message("success", "Серийн мэдээлэл 성공적으로 수정되었습니다.");
                     return redirect(url("/series/open/edit/".$id))->with("message", $message);
                 } else {
                     $series = $request->get("series");
@@ -155,7 +155,7 @@ class SeriesController extends BaseController
                     $interval_create = SeriesInterval::where("SERIES_ID", $series)->where("FROM_NUMBER", 1)->where('TO_NUMBER', 9999)->get()->count();
                     $number_create = SeriesNumber::where("SERIES_ID", $series)->get()->count();
                     if($interval_create > 0 && $number_create == 9999){
-                        $message = $this->message("success", $series_name." -ийн бүх дугаар үүссэн байна.");
+                        $message = $this->message("success", $series_name." -ийн бүх 번호 үүссэн байна.");
                         return view('System.seriesopen', compact('seriess', 'provinces', 'message'));
                     } else {
                         if($interval_create == 0){
@@ -242,7 +242,7 @@ class SeriesController extends BaseController
                                 ]);
                             }
                         }
-                        $text = $series_name." серийн дугаар ам년ттай үүслээ.";
+                        $text = $series_name." серийн 번호 성공적으로 үүслээ.";
                         $message = $this->message("success", $text);
                         return view('System.seriesopen', compact('seriess', 'provinces', 'message'));
                     }
@@ -331,7 +331,7 @@ class SeriesController extends BaseController
                         'LOCAL_USER_ID' => $user,
                         'Updated_By_Id' => $userPkId
                     ]);
-                    $text = $series_name." серийн ".$start." -с ".$end." дугаарыг ам년ттай заслаа.";
+                    $text = $series_name." серийн ".$start." -с ".$end." 번호ыг 성공적으로 заслаа.";
                     $message = $this->message("success", $text);
                 } else {
                     SeriesInterval::create([
@@ -357,7 +357,7 @@ class SeriesController extends BaseController
                             'LOCAL_USER_ID' => $user,
                             'Updated_By_Id' => $userPkId
                         ]);
-                    $text = $series_name." серийн ".$start." -с ".$end." дугаарыг ам년ттай илгээлээ.";
+                    $text = $series_name." серийн ".$start." -с ".$end." 번호ыг 성공적으로 илгээлээ.";
                     $message = $this->message("success", $text);
                 }
                 return view('System.seriessend', compact('departments',  'seriess', 'message'));

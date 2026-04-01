@@ -311,7 +311,7 @@ class ReportController extends BaseController
                     $sheet->setPaperSize(\PHPExcel_Worksheet_PageSetup::PAPERSIZE_A4);
                     $sheet->appendRow(array("","","","", "", "", ""));
                     $sheet->appendRow(array("","","","", "", "", ""));
-                    $sheet->appendRow(array("","","",'ATUT нийт импортлогдсон ТХ /төрлөөр/', ""));
+                    $sheet->appendRow(array("","","",'ATUT нийт импортлогдсон 차량 /төрлөөр/', ""));
                     $sheet->getStyle('D5:F5')->getFont()->setBold(true);
                     $sheet->getStyle('D5:F5')->getFont()->setSize(12);
                     $sheet->mergeCells('D5:F5');
@@ -435,7 +435,7 @@ class ReportController extends BaseController
                     $sheet->setPaperSize(\PHPExcel_Worksheet_PageSetup::PAPERSIZE_A4);
                     $sheet->appendRow(array("","","","", "", "", ""));
                     $sheet->appendRow(array("","","","", "", "", ""));
-                    $sheet->appendRow(array("","","",'ATUT нийт импортлогдсон ТХ /төрлөөр/', ""));
+                    $sheet->appendRow(array("","","",'ATUT нийт импортлогдсон 차량 /төрлөөр/', ""));
                     $sheet->getStyle('D5:F5')->getFont()->setBold(true);
                     $sheet->getStyle('D5:F5')->getFont()->setSize(12);
                     $sheet->mergeCells('D5:F5');
@@ -622,7 +622,7 @@ class ReportController extends BaseController
                         $this->center($cell);
                     });
                     $sheet->appendRow(array("","","","", "", "",""));
-                    $sheet->appendRow(array("","№", "일자", "아카이브 번호", "번호판", "면수", "시작 дугаар", "종료 дугаар","Устгах гэрчилгээ"));
+                    $sheet->appendRow(array("","№", "일자", "아카이브 번호", "번호판", "면수", "시작 번호", "종료 번호","Устгах гэрчилгээ"));
                     $sheet->getStyle('B8:I8')->getFont()->setBold(true);
                     $sheet->getStyle('B8:I8')->getFont()->setSize(12);
                     $sheet->getStyle('B8:I8')->getAlignment()->setWrapText(true);
@@ -781,11 +781,11 @@ class ReportController extends BaseController
             $results = DB::select(DB::raw("SELECT v.INSERT_ARCHIVE_NO, v.PLATE_NO, v.INSERT_PLATE_NO, v.INSERT_CERTIFICATE_NO, s.name FROM REG_VEHICLE_ARCHIVE v left join SYSTEM_SERVICE s on v.INSERT_SERVICE_ID=s.id WHERE SUBSTR(v.INSERT_ARCHIVE_NO,3,3)=N'".$abbr."' AND (v.INSERT_SERVICE_ID=2 OR v.INSERT_SERVICE_ID=3 OR v.INSERT_SERVICE_ID=5 OR v.INSERT_SERVICE_ID=13 OR v.INSERT_SERVICE_ID=14 OR v.INSERT_SERVICE_ID=15 OR v.INSERT_SERVICE_ID=19) and v.CREATED_DATE BETWEEN '".$start."' AND '".$end." 23:59:59' ORDER BY v.INSERT_ARCHIVE_NO"));
             $sum_results = DB::select(DB::raw("SELECT INSERT_SERVICE_ID, COUNT(*) total FROM REG_VEHICLE_ARCHIVE WHERE SUBSTR(INSERT_ARCHIVE_NO,3,3)='".$abbr."' AND CREATED_DATE BETWEEN '".$start."' AND '".$end." 23:59:59' GROUP BY INSERT_SERVICE_ID"));
             $sum_to = DB::select(DB::raw("SELECT COUNT (CASE WHEN (OLD_PROVINCE_ID=11 AND PROVINCE_ID!=11) OR
-            (OLD_PROVINCE_ID=22 AND PROVINCE_ID!=22) AND (NOT(INSERT_PLATE_NO LIKE '%____УА_%') OR   NOT(INSERT_PLATE_NO LIKE '%____УБ_%') OR
+            (OLD_PROVINCE_ID=22 AND PROVINCE_ID!=22) AND (NOT(INSERT_PLATE_NO LIKE '%____УА_%') OR   NOT(INSERT_PLATE_NO LIKE '%____울란바토르_%') OR
             NOT(INSERT_PLATE_NO LIKE '%____УЕ_%') OR NOT(INSERT_PLATE_NO LIKE '%____УК_%') OR NOT(INSERT_PLATE_NO LIKE '%____УН_%'))  THEN 1 END)ub_on FROM  REG_VEHICLE_ARCHIVE v WHERE  SUBSTR(v.INSERT_ARCHIVE_NO,3,3)=N'".$abbr."' AND (v.SERVICE_ID=14) and v.CREATED_DATE BETWEEN '".$start."' AND '".$end." 23:59:59'"));
             // $sum_to = DB::select(DB::raw("SELECT COUNT (CASE WHEN OLD_PROVINCE_ID=22 AND PROVINCE_ID!=22 THEN 1 END) ub_on FROM  REG_VEHICLE_ARCHIVE v WHERE  SUBSTR(v.INSERT_ARCHIVE_NO,3,3)=N'".$abbr."' AND (v.SERVICE_ID=14) and v.CREATED_DATE BETWEEN '".$start."' AND '".$end." 23:59:59'"));
             $sum_from = DB::select(DB::raw("SELECT COUNT (CASE WHEN (OLD_PROVINCE_ID=11 AND PROVINCE_ID!=11) OR
-            (OLD_PROVINCE_ID=22 AND PROVINCE_ID!=22) AND (INSERT_PLATE_NO LIKE '%____УА_%' OR   INSERT_PLATE_NO LIKE '%____УБ_%' OR
+            (OLD_PROVINCE_ID=22 AND PROVINCE_ID!=22) AND (INSERT_PLATE_NO LIKE '%____УА_%' OR   INSERT_PLATE_NO LIKE '%____울란바토르_%' OR
             INSERT_PLATE_NO LIKE '%____УЕ_%' OR INSERT_PLATE_NO LIKE '%____УК_%' OR INSERT_PLATE_NO LIKE '%____УН_%')  THEN 1 END) on_ub FROM  REG_VEHICLE_ARCHIVE v WHERE SUBSTR(v.INSERT_ARCHIVE_NO,3,3)=N'".$abbr."' AND (v.SERVICE_ID=14) and v.CREATED_DATE BETWEEN '".$start."' AND '".$end." 23:59:59'"));
             // $sum_from = DB::select(DB::raw("SELECT COUNT (CASE WHEN OLD_PROVINCE_ID!=22 AND PROVINCE_ID=22 THEN 1 END) on_ub FROM  REG_VEHICLE_ARCHIVE v WHERE SUBSTR(v.INSERT_ARCHIVE_NO,3,3)=N'".$abbr."' AND (v.SERVICE_ID=14) and v.CREATED_DATE BETWEEN '".$start."' AND '".$end." 23:59:59'"));
             $total_array = array(0,0,0,0,0,0,0,0,0);
@@ -905,8 +905,8 @@ class ReportController extends BaseController
                     $sheet->appendRow(array(
                         "№",
                         "아카이브 번호",
-                        "Өмнөх дугаар",
-                        "Одоогийн дугаар",
+                        "Өмнөх 번호",
+                        "Одоогийн 번호",
                         "증명서 번호",
                         "서비스"
                     ));
@@ -991,10 +991,10 @@ class ReportController extends BaseController
                         array("말소에서 복구됨","","","","",$total_array[6])
                     );
                     $sheet->appendRow(
-                        array("УБ-지방","","","","",$total_array[7])
+                        array("울란바토르-지방","","","","",$total_array[7])
                     );
                     $sheet->appendRow(
-                        array("지방-УБ","","","","",$total_array[8])
+                        array("지방-울란바토르","","","","",$total_array[8])
                     );
                     //$sheet->getStyle('A'.($i+13).':F'.($i+13))->getFont()->setBold(true);
                     //$sheet->mergeCells('A'.($i+7).':B'.($i+7));
@@ -1227,7 +1227,7 @@ class ReportController extends BaseController
                     }
                     $sheet->rows($init);
                     $sheet->appendRow(
-                        array("УБ","","","",$move[0])
+                        array("울란바토르","","","",$move[0])
                     );
                     $sheet->appendRow(
                         array("지방","","","",$move[1])
@@ -1456,7 +1456,7 @@ class ReportController extends BaseController
                         "번호판 교체 이전",
                         "증명서 교체",
                         "증명서 갱신",
-                        "Хязгаарлалт",
+                        "제한 사항",
                         "말소",
                         "번호판 교체",
                         "번호판 간 교체",
@@ -1924,7 +1924,7 @@ class ReportController extends BaseController
         $start = $request->route("start");
         $end = $request->route("end");
         if($branch != "none" && $start != "none" && $end != "none"){
-            Excel::create("ТХ -ийн УД шинээр олголтын тайлан", function($excel) use($branch, $start, $end) {
+            Excel::create("차량 -ийн УД шинээр олголтын тайлан", function($excel) use($branch, $start, $end) {
                 $excel->setTitle("Тээврийн хэрэгслийн 번호판 шинээр олголтын тайлан");
                 $excel->setCreator("ATUT");
                 $excel->sheet("보고서", function($sheet) use($branch, $start, $end) {
@@ -1979,7 +1979,7 @@ class ReportController extends BaseController
                         $this->cellRight($cell);
                     });
 
-                    $sheet->appendRow(array('ТХ -ИЙН УД ШИНЭЭР ОЛГОЛТЫН ТАЙЛАН'));
+                    $sheet->appendRow(array('차량 -ИЙН УД ШИНЭЭР ОЛГОЛТЫН ТАЙЛАН'));
                     $sheet->getStyle('A4:F4')->getFont()->setBold(true);
                     $sheet->getStyle('A4:F4')->getFont()->setSize(12);
                     $sheet->mergeCells('A4:F4');
@@ -2243,7 +2243,7 @@ class ReportController extends BaseController
             } else {
                 $filter .= "AND STATUS != 9 AND STATUS != 10 ";
             }
-            Excel::create("ТХ -ийн лавлагаа", function($excel) use($filter, $register, $lastName, $firstName) {
+            Excel::create("차량 -ийн лавлагаа", function($excel) use($filter, $register, $lastName, $firstName) {
                 $excel->setTitle("Тээврийн хэрэгслийн лавлагаа /Эзэмшигчээр/");
                 $excel->setCreator("ATUT");
                 $excel->sheet("보고서", function($sheet) use($filter, $register, $lastName, $firstName) {
@@ -2439,7 +2439,7 @@ class ReportController extends BaseController
             } else {
                 $filter .= " AND END_DATE IS NULL AND STATUS != 9 AND STATUS != 10 ";
             }
-            Excel::create("ТХ -ийн лавлагаа", function($excel) use($filter, $register, $lastName, $firstName) {
+            Excel::create("차량 -ийн лавлагаа", function($excel) use($filter, $register, $lastName, $firstName) {
                 $excel->setTitle("Тээврийн хэрэгслийн лавлагаа /Өмчлөгчөөр/");
                 $excel->setCreator("ATUT");
                 $excel->sheet("보고서", function($sheet) use($filter, $register, $lastName, $firstName) {
@@ -2707,7 +2707,7 @@ class ReportController extends BaseController
                 
               
             }
-            Excel::create("ТХ -ийн лавлагаа", function($excel) use($filter, $register, $lastName, $firstName) {
+            Excel::create("차량 -ийн лавлагаа", function($excel) use($filter, $register, $lastName, $firstName) {
                 $excel->setTitle("Тээврийн хэрэгслийн лавлагаа өмнөх өмчлөгчөөр");
                 $excel->setCreator("ATUT");
                 $excel->sheet("보고서", function($sheet) use($filter, $register, $lastName, $firstName) {
@@ -2999,8 +2999,8 @@ protected function exportToExcelEpayReportr(Request $request){
 //return $curr_pos;
     if( $startDate != "none" && $endDate != "none"){
        // return "fggdfgf";
-        Excel::create("합계 мэргэ년тний тайлан төлбөр", function($excel) use($op, $userId,  $startDate, $endDate) {
-            $excel->setTitle("합계 мэргэ년тний тайлан төлбөр");
+        Excel::create("전문가별 요금 통계 보고서", function($excel) use($op, $userId,  $startDate, $endDate) {
+            $excel->setTitle("전문가별 요금 통계 보고서");
             $excel->setCreator("ATUT");
             $excel->sheet("보고서", function($sheet) use($op, $userId, $startDate, $endDate) {
                 //Header үүсгэх
@@ -3068,7 +3068,7 @@ protected function exportToExcelEpayReportr(Request $request){
                // $oper = $op == "2" ? "지방" : "울란바토르";
              // return $names;
                 $sheet->appendRow(array(
-                    "결제 төрөл:".$epay->pay_type_name,
+                    "결제 유형:".$epay->pay_type_name,
                    "",
                    "",
                   
@@ -3382,8 +3382,8 @@ protected function exportToExcelEpayReportr(Request $request){
         $startDate = $request->route("start");
         $endDate = $request->route("end");
         if($curr_pos != "none" && $startDate != "none" && $endDate != "none"){
-            Excel::create("합계 мэргэ년тний тайлан", function($excel) use($op, $curr_pos, $startDate, $endDate) {
-                $excel->setTitle("합계 мэргэ년тний тайлан");
+            Excel::create("전문가별 통계 보고서", function($excel) use($op, $curr_pos, $startDate, $endDate) {
+                $excel->setTitle("전문가별 통계 보고서");
                 $excel->setCreator("ATUT");
                 $excel->sheet("보고서", function($sheet) use($op, $curr_pos, $startDate, $endDate) {
                     //Header үүсгэх
@@ -3453,7 +3453,7 @@ protected function exportToExcelEpayReportr(Request $request){
                     $names = MainUserPosition::where("ID", $curr_pos)->get()->first();
                     $oper = $op == "2" ? "지방" : "울란바토르";
                     $sheet->appendRow(array(
-                        "Үндсэн харьяалал: ".$oper,
+                        "기본 소속: ".$oper,
                         "",
                         "",
                         "",
@@ -3492,7 +3492,7 @@ protected function exportToExcelEpayReportr(Request $request){
                         "번호판 교체 이전",
                         "증명서 교체",
                         "증명서 갱신",
-                        "Хязгаарлалт",
+                        "제한 사항",
                         "말소",
                         "번호판 교체",
                         "번호판 간 교체",
@@ -3855,8 +3855,8 @@ protected function exportToExcelEpayReportr(Request $request){
         $curr_pro = $request->route("pro");
         $startDate = $request->route("start");
         if($curr_pro != "none" && $startDate != "none"){
-            Excel::create("Нас년тын тайлан", function($excel) use($curr_pro, $startDate) {
-                $excel->setTitle("Нас년тын тайлан");
+            Excel::create("연식 보고서", function($excel) use($curr_pro, $startDate) {
+                $excel->setTitle("연식 보고서");
                 $excel->setCreator("ATUT");
                 $excel->sheet("보고서", function($sheet) use($curr_pro, $startDate) {
                     //Header үүсгэх
@@ -3909,14 +3909,14 @@ protected function exportToExcelEpayReportr(Request $request){
                     $sheet->setPaperSize(\PHPExcel_Worksheet_PageSetup::PAPERSIZE_A4);
                     $sheet->appendRow(array("","","","", "", "", ""));
 
-                    $sheet->appendRow(array('ТЭЭВРИЙН ХЭРЭГСЛИЙН НАСЖИЛТЫН ТАЙЛАН'));
+                    $sheet->appendRow(array('차량 연식 텡계 보고서'));
                     $sheet->getStyle('A4:J4')->getFont()->setBold(true);
                     $sheet->getStyle('A4:J4')->getFont()->setSize(12);
                     $sheet->mergeCells('A4:J4');
                     $sheet->cell('A4', function ($cell) {
                         $this->center($cell);
                     });
-                    $sheet->appendRow(array('/аймаг, хотоор/'));
+                    $sheet->appendRow(array('/아이막, 시별/'));
                     $sheet->getStyle('A5:J5')->getFont()->setBold(true);
                     $sheet->getStyle('A5:J5')->getFont()->setSize(12);
                     $sheet->mergeCells('A5:J5');
@@ -3929,12 +3929,12 @@ protected function exportToExcelEpayReportr(Request $request){
                         $name = AddressProvince::where("ID", $curr_pro)->get()->first()->name;
                     }
                     $sheet->appendRow(array(
-                        "Хот, аймаг: ".$name,
+                        "도시, 아이막: ".$name,
                         "",
                         "",
                         "",
                         "",
-                        "보고서т үе: ".$startDate. " -ны байдлаар",
+                        "보고 기간: ".$startDate. " -기준",
                         "",
                         "",
                         ""
@@ -3948,7 +3948,7 @@ protected function exportToExcelEpayReportr(Request $request){
 
                     $sheet->appendRow(array(
                         "운송수단 유형",
-                        "Тээврийн хэрэгслийн нас년т",
+                        "차량 연식",
                         "",
                         "",
                         "",
@@ -3966,7 +3966,7 @@ protected function exportToExcelEpayReportr(Request $request){
                         "비율",
                         "7-9 년",
                         "비율",
-                        "9-с дээш",
+                        "9년 이상",
                         "비율",
                         ""
                     ));
@@ -4182,8 +4182,8 @@ protected function exportToExcelEpayReportr(Request $request){
         $end = $request->route("end");
 
         if($start != "none" && $end != "none"){
-            Excel::create("직위(공무)ын эрхийн лог", function($excel) use($op, $start, $end) {
-                $excel->setTitle("직위(공무)ын эрхийн лог");
+            Excel::create("직위 권한 로그", function($excel) use($op, $start, $end) {
+                $excel->setTitle("직위 권한 로그");
                 $excel->setCreator("ATUT");
                 $excel->sheet("보고서", function($sheet) use($op, $start, $end) {
                     //Header үүсгэх
@@ -4234,7 +4234,7 @@ protected function exportToExcelEpayReportr(Request $request){
                     $sheet->setPaperSize(\PHPExcel_Worksheet_PageSetup::PAPERSIZE_A4);
                     $sheet->appendRow(array("","","","", "", "", ""));
 
-                    $sheet->appendRow(array('','АЛБАН ТУШААЛЫН ЭРХИЙН ЛОГ'));
+                    $sheet->appendRow(array('','직위 권한 로그'));
                     $sheet->getStyle('B4:H4')->getFont()->setBold(true);
                     $sheet->getStyle('B4:H4')->getFont()->setSize(12);
                     $sheet->mergeCells('B4:H4');
@@ -4257,7 +4257,7 @@ protected function exportToExcelEpayReportr(Request $request){
                         $this->center($cell);
                     });
                     $sheet->appendRow(array("","","","", "", ""));
-                    $sheet->appendRow(array("","№", "일자", "직위(공무)ын нэр /Хуучин/", "직위(공무)ын нэр /Шнэ/", "작업", "Үүүсгэсэн", "수정ласан"));
+                    $sheet->appendRow(array("","№", "일자", "직위명 /변경 전/", "직위명 /변경 후/", "작업", "생성됨", "수정됨"));
                     $sheet->getStyle('B8:H8')->getFont()->setBold(true);
                     $sheet->getStyle('B8:H8')->getFont()->setSize(12);
                     //열 서식 지정
@@ -4325,12 +4325,12 @@ protected function exportToExcelEpayReportr(Request $request){
         try{
             $provinces = array(
                 "아르항가이",
-                "Баян-өлгий",
+                "바양울기",
                 "바얀홍고르",
                 "불간",
-                "Говь-алтай",
+                "고비알타이",
                 "고비숨버",
-                "Дархан-уул",
+                "다르항올",
                 "도르노고비",
                 "도르노드",
                 "둔드고비",
@@ -4342,7 +4342,7 @@ protected function exportToExcelEpayReportr(Request $request){
                 "울란바토르",
                 "우브스",
                 "호브드",
-                "헨тий",
+                "헹티",
                 "홉스골",
                 "오보르항가이",
                 "옴노고비",
@@ -4353,11 +4353,11 @@ protected function exportToExcelEpayReportr(Request $request){
                 $end = trim($request->get("end"));
                 $results = DB::select(DB::raw("SELECT PO.NAME, COUNT ( CASE WHEN  VEN.ENGINE_CAPACITY <=1500 THEN 1 END) X_1500_baga, COUNT ( CASE WHEN  VEN.ENGINE_CAPACITY >1500 AND VEN.ENGINE_CAPACITY <=2500 THEN 1 END) X_1501_2500, COUNT ( CASE WHEN  VEN.ENGINE_CAPACITY >2500 AND VEN.ENGINE_CAPACITY <=3500 THEN 1 END) X_2501_3500, COUNT ( CASE WHEN  VEN.ENGINE_CAPACITY >3501 AND VEN.ENGINE_CAPACITY <=4500 THEN 1 END) X_3501_4500, COUNT ( CASE WHEN  VEN.ENGINE_CAPACITY >4501 THEN 1 END) X_4501_IKH FROM VRS.REG_VEHICLE_VIEW VEN JOIN VRS.REG_OWNER_VIEW OW ON VEN.OWNER_ID=OW.ID JOIN VRS.ADDRESS_PROVINCE PO ON OW.PROVINCE_ID=PO.ID WHERE VEN.ENGINE_CAPACITY IS NOT NULL and VEN.UPDATED_DATE BETWEEN TO_DATE ('".$start."', 'YYYY/MM/DD') AND TO_DATE('".$end."', 'YYYY/MM/DD') GROUP BY PO.NAME ORDER BY PO.NAME"));
                 $datas_cap = array(
-                    array('1500 cc хүртэл', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '배기량'),
+                    array('1500 cc 이하', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '배기량'),
                     array('1501-2500 cc', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '배기량'),
                     array('2501-3500 cc', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '배기량'),
                     array('3501-4500 cc', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '배기량'),
-                    array('4501 cc дээш', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '배기량')
+                    array('4501 cc 이상', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '배기량')
                 );
 //return $results;
                 $i = 1;
@@ -4393,10 +4393,10 @@ protected function exportToExcelEpayReportr(Request $request){
 
                 $results_nas = DB::select(DB::raw("SELECT PO.NAME,COUNT ( CASE WHEN  to_number(to_char(sysdate, 'YYYY'))-VEN.BUILD_YEAR <=3 THEN 1 END) NAS_0_3 , COUNT ( CASE WHEN  to_number(to_char(sysdate, 'YYYY'))-VEN.BUILD_YEAR >3 AND to_number(to_char(sysdate, 'YYYY'))-VEN.BUILD_YEAR <=6 THEN 1 END) NAS_4_6,COUNT ( CASE WHEN  to_number(to_char(sysdate, 'YYYY'))-VEN.BUILD_YEAR >6 AND to_number(to_char(sysdate, 'YYYY'))-VEN.BUILD_YEAR <=10 THEN 1 END) NAS_7_10 ,COUNT ( CASE WHEN  to_number(to_char(sysdate, 'YYYY'))-VEN.BUILD_YEAR >10 THEN 1 END) NAS_10_IKH FROM VRS.REG_VEHICLE_VIEW VEN JOIN VRS.REG_OWNER_VIEW OW ON VEN.OWNER_ID=OW.ID JOIN VRS.ADDRESS_PROVINCE PO ON OW.PROVINCE_ID=PO.ID WHERE VEN.UPDATED_DATE BETWEEN TO_DATE ('".$start."', 'YYYY/MM/DD') AND TO_DATE('".$end."', 'YYYY/MM/DD') GROUP BY PO.NAME ORDER BY PO.NAME"));
                 $datas_nas = array(
-                    array('0-3', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Нас년т'),
-                    array('4-6', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Нас년т'),
-                    array('7-9', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Нас년т'),
-                    array('10 ба түүнээс дээш', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Нас년т')
+                    array('0-3', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '연식'),
+                    array('4-6', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '연식'),
+                    array('7-9', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '연식'),
+                    array('10년 이상', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '연식')
                 );
 
                 $i = 1;
@@ -4429,8 +4429,8 @@ protected function exportToExcelEpayReportr(Request $request){
 
                 $results_wheel = DB::select(DB::raw("SELECT PO.NAME,COUNT ( CASE WHEN  VEN.WHEEL_ID =14 THEN 1 END) baruun, COUNT ( CASE WHEN  VEN.WHEEL_ID =15 THEN 1 END) zuun FROM VRS.REG_VEHICLE_VIEW VEN JOIN VRS.REG_OWNER_VIEW OW ON VEN.OWNER_ID=OW.ID JOIN VRS.ADDRESS_PROVINCE PO ON OW.PROVINCE_ID=PO.ID WHERE VEN.WHEEL_ID IS NOT NULL and VEN.UPDATED_DATE BETWEEN TO_DATE ('".$start."', 'YYYY/MM/DD') AND TO_DATE('".$end."', 'YYYY/MM/DD') GROUP BY PO.NAME ORDER BY PO.NAME"));
                 $datas_wheel = array(
-                    array('Баруун', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Хүрд'),
-                    array('Зүүн', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Хүрд')
+                    array('우측', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '핸들'),
+                    array('좌측', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '핸들')
                 );
 
                 $i = 1;
@@ -4469,7 +4469,7 @@ protected function exportToExcelEpayReportr(Request $request){
                     array('휘발유', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '연료'),
                     array('디젤', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '연료'),
                     array('전기', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '연료'),
-                    array('Газ', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '연료')
+                    array('가스', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '연료')
                 );
 
                 $i = 1;
@@ -4582,8 +4582,8 @@ protected function exportToExcelEpayReportr(Request $request){
         $end = $request->route("end");
 //return $start;
         if($start != "none" && $end != "none"){
-            Excel::create("합계 ТХ -н статистик мэдээ", function($excel) use($start, $end) {
-                $excel->setTitle("합계 ТХ -н статистик мэдээ");
+            Excel::create("전체 차량 통계 자료", function($excel) use($start, $end) {
+                $excel->setTitle("전체 차량 통계 자료");
                 $excel->setCreator("ATUT");
                 $excel->sheet("보고서", function($sheet) use($start, $end) {
                     //Header үүсгэх
@@ -4650,14 +4650,14 @@ protected function exportToExcelEpayReportr(Request $request){
                     $sheet->setPaperSize(\PHPExcel_Worksheet_PageSetup::PAPERSIZE_A4);
                     $sheet->appendRow(array("","","","", "", "", ""));
 
-                    $sheet->appendRow(array('НИЙТ ТЭЭВРИЙН ХЭРЭГСЛИЙН СТАТИСТИК МЭДЭЭ'));
+                    $sheet->appendRow(array('전체 차량 통계 자료'));
                     $sheet->getStyle('A4:W4')->getFont()->setBold(true);
                     $sheet->getStyle('A4:W4')->getFont()->setSize(12);
                     $sheet->mergeCells('A4:W4');
                     $sheet->cell('A4', function ($cell) {
                         $this->center($cell);
                     });
-                    $sheet->appendRow(array('/аймаг нийслэлээр/'));
+                    $sheet->appendRow(array('/아이막 수도별/'));
                     $sheet->getStyle('A5:W5')->getFont()->setBold(true);
                     $sheet->getStyle('A5:W5')->getFont()->setSize(12);
                     $sheet->mergeCells('A5:W5');
@@ -4667,7 +4667,7 @@ protected function exportToExcelEpayReportr(Request $request){
 
                     $sheet->appendRow(array("","","","", "", "", ""));
                     $sheet->appendRow(array(
-                        "", "", "", "", "", "", "", "", "보고서т үе: ".$start." -с ".$end. " -ны өдрийн байдлаар"
+                        "", "", "", "", "", "", "", "", "보고 기간: ".$start." -с ".$end. " -일 기준"
                     ));
                     $sheet->mergeCells('I7:N7');
                     $sheet->getStyle('I7:N7')->getFont()->setBold(true);
@@ -4679,12 +4679,12 @@ protected function exportToExcelEpayReportr(Request $request){
                     $sheet->appendRow(array(
                         "유형",
                         "아르항가이",
-                        "Баян-Өлгий",
+                        "바양울기",
                         "바얀홍고르",
                         "불간",
-                        "Говь-Алтай",
+                        "고비알타이",
                         "고비숨버",
-                        "Дархан-Уул",
+                        "다르항올",
                         "도르노고비",
                         "도르노드",
                         "둔드고비",
@@ -4696,7 +4696,7 @@ protected function exportToExcelEpayReportr(Request $request){
                         "울란바토르",
                         "우브스",
                         "호브드",
-                        "헨тий",
+                        "헹티",
                         "홉스골",
                         "오보르항가이",
                         "옴노고비",
@@ -4705,12 +4705,12 @@ protected function exportToExcelEpayReportr(Request $request){
 
                     $provinces = array(
                         "아르항가이",
-                        "Баян-өлгий",
+                        "바양울기",
                         "바얀홍고르",
                         "불간",
-                        "Говь-алтай",
+                        "고비알타이",
                         "고비숨버",
-                        "Дархан-уул",
+                        "다르항올",
                         "도르노고비",
                         "도르노드",
                         "둔드고비",
@@ -4719,10 +4719,10 @@ protected function exportToExcelEpayReportr(Request $request){
                         "셀렝게",
                         "수흐바타르",
                         "중앙",
-                        "УБ",
+                        "울란바토르",
                         "우브스",
                         "호브드",
-                        "헨тий",
+                        "헹티",
                         "홉스골",
                         "오보르항가이",
                         "옴노고비",
@@ -4805,8 +4805,8 @@ protected function exportToExcelEpayReportr(Request $request){
                     $sheet->getStyle('A19:X19')->getFont()->setBold(true);
                     $results_wheel = DB::select(DB::raw("SELECT PO.NAME,COUNT ( CASE WHEN  VEN.WHEEL_ID =14 THEN 1 END) baruun, COUNT ( CASE WHEN  VEN.WHEEL_ID =15 THEN 1 END) zuun FROM VRS.REG_VEHICLE_VIEW VEN JOIN VRS.REG_OWNER_VIEW OW ON VEN.OWNER_ID=OW.ID JOIN VRS.ADDRESS_PROVINCE PO ON OW.PROVINCE_ID=PO.ID WHERE VEN.WHEEL_ID IS NOT NULL and  VEN.CREATED_DATE BETWEEN TO_DATE ('".$start."', 'YYYY/MM/DD') AND TO_DATE('".$end."', 'YYYY/MM/DD') AND VEN.STATUS NOT IN(9,10,11) GROUP BY PO.NAME ORDER BY PO.NAME"));
                     $datas_wheel = array(
-                        array('Баруун', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-                        array('Зүүн', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+                        array('우측', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+                        array('좌측', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
                         array('합계', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
                     );
 
@@ -4852,7 +4852,7 @@ protected function exportToExcelEpayReportr(Request $request){
                        
                         array('디젤', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
                         array('전기', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-                        array('Газ', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+                        array('가스', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
                         array('Хосолсон', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
                         array('합계', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
                     );
@@ -4913,7 +4913,7 @@ protected function exportToExcelEpayReportr(Request $request){
                         array('0-3', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
                         array('4-6', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
                         array('7-9', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-                        array('10 ба түүнээс дээш', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+                        array('10년 이상', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
                         array('합계', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
                     );
 
@@ -4956,11 +4956,11 @@ protected function exportToExcelEpayReportr(Request $request){
 
                     $results = DB::select(DB::raw("SELECT PO.NAME, COUNT ( CASE WHEN  VEN.ENGINE_CAPACITY <=1500 THEN 1 END) X_1500_baga, COUNT ( CASE WHEN  VEN.ENGINE_CAPACITY >1500 AND VEN.ENGINE_CAPACITY <=2500 THEN 1 END) X_1501_2500, COUNT ( CASE WHEN  VEN.ENGINE_CAPACITY >2500 AND VEN.ENGINE_CAPACITY <=3500 THEN 1 END) X_2501_3500, COUNT ( CASE WHEN  VEN.ENGINE_CAPACITY >3501 AND VEN.ENGINE_CAPACITY <=4500 THEN 1 END) X_3501_4500, COUNT ( CASE WHEN  VEN.ENGINE_CAPACITY >4501 THEN 1 END) X_4501_IKH FROM VRS.REG_VEHICLE_VIEW VEN JOIN VRS.REG_OWNER_VIEW OW ON VEN.OWNER_ID=OW.ID JOIN VRS.ADDRESS_PROVINCE PO ON OW.PROVINCE_ID=PO.ID WHERE VEN.ENGINE_CAPACITY IS NOT NULL and  VEN.CREATED_DATE BETWEEN TO_DATE ('".$start."', 'YYYY/MM/DD') AND TO_DATE('".$end."', 'YYYY/MM/DD')  AND VEN.STATUS NOT IN(9,10,11) GROUP BY PO.NAME ORDER BY PO.NAME"));
                     $datas = array(
-                        array('1500 cc хүртэл', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+                        array('1500 cc 이하', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
                         array('1501-2500 cc', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
                         array('2501-3500 cc', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
                         array('3501-4500 cc', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-                        array('4501 cc дээш', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+                        array('4501 cc 이상', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
                         array('합계', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
                     );
 
@@ -5359,7 +5359,7 @@ protected function exportToExcelEpayReportr(Request $request){
                     $sheet->setPaperSize(\PHPExcel_Worksheet_PageSetup::PAPERSIZE_A4);
                     $sheet->appendRow(array("","","","", "", "", ""));
 
-                    $sheet->appendRow(array('ХАСАГДСАН ТХ -ИЙН ТАЙЛАН'));
+                    $sheet->appendRow(array('ХАСАГДСАН 차량 -ИЙН ТАЙЛАН'));
                     $sheet->getStyle('A4:G4')->getFont()->setBold(true);
                     $sheet->getStyle('A4:G4')->getFont()->setSize(12);
                     $sheet->mergeCells('A4:G4');
@@ -5377,7 +5377,7 @@ protected function exportToExcelEpayReportr(Request $request){
                         $this->cellRight($cell);
                     });
                     $sheet->appendRow(array("","","","", "", ""));
-                    $sheet->appendRow(array("№", "일자", "말소ын дугаар", "브랜드", "모델", "차체번호", "담당자"));
+                    $sheet->appendRow(array("№", "일자", "말소ын 번호", "브랜드", "모델", "차체번호", "담당자"));
                     $sheet->getStyle('A8:G8')->getFont()->setBold(true);
                     $sheet->getStyle('A8:G8')->getFont()->setSize(12);
                     $this->setPrintMargins($sheet, 0.2, 0.25, 0.2, 0.25);
@@ -5941,7 +5941,7 @@ protected function exportToExcelEpayReportr(Request $request){
                                   $this->cellRight($cell);
                               });
                               $sheet->appendRow(array("","","","", "",""));
-                              $sheet->appendRow(array("№", "지점", "ТХ-н төрөл","이름", "색상","개수", "일자"));
+                              $sheet->appendRow(array("№", "지점", "차량-н төрөл","이름", "색상","개수", "일자"));
                               $sheet->getStyle('A8:G8')->getFont()->setBold(true);
                               $sheet->getStyle('A8:G8')->getFont()->setSize(12);
                               $this->setPrintMargins($sheet, 0.2, 0.25, 0.2, 0.25);
@@ -6218,7 +6218,7 @@ protected function exportToExcelEpayReportr(Request $request){
                         "번호판 교체 이전",
                         "증명서 교체",
                         "증명서 갱신",
-                        "Хязгаарлалт",
+                        "제한 사항",
                         "말소",
                         "번호판 교체",
                         "번호판 간 교체",
