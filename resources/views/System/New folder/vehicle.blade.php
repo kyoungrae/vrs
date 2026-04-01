@@ -428,7 +428,7 @@
                                         <label class="form-label mg-b-0">색상</label>
                                     </div>
                                     <div class="col-lg-6 col-md-12 col-sm-12">
-                                        <input type="text" class="form-control" value="{{ isset($vehicle) ? $vehicle->color_name : "" }}" readonly>
+                                        <input type="text" class="form-control" value="{{ isset($vehicle) ? \App\Helpers\TranslationHelper::translate($vehicle->color_name ?? "") : "" }}" readonly>
                                     </div>
                                 </div>
                                 <div class="row row-xs align-items-center mg-b-5">
@@ -452,7 +452,7 @@
                                         <label class="form-label mg-b-0">제조국</label>
                                     </div>
                                     <div class="col-lg-6 col-md-12 col-sm-12">
-                                        <input type="text" class="form-control" value="{{ isset($vehicle) ? $vehicle->country_name : "" }}" readonly>
+                                        <input type="text" class="form-control" value="{{ isset($vehicle) ? \App\Helpers\TranslationHelper::translate($vehicle->country_name ?? "") : "" }}" readonly>
                                     </div>
                                 </div>
                                 <div class="row row-xs align-items-center mg-b-5">
@@ -460,7 +460,7 @@
                                         <label class="form-label mg-b-0">용도</label>
                                     </div>
                                     <div class="col-lg-6 col-md-12 col-sm-12">
-                                        <input type="text" class="form-control" value="{{ isset($vehicle) ? $vehicle->purpose_name : "" }}" readonly>
+                                        <input type="text" class="form-control" value="{{ isset($vehicle) ? \App\Helpers\TranslationHelper::translate($vehicle->purpose_name ?? "") : "" }}" readonly>
                                     </div>
                                 </div>
                                 <div class="row row-xs align-items-center mg-b-5">
@@ -468,7 +468,7 @@
                                         <label class="form-label mg-b-0">유형</label>
                                     </div>
                                     <div class="col-lg-6 col-md-12 col-sm-12">
-                                        <input type="text" class="form-control" value="{{ isset($vehicle) ? $vehicle->vehicle_type_name : "" }}" readonly>
+                                        <input type="text" class="form-control" value="{{ isset($vehicle) ? \App\Helpers\TranslationHelper::translate($vehicle->vehicle_type_name ?? "") : "" }}" readonly>
                                     </div>
                                 </div>
                                 <div class="row row-xs align-items-center mg-b-5">
@@ -476,7 +476,7 @@
                                         <label class="form-label mg-b-0">브랜드</label>
                                     </div>
                                     <div class="col-lg-6 col-md-12 col-sm-12">
-                                        <input type="text" class="form-control" value="{{ isset($vehicle) ? $vehicle->mark_name : "" }}" readonly>
+                                        <input type="text" class="form-control" value="{{ isset($vehicle) ? \App\Helpers\TranslationHelper::translate($vehicle->mark_name ?? "") : "" }}" readonly>
                                     </div>
                                 </div>
                                 <div class="row row-xs align-items-center mg-b-5">
@@ -484,7 +484,7 @@
                                         <label class="form-label mg-b-0">모델</label>
                                     </div>
                                     <div class="col-lg-6 col-md-12 col-sm-12">
-                                        <input type="text" class="form-control" value="{{ isset($vehicle) ? $vehicle->model_name : "" }}" readonly>
+                                        <input type="text" class="form-control" value="{{ isset($vehicle) ? \App\Helpers\TranslationHelper::translate($vehicle->model_name ?? "") : "" }}" readonly>
                                     </div>
                                 </div>
                                 <div class="row row-xs align-items-center mg-b-5">
@@ -492,7 +492,7 @@
                                         <label class="form-label mg-b-0">환경 등급</label>
                                     </div>
                                     <div class="col-lg-6 col-md-12 col-sm-12">
-                                        <input type="text" class="form-control" value="{{ isset($vehicle) ? $vehicle->eco_class_name : "" }}" readonly>
+                                        <input type="text" class="form-control" value="{{ isset($vehicle) ? \App\Helpers\TranslationHelper::translate($vehicle->eco_class_name ?? "") : "" }}" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -504,7 +504,7 @@
                                         <label class="form-label mg-b-0">배기량·등급</label>
                                     </div>
                                     <div class="col-lg-6 col-md-12 col-sm-12">
-                                        <input type="text" class="form-control" value="{{ isset($vehicle) ? $vehicle->engine_capacity.", ".$vehicle->class_name : "" }}" readonly>
+                                        <input type="text" class="form-control" value="{{ isset($vehicle) ? $vehicle->engine_capacity.", ".\App\Helpers\TranslationHelper::translate($vehicle->class_name ?? "") : "" }}" readonly>
                                     </div>
                                 </div>
                                 <div class="row row-xs align-items-center mg-b-5">
@@ -512,7 +512,7 @@
                                         <label class="form-label mg-b-0">엔진 유형</label>
                                     </div>
                                     <div class="col-lg-6 col-md-12 col-sm-12">
-                                        <input type="text" class="form-control" value="{{ isset($vehicle) ? $vehicle->engine_model_name : "" }}" readonly>
+                                        <input type="text" class="form-control" value="{{ isset($vehicle) ? \App\Helpers\TranslationHelper::translate($vehicle->engine_model_name ?? "") : "" }}" readonly>
                                     </div>
                                 </div>
                                 <div class="row row-xs align-items-center mg-b-5">
@@ -520,7 +520,7 @@
                                         <label class="form-label mg-b-0">연료 유형</label>
                                     </div>
                                     <div class="col-lg-6 col-md-12 col-sm-12">
-                                        <input type="text" class="form-control" value="{{ isset($vehicle) ? $vehicle->fuel_name : "" }}" readonly>
+                                        <input type="text" class="form-control" value="{{ isset($vehicle) ? \App\Helpers\TranslationHelper::translate($vehicle->fuel_name ?? "") : "" }}" readonly>
                                     </div>
                                 </div>
                                 <div class="row row-xs align-items-center mg-b-5">
@@ -536,7 +536,7 @@
                                         <label class="form-label mg-b-0">조향 유형</label>
                                     </div>
                                     <div class="col-lg-6 col-md-12 col-sm-12">
-                                        <input type="text" class="form-control" value="{{ isset($vehicle) ? $vehicle->steering_type_name : "" }}" readonly>
+                                        <input type="text" class="form-control" value="{{ isset($vehicle) ? \App\Helpers\TranslationHelper::translate($vehicle->steering_type_name ?? "") : "" }}" readonly>
                                     </div>
                                 </div>
                                 <div class="row row-xs align-items-center mg-b-5">
@@ -544,7 +544,7 @@
                                         <label class="form-label mg-b-0">핸들 위치</label>
                                     </div>
                                     <div class="col-lg-6 col-md-12 col-sm-12">
-                                        <input type="text" class="form-control" value="{{ isset($vehicle) ? $vehicle->wheel_name : "" }}" readonly>
+                                        <input type="text" class="form-control" value="{{ isset($vehicle) ? \App\Helpers\TranslationHelper::translate($vehicle->wheel_name ?? "") : "" }}" readonly>
                                     </div>
                                 </div>
                                 <div class="row row-xs align-items-center mg-b-5">
@@ -704,7 +704,7 @@
                                 </div>
                                 <div class="form-group mg-b-0">
                                     <label class="form-label">상태 변경</label>
-                                    <textarea style="height: 30px !important;" id="lastmod_id" class="form-control richtextbox" readonly="">{{ isset($vehicle) ? $vehicle->status_name.", ".$vehicle->firstname : "" }}</textarea>
+                                    <textarea style="height: 30px !important;" id="lastmod_id" class="form-control richtextbox" readonly="">{{ isset($vehicle) ? \App\Helpers\TranslationHelper::translate($vehicle->status_name ?? "").", ".\App\Helpers\TranslationHelper::translate($vehicle->firstname ?? "") : "" }}</textarea>
                                 </div>
                             </div>
                             <div class="col-lg-8 col-md-6 col-sm-12">
@@ -895,8 +895,8 @@
                                                     <div class="media-icon bg-success"><i class="{{ $service->icon }}"></i></div>
                                                     <a id="{{ $service->code }}" style="cursor: pointer;" onclick="menu('{{ $service->code }}')">
                                                         <div class="media-body">
-                                                            <h6>{{ $service->name }}</h6>
-                                                            <span>{{ $service->description }}</span>
+                                                            <h6>{{ \App\Helpers\TranslationHelper::translate($service->name ?? "") }}</h6>
+                                                            <span>{{ \App\Helpers\TranslationHelper::translate($service->description ?? "") }}</span>
                                                         </div>
                                                     </a>
                                                 </div>
@@ -909,9 +909,10 @@
                                                     <div class="media-icon bg-success"><i class="{{ $service->icon }}"></i></div>
                                                     <a id="{{ $service->code }}" style="cursor: pointer;" onclick="menu('{{ $service->code }}')">
                                                         <div class="media-body">
-                                                            <h6>{{ $service->name }}</h6>
-                                                            <span>{{ $service->description }}</span>
-                                                        </div>
+                                                            <h6>{{ \App\Helpers\TranslationHelper::translate($service->name ?? "") }}</h6>
+                                                            <span>{{ \App\Helpers\TranslationHelper::translate($service->description ?? "") }}</span>
+                                                 
+       </div>
                                                     </a>
                                                 </div>
                                                 @endif
@@ -923,9 +924,10 @@
                                                     <div class="media-icon bg-success"><i class="{{ $service->icon }}"></i></div>
                                                     <a id="{{ $service->code }}" style="cursor: pointer;" onclick="menu('{{ $service->code }}')">
                                                         <div class="media-body">
-                                                            <h6>{{ $service->name }}</h6>
-                                                            <span>{{ $service->description }}</span>
-                                                        </div>
+                                                            <h6>{{ \App\Helpers\TranslationHelper::translate($service->name ?? "") }}</h6>
+                                                            <span>{{ \App\Helpers\TranslationHelper::translate($service->description ?? "") }}</span>
+                                                 
+       </div>
                                                     </a>
                                                 </div>
                                                 @endif
@@ -937,9 +939,10 @@
                                                     <div class="media-icon bg-success"><i class="{{ $service->icon }}"></i></div>
                                                     <a id="{{ $service->code }}" style="cursor: pointer;" onclick="menu('{{ $service->code }}')">
                                                         <div class="media-body">
-                                                            <h6>{{ $service->name }}</h6>
-                                                            <span>{{ $service->description }}</span>
-                                                        </div>
+                                                            <h6>{{ \App\Helpers\TranslationHelper::translate($service->name ?? "") }}</h6>
+                                                            <span>{{ \App\Helpers\TranslationHelper::translate($service->description ?? "") }}</span>
+                                                 
+       </div>
                                                     </a>
                                                 </div>
                                                 @endif
@@ -952,9 +955,10 @@
                                                     <div class="media-icon bg-success"><i class="{{ $service->icon }}"></i></div>
                                                     <a id="{{ $service->code }}" style="cursor: pointer;" onclick="menu('{{ $service->code }}')">
                                                         <div class="media-body">
-                                                            <h6>{{ $service->name }}</h6>
-                                                            <span>{{ $service->description }}</span>
-                                                        </div>
+                                                            <h6>{{ \App\Helpers\TranslationHelper::translate($service->name ?? "") }}</h6>
+                                                            <span>{{ \App\Helpers\TranslationHelper::translate($service->description ?? "") }}</span>
+                                                 
+       </div>
                                                     </a>
                                                 </div>
                                                 @endif
@@ -968,9 +972,10 @@
                                                     <div class="media-icon bg-success"><i class="{{ $service->icon }}"></i></div>
                                                     <a id="{{ $service->code }}" style="cursor: pointer;" onclick="menu('{{ $service->code }}')">
                                                         <div class="media-body">
-                                                            <h6>{{ $service->name }}</h6>
-                                                            <span>{{ $service->description }}</span>
-                                                        </div>
+                                                            <h6>{{ \App\Helpers\TranslationHelper::translate($service->name ?? "") }}</h6>
+                                                            <span>{{ \App\Helpers\TranslationHelper::translate($service->description ?? "") }}</span>
+                                                 
+       </div>
                                                     </a>
                                                 </div>
                                                 @endif
@@ -981,9 +986,10 @@
                                                     <div class="media-icon bg-success"><i class="{{ $service->icon }}"></i></div>
                                                     <a id="{{ $service->code }}" style="cursor: pointer;" onclick="menu('{{ $service->code }}')">
                                                         <div class="media-body">
-                                                            <h6>{{ $service->name }}</h6>
-                                                            <span>{{ $service->description }}</span>
-                                                        </div>
+                                                            <h6>{{ \App\Helpers\TranslationHelper::translate($service->name ?? "") }}</h6>
+                                                            <span>{{ \App\Helpers\TranslationHelper::translate($service->description ?? "") }}</span>
+                                                 
+       </div>
                                                     </a>
                                                 </div>
                                                 @endif
@@ -994,9 +1000,10 @@
                                                     <div class="media-icon bg-success"><i class="{{ $service->icon }}"></i></div>
                                                     <a id="{{ $service->code }}" style="cursor: pointer;" onclick="menu('{{ $service->code }}')">
                                                         <div class="media-body">
-                                                            <h6>{{ $service->name }}</h6>
-                                                            <span>{{ $service->description }}</span>
-                                                        </div>
+                                                            <h6>{{ \App\Helpers\TranslationHelper::translate($service->name ?? "") }}</h6>
+                                                            <span>{{ \App\Helpers\TranslationHelper::translate($service->description ?? "") }}</span>
+                                                 
+       </div>
                                                     </a>
                                                 </div>
                                                 @endif
@@ -1007,9 +1014,10 @@
                                                     <div class="media-icon bg-success"><i class="{{ $service->icon }}"></i></div>
                                                     <a id="{{ $service->code }}" style="cursor: pointer;" onclick="menu('{{ $service->code }}')">
                                                         <div class="media-body">
-                                                            <h6>{{ $service->name }}</h6>
-                                                            <span>{{ $service->description }}</span>
-                                                        </div>
+                                                            <h6>{{ \App\Helpers\TranslationHelper::translate($service->name ?? "") }}</h6>
+                                                            <span>{{ \App\Helpers\TranslationHelper::translate($service->description ?? "") }}</span>
+                                                 
+       </div>
                                                     </a>
                                                 </div>
                                                 @endif
@@ -1026,9 +1034,9 @@
                                                                 <a id="{{ $service->code }}" style="cursor: pointer;" onclick="menu('{{ $service->code }}')">
                                                                     <div class="media-body">
                                                                      
-                                                                        <h6>{{ $service->name }}</h6>
+                                                                        <h6>{{ \App\Helpers\TranslationHelper::translate($service->name ?? "") }}</h6>
                                                                         
-                                                                        <span>{{ $service->description }}</span>
+                                                                        <span>{{ \App\Helpers\TranslationHelper::translate($service->description ?? "") }}</span>
                                                                      
                                                                       
                                                                     </div>
@@ -1053,9 +1061,9 @@
                                                                         <a id="{{ $service->code }}" style="cursor: pointer;" onclick="menu('{{ $service->code }}')">
                                                                             <div class="media-body">
                                                                              
-                                                                                <h6>{{ $service->name }}</h6>
+                                                                                <h6>{{ \App\Helpers\TranslationHelper::translate($service->name ?? "") }}</h6>
                                                                                 
-                                                                                <span>{{ $service->description }}</span>
+                                                                                <span>{{ \App\Helpers\TranslationHelper::translate($service->description ?? "") }}</span>
                                                                              
                                                                               
                                                                             </div>
@@ -1076,9 +1084,9 @@
                                                                         <a id="{{ $service->code }}" style="cursor: pointer;" onclick="menu('{{ $service->code }}')">
                                                                             <div class="media-body">
                                                                              
-                                                                                <h6>{{ $service->name }}</h6>
+                                                                                <h6>{{ \App\Helpers\TranslationHelper::translate($service->name ?? "") }}</h6>
                                                                                 
-                                                                                <span>{{ $service->description }}</span>
+                                                                                <span>{{ \App\Helpers\TranslationHelper::translate($service->description ?? "") }}</span>
                                                                              
                                                                               
                                                                             </div>
@@ -1090,10 +1098,6 @@
                                                         @endif
 
                                                         @else <div></div>
-
-
-
-
 
 
 
@@ -1111,8 +1115,8 @@
                                                                         <div class="media-icon bg-success"><i class="{{ $service->icon }}"></i></div>
                                                                         <a id="{{ $service->code }}" style="cursor: pointer;" onclick="menu('{{ $service->code }}')">
                                                                             <div class="media-body">
-                                                                                <h6>{{ $service->name }}</h6>
-                                                                                <span>{{ $service->description }}</span>
+                                                                                <h6>{{ \App\Helpers\TranslationHelper::translate($service->name ?? "") }}</h6>
+                                                                                <span>{{ \App\Helpers\TranslationHelper::translate($service->description ?? "") }}</span>
                                                                             </div>
                                                                         </a>
                                                                     </div>
@@ -1671,7 +1675,7 @@
                                     <select class="form-control select2-no-search" name="type">
                                         @if(ISSET($limits))
                                             @foreach($limits as $limit)
-                                                <option value="{{ $limit->id ?? $limit->ID ?? $limit->Id }}">{{ $limit->name ?? $limit->NAME ?? $limit->Name }}</option>
+                                                <option value="{{ $limit->id ?? $limit->ID ?? $limit->Id }}">{{ \App\Helpers\TranslationHelper::translate($limit->name ?? $limit->NAME ?? $limit->Name ?? "") }}</option>
                                             @endforeach
                                         @endif
                                     </select>
@@ -1846,7 +1850,7 @@
                                     <select class="form-control select2-no-search" name="type">
                                         @if(ISSET($limits))
                                             @foreach($limits as $limit)
-                                                <option value="{{ $limit->id ?? $limit->ID ?? $limit->Id }}">{{ $limit->name ?? $limit->NAME ?? $limit->Name }}</option>
+                                                <option value="{{ $limit->id ?? $limit->ID ?? $limit->Id }}">{{ \App\Helpers\TranslationHelper::translate($limit->name ?? $limit->NAME ?? $limit->Name ?? "") }}</option>
                                             @endforeach
                                         @endif
                                     </select>
@@ -2078,7 +2082,7 @@
                         <select id="device" class="form-control select2">
                             @if(ISSET($Printers))
                                 @foreach($Printers as $printer)
-                                    <option value="{{$printer->id}}">{{$printer->name}}</option>
+                                    <option value="{{$printer->id}}">{{ \App\Helpers\TranslationHelper::translate($printer->name ?? "") }}</option>
                                 @endforeach
                             @endif
                         </select>
@@ -2106,10 +2110,13 @@
                                 <span>{{ isset($vehicle) ? $vehicle->plate_no : "" }}</span>
                             </div>
                             <div id="pmark" style="position: absolute;top:30px;left:60px">
-                                <span>{{ isset($vehicle) ? $vehicle->mark_name : "" }}</span>
+                                <span>{{ isset($vehicle) ? \App\Helpers\TranslationHelper::translate($vehicle->mark_name ?? "") : "" }}</span>
                             </div>
                             <div id="pmodel" style="position: absolute;top:50px;left:60px">
-                                <span>{{ isset($vehicle) ? $vehicle->model_name : "" }}</span>
+                                <span>{{ isset($vehicle) ? \App\Helpers\TranslationHelper::translate($vehicle->model_name ?? "") : "" }}</span>
+                            </div>
+                            <div id="pmod" style="position: absolute;top:70px;left:60px">
+                                <span>{{ isset($vehicle) ? \App\Helpers\TranslationHelper::translate($vehicle->modificace_name ?? "") : "" }}</span>
                             </div>
 
                             <div id="pcapacity" style="position: absolute;top:70px;left:125px">
@@ -2142,7 +2149,7 @@
                                 <span style="visibility: hidden;"></span>
                             </div>
                             <div id="pcolor" style="position: absolute;top:265px;left:120px;">
-                                <span>{{ isset($vehicle) ? $vehicle->color_name : "" }}</span>
+                                <span>{{ isset($vehicle) ? \App\Helpers\TranslationHelper::translate($vehicle->color_name ?? "") : "" }}</span>
                             </div>
                             <div id="pimportDate" style="position: absolute;top:290px;left:90px;">
                                 <span>{{ isset($vehicle) ? \Carbon\Carbon::parse($vehicle->import_date)->format("Y-m-d") : "" }}</span>
@@ -2233,7 +2240,7 @@
                         <select id="device2" class="form-control select2">
                             @if(ISSET($Printers))
                                 @foreach($Printers as $printer)
-                                    <option value="{{$printer->id}}">{{$printer->name}}</option>
+                                    <option value="{{$printer->id}}">{{ \App\Helpers\TranslationHelper::translate($printer->name ?? "") }}</option>
                                 @endforeach
                             @endif
                         </select>
@@ -2261,7 +2268,7 @@
                                 <span>{{ isset($vehicle) ? $vehicle->plate_no : "" }}</span>
                             </div>
                             <div id="pmark2" style="position: absolute;top:30px;left:60px">
-                                <span>{{ isset($vehicle) ? $vehicle->modificace_name !='0' && $vehicle->modificace_name != "" ? $vehicle->mark_name.".".$vehicle->model_name."-".$vehicle->modificace_name : $vehicle->mark_name.".".$vehicle->model_name  : "" }}</span>
+                                <span>{{ isset($vehicle) ? \App\Helpers\TranslationHelper::translate($vehicle->modificace_name !='0' && $vehicle->modificace_name != "" ? $vehicle->mark_name.".".$vehicle->model_name."-".$vehicle->modificace_name : $vehicle->mark_name.".".$vehicle->model_name) : "" }}</span>
                             </div>
 
                             <div id="pcapacity2" style="position: absolute;top:70px;left:125px">
@@ -2294,7 +2301,7 @@
                                 <span style="visibility: hidden;"></span>
                             </div>
                             <div id="pcolor2" style="position: absolute;top:265px;left:120px;">
-                                <span>{{ isset($vehicle) ? $vehicle->color_name : "" }}</span>
+                                <span>{{ isset($vehicle) ? \App\Helpers\TranslationHelper::translate($vehicle->color_name ?? "") : "" }}</span>
                             </div>
                             <div id="pspecial" style="position: absolute;top:275px;left:180px; font-size:12px;text-transform: uppercase; ">
                                 <span>{{ isset($vehicle) ? $vehicle->special_name : "" }}</span>

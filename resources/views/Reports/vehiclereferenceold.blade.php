@@ -105,11 +105,11 @@
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $result->plate_no }}</td>
-                                                <td>{{ $result->mark_name }}</td>
-                                                <td>{{ $result->model_name }}</td>
+                                                <td>{{ \App\Helpers\TranslationHelper::translate($result->mark_name ?? "") }}</td>
+                                                <td>{{ \App\Helpers\TranslationHelper::translate($result->model_name ?? "") }}</td>
                                                 <td>{{ $result->cabin_no }}</td>
                                                 <td>{{ $result->certificate_no }}</td>
-                                                <td>{{ $result->color_name }}</td>
+                                                <td>{{ \App\Helpers\TranslationHelper::translate($result->color_name ?? "") }}</td>
                                                 <td>{{ \Carbon\Carbon::parse($result->start_date)->format('Y-m-d') }}</td>
                                                 <td>{{ \Carbon\Carbon::parse($result->end_date)->format('Y-m-d') }}</td>
                                             </tr>
@@ -155,7 +155,7 @@
                                     <option value="0">본인 요청으로</option>
                                     @if(ISSET($orgs))
                                         @foreach($orgs as $org)
-                                            <option value="{{ $org->id }}">{{ $org->name }}</option>
+                                            <option value="{{ $org->id }}">{{ \App\Helpers\TranslationHelper::translate($org->name ?? "") }}</option>
                                         @endforeach
                                     @endif
                                 </select>

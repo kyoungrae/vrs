@@ -87,7 +87,7 @@
                                         @if(ISSET($positions))
                                             @foreach($positions as $row)
                                                 <tr>
-                                                    <td>{{ $row->name ?? $row->NAME ?? "" }}</td>
+                                                    <td>{{ \App\Helpers\TranslationHelper::translate($row->name ?? $row->NAME ?? "") }}</td>
                                                     <td>
                                                         <a href="/reference/position/edit/{{ \App\Http\Controllers\BaseController::enc($row->id) }}">
                                                             <i class="typcn typcn-edit text-primary"></i>

@@ -52,10 +52,10 @@
                                     @if(ISSET($towns))
                                         @foreach($towns as $town)
                                             <tr>
-                                                <td>{{ $town->provincename }}</td>
-                                                <td>{{ $town->districtname }}</td>
-                                                <td>{{ $town->districtunitname }}</td>
-                                                <td>{{ $town->townname }}</td>
+                                                <td>{{ \App\Helpers\TranslationHelper::translate($town->provincename ?? "") }}</td>
+                                                <td>{{ \App\Helpers\TranslationHelper::translate($town->districtname ?? "") }}</td>
+                                                <td>{{ \App\Helpers\TranslationHelper::translate($town->districtunitname ?? "") }}</td>
+                                                <td>{{ \App\Helpers\TranslationHelper::translate($town->townname ?? "") }}</td>
                                                 <td>
                                                     <a href="/reference/address/town/edit/{{ \App\Http\Controllers\BaseController::enc($town->id) }}">
                                                         <i class="typcn typcn-edit text-primary"></i>

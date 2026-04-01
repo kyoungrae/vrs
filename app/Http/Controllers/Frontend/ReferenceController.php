@@ -132,15 +132,19 @@ class ReferenceController extends BaseController
                     $oldMainUserPositions = MainUserPositionMenu::where("POSITION_ID", $position)->get();
                     $position_name = MainUserPosition::where("ID", $position)->get()->first()->name;
                     foreach ($oldMainUserPositions as $old){
-                        PositionLog::create([
-                            'Name' => $position_name,
-                            'Action_Id' => $old->action_id,
-                            'Position_Id' => $old->position_id,
-                            'Type_Id' => $old->type_id,
-                            'CREATEDDATE' => $code,
-                            'CreatedBy' => $old->createdby,
-                            'UpdatedBy' => $userPkId
-                        ]);
+                        try {
+                            PositionLog::create([
+                                'Name' => $position_name,
+                                'Action_Id' => $old->ACTION_ID ?? $old->Action_Id ?? $old->action_id,
+                                'Position_Id' => $old->POSITION_ID ?? $old->Position_Id ?? $old->position_id,
+                                'Type_Id' => $old->TYPE_ID ?? $old->Type_Id ?? $old->type_id,
+                                'CreatedDate' => $code, // Changed from CREATEDDATE to match fillable
+                                'CreatedBy' => $old->CREATEDBY ?? $old->CreatedBy ?? $old->createdby,
+                                'UpdatedBy' => $userPkId
+                            ]);
+                        } catch (\Exception $e) {
+                            \Illuminate\Support\Facades\Log::error("PositionLog save failed: " . $e->getMessage());
+                        }
                     }
                     $this->menu($menus, $position, $userPkId, 1);
                     $this->menu($services_action, $position, $userPkId, 2);
@@ -159,12 +163,16 @@ class ReferenceController extends BaseController
                     ]);
                     $message = $this->message("success", "직위(공무)가 성공적으로 등록되었습니다.");
                 }
+                $userMenus = $userMenus->orderBy("ORDR", "ASC")->get();
                 if(session()->get("auth")->userpositionid == 1 || session()->get("auth")->userpositionid == 103){
-                    $positions = MainUserPosition::whereNull("DELETED_AT")->orderBy("CREATEDDATE", "DESC")->get();
+                    $positions = DB::table('SYSTEM_POSITION')->whereNull("DELETED_AT")->orderBy("ID", "DESC")->get();
                 } else {
-                    $positions = MainUserPosition::whereNull("DELETED_AT")->where("ID", "!=", 1)->where("ID", "!=", 103)->orderBy("CREATEDDATE", "DESC")->get();
+                    $positions = DB::table('SYSTEM_POSITION')->whereNull("DELETED_AT")->where("ID", "!=", 1)->where("ID", "!=", 103)->orderBy("ID", "DESC")->get();
                 }
-                return view('System.position', compact('positions', 'message'));
+                if ($env != "") {
+                    $position = MainUserPosition::where("Id", $this->dec($env))->get()->first();
+                }
+                return view('System.position', compact('positions', 'message', 'userMenus', 'services', 'position'));
             } else {
                 $key = $request->route("code");
                 $position = null;

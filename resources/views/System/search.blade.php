@@ -112,10 +112,10 @@
                                                         @endif
                                                         <td>{{ ISSET($vehicle) ? $vehicle->cabin_no : "" }}</td>
                                                         <td>{{ ISSET($vehicle) ? $vehicle->vin_no : "" }}</td>
-                                                        <td>{{ ISSET($vehicle) ? $vehicle->country_name : "" }}</td>
-                                                        <td>{{ ISSET($vehicle) ? $vehicle->mark_name : "" }}</td>
-                                                        <td>{{ ISSET($vehicle) ? $vehicle->model_name : "" }}</td>
-                                                        <td>{{ ISSET($vehicle) ? $vehicle->modificace_name : "" }}</td>
+                                                        <td>{{ ISSET($vehicle) ? \App\Helpers\TranslationHelper::translate($vehicle->country_name ?? "") : "" }}</td>
+                                                        <td>{{ ISSET($vehicle) ? \App\Helpers\TranslationHelper::translate($vehicle->mark_name ?? "") : "" }}</td>
+                                                        <td>{{ ISSET($vehicle) ? \App\Helpers\TranslationHelper::translate($vehicle->model_name ?? "") : "" }}</td>
+                                                        <td>{{ ISSET($vehicle) ? \App\Helpers\TranslationHelper::translate($vehicle->modificace_name ?? "") : "" }}</td>
                                                         <td>{{ ISSET($vehicle) ? \App\Helpers\TranslationHelper::translate($vehicle->color_name ?? "") : "" }}</td>
                                                         <td>{{ ISSET($vehicle) ? $vehicle->build_year : "" }}</td>
                                                         <td>{{ ISSET($vehicle) ? $vehicle->updated_date : "" }}</td>
@@ -125,12 +125,12 @@
                                                         <td>{{ ISSET($vehicle) ? ($vehicle->last_name ?? $vehicle->LAST_NAME ?? $vehicle->LastName ?? "") : "" }}</td>
                                                         <td>{{ ISSET($vehicle) ? ($vehicle->first_name ?? $vehicle->FIRST_NAME ?? $vehicle->FirstName ?? "") : "" }}</td>
                                                         <td>{{ ISSET($vehicle) ? $vehicle->engine_capacity : "" }}</td>
-                                                        <td>{{ ISSET($vehicle) ? $vehicle->purpose_name : "" }}</td>
-                                                        <td>{{ ISSET($vehicle) ? $vehicle->vehicle_type_name : "" }}</td>
-                                                        <td>{{ ISSET($vehicle) ? $vehicle->class_name : "" }}</td>
-                                                        <td>{{ ISSET($vehicle) ? $vehicle->wheel_name : "" }}</td>
+                                                        <td>{{ ISSET($vehicle) ? \App\Helpers\TranslationHelper::translate($vehicle->purpose_name ?? "") : "" }}</td>
+                                                        <td>{{ ISSET($vehicle) ? \App\Helpers\TranslationHelper::translate($vehicle->vehicle_type_name ?? "") : "" }}</td>
+                                                        <td>{{ ISSET($vehicle) ? \App\Helpers\TranslationHelper::translate($vehicle->class_name ?? "") : "" }}</td>
+                                                        <td>{{ ISSET($vehicle) ? \App\Helpers\TranslationHelper::translate($vehicle->wheel_name ?? "") : "" }}</td>
                                                         <td>{{ ISSET($vehicle) ? $vehicle->engine_no : "" }}</td>
-                                                        <td>{{ ISSET($vehicle) ? $vehicle->fuel_name : "" }}</td>
+                                                        <td>{{ ISSET($vehicle) ? \App\Helpers\TranslationHelper::translate($vehicle->fuel_name ?? "") : "" }}</td>
                                                         <td>{{ ISSET($vehicle) ? $vehicle->length : "" }}</td>
                                                         <td>{{ ISSET($vehicle) ? $vehicle->width : "" }}</td>
                                                         <td>{{ ISSET($vehicle) ? $vehicle->height : "" }}</td>
@@ -140,10 +140,10 @@
                                                         <td>{{ ISSET($vehicle) ? \Carbon\Carbon::parse($vehicle->import_date)->format("Y-m-d") : "" }}</td>
                                                         <td>{{ ISSET($vehicle) ? $vehicle->first_archive_no : "" }}</td>
                                                         <td>{{ ISSET($vehicle) ? $vehicle->declaration_no : "" }}</td>
-                                                        <td>{{ ISSET($vehicle) ? $vehicle->status_name : "" }}</td>
-                                                        <td>{{ ISSET($vehicle) ? ($vehicle->owner_country_name ?? $vehicle->OWNER_COUNTRY_NAME ?? $vehicle->OwnerCountryName ?? "") : "" }}</td>
+                                                        <td>{{ ISSET($vehicle) ? \App\Helpers\TranslationHelper::translate($vehicle->status_name ?? "") : "" }}</td>
+                                                        <td>{{ ISSET($vehicle) ? \App\Helpers\TranslationHelper::translate($vehicle->owner_country_name ?? $vehicle->OWNER_COUNTRY_NAME ?? $vehicle->OwnerCountryName ?? "") : "" }}</td>
                                                         <td>{{ ISSET($vehicle) ? $vehicle->register_no : "" }}</td>
-                                                        <td>{{ ISSET($vehicle) ? ($vehicle->owner_type_name ?? $vehicle->OWNER_TYPE_NAME ?? $vehicle->OwnerTypeName ?? "") : "" }}</td>
+                                                        <td>{{ ISSET($vehicle) ? \App\Helpers\TranslationHelper::translate($vehicle->owner_type_name ?? $vehicle->OWNER_TYPE_NAME ?? $vehicle->OwnerTypeName ?? "") : "" }}</td>
                                                         <td>{{ ISSET($vehicle) ? $vehicle->address_detail : "" }}</td>
                                                         <td>{{ ISSET($vehicle) ? $vehicle->owner_homephone : "" }}</td>
                                                         <td>{{ ISSET($vehicle) ? $vehicle->owner_workphone : "" }}</td>
@@ -196,7 +196,7 @@
                                             <option label="선택하세요"></option>
                                             @if(ISSET($purposes))
                                                 @foreach($purposes as $item)
-                                                    <option value="{{ $item->id ?? $item->ID ?? $item->Id }}" {{ isset($purpose) ? (($item->id ?? $item->ID ?? $item->Id) == $purpose ? "selected" : "") : "" }}>{{ $item->name ?? $item->NAME ?? $item->Name }}</option>
+                                                    <option value="{{ $item->id ?? $item->ID ?? $item->Id }}" {{ isset($purpose) ? (($item->id ?? $item->ID ?? $item->Id) == $purpose ? "selected" : "") : "" }}>{{ \App\Helpers\TranslationHelper::translate($item->name ?? $item->NAME ?? $item->Name ?? "") }}</option>
                                                 @endforeach
                                             @endif
                                         </select>
@@ -207,10 +207,11 @@
                                             <option label="선택하세요"></option>
                                             @if(ISSET($wheels))
                                                 @foreach($wheels as $item)
-                                                    <option value="{{ $item->id ?? $item->ID ?? $item->Id }}" {{ isset($wheel) ? (($item->id ?? $item->ID ?? $item->Id) == $wheel ? "selected" : "") : "" }}>{{ $item->name ?? $item->NAME ?? $item->Name }}</option>
+                                                    <option value="{{ $item->id ?? $item->ID ?? $item->Id }}" {{ isset($wheel) ? (($item->id ?? $item->ID ?? $item->Id) == $wheel ? "selected" : "") : "" }}>{{ \App\Helpers\TranslationHelper::translate($item->name ?? $item->NAME ?? $item->Name ?? "") }}</option>
                                                 @endforeach
                                             @endif
                                         </select>
+
                                     </div>
                                 </div>
                                 <div class="row row-xs align-items-center mg-b-5">
@@ -224,7 +225,7 @@
                                             <option label="선택하세요"></option>
                                             @if(ISSET($types))
                                                 @foreach($types as $item)
-                                                    <option value="{{ $item->id ?? $item->ID ?? $item->Id }}" {{ isset($type) ? (($item->id ?? $item->ID ?? $item->Id) == $type ? "selected" : "") : "" }}>{{ $item->name ?? $item->NAME ?? $item->Name }}</option>
+                                                    <option value="{{ $item->id ?? $item->ID ?? $item->Id }}" {{ isset($type) ? (($item->id ?? $item->ID ?? $item->Id) == $type ? "selected" : "") : "" }}>{{ \App\Helpers\TranslationHelper::translate($item->name ?? $item->NAME ?? $item->Name ?? "") }}</option>
                                                 @endforeach
                                             @endif
                                         </select>
@@ -235,7 +236,7 @@
                                             <option label="선택하세요"></option>
                                             @if(ISSET($geerboxs))
                                                 @foreach($geerboxs as $item)
-                                                    <option value="{{ $item->id ?? $item->ID ?? $item->Id }}" {{ isset($steering) ? (($item->id ?? $item->ID ?? $item->Id) == $geerbox ? "selected" : "") : "" }}>{{ $item->name ?? $item->NAME ?? $item->Name }}</option>
+                                                    <option value="{{ $item->id ?? $item->ID ?? $item->Id }}" {{ isset($steering) ? (($item->id ?? $item->ID ?? $item->Id) == $geerbox ? "selected" : "") : "" }}>{{ \App\Helpers\TranslationHelper::translate($item->name ?? $item->NAME ?? $item->Name ?? "") }}</option>
                                                 @endforeach
                                             @endif
                                         </select>
@@ -270,7 +271,7 @@
                                             <option value="" label="선택하세요"></option>
                                             @if(ISSET($countries))
                                                 @foreach($countries as $country)
-                                                    <option value="{{ $country->id ?? $country->ID ?? $country->Id }}" {{ isset($factorycountry) ? (($country->id ?? $country->ID ?? $country->Id) == $factorycountry ? "selected" : "") : "" }}>{{ $country->name ?? $country->NAME ?? $country->Name }}</option>
+                                                    <option value="{{ $country->id ?? $country->ID ?? $country->Id }}" {{ isset($factorycountry) ? (($country->id ?? $country->ID ?? $country->Id) == $factorycountry ? "selected" : "") : "" }}>{{ \App\Helpers\TranslationHelper::translate($country->name ?? $country->NAME ?? $country->Name ?? "") }}</option>
                                                 @endforeach
                                             @endif
                                         </select>
@@ -281,7 +282,7 @@
                                             <option label="선택하세요"></option>
                                             @if(ISSET($gases))
                                                 @foreach($gases as $item)
-                                                    <option value="{{ $item->id ?? $item->ID ?? $item->Id }}" {{ isset($gas) ? (($item->id ?? $item->ID ?? $item->Id) == $gas ? "selected" : "") : "" }}>{{ $item->name ?? $item->NAME ?? $item->Name }}</option>
+                                                    <option value="{{ $item->id ?? $item->ID ?? $item->Id }}" {{ isset($gas) ? (($item->id ?? $item->ID ?? $item->Id) == $gas ? "selected" : "") : "" }}>{{ \App\Helpers\TranslationHelper::translate($item->name ?? $item->NAME ?? $item->Name ?? "") }}</option>
                                                 @endforeach
                                                     <option value="is_hybrid" {{ isset($gas) ? ("is_hybrid" == $gas ? "selected" : "") : "" }}>Hybrid</option>
                                             @endif
@@ -293,7 +294,7 @@
                                             <option label="선택하세요"></option>
                                             @if(ISSET($statuses))
                                                 @foreach($statuses as $item)
-                                                    <option value="{{ $item->id ?? $item->ID ?? $item->Id }}" {{ isset($status) ? (($item->id ?? $item->ID ?? $item->Id) == $status ? "selected" : "") : "" }}>{{ $item->name ?? $item->NAME ?? $item->Name }}</option>
+                                                    <option value="{{ $item->id ?? $item->ID ?? $item->Id }}" {{ isset($status) ? (($item->id ?? $item->ID ?? $item->Id) == $status ? "selected" : "") : "" }}>{{ \App\Helpers\TranslationHelper::translate($item->name ?? $item->NAME ?? $item->Name ?? "") }}</option>
                                                 @endforeach
                                             @endif
                                         </select>
@@ -354,7 +355,7 @@
                                             <option label="선택하세요"></option>
                                             @if(ISSET($limits))
                                                 @foreach($limits as $item)
-                                                    <option value="{{ $item->id ?? $item->ID ?? $item->Id }}" {{ isset($limit) ? (($item->id ?? $item->ID ?? $item->Id) == $limit ? "selected" : "") : "" }}>{{ $item->name ?? $item->NAME ?? $item->Name }}</option>
+                                                    <option value="{{ $item->id ?? $item->ID ?? $item->Id }}" {{ isset($limit) ? (($item->id ?? $item->ID ?? $item->Id) == $limit ? "selected" : "") : "" }}>{{ \App\Helpers\TranslationHelper::translate($item->name ?? $item->NAME ?? $item->Name ?? "") }}</option>
                                                 @endforeach
                                             @endif
                                         </select>
@@ -371,7 +372,7 @@
                                             <option label="선택하세요"></option>
                                             @if(ISSET($countries))
                                                 @foreach($countries as $item)
-                                                    <option value="{{ $item->id ?? $item->ID ?? $item->Id }}" {{ isset($region) ? (($item->id ?? $item->ID ?? $item->Id) == $region ? "selected" : "") : "" }}>{{ $item->name ?? $item->NAME ?? $item->Name }}</option>
+                                                    <option value="{{ $item->id ?? $item->ID ?? $item->Id }}" {{ isset($region) ? (($item->id ?? $item->ID ?? $item->Id) == $region ? "selected" : "") : "" }}{{ isset($region) ? (($item->id ?? $item->ID ?? $item->Id) == $region ? "selected" : "") : "" }}>{{ \App\Helpers\TranslationHelper::translate($item->name ?? $item->NAME ?? $item->Name ?? "") }}</option>
                                                 @endforeach
                                             @endif
                                         </select>
@@ -382,7 +383,7 @@
                                             <option label="선택하세요"></option>
                                             @if(ISSET($districts))
                                                 @foreach($districts as $item)
-                                                    <option value="{{ $item->id }}" {{ isset($district) ? ($item->id == $district ? "selected" : "") : "" }}>{{ $item->name }}</option>
+                                                    <option value="{{ $item->id }}" {{ isset($district) ? ($item->id == $district ? "selected" : "") : "" }}>{{ \App\Helpers\TranslationHelper::translate($item->name ?? "") }}</option>
                                                 @endforeach
                                             @endif
                                         </select>
@@ -403,7 +404,7 @@
                                             <option label="선택하세요"></option>
                                             @if(ISSET($owner_types))
                                                 @foreach($owner_types as $item)
-                                                    <option value="{{ $item->id }}" {{ isset($owner_type) ? ($item->id == $owner_type ? "selected" : "") : "" }}>{{ $item->name }}</option>
+                                                    <option value="{{ $item->id }}" {{ isset($owner_type) ? ($item->id == $owner_type ? "selected" : "") : "" }}>{{ \App\Helpers\TranslationHelper::translate($item->name ?? "") }}</option>
                                                 @endforeach
                                             @endif
                                         </select>
