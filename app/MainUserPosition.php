@@ -4,10 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Traits\Translatable;
 
 class MainUserPosition extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, Translatable;
     /**
      * Устгасан үеийн огноог авна
      * @var array

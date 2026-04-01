@@ -116,7 +116,7 @@
                                                         <td>{{ ISSET($vehicle) ? $vehicle->mark_name : "" }}</td>
                                                         <td>{{ ISSET($vehicle) ? $vehicle->model_name : "" }}</td>
                                                         <td>{{ ISSET($vehicle) ? $vehicle->modificace_name : "" }}</td>
-                                                        <td>{{ ISSET($vehicle) ? $vehicle->color_name : "" }}</td>
+                                                        <td>{{ ISSET($vehicle) ? \App\Helpers\TranslationHelper::translate($vehicle->color_name ?? "") : "" }}</td>
                                                         <td>{{ ISSET($vehicle) ? $vehicle->build_year : "" }}</td>
                                                         <td>{{ ISSET($vehicle) ? $vehicle->updated_date : "" }}</td>
                                                         <td>{{ ISSET($vehicle) ? $vehicle->start_date : "" }}</td>
@@ -188,7 +188,7 @@
                                         <label class="form-label mg-b-0">차량 번호</label>
                                         <input type="number" id="is_excel_id" name="is_excel" value="0" style="display: none;">
                                         <input type="text" id="excel_columns_id" name="excel_columns" value="" style="display: none;"/>
-                                        <input type="text" id="number" name="number" value="{{ isset($plate_no) ? $plate_no : "" }}" class="form-control number" oninput="translate2MGL(this.value)" autocomplete="off">
+                                        <input type="text" id="number" name="number" value="{{ isset($plate_no) ? $plate_no : "0373УНГ" }}" class="form-control number" oninput="translate2MGL(this.value)" autocomplete="off">
                                     </div>
                                     <div class="col-lg-4 col-md-12 col-sm-12">
                                         <label class="form-label mg-b-0">용도</label>

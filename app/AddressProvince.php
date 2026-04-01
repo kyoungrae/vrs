@@ -3,9 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\Translatable;
 
 class AddressProvince extends Model
 {
+    use Translatable;
     /**
      * Устгасан үеийн огноог авна
      * @var array
