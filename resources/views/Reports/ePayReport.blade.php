@@ -30,7 +30,7 @@
                         <h6 class="card-title">
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12">
-                                    전체 담당자 보고서 ТӨЛБӨР ТООЦОО
+                                    전체 담당자 보고서 {{ \App\Helpers\TranslationHelper::translate("ТӨЛБӨР ТООЦОО") }}
                                 </div>
                             </div>
                         </h6>

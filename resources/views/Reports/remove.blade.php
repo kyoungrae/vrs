@@ -30,7 +30,7 @@
                         <h6 class="card-title">
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12">
-                                    ХАСАГДСАН ТЭЭВРИЙН ХЭРЭГСЛИЙН ТАЙЛАН
+                                    {{ \App\Helpers\TranslationHelper::translate("ХАСАГДСАН ТЭЭВРИЙН ХЭРЭГСЛИЙН ТАЙЛАН") }}
                                 </div>
                             </div>
                         </h6>
@@ -80,7 +80,7 @@
                                     <tr style="text-align: center;">
                                         <th>№</th>
                                         <th>일자</th>
-                                        <th>말소ын 번호</th>
+                                        <th>{{ \App\Helpers\TranslationHelper::translate("말소ын 번호") }}</th>
                                         <th>브랜드</th>
                                         <th>모델</th>
                                         <th>차체번호</th>
@@ -94,8 +94,8 @@
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ \Carbon\Carbon::parse($result->updated_date)->format("Y-m-d H:i:s") }}</td>
                                                 <td>{{ $result->plate_no }}</td>
-                                                <td>{{ $result->mark_name }}</td>
-                                                <td>{{ $result->model_name }}</td>
+                                                <td>{{ \App\Helpers\TranslationHelper::translate($result->mark_name ?? "") }}</td>
+                                                <td>{{ \App\Helpers\TranslationHelper::translate($result->model_name ?? "") }}</td>
                                                 <td>{{ $result->cabin_no }}</td>
                                                 <td>{{ $result->firstname." - ".$result->lastname }}</td>
                                             </tr>

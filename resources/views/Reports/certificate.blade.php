@@ -30,7 +30,7 @@
                         <h6 class="card-title">
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12">
-                                    ГЭРЧИЛГЭЭНИЙ ТАЙЛАН
+                                    {{ \App\Helpers\TranslationHelper::translate("ГЭРЧИЛГЭЭНИЙ ТАЙЛАН") }}
                                 </div>
                             </div>
                         </h6>
@@ -173,7 +173,7 @@
         $( "#end" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
 
         $('.select2').select2({
-            placeholder: 'Сонгоно уу'
+            placeholder: '{{ \App\Helpers\TranslationHelper::translate("Сонгоно уу") }}'
         });
 
         //화면 크기 관련 스크립트

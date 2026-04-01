@@ -34,7 +34,7 @@
                         <h6 class="card-title">
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12">
-                                    차량 -ИЙН ЛАВЛАГАА ЭЗЭМШИГЧЭЭР
+                                    {{ \App\Helpers\TranslationHelper::translate("차량 -ИЙН ЛАВЛАГАА ЭЗЭМШИГЧЭЭР") }}
                                 </div>
                             </div>
                         </h6>
@@ -66,7 +66,7 @@
                                         <div class="col-3">
                                             <div class="row row-xs align-items-center mg-b-5">
                                                 <div class="col-lg-4 col-md-12 col-sm-12">
-                                                    <label class="form-label mg-b-0">Регистр</label>
+                                                    <label class="form-label mg-b-0">{{ \App\Helpers\TranslationHelper::translate("Регистр") }}</label>
                                                 </div>
                                                 <div class="col-lg-8 col-md-12 col-sm-12">
                                                     <input id="reg" name="register" oninput="translate2MGL(this.value)" type="text" value="{{ isset($register) ? $register : "" }}" class="form-control" autocomplete="off">
@@ -111,11 +111,11 @@
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $result->plate_no }}</td>
-                                                <td>{{ $result->mark_name }}</td>
-                                                <td>{{ $result->model_name }}</td>
+                                                <td>{{ \App\Helpers\TranslationHelper::translate($result->mark_name ?? "") }}</td>
+                                                <td>{{ \App\Helpers\TranslationHelper::translate($result->model_name ?? "") }}</td>
                                                 <td>{{ $result->cabin_no }}</td>
                                                 <td>{{ $result->certificate_no }}</td>
-                                                <td>{{ $result->color_name }}</td>
+                                                <td>{{ \App\Helpers\TranslationHelper::translate($result->color_name ?? "") }}</td>
                                             </tr>
                                         @endforeach
                                     @endif
@@ -159,7 +159,7 @@
                                     <option value="0">본인 요청으로</option>
                                     @if(ISSET($orgs))
                                         @foreach($orgs as $org)
-                                            <option value="{{ $org->id }}">{{ $org->name }}</option>
+                                            <option value="{{ $org->id }}">{{ \App\Helpers\TranslationHelper::translate($org->name ?? "") }}</option>
                                         @endforeach
                                     @endif
                                 </select>
