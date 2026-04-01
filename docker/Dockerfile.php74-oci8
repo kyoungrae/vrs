@@ -1,0 +1,31 @@
+# PHP 7.4 CLI with oci8 for Laravel 5.5 + yajra/laravel-oci8
+# Build: docker build -f docker/Dockerfile.php74-oci8 -t vrs-php74-oci8 .
+# Run:   docker compose --profile app up app  (see docker-compose.dev.yml)
+#
+# linux/amd64: oci8 pecl build needs x64 Instant Client; Apple Silicon Docker defaults to arm64.
+
+FROM --platform=linux/amd64 php:7.4-cli-bullseye
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    unzip \
+    libaio1 \
+    && mkdir -p /opt/oracle \
+    && cd /opt/oracle \
+    && curl -fsSL -o basic.zip \
+      https://download.oracle.com/otn_software/linux/instantclient/211000/instantclient-basiclite-linux.x64-21.1.0.0.0.zip \
+    && curl -fsSL -o sdk.zip \
+      https://download.oracle.com/otn_software/linux/instantclient/211000/instantclient-sdk-linux.x64-21.1.0.0.0.zip \
+    && unzip -q basic.zip \
+    && unzip -q sdk.zip \
+    && rm basic.zip sdk.zip \
+    && echo /opt/oracle/instantclient_21_1 > /etc/ld.so.conf.d/oracle-instantclient.conf \
+    && ldconfig \
+    && docker-php-ext-configure oci8 --with-oci8=instantclient,/opt/oracle/instantclient_21_1 \
+    && docker-php-ext-install -j$(nproc) oci8 \
+    && apt-get purge -y unzip \
+    && apt-get autoremove -y \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN docker-php-ext-install -j$(nproc) bcmath
+
+WORKDIR /var/www/html

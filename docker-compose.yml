@@ -1,0 +1,20 @@
+# Laravel 5.5 + Oracle (remote 192.168.0.140:11521/orcl)
+# Start:  docker compose up -d
+# Stop:   docker compose down
+
+services:
+  app:
+    image: adrianharabula/php7-with-oci8
+    container_name: laravel-vrs
+    ports:
+      - "8000:8000"
+    command: >
+      sh -c "curl -sS https://getcomposer.org/installer | php -- --1 --install-dir=/usr/local/bin --filename=composer
+      && composer install --no-interaction
+      && php artisan serve --host=0.0.0.0 --port=8000"
+    volumes:
+      - .:/var/www/html
+    env_file:
+      - .env
+    working_dir: /var/www/html
+    restart: unless-stopped

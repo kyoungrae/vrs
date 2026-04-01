@@ -1,0 +1,116 @@
+/**
+ * Login page only — avoids loading vrs.css (top @import fonts.googleapis.com blocks render
+ * when Google Fonts is slow/unreachable; looks like infinite "Waiting for …").
+ */
+html {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.az-body,
+.az-dashboard {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: relative;
+}
+
+/* ###### Signin (from vrs.css 7.8) ###### */
+.az-signin-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.az-card-signin {
+  height: 560px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+@media (min-width: 480px) {
+  .az-card-signin {
+    border: 1px solid #ced4da;
+    width: 360px;
+    padding: 30px 35px;
+  }
+}
+
+.az-signin-header h2 {
+  font-weight: 500;
+  color: #0062cb;
+  letter-spacing: -1px;
+}
+
+.az-signin-header h4 {
+  font-weight: 400;
+  color: #212229;
+  margin-bottom: 25px;
+}
+
+.az-signin-header label {
+  color: #70737c;
+}
+
+.az-signin-header .form-control {
+  color: #212229;
+  font-weight: 500;
+  border-width: 2px;
+  border-color: #dee2e6;
+}
+.az-signin-header .form-control:focus {
+  border-color: #ced4da;
+  box-shadow: none;
+}
+.az-signin-header .form-control::placeholder {
+  font-weight: 400;
+  color: #969dab;
+}
+
+.az-signin-header .btn {
+  margin-top: 25px;
+}
+
+/* Buttons 5.1 */
+.btn-az-primary {
+  color: #fff;
+  background-color: #0062cb;
+  border-color: #5b0cdd;
+}
+.btn-az-primary:hover {
+  color: #fff;
+  background-color: #0456ae;
+  border-color: #4709ac;
+}
+.btn-az-primary:focus, .btn-az-primary.focus {
+  box-shadow: 0 0 0 0.2rem rgba(91, 12, 221, 0.5);
+}
+.btn-az-primary.disabled, .btn-az-primary:disabled {
+  color: #fff;
+  background-color: #0062cb;
+  border-color: #5b0cdd;
+}
+
+/* Message alerts (System/message.blade.php) */
+[class*="alert-outline-"] {
+  border: 1px solid transparent;
+}
+.alert-outline-success {
+  border-color: #65fe19;
+  color: #3bb001;
+}
+.alert-outline-info {
+  border-color: #1ab6cf;
+  color: #17a2b8;
+}
+.alert-outline-warning {
+  border-color: #ffdb6d;
+  color: #d39e00;
+}
+.alert-outline-danger {
+  border-color: #eb8c95;
+  color: #bd2130;
+}

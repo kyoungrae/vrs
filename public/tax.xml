@@ -1,0 +1,862 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://tax.xyp.gov.mn/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="TaxServiceService" targetNamespace="http://tax.xyp.gov.mn/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tax.xyp.gov.mn/" elementFormDefault="unqualified" targetNamespace="http://tax.xyp.gov.mn/" version="1.0">
+
+  <xs:element name="WS100609_getVehiclePaidTaxHistory" type="tns:WS100609_getVehiclePaidTaxHistory"/>
+
+  <xs:element name="WS100609_getVehiclePaidTaxHistoryResponse" type="tns:WS100609_getVehiclePaidTaxHistoryResponse"/>
+
+  <xs:element name="WS100622_getIndividualInfo" type="tns:WS100622_getIndividualInfo"/>
+
+  <xs:element name="WS100622_getIndividualInfoResponse" type="tns:WS100622_getIndividualInfoResponse"/>
+
+  <xs:element name="WS100623_getTenderInfo" type="tns:WS100623_getTenderInfo"/>
+
+  <xs:element name="WS100623_getTenderInfoResponse" type="tns:WS100623_getTenderInfoResponse"/>
+
+  <xs:element name="WS100624_getOrganizationInfo" type="tns:WS100624_getOrganizationInfo"/>
+
+  <xs:element name="WS100624_getOrganizationInfoResponse" type="tns:WS100624_getOrganizationInfoResponse"/>
+
+  <xs:element name="WS100625_citizenTaxReportInfo" type="tns:WS100625_citizenTaxReportInfo"/>
+
+  <xs:element name="WS100625_citizenTaxReportInfoResponse" type="tns:WS100625_citizenTaxReportInfoResponse"/>
+
+  <xs:element name="WS100626_legalEntityTaxReportInfo" type="tns:WS100626_legalEntityTaxReportInfo"/>
+
+  <xs:element name="WS100626_legalEntityTaxReportInfoResponse" type="tns:WS100626_legalEntityTaxReportInfoResponse"/>
+
+  <xs:element name="WS100627_licensingInfo" type="tns:WS100627_licensingInfo"/>
+
+  <xs:element name="WS100627_licensingInfoResponse" type="tns:WS100627_licensingInfoResponse"/>
+
+  <xs:element name="WS100628_tradeInfo" type="tns:WS100628_tradeInfo"/>
+
+  <xs:element name="WS100628_tradeInfoResponse" type="tns:WS100628_tradeInfoResponse"/>
+
+  <xs:element name="WS100629_thanksToTaxpayersService" type="tns:WS100629_thanksToTaxpayersService"/>
+
+  <xs:element name="WS100629_thanksToTaxpayersServiceResponse" type="tns:WS100629_thanksToTaxpayersServiceResponse"/>
+
+  <xs:complexType name="WS100609_getVehiclePaidTaxHistory">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="tns:serviceVehiclePaidTaxHistoryRequestData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="serviceVehiclePaidTaxHistoryRequestData">
+    <xs:complexContent>
+      <xs:extension base="tns:serviceRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="plateNumber" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="serviceRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="auth" type="tns:authorizationData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="authorizationData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="citizen" type="tns:authorizationEntity"/>
+      <xs:element minOccurs="0" name="operator" type="tns:authorizationEntity"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="authorizationEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="certFingerprint" type="xs:string"/>
+      <xs:element minOccurs="0" name="civilId" type="xs:string"/>
+      <xs:element minOccurs="0" name="fingerprint" type="xs:base64Binary"/>
+      <xs:element minOccurs="0" name="regnum" type="xs:string"/>
+      <xs:element minOccurs="0" name="signature" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100609_getVehiclePaidTaxHistoryResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="serviceResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="xs:anyType"/>
+      <xs:element minOccurs="0" name="requestId" type="xs:string"/>
+      <xs:element minOccurs="0" name="response" type="xs:anyType"/>
+      <xs:element name="resultCode" type="xs:int"/>
+      <xs:element minOccurs="0" name="resultMessage" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="vehiclePaidTaxHistoryData">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="listData" nillable="true" type="tns:vehiclePaidTaxHistoryDetailData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="vehiclePaidTaxHistoryDetailData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="airPollAmount" type="xs:string"/>
+      <xs:element minOccurs="0" name="aptConfirmed" type="xs:string"/>
+      <xs:element minOccurs="0" name="ataxConfirmed" type="xs:string"/>
+      <xs:element minOccurs="0" name="ataxId" type="xs:string"/>
+      <xs:element minOccurs="0" name="attsEpaymentChange" type="xs:string"/>
+      <xs:element minOccurs="0" name="paidAirPollAmount" type="xs:string"/>
+      <xs:element minOccurs="0" name="paidDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="paidTaxAmount" type="xs:string"/>
+      <xs:element minOccurs="0" name="paidTrafficAmount" type="xs:string"/>
+      <xs:element minOccurs="0" name="plateNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="taxAmount" type="xs:string"/>
+      <xs:element minOccurs="0" name="trafficAmount" type="xs:string"/>
+      <xs:element minOccurs="0" name="year" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100628_tradeInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="tns:licensingInfoRequestData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="licensingInfoRequestData">
+    <xs:complexContent>
+      <xs:extension base="tns:serviceRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="month" type="xs:string"/>
+          <xs:element minOccurs="0" name="orgRegnum" type="xs:string"/>
+          <xs:element minOccurs="0" name="year" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="WS100628_tradeInfoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="tradeInfoData">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="listData" nillable="true" type="tns:tradeInfoDetailData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="tradeInfoDetailData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="address" type="xs:string"/>
+      <xs:element minOccurs="0" name="contractStatus" type="xs:string"/>
+      <xs:element minOccurs="0" name="directorName" type="xs:string"/>
+      <xs:element minOccurs="0" name="directorRegnum" type="xs:string"/>
+      <xs:element minOccurs="0" name="entityName" type="xs:string"/>
+      <xs:element minOccurs="0" name="founderName" type="xs:string"/>
+      <xs:element minOccurs="0" name="founderRegnum" type="xs:string"/>
+      <xs:element minOccurs="0" name="id" type="xs:string"/>
+      <xs:element minOccurs="0" name="lastname" type="xs:string"/>
+      <xs:element name="locationLat" type="xs:int"/>
+      <xs:element name="locationLng" type="xs:int"/>
+      <xs:element minOccurs="0" name="operationCourse" type="xs:string"/>
+      <xs:element minOccurs="0" name="operationStatus" type="xs:string"/>
+      <xs:element minOccurs="0" name="operationType" type="xs:string"/>
+      <xs:element minOccurs="0" name="orgRegnum" type="xs:string"/>
+      <xs:element minOccurs="0" name="tradeContractDate" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="tradeContractEndDate" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="tradeContractOrganization" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100629_thanksToTaxpayersService">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="tns:thanksToTaxpayersRequestData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="thanksToTaxpayersRequestData">
+    <xs:complexContent>
+      <xs:extension base="tns:serviceRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="regnum" type="xs:string"/>
+          <xs:element name="year" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="WS100629_thanksToTaxpayersServiceResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="thanksToTaxpayersData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="regnum" type="xs:string"/>
+      <xs:element minOccurs="0" name="total" type="xs:string"/>
+      <xs:element minOccurs="0" name="year" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100623_getTenderInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="tns:tenderInfoRequestData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="tenderInfoRequestData">
+    <xs:complexContent>
+      <xs:extension base="tns:serviceRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="companyRegnum" type="xs:string"/>
+          <xs:element minOccurs="0" name="tenderName" type="xs:string"/>
+          <xs:element minOccurs="0" name="tenderNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="usage" type="xs:string"/>
+          <xs:element minOccurs="0" name="year" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="WS100623_getTenderInfoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="tenderInfoData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="callDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="callNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="companyRegnum" type="xs:string"/>
+      <xs:element minOccurs="0" name="ebarimt" type="tns:tenderEbarimt"/>
+      <xs:element minOccurs="0" name="endDate" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="listDebts" nillable="true" type="tns:tenderDebt"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="listIncomes" nillable="true" type="tns:tenderIncomes"/>
+      <xs:element minOccurs="0" name="tenderName" type="xs:string"/>
+      <xs:element minOccurs="0" name="tenderNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="tpInfo" type="tns:tenderTpInfo"/>
+      <xs:element minOccurs="0" name="usage" type="xs:string"/>
+      <xs:element minOccurs="0" name="year" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="tenderEbarimt">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="connectedDate" type="xs:string"/>
+      <xs:element name="isConnected" type="xs:int"/>
+      <xs:element minOccurs="0" name="lastSendDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="prYear" type="xs:string"/>
+      <xs:element name="receiptSendState" type="xs:int"/>
+      <xs:element minOccurs="0" name="receiptSendStateName" type="xs:string"/>
+      <xs:element minOccurs="0" name="regNo" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="tenderDebt">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="branchName" type="xs:string"/>
+      <xs:element name="c2Debit" type="xs:double"/>
+      <xs:element minOccurs="0" name="taxTypeName" type="xs:string"/>
+      <xs:element name="year" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="tenderIncomes">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="incomeAmount" type="xs:string"/>
+      <xs:element minOccurs="0" name="incomeYear" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="tenderTpInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="addressInfo" type="xs:string"/>
+      <xs:element minOccurs="0" name="companyRegDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="companyRegnum" type="xs:string"/>
+      <xs:element minOccurs="0" name="entStatus" type="xs:string"/>
+      <xs:element name="entType" type="xs:int"/>
+      <xs:element name="id" type="xs:int"/>
+      <xs:element name="legalGroupType" type="xs:int"/>
+      <xs:element minOccurs="0" name="legalStatusName" type="xs:string"/>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="ownerName" type="xs:string"/>
+      <xs:element minOccurs="0" name="refEntStatus" type="tns:tenderRefEntStatus"/>
+      <xs:element minOccurs="0" name="tin" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="tenderRefEntStatus">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="activityData" type="xs:string"/>
+      <xs:element minOccurs="0" name="activityStatus" type="xs:string"/>
+      <xs:element minOccurs="0" name="code" type="xs:string"/>
+      <xs:element minOccurs="0" name="effectiveDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="expiryDate" type="xs:string"/>
+      <xs:element name="id" type="xs:int"/>
+      <xs:element name="isTaxType" type="xs:int"/>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element name="status" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100627_licensingInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="tns:licensingInfoRequestData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100627_licensingInfoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="licensingInfoData">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="listData" nillable="true" type="tns:licensingInfoDetailData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="licensingInfoDetailData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="address" type="xs:string"/>
+      <xs:element minOccurs="0" name="alcoholEndDate" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="alcoholOrganization" type="xs:string"/>
+      <xs:element name="alcoholPermission" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="alcoholStartDate" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="contractStatus" type="xs:string"/>
+      <xs:element minOccurs="0" name="directorName" type="xs:string"/>
+      <xs:element minOccurs="0" name="directorRegnum" type="xs:string"/>
+      <xs:element minOccurs="0" name="founderName" type="xs:string"/>
+      <xs:element minOccurs="0" name="founderRegnum" type="xs:string"/>
+      <xs:element minOccurs="0" name="id" type="xs:string"/>
+      <xs:element minOccurs="0" name="lastname" type="xs:string"/>
+      <xs:element name="locationLat" type="xs:int"/>
+      <xs:element name="locationLng" type="xs:int"/>
+      <xs:element minOccurs="0" name="operationCourse" type="xs:string"/>
+      <xs:element minOccurs="0" name="operationStatus" type="xs:string"/>
+      <xs:element minOccurs="0" name="orgRegnum" type="xs:string"/>
+      <xs:element minOccurs="0" name="tobaccoEndDate" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="tobaccoOrganization" type="xs:string"/>
+      <xs:element name="tobaccoPermission" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="tobaccoStartDate" type="xs:dateTime"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100625_citizenTaxReportInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="tns:taxReportRequestData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="taxReportRequestData">
+    <xs:complexContent>
+      <xs:extension base="tns:serviceRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="agreementDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="agreementNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="entityName" type="xs:string"/>
+          <xs:element minOccurs="0" name="firstname" type="xs:string"/>
+          <xs:element minOccurs="0" name="lastname" type="xs:string"/>
+          <xs:element minOccurs="0" name="officeName" type="xs:string"/>
+          <xs:element name="periodYear" type="xs:int"/>
+          <xs:element minOccurs="0" name="phoneNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="pin" type="xs:string"/>
+          <xs:element minOccurs="0" name="regnum" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="WS100625_citizenTaxReportInfoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="citizenTaxReportData">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="listData" nillable="true" type="tns:citizenTaxReportDetailData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="citizenTaxReportDetailData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="nameData" type="xs:string"/>
+      <xs:element minOccurs="0" name="processIncome" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="regnum" type="xs:string"/>
+      <xs:element minOccurs="0" name="taxIncome" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="totalCost" type="xs:decimal"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100622_getIndividualInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="tns:serviceIndividualInfoRequestData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="serviceIndividualInfoRequestData">
+    <xs:complexContent>
+      <xs:extension base="tns:serviceRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="forUsage" type="xs:string"/>
+          <xs:element minOccurs="0" name="regnum" type="xs:string"/>
+          <xs:element minOccurs="0" name="usage" type="xs:string"/>
+          <xs:element name="year" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="WS100622_getIndividualInfoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="individualInfoData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="address" type="xs:string"/>
+      <xs:element minOccurs="0" name="callDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="callNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="ebarimt" type="tns:individualEbarimt"/>
+      <xs:element minOccurs="0" name="endDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="forUsage" type="xs:string"/>
+      <xs:element minOccurs="0" name="fullName" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="listDebt" nillable="true" type="tns:individualDebt"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="listPayment" nillable="true" type="tns:individualPayment"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="listReturn" nillable="true" type="tns:individualReturn"/>
+      <xs:element minOccurs="0" name="regnum" type="xs:string"/>
+      <xs:element minOccurs="0" name="usage" type="xs:string"/>
+      <xs:element minOccurs="0" name="year" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="individualEbarimt">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="connectedDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="isConnected" type="xs:string"/>
+      <xs:element minOccurs="0" name="lastSendDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="prYear" type="xs:string"/>
+      <xs:element minOccurs="0" name="receiptSendState" type="xs:string"/>
+      <xs:element minOccurs="0" name="receiptSendStateName" type="xs:string"/>
+      <xs:element minOccurs="0" name="regno" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="individualDebt">
+    <xs:sequence>
+      <xs:element name="accountId" type="xs:int"/>
+      <xs:element minOccurs="0" name="branchName" type="xs:string"/>
+      <xs:element name="c2Credit" type="xs:double"/>
+      <xs:element name="c2Debit" type="xs:int"/>
+      <xs:element name="entId" type="xs:int"/>
+      <xs:element name="payable" type="xs:int"/>
+      <xs:element name="periodId" type="xs:int"/>
+      <xs:element minOccurs="0" name="periodName" type="xs:string"/>
+      <xs:element name="prevC2Credit" type="xs:double"/>
+      <xs:element name="prevC2Debit" type="xs:int"/>
+      <xs:element name="refund" type="xs:int"/>
+      <xs:element minOccurs="0" name="taxTypeName" type="xs:string"/>
+      <xs:element name="year" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="individualPayment">
+    <xs:sequence>
+      <xs:element name="amount" type="xs:int"/>
+      <xs:element minOccurs="0" name="officeName" type="xs:string"/>
+      <xs:element name="periodId" type="xs:int"/>
+      <xs:element minOccurs="0" name="periodType" type="xs:string"/>
+      <xs:element minOccurs="0" name="taxtypeName" type="xs:string"/>
+      <xs:element name="tranYear" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="individualReturn">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="period" type="xs:string"/>
+      <xs:element minOccurs="0" name="returnPeriod" type="xs:string"/>
+      <xs:element minOccurs="0" name="returnSubmitted" type="xs:string"/>
+      <xs:element minOccurs="0" name="returnType" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100624_getOrganizationInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="tns:serviceOrganizationInfoRequestData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="serviceOrganizationInfoRequestData">
+    <xs:complexContent>
+      <xs:extension base="tns:serviceRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="companyRegnum" type="xs:string"/>
+          <xs:element minOccurs="0" name="forUsage" type="xs:string"/>
+          <xs:element minOccurs="0" name="usage" type="xs:string"/>
+          <xs:element name="year" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="WS100624_getOrganizationInfoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="organizationInfoData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="callDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="callNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="companyRegnum" type="xs:string"/>
+      <xs:element minOccurs="0" name="ebarimt" type="tns:organizationEbarimt"/>
+      <xs:element minOccurs="0" name="endDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="forUsage" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="listDebt" nillable="true" type="tns:organizationDebt"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="listPayment" nillable="true" type="tns:organizationPayment"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="listReturn" nillable="true" type="tns:organizationReturn"/>
+      <xs:element minOccurs="0" name="tpInfo" type="tns:organizationTpInfo"/>
+      <xs:element minOccurs="0" name="usage" type="xs:string"/>
+      <xs:element minOccurs="0" name="year" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="organizationEbarimt">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="connectedDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="isConnected" type="xs:string"/>
+      <xs:element minOccurs="0" name="lastSendDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="prYear" type="xs:string"/>
+      <xs:element minOccurs="0" name="receiptSendState" type="xs:string"/>
+      <xs:element minOccurs="0" name="receiptSendStateName" type="xs:string"/>
+      <xs:element minOccurs="0" name="regno" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="organizationDebt">
+    <xs:sequence>
+      <xs:element name="accountId" type="xs:int"/>
+      <xs:element minOccurs="0" name="branchName" type="xs:string"/>
+      <xs:element name="c2Credit" type="xs:double"/>
+      <xs:element name="c2Debit" type="xs:int"/>
+      <xs:element name="entId" type="xs:int"/>
+      <xs:element name="payable" type="xs:int"/>
+      <xs:element name="periodId" type="xs:int"/>
+      <xs:element minOccurs="0" name="periodName" type="xs:string"/>
+      <xs:element name="prevC2Credit" type="xs:double"/>
+      <xs:element name="prevC2Debit" type="xs:int"/>
+      <xs:element name="refund" type="xs:int"/>
+      <xs:element minOccurs="0" name="taxTypeName" type="xs:string"/>
+      <xs:element name="year" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="organizationPayment">
+    <xs:sequence>
+      <xs:element name="amount" type="xs:int"/>
+      <xs:element minOccurs="0" name="officeName" type="xs:string"/>
+      <xs:element name="periodId" type="xs:int"/>
+      <xs:element minOccurs="0" name="periodType" type="xs:string"/>
+      <xs:element minOccurs="0" name="taxtypeName" type="xs:string"/>
+      <xs:element name="tranYear" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="organizationReturn">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="period" type="xs:string"/>
+      <xs:element minOccurs="0" name="returnPeriod" type="xs:string"/>
+      <xs:element minOccurs="0" name="returnSubmitted" type="xs:string"/>
+      <xs:element minOccurs="0" name="returnType" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="organizationTpInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="addressInfo" type="xs:string"/>
+      <xs:element minOccurs="0" name="companyRegDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="companyRegnum" type="xs:string"/>
+      <xs:element minOccurs="0" name="entStatus" type="xs:string"/>
+      <xs:element name="entType" type="xs:int"/>
+      <xs:element name="id" type="xs:int"/>
+      <xs:element name="legalGroupType" type="xs:int"/>
+      <xs:element minOccurs="0" name="legalStatusName" type="xs:string"/>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="ownerName" type="xs:string"/>
+      <xs:element minOccurs="0" name="refEntStatus" type="tns:organizationRefEntStatus"/>
+      <xs:element minOccurs="0" name="tin" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="organizationRefEntStatus">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="activityData" type="xs:string"/>
+      <xs:element minOccurs="0" name="activityStatus" type="xs:string"/>
+      <xs:element minOccurs="0" name="code" type="xs:string"/>
+      <xs:element minOccurs="0" name="effectiveDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="expiryDate" type="xs:string"/>
+      <xs:element name="id" type="xs:int"/>
+      <xs:element name="isTaxType" type="xs:int"/>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element name="status" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100626_legalEntityTaxReportInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="tns:taxReportRequestData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100626_legalEntityTaxReportInfoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="legalEntityTaxReportData">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="listData" nillable="true" type="tns:legalEntityTaxReportDetailData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="legalEntityTaxReportDetailData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="companyName" type="xs:string"/>
+      <xs:element minOccurs="0" name="companyRegnum" type="xs:string"/>
+      <xs:element minOccurs="0" name="controlProductCost" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="notMainCost" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="productCost" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="salesIncome" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="taxBefProfit" type="xs:decimal"/>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="WS100625_citizenTaxReportInfoResponse">
+    <wsdl:part element="tns:WS100625_citizenTaxReportInfoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100628_tradeInfo">
+    <wsdl:part element="tns:WS100628_tradeInfo" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100629_thanksToTaxpayersService">
+    <wsdl:part element="tns:WS100629_thanksToTaxpayersService" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100623_getTenderInfo">
+    <wsdl:part element="tns:WS100623_getTenderInfo" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100627_licensingInfo">
+    <wsdl:part element="tns:WS100627_licensingInfo" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100628_tradeInfoResponse">
+    <wsdl:part element="tns:WS100628_tradeInfoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100624_getOrganizationInfo">
+    <wsdl:part element="tns:WS100624_getOrganizationInfo" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100623_getTenderInfoResponse">
+    <wsdl:part element="tns:WS100623_getTenderInfoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100609_getVehiclePaidTaxHistory">
+    <wsdl:part element="tns:WS100609_getVehiclePaidTaxHistory" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100622_getIndividualInfoResponse">
+    <wsdl:part element="tns:WS100622_getIndividualInfoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100624_getOrganizationInfoResponse">
+    <wsdl:part element="tns:WS100624_getOrganizationInfoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100627_licensingInfoResponse">
+    <wsdl:part element="tns:WS100627_licensingInfoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100626_legalEntityTaxReportInfoResponse">
+    <wsdl:part element="tns:WS100626_legalEntityTaxReportInfoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100629_thanksToTaxpayersServiceResponse">
+    <wsdl:part element="tns:WS100629_thanksToTaxpayersServiceResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100625_citizenTaxReportInfo">
+    <wsdl:part element="tns:WS100625_citizenTaxReportInfo" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100609_getVehiclePaidTaxHistoryResponse">
+    <wsdl:part element="tns:WS100609_getVehiclePaidTaxHistoryResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100622_getIndividualInfo">
+    <wsdl:part element="tns:WS100622_getIndividualInfo" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100626_legalEntityTaxReportInfo">
+    <wsdl:part element="tns:WS100626_legalEntityTaxReportInfo" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="TaxService">
+    <wsdl:operation name="WS100609_getVehiclePaidTaxHistory">
+      <wsdl:input message="tns:WS100609_getVehiclePaidTaxHistory" name="WS100609_getVehiclePaidTaxHistory">
+    </wsdl:input>
+      <wsdl:output message="tns:WS100609_getVehiclePaidTaxHistoryResponse" name="WS100609_getVehiclePaidTaxHistoryResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100628_tradeInfo">
+      <wsdl:input message="tns:WS100628_tradeInfo" name="WS100628_tradeInfo">
+    </wsdl:input>
+      <wsdl:output message="tns:WS100628_tradeInfoResponse" name="WS100628_tradeInfoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100629_thanksToTaxpayersService">
+      <wsdl:input message="tns:WS100629_thanksToTaxpayersService" name="WS100629_thanksToTaxpayersService">
+    </wsdl:input>
+      <wsdl:output message="tns:WS100629_thanksToTaxpayersServiceResponse" name="WS100629_thanksToTaxpayersServiceResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100623_getTenderInfo">
+      <wsdl:input message="tns:WS100623_getTenderInfo" name="WS100623_getTenderInfo">
+    </wsdl:input>
+      <wsdl:output message="tns:WS100623_getTenderInfoResponse" name="WS100623_getTenderInfoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100627_licensingInfo">
+      <wsdl:input message="tns:WS100627_licensingInfo" name="WS100627_licensingInfo">
+    </wsdl:input>
+      <wsdl:output message="tns:WS100627_licensingInfoResponse" name="WS100627_licensingInfoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100625_citizenTaxReportInfo">
+      <wsdl:input message="tns:WS100625_citizenTaxReportInfo" name="WS100625_citizenTaxReportInfo">
+    </wsdl:input>
+      <wsdl:output message="tns:WS100625_citizenTaxReportInfoResponse" name="WS100625_citizenTaxReportInfoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100622_getIndividualInfo">
+      <wsdl:input message="tns:WS100622_getIndividualInfo" name="WS100622_getIndividualInfo">
+    </wsdl:input>
+      <wsdl:output message="tns:WS100622_getIndividualInfoResponse" name="WS100622_getIndividualInfoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100624_getOrganizationInfo">
+      <wsdl:input message="tns:WS100624_getOrganizationInfo" name="WS100624_getOrganizationInfo">
+    </wsdl:input>
+      <wsdl:output message="tns:WS100624_getOrganizationInfoResponse" name="WS100624_getOrganizationInfoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100626_legalEntityTaxReportInfo">
+      <wsdl:input message="tns:WS100626_legalEntityTaxReportInfo" name="WS100626_legalEntityTaxReportInfo">
+    </wsdl:input>
+      <wsdl:output message="tns:WS100626_legalEntityTaxReportInfoResponse" name="WS100626_legalEntityTaxReportInfoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="TaxServiceServiceSoapBinding" type="tns:TaxService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="WS100609_getVehiclePaidTaxHistory">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="WS100609_getVehiclePaidTaxHistory">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="WS100609_getVehiclePaidTaxHistoryResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100628_tradeInfo">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="WS100628_tradeInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="WS100628_tradeInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100629_thanksToTaxpayersService">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="WS100629_thanksToTaxpayersService">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="WS100629_thanksToTaxpayersServiceResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100623_getTenderInfo">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="WS100623_getTenderInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="WS100623_getTenderInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100627_licensingInfo">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="WS100627_licensingInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="WS100627_licensingInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100625_citizenTaxReportInfo">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="WS100625_citizenTaxReportInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="WS100625_citizenTaxReportInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100622_getIndividualInfo">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="WS100622_getIndividualInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="WS100622_getIndividualInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100624_getOrganizationInfo">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="WS100624_getOrganizationInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="WS100624_getOrganizationInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100626_legalEntityTaxReportInfo">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="WS100626_legalEntityTaxReportInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="WS100626_legalEntityTaxReportInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TaxServiceService">
+    <wsdl:port binding="tns:TaxServiceServiceSoapBinding" name="TaxServicePort">
+      <soap:address location="https://xyp.gov.mn/tax-1.3.0/ws"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

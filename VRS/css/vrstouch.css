@@ -1,0 +1,47 @@
+.series-list-top
+{
+	margin-top: 5px;
+	font-weight:bold;
+}
+.btn-block{
+	font-size:18px;
+	padding:0;
+}
+.btn-outline-primary {
+	color: #0062cb ;
+	background-color: transparent;
+	background-image: none;
+	border-color: #0062cb ;
+}
+.btn-outline-primary:hover {
+	color: #fff;
+	background-color: #0062cb;
+	border-color: #0062cb; }
+.btn-outline-primary:active {
+	color: #fff;
+	background-color: #0062cb;
+	border-color: #0062cb; }
+.btn-outline-primary:focus {
+	color: #fff;
+	background-color: #0062cb;
+	border-color: #0062cb; }
+.line
+{
+	margin-bottom: 10px
+}
+.active {
+	color: #fff;
+	background-color: #0062cb !important;
+	border-color: #0062cb !important; }
+
+.form-label {
+	font-size: 18px !important;
+}
+.modal-title {
+	font-weight:600;
+	color:#0062cb !important;
+}
+.az-content-body
+{
+	margin-top:0px !important;
+}

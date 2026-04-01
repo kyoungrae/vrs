@@ -1,0 +1,67 @@
+.plateFactory{
+    width: 111px;
+    height: 33px;
+    background: rgb(255 255 255);
+    border: 5px solid;
+    text-align: center;
+    font-weight: 700;
+    border-style: double;
+    padding: 3px; 
+    border-color: #040404;
+    color: #0e0e0e;
+    border-radius: 4px;
+}
+.plateFactoryYellow{
+    width: 111px;
+    height: 33px;
+    background: rgb(185 167 14);
+    border: 5px solid;
+    text-align: center;
+    font-weight: 700;
+    border-style: double;
+  
+    padding: 3px;
+    border-color: #fff;
+    color: #fff;
+    border-radius: 4px;
+}
+.plateFactoryGreen{
+    width: 111px;
+    height: 33px;
+    background: rgb(8 162 70);
+    border: 5px solid;
+    text-align: center;
+    font-weight: 700;
+    border-style: double;
+    padding: 3px;
+    border-color: #fff;
+    color: #fff;
+    border-radius: 4px;
+}
+.plateFactoryRed{
+    width: 111px;
+    height: 33px;
+    background: rgb(212 10 10);
+    border: 5px solid;
+    text-align: center;
+    font-weight: 700;
+    border-style: double;
+    padding: 3px;
+    border-color: #fff;
+    color: #fff;
+    border-radius: 4px;
+}
+.plateFactoryBlack{
+    border-radius: 4px;
+    width: 111px;
+    height: 33px;
+    background: rgb(33 32 30);
+    border: 5px solid;
+    text-align: center;
+    font-weight: 700;
+    border-style: double;
+    padding: 3px;
+    border-color: #fff;
+    color: #fff;
+    border-radius: 4px;
+}

@@ -1,0 +1,2908 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://transport.xyp.gov.mn/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="TransportServiceService" targetNamespace="http://transport.xyp.gov.mn/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://transport.xyp.gov.mn/" elementFormDefault="unqualified" targetNamespace="http://transport.xyp.gov.mn/" version="1.0">
+
+  <xs:element name="WS100401_getVehicleInfo" type="tns:WS100401_getVehicleInfo"/>
+
+  <xs:element name="WS100401_getVehicleInfoResponse" type="tns:WS100401_getVehicleInfoResponse"/>
+
+  <xs:element name="WS100402_getVehicleOwnerHistoryList" type="tns:WS100402_getVehicleOwnerHistoryList"/>
+
+  <xs:element name="WS100402_getVehicleOwnerHistoryListResponse" type="tns:WS100402_getVehicleOwnerHistoryListResponse"/>
+
+  <xs:element name="WS100403_getVehiclePenaltyList" type="tns:WS100403_getVehiclePenaltyList"/>
+
+  <xs:element name="WS100403_getVehiclePenaltyListResponse" type="tns:WS100403_getVehiclePenaltyListResponse"/>
+
+  <xs:element name="WS100404_getECDataInfo" type="tns:WS100404_getECDataInfo"/>
+
+  <xs:element name="WS100404_getECDataInfoResponse" type="tns:WS100404_getECDataInfoResponse"/>
+
+  <xs:element name="WS100405_getVehicleTaxInfo" type="tns:WS100405_getVehicleTaxInfo"/>
+
+  <xs:element name="WS100405_getVehicleTaxInfoResponse" type="tns:WS100405_getVehicleTaxInfoResponse"/>
+
+  <xs:element name="WS100406_getCitizenVehicleList" type="tns:WS100406_getCitizenVehicleList"/>
+
+  <xs:element name="WS100406_getCitizenVehicleListResponse" type="tns:WS100406_getCitizenVehicleListResponse"/>
+
+  <xs:element name="WS100407_getDriverLicenseInfo" type="tns:WS100407_getDriverLicenseInfo"/>
+
+  <xs:element name="WS100407_getDriverLicenseInfoResponse" type="tns:WS100407_getDriverLicenseInfoResponse"/>
+
+  <xs:element name="WS100408_updatePenaltyPayment" type="tns:WS100408_updatePenaltyPayment"/>
+
+  <xs:element name="WS100408_updatePenaltyPaymentResponse" type="tns:WS100408_updatePenaltyPaymentResponse"/>
+
+  <xs:element name="WS100409_getVehicleInspectionInfo" type="tns:WS100409_getVehicleInspectionInfo"/>
+
+  <xs:element name="WS100409_getVehicleInspectionInfoResponse" type="tns:WS100409_getVehicleInspectionInfoResponse"/>
+
+  <xs:element name="WS100410_isVehicleCheck" type="tns:WS100410_isVehicleCheck"/>
+
+  <xs:element name="WS100410_isVehicleCheckResponse" type="tns:WS100410_isVehicleCheckResponse"/>
+
+  <xs:element name="WS100411_vehicleImportInfo" type="tns:WS100411_vehicleImportInfo"/>
+
+  <xs:element name="WS100411_vehicleImportInfoResponse" type="tns:WS100411_vehicleImportInfoResponse"/>
+
+  <xs:element name="WS100412_getTransportInfo" type="tns:WS100412_getTransportInfo"/>
+
+  <xs:element name="WS100412_getTransportInfoResponse" type="tns:WS100412_getTransportInfoResponse"/>
+
+  <xs:element name="WS100413_getInternationalDriverLicenseInfo" type="tns:WS100413_getInternationalDriverLicenseInfo"/>
+
+  <xs:element name="WS100413_getInternationalDriverLicenseInfoResponse" type="tns:WS100413_getInternationalDriverLicenseInfoResponse"/>
+
+  <xs:element name="WS100414_getImportExportItemList" type="tns:WS100414_getImportExportItemList"/>
+
+  <xs:element name="WS100414_getImportExportItemListResponse" type="tns:WS100414_getImportExportItemListResponse"/>
+
+  <xs:element name="WS100415_vehicleInfoList" type="tns:WS100415_vehicleInfoList"/>
+
+  <xs:element name="WS100415_vehicleInfoListResponse" type="tns:WS100415_vehicleInfoListResponse"/>
+
+  <xs:element name="WS100416_getOwnerInfo" type="tns:WS100416_getOwnerInfo"/>
+
+  <xs:element name="WS100416_getOwnerInfoResponse" type="tns:WS100416_getOwnerInfoResponse"/>
+
+  <xs:element name="WS100417_specialDriverInfo" type="tns:WS100417_specialDriverInfo"/>
+
+  <xs:element name="WS100417_specialDriverInfoResponse" type="tns:WS100417_specialDriverInfoResponse"/>
+
+  <xs:element name="WS100418_vehicleLimitedInfo" type="tns:WS100418_vehicleLimitedInfo"/>
+
+  <xs:element name="WS100418_vehicleLimitedInfoResponse" type="tns:WS100418_vehicleLimitedInfoResponse"/>
+
+  <xs:element name="WS100419_vehicleBorderPass" type="tns:WS100419_vehicleBorderPass"/>
+
+  <xs:element name="WS100419_vehicleBorderPassResponse" type="tns:WS100419_vehicleBorderPassResponse"/>
+
+  <xs:element name="WS100420_getOrganizationVehicleList" type="tns:WS100420_getOrganizationVehicleList"/>
+
+  <xs:element name="WS100420_getOrganizationVehicleListResponse" type="tns:WS100420_getOrganizationVehicleListResponse"/>
+
+  <xs:element name="WS100421_getPreOwnedVehicle" type="tns:WS100421_getPreOwnedVehicle"/>
+
+  <xs:element name="WS100421_getPreOwnedVehicleResponse" type="tns:WS100421_getPreOwnedVehicleResponse"/>
+
+  <xs:element name="WS100422_getCitizenPenaltyList" type="tns:WS100422_getCitizenPenaltyList"/>
+
+  <xs:element name="WS100422_getCitizenPenaltyListResponse" type="tns:WS100422_getCitizenPenaltyListResponse"/>
+
+  <xs:element name="WS100423_borderRegisteredTransportInfo" type="tns:WS100423_borderRegisteredTransportInfo"/>
+
+  <xs:element name="WS100423_borderRegisteredTransportInfoResponse" type="tns:WS100423_borderRegisteredTransportInfoResponse"/>
+
+  <xs:element name="WS100424_borderRegisteredPassengerInfo" type="tns:WS100424_borderRegisteredPassengerInfo"/>
+
+  <xs:element name="WS100424_borderRegisteredPassengerInfoResponse" type="tns:WS100424_borderRegisteredPassengerInfoResponse"/>
+
+  <xs:element name="WS100425_getImportExportItemExpandList" type="tns:WS100425_getImportExportItemExpandList"/>
+
+  <xs:element name="WS100425_getImportExportItemExpandListResponse" type="tns:WS100425_getImportExportItemExpandListResponse"/>
+
+  <xs:element name="WS100426_transportGetOrganizationInfo" type="tns:WS100426_transportGetOrganizationInfo"/>
+
+  <xs:element name="WS100426_transportGetOrganizationInfoResponse" type="tns:WS100426_transportGetOrganizationInfoResponse"/>
+
+  <xs:element name="WS100427_transportOrganizationCarsInfo" type="tns:WS100427_transportOrganizationCarsInfo"/>
+
+  <xs:element name="WS100427_transportOrganizationCarsInfoResponse" type="tns:WS100427_transportOrganizationCarsInfoResponse"/>
+
+  <xs:element name="WS100428_transportCheckGPSPayment" type="tns:WS100428_transportCheckGPSPayment"/>
+
+  <xs:element name="WS100428_transportCheckGPSPaymentResponse" type="tns:WS100428_transportCheckGPSPaymentResponse"/>
+
+  <xs:element name="WS100429_transportConclutionResponseInfo" type="tns:WS100429_transportConclutionResponseInfo"/>
+
+  <xs:element name="WS100429_transportConclutionResponseInfoResponse" type="tns:WS100429_transportConclutionResponseInfoResponse"/>
+
+  <xs:element name="WS100430_transportConflictInfo" type="tns:WS100430_transportConflictInfo"/>
+
+  <xs:element name="WS100430_transportConflictInfoResponse" type="tns:WS100430_transportConflictInfoResponse"/>
+
+  <xs:element name="WS100431_permittedVehiclesList" type="tns:WS100431_permittedVehiclesList"/>
+
+  <xs:element name="WS100431_permittedVehiclesListResponse" type="tns:WS100431_permittedVehiclesListResponse"/>
+
+  <xs:element name="WS100432_getVehicleInspectionDataByPlateNo" type="tns:WS100432_getVehicleInspectionDataByPlateNo"/>
+
+  <xs:element name="WS100432_getVehicleInspectionDataByPlateNoResponse" type="tns:WS100432_getVehicleInspectionDataByPlateNoResponse"/>
+
+  <xs:element name="WS100433_unlicensedVehiclesList" type="tns:WS100433_unlicensedVehiclesList"/>
+
+  <xs:element name="WS100433_unlicensedVehiclesListResponse" type="tns:WS100433_unlicensedVehiclesListResponse"/>
+
+  <xs:element name="WS100434_checkECLIcenseFromKiosk" type="tns:WS100434_checkECLIcenseFromKiosk"/>
+
+  <xs:element name="WS100434_checkECLIcenseFromKioskResponse" type="tns:WS100434_checkECLIcenseFromKioskResponse"/>
+
+  <xs:element name="WS100435_getPreOwnedVehicleWithOrgRegnum" type="tns:WS100435_getPreOwnedVehicleWithOrgRegnum"/>
+
+  <xs:element name="WS100435_getPreOwnedVehicleWithOrgRegnumResponse" type="tns:WS100435_getPreOwnedVehicleWithOrgRegnumResponse"/>
+
+  <xs:element name="WS100436_vehicleLegalEntityInfo" type="tns:WS100436_vehicleLegalEntityInfo"/>
+
+  <xs:element name="WS100436_vehicleLegalEntityInfoResponse" type="tns:WS100436_vehicleLegalEntityInfoResponse"/>
+
+  <xs:element name="WS100437_vehicleLegalEntityTotal" type="tns:WS100437_vehicleLegalEntityTotal"/>
+
+  <xs:element name="WS100437_vehicleLegalEntityTotalResponse" type="tns:WS100437_vehicleLegalEntityTotalResponse"/>
+
+  <xs:element name="WS100438_getPreOwnedOrgVehicleTotal" type="tns:WS100438_getPreOwnedOrgVehicleTotal"/>
+
+  <xs:element name="WS100438_getPreOwnedOrgVehicleTotalResponse" type="tns:WS100438_getPreOwnedOrgVehicleTotalResponse"/>
+
+  <xs:element name="WS100439_unpaidInvoiceInfo" type="tns:WS100439_unpaidInvoiceInfo"/>
+
+  <xs:element name="WS100439_unpaidInvoiceInfoResponse" type="tns:WS100439_unpaidInvoiceInfoResponse"/>
+
+  <xs:element name="WS100440_payInvoice" type="tns:WS100440_payInvoice"/>
+
+  <xs:element name="WS100440_payInvoiceResponse" type="tns:WS100440_payInvoiceResponse"/>
+
+  <xs:element name="WS100441_umnsVehicleInfo" type="tns:WS100441_umnsVehicleInfo"/>
+
+  <xs:element name="WS100441_umnsVehicleInfoResponse" type="tns:WS100441_umnsVehicleInfoResponse"/>
+
+  <xs:complexType name="WS100430_transportConflictInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="tns:getECDataRequestData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getECDataRequestData">
+    <xs:complexContent>
+      <xs:extension base="tns:serviceRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="vehicleNum" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="serviceRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="auth" type="tns:authorizationData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="authorizationData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="citizen" type="tns:authorizationEntity"/>
+      <xs:element minOccurs="0" name="operator" type="tns:authorizationEntity"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="authorizationEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="certFingerprint" type="xs:string"/>
+      <xs:element minOccurs="0" name="civilId" type="xs:string"/>
+      <xs:element minOccurs="0" name="fingerprint" type="xs:base64Binary"/>
+      <xs:element minOccurs="0" name="regnum" type="xs:string"/>
+      <xs:element minOccurs="0" name="signature" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100430_transportConflictInfoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="serviceResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="xs:anyType"/>
+      <xs:element minOccurs="0" name="requestId" type="xs:string"/>
+      <xs:element minOccurs="0" name="response" type="xs:anyType"/>
+      <xs:element name="resultCode" type="xs:int"/>
+      <xs:element minOccurs="0" name="resultMessage" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="transportConflictData">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="listData" nillable="true" type="tns:transportConflictDetailData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="transportConflictDetailData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="authorized" type="xs:string"/>
+      <xs:element minOccurs="0" name="authorizedDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="authorizedDesc" type="xs:string"/>
+      <xs:element minOccurs="0" name="authorizedUser" type="xs:string"/>
+      <xs:element minOccurs="0" name="authorizedUserId" type="xs:string"/>
+      <xs:element minOccurs="0" name="confirmDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="confirmName" type="xs:string"/>
+      <xs:element name="confirmUserId" type="xs:int"/>
+      <xs:element minOccurs="0" name="conflict" type="xs:string"/>
+      <xs:element minOccurs="0" name="conflictDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="createdDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="createdName" type="xs:string"/>
+      <xs:element minOccurs="0" name="directionName" type="xs:string"/>
+      <xs:element name="orgId" type="xs:int"/>
+      <xs:element minOccurs="0" name="orgName" type="xs:string"/>
+      <xs:element minOccurs="0" name="orgRegister" type="xs:string"/>
+      <xs:element minOccurs="0" name="orgTypeName" type="xs:string"/>
+      <xs:element minOccurs="0" name="recStatus" type="xs:string"/>
+      <xs:element minOccurs="0" name="status" type="xs:string"/>
+      <xs:element minOccurs="0" name="trailerNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="vehicleNumber" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100408_updatePenaltyPayment">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="tns:serviceUpdatePenaltyPaymentRequestData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="serviceUpdatePenaltyPaymentRequestData">
+    <xs:complexContent>
+      <xs:extension base="tns:serviceRequest">
+        <xs:sequence>
+          <xs:element name="amount" type="xs:int"/>
+          <xs:element name="bankId" type="xs:int"/>
+          <xs:element minOccurs="0" name="bankName" type="xs:string"/>
+          <xs:element minOccurs="0" name="barCode" type="xs:string"/>
+          <xs:element minOccurs="0" name="paymentType" type="xs:string"/>
+          <xs:element minOccurs="0" name="plateNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="reasonType" type="xs:string"/>
+          <xs:element name="reasonTypeCode" type="xs:int"/>
+          <xs:element minOccurs="0" name="transactionNumber" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="WS100408_updatePenaltyPaymentResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="updatePenaltyPaymentData">
+    <xs:sequence>
+      <xs:element name="success" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100424_borderRegisteredPassengerInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="tns:vehicleBorderPassRequestData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="vehicleBorderPassRequestData">
+    <xs:complexContent>
+      <xs:extension base="tns:serviceRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="organizationCode" type="xs:string"/>
+          <xs:element minOccurs="0" name="param1" type="xs:string"/>
+          <xs:element minOccurs="0" name="param2" type="xs:string"/>
+          <xs:element minOccurs="0" name="param3" type="xs:string"/>
+          <xs:element minOccurs="0" name="param4" type="xs:string"/>
+          <xs:element minOccurs="0" name="param5" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="WS100424_borderRegisteredPassengerInfoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="borderRegisteredPassengersData">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="listData" nillable="true" type="tns:borderRegisteredPassengersDetialData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="borderRegisteredPassengersDetialData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="address" type="xs:string"/>
+      <xs:element minOccurs="0" name="countryName" type="xs:string"/>
+      <xs:element minOccurs="0" name="entryExitCountry" type="xs:string"/>
+      <xs:element minOccurs="0" name="firstName" type="xs:string"/>
+      <xs:element minOccurs="0" name="identityType" type="xs:string"/>
+      <xs:element minOccurs="0" name="lastName" type="xs:string"/>
+      <xs:element minOccurs="0" name="passDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="passDirection" type="xs:string"/>
+      <xs:element minOccurs="0" name="passPort" type="xs:string"/>
+      <xs:element minOccurs="0" name="passTime" type="xs:string"/>
+      <xs:element minOccurs="0" name="passportExpiredDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="passportIssuedDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="passportNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="passportType" type="xs:string"/>
+      <xs:element minOccurs="0" name="regnum" type="xs:string"/>
+      <xs:element minOccurs="0" name="sex" type="xs:string"/>
+      <xs:element minOccurs="0" name="transport" type="xs:string"/>
+      <xs:element minOccurs="0" name="transportType" type="xs:string"/>
+      <xs:element minOccurs="0" name="tripNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="tripPurpose" type="xs:string"/>
+      <xs:element minOccurs="0" name="tripRoute" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100407_getDriverLicenseInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="tns:serviceDriverLicenseInfoData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="serviceDriverLicenseInfoData">
+    <xs:complexContent>
+      <xs:extension base="tns:serviceRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="regnum" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="WS100407_getDriverLicenseInfoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="driverLicenseInfoData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="address" type="xs:string"/>
+      <xs:element minOccurs="0" name="birthDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="bloodType" type="xs:string"/>
+      <xs:element minOccurs="0" name="cellPhone1" type="xs:string"/>
+      <xs:element minOccurs="0" name="cellPhone2" type="xs:string"/>
+      <xs:element minOccurs="0" name="civilization" type="xs:string"/>
+      <xs:element minOccurs="0" name="classification" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="classifyList" nillable="true" type="tns:driverLicenseClassifyData"/>
+      <xs:element minOccurs="0" name="customerInfID" type="xs:string"/>
+      <xs:element minOccurs="0" name="driverDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="driverPic" type="xs:base64Binary"/>
+      <xs:element name="driverScore" type="xs:int"/>
+      <xs:element minOccurs="0" name="driverType" type="xs:string"/>
+      <xs:element minOccurs="0" name="email1" type="xs:string"/>
+      <xs:element minOccurs="0" name="email2" type="xs:string"/>
+      <xs:element minOccurs="0" name="expireDate" type="xs:string"/>
+      <xs:element name="eyeColorInfID" type="xs:int"/>
+      <xs:element minOccurs="0" name="familyName" type="xs:string"/>
+      <xs:element minOccurs="0" name="familyNameEng" type="xs:string"/>
+      <xs:element minOccurs="0" name="firstname" type="xs:string"/>
+      <xs:element minOccurs="0" name="firstnameEng" type="xs:string"/>
+      <xs:element minOccurs="0" name="gender" type="xs:string"/>
+      <xs:element name="hairColorInfID" type="xs:int"/>
+      <xs:element name="height" type="xs:int"/>
+      <xs:element minOccurs="0" name="homePhone" type="xs:string"/>
+      <xs:element minOccurs="0" name="isDeaf" type="xs:string"/>
+      <xs:element minOccurs="0" name="isImpairment" type="xs:string"/>
+      <xs:element minOccurs="0" name="lastname" type="xs:string"/>
+      <xs:element minOccurs="0" name="lastnameEng" type="xs:string"/>
+      <xs:element minOccurs="0" name="licenseDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="licenseNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="licenseStatus" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="lstScoreInfoDtl" nillable="true" type="tns:driverScoreDetailData"/>
+      <xs:element minOccurs="0" name="motive" type="xs:string"/>
+      <xs:element minOccurs="0" name="note" type="xs:string"/>
+      <xs:element minOccurs="0" name="omchlogch" type="xs:string"/>
+      <xs:element minOccurs="0" name="regnum" type="xs:string"/>
+      <xs:element minOccurs="0" name="schoolName" type="xs:string"/>
+      <xs:element minOccurs="0" name="status" type="xs:string"/>
+      <xs:element minOccurs="0" name="statusEng" type="xs:string"/>
+      <xs:element minOccurs="0" name="suspendReason" type="xs:string"/>
+      <xs:element minOccurs="0" name="types" type="xs:string"/>
+      <xs:element minOccurs="0" name="weight" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="driverLicenseClassifyData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="archiveNo" type="xs:string"/>
+      <xs:element minOccurs="0" name="autoCourseName" type="xs:string"/>
+      <xs:element minOccurs="0" name="beginDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="classify" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="driverScoreDetailData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="createdDate" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="legalId" type="xs:string"/>
+      <xs:element minOccurs="0" name="note" type="xs:string"/>
+      <xs:element minOccurs="0" name="penaltyId" type="xs:string"/>
+      <xs:element minOccurs="0" name="ruleDescription" type="xs:string"/>
+      <xs:element minOccurs="0" name="ruleId" type="xs:string"/>
+      <xs:element name="score" type="xs:int"/>
+      <xs:element minOccurs="0" name="status" type="xs:string"/>
+      <xs:element minOccurs="0" name="systemId" type="xs:string"/>
+      <xs:element minOccurs="0" name="systemName" type="xs:string"/>
+      <xs:element minOccurs="0" name="userId" type="xs:string"/>
+      <xs:element minOccurs="0" name="userName" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100404_getECDataInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="tns:getECDataRequestData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100404_getECDataInfoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getECData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="baseType" type="xs:string"/>
+      <xs:element minOccurs="0" name="carBrand" type="xs:string"/>
+      <xs:element minOccurs="0" name="carClass" type="xs:string"/>
+      <xs:element minOccurs="0" name="carCountry" type="xs:string"/>
+      <xs:element minOccurs="0" name="carMark" type="xs:string"/>
+      <xs:element minOccurs="0" name="carModel" type="xs:string"/>
+      <xs:element name="carTotalWeight" type="xs:int"/>
+      <xs:element name="checkupPassed" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="checkupPassedDateAgain" type="xs:string"/>
+      <xs:element name="hasPenalty" type="xs:int"/>
+      <xs:element minOccurs="0" name="insuranceDate" type="xs:string"/>
+      <xs:element name="noAxile" type="xs:int"/>
+      <xs:element name="resultCodeTax" type="xs:int"/>
+      <xs:element name="taxPaid" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100418_vehicleLimitedInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="tns:vehicleLimitedRequestData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="vehicleLimitedRequestData">
+    <xs:complexContent>
+      <xs:extension base="tns:serviceRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="plateNum" type="xs:string"/>
+          <xs:element minOccurs="0" name="regnum" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="WS100418_vehicleLimitedInfoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="vehicleLimitedData">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="listData" nillable="true" type="tns:vehicleLimitedDetailData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="vehicleLimitedDetailData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="buildDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="cabinNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="endDate" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="firstName" type="xs:string"/>
+      <xs:element minOccurs="0" name="limitName" type="xs:string"/>
+      <xs:element minOccurs="0" name="markName" type="xs:string"/>
+      <xs:element minOccurs="0" name="modelName" type="xs:string"/>
+      <xs:element minOccurs="0" name="plateNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="retributionDate" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="retributionNum" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100415_vehicleInfoList">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="tns:vehicleListRequestData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="vehicleListRequestData">
+    <xs:complexContent>
+      <xs:extension base="tns:serviceRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="beginDate" type="xs:string"/>
+          <xs:element minOccurs="0" name="endDate" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="WS100415_vehicleInfoListResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="vehicleListData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="buildMonth" type="xs:string"/>
+      <xs:element minOccurs="0" name="buildYear" type="xs:string"/>
+      <xs:element minOccurs="0" name="cabinNo" type="xs:string"/>
+      <xs:element minOccurs="0" name="certificateNo" type="xs:string"/>
+      <xs:element name="countryId" type="xs:int"/>
+      <xs:element minOccurs="0" name="countryName" type="xs:string"/>
+      <xs:element minOccurs="0" name="createdDate" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="emissionClass" type="xs:string"/>
+      <xs:element minOccurs="0" name="engineCapacity" type="xs:string"/>
+      <xs:element minOccurs="0" name="fualName" type="xs:string"/>
+      <xs:element name="fualTypeId" type="xs:int"/>
+      <xs:element minOccurs="0" name="holder" type="xs:string"/>
+      <xs:element minOccurs="0" name="importDate" type="xs:string"/>
+      <xs:element name="markId" type="xs:int"/>
+      <xs:element minOccurs="0" name="markName" type="xs:string"/>
+      <xs:element minOccurs="0" name="maxLoad" type="xs:string"/>
+      <xs:element name="modelId" type="xs:int"/>
+      <xs:element minOccurs="0" name="modelName" type="xs:string"/>
+      <xs:element minOccurs="0" name="owner" type="xs:string"/>
+      <xs:element minOccurs="0" name="plateNo" type="xs:string"/>
+      <xs:element minOccurs="0" name="purposeId" type="xs:string"/>
+      <xs:element minOccurs="0" name="purposeName" type="xs:string"/>
+      <xs:element minOccurs="0" name="status" type="xs:string"/>
+      <xs:element minOccurs="0" name="statusName" type="xs:string"/>
+      <xs:element minOccurs="0" name="updatedDate" type="xs:dateTime"/>
+      <xs:element name="vehicleTypeId" type="xs:int"/>
+      <xs:element minOccurs="0" name="vehicleTypeName" type="xs:string"/>
+      <xs:element name="vehidleId" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100414_getImportExportItemList">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="tns:getImportExportRequestData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getImportExportRequestData">
+    <xs:complexContent>
+      <xs:extension base="tns:serviceRequest">
+        <xs:sequence>
+          <xs:element name="currentPage" type="xs:int"/>
+          <xs:element minOccurs="0" name="importOrExport" type="xs:string"/>
+          <xs:element minOccurs="0" name="month" type="xs:string"/>
+          <xs:element minOccurs="0" name="year" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="WS100414_getImportExportItemListResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getImportExportItemData">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="listData" nillable="true" type="tns:getImportExportItemDetail"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getImportExportItemDetail">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="amountUSD" type="xs:string"/>
+      <xs:element minOccurs="0" name="companyCNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="companyName" type="xs:string"/>
+      <xs:element minOccurs="0" name="companyRegnum" type="xs:string"/>
+      <xs:element minOccurs="0" name="customs" type="xs:string"/>
+      <xs:element minOccurs="0" name="downloadDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="importExportFlag" type="xs:string"/>
+      <xs:element minOccurs="0" name="itemId" type="xs:string"/>
+      <xs:element minOccurs="0" name="itemName" type="xs:string"/>
+      <xs:element minOccurs="0" name="measure" type="xs:string"/>
+      <xs:element minOccurs="0" name="month" type="xs:string"/>
+      <xs:element minOccurs="0" name="quantity" type="xs:string"/>
+      <xs:element minOccurs="0" name="senderReceiver" type="xs:string"/>
+      <xs:element minOccurs="0" name="statYearMonth" type="xs:string"/>
+      <xs:element minOccurs="0" name="year" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100422_getCitizenPenaltyList">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="tns:citizenPenaltyListRequestData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="citizenPenaltyListRequestData">
+    <xs:complexContent>
+      <xs:extension base="tns:serviceRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="regnum" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="WS100422_getCitizenPenaltyListResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="citizenPenaltyListData">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="listData" nillable="true" type="tns:citizenPenaltyListDetailData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="citizenPenaltyListDetailData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="accountName" type="xs:string"/>
+      <xs:element name="amount" type="xs:double"/>
+      <xs:element name="amountPaid" type="xs:double"/>
+      <xs:element minOccurs="0" name="bankAccount" type="xs:string"/>
+      <xs:element minOccurs="0" name="bankName" type="xs:string"/>
+      <xs:element minOccurs="0" name="barcode" type="xs:string"/>
+      <xs:element minOccurs="0" name="driverNo" type="xs:string"/>
+      <xs:element minOccurs="0" name="firstname" type="xs:string"/>
+      <xs:element minOccurs="0" name="lastName" type="xs:string"/>
+      <xs:element minOccurs="0" name="legalIndex" type="xs:string"/>
+      <xs:element minOccurs="0" name="localName" type="xs:string"/>
+      <xs:element minOccurs="0" name="passDate" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="paymentDate" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="paymentStatus" type="xs:string"/>
+      <xs:element minOccurs="0" name="plateNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="qpQrcode" type="xs:string"/>
+      <xs:element minOccurs="0" name="regnum" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100439_unpaidInvoiceInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="tns:citizenPenaltyListRequestData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100439_unpaidInvoiceInfoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="unpaidInvoicesData">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="list" nillable="true" type="tns:unpaidInvoicesDetailData"/>
+      <xs:element minOccurs="0" name="regnum" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="unpaidInvoicesDetailData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="accountName" type="xs:string"/>
+      <xs:element minOccurs="0" name="accountNo" type="xs:string"/>
+      <xs:element name="amount" type="xs:double"/>
+      <xs:element minOccurs="0" name="bankName" type="xs:string"/>
+      <xs:element minOccurs="0" name="date" type="xs:string"/>
+      <xs:element minOccurs="0" name="gateInfo" type="xs:string"/>
+      <xs:element name="id" type="xs:long"/>
+      <xs:element name="paid" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="plateNo" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100409_getVehicleInspectionInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="tns:vehicleInspectionRequestData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="vehicleInspectionRequestData">
+    <xs:complexContent>
+      <xs:extension base="tns:serviceRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="cabinNumber" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="WS100409_getVehicleInspectionInfoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="vehicleInspectionData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cabinNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="checkDate" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="expireDate" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="passed" type="xs:boolean"/>
+      <xs:element name="resultCode" type="xs:int"/>
+      <xs:element minOccurs="0" name="vehicleNumber" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100441_umnsVehicleInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="tns:regnumRequestData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="regnumRequestData">
+    <xs:complexContent>
+      <xs:extension base="tns:serviceRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="regnum" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="WS100441_umnsVehicleInfoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="umnsVehicleData">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="listData" nillable="true" type="tns:umnsVehicleDetailData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="umnsVehicleDetailData">
+    <xs:sequence>
+      <xs:element name="buildYear" type="xs:int"/>
+      <xs:element name="engineCapacity" type="xs:int"/>
+      <xs:element minOccurs="0" name="firstName" type="xs:string"/>
+      <xs:element minOccurs="0" name="importDate" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="ownerRegnum" type="xs:string"/>
+      <xs:element minOccurs="0" name="plateNo" type="xs:string"/>
+      <xs:element name="purposeId" type="xs:int"/>
+      <xs:element minOccurs="0" name="purposeName" type="xs:string"/>
+      <xs:element minOccurs="0" name="regnum" type="xs:string"/>
+      <xs:element name="vehicleTypeId" type="xs:int"/>
+      <xs:element minOccurs="0" name="vehicleTypeName" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100427_transportOrganizationCarsInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="tns:serviceVehicleOrganizationRequestData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="serviceVehicleOrganizationRequestData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="orgRegNum" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100427_transportOrganizationCarsInfoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="transportOrganizationCarsData">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="listData" nillable="true" type="tns:transportOrganizationCarsDetailData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="transportOrganizationCarsDetailData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="builtDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="cabinNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="checkedDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="color" type="xs:string"/>
+      <xs:element minOccurs="0" name="countryName" type="xs:string"/>
+      <xs:element minOccurs="0" name="createdName" type="xs:string"/>
+      <xs:element minOccurs="0" name="createdUserId" type="xs:string"/>
+      <xs:element minOccurs="0" name="driverFirstname" type="xs:string"/>
+      <xs:element name="driverId" type="xs:int"/>
+      <xs:element minOccurs="0" name="driverLastname" type="xs:string"/>
+      <xs:element minOccurs="0" name="driverRegnum" type="xs:string"/>
+      <xs:element minOccurs="0" name="expireDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="fueltype" type="xs:string"/>
+      <xs:element minOccurs="0" name="importDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="isContainer" type="xs:string"/>
+      <xs:element minOccurs="0" name="mark" type="xs:string"/>
+      <xs:element minOccurs="0" name="model" type="xs:string"/>
+      <xs:element minOccurs="0" name="motorNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="orgId" type="xs:string"/>
+      <xs:element minOccurs="0" name="orgName" type="xs:string"/>
+      <xs:element minOccurs="0" name="orgRegister" type="xs:string"/>
+      <xs:element name="orgTypeId" type="xs:int"/>
+      <xs:element minOccurs="0" name="orgTypeName" type="xs:string"/>
+      <xs:element minOccurs="0" name="ownerAddress" type="xs:string"/>
+      <xs:element minOccurs="0" name="ownerCountry" type="xs:string"/>
+      <xs:element minOccurs="0" name="ownerFirstname" type="xs:string"/>
+      <xs:element minOccurs="0" name="ownerHandphone" type="xs:string"/>
+      <xs:element minOccurs="0" name="ownerLastname" type="xs:string"/>
+      <xs:element minOccurs="0" name="ownerType" type="xs:string"/>
+      <xs:element name="passed" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="portId" type="xs:string"/>
+      <xs:element minOccurs="0" name="portName" type="xs:string"/>
+      <xs:element minOccurs="0" name="premissionReqStatus" type="xs:string"/>
+      <xs:element minOccurs="0" name="recStatus" type="xs:string"/>
+      <xs:element minOccurs="0" name="recUpdateDate" type="xs:dateTime"/>
+      <xs:element name="recUpdateUserId" type="xs:int"/>
+      <xs:element minOccurs="0" name="seatCount" type="xs:string"/>
+      <xs:element minOccurs="0" name="status" type="xs:string"/>
+      <xs:element minOccurs="0" name="tounage" type="xs:string"/>
+      <xs:element name="trailerId" type="xs:int"/>
+      <xs:element name="trailerIdSecond" type="xs:int"/>
+      <xs:element minOccurs="0" name="trailerNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="trailerNumberSecond" type="xs:string"/>
+      <xs:element minOccurs="0" name="trailerType" type="xs:string"/>
+      <xs:element minOccurs="0" name="vehicleNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="wheelPosition" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100440_payInvoice">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="tns:payInvoiceRequest"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="payInvoiceRequest">
+    <xs:complexContent>
+      <xs:extension base="tns:serviceRequest">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="idList" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="regnum" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="WS100440_payInvoiceResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="payInvoiceData">
+    <xs:sequence>
+      <xs:element name="count" type="xs:int"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="listData" nillable="true" type="tns:payInvoiceDetailData"/>
+      <xs:element name="paidAmount" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="payInvoiceDetailData">
+    <xs:sequence>
+      <xs:element name="amount" type="xs:long"/>
+      <xs:element name="id" type="xs:long"/>
+      <xs:element name="paid" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="paidDate" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100436_vehicleLegalEntityInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="tns:vehicleLegalEntityInfoRequestData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="vehicleLegalEntityInfoRequestData">
+    <xs:complexContent>
+      <xs:extension base="tns:serviceRequest">
+        <xs:sequence>
+          <xs:element name="endIndex" type="xs:int"/>
+          <xs:element minOccurs="0" name="orgRegnum" type="xs:string"/>
+          <xs:element name="startIndex" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="WS100436_vehicleLegalEntityInfoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="vehicleLegalEntityInfoData">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="listData" nillable="true" type="tns:vehicleLegalEntityInfoDetailData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="vehicleLegalEntityInfoDetailData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="archiveDate" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="archiveFirstNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="archiveNumber" type="xs:string"/>
+      <xs:element name="axleCount" type="xs:int"/>
+      <xs:element name="buildYear" type="xs:int"/>
+      <xs:element minOccurs="0" name="cabinNumber" type="xs:string"/>
+      <xs:element name="capacity" type="xs:float"/>
+      <xs:element minOccurs="0" name="certificateNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="className" type="xs:string"/>
+      <xs:element minOccurs="0" name="colorName" type="xs:string"/>
+      <xs:element minOccurs="0" name="countryName" type="xs:string"/>
+      <xs:element minOccurs="0" name="declarationNum" type="xs:string"/>
+      <xs:element minOccurs="0" name="fueltype" type="xs:string"/>
+      <xs:element name="height" type="xs:float"/>
+      <xs:element minOccurs="0" name="holderAddress" type="tns:addressData"/>
+      <xs:element minOccurs="0" name="holderCountry" type="xs:string"/>
+      <xs:element minOccurs="0" name="holderDevisionUnitName" type="xs:string"/>
+      <xs:element minOccurs="0" name="holderFirstname" type="xs:string"/>
+      <xs:element minOccurs="0" name="holderHandphone" type="xs:string"/>
+      <xs:element minOccurs="0" name="holderHomephone" type="xs:string"/>
+      <xs:element minOccurs="0" name="holderId" type="xs:string"/>
+      <xs:element minOccurs="0" name="holderLastname" type="xs:string"/>
+      <xs:element minOccurs="0" name="holderRegnum" type="xs:string"/>
+      <xs:element minOccurs="0" name="holderType" type="xs:string"/>
+      <xs:element minOccurs="0" name="holderWorkphone" type="xs:string"/>
+      <xs:element minOccurs="0" name="importDate" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="inspAmount" type="xs:string"/>
+      <xs:element minOccurs="0" name="inspVat" type="xs:string"/>
+      <xs:element minOccurs="0" name="intent" type="xs:string"/>
+      <xs:element name="length" type="xs:float"/>
+      <xs:element name="manCount" type="xs:int"/>
+      <xs:element minOccurs="0" name="markName" type="xs:string"/>
+      <xs:element name="mass" type="xs:float"/>
+      <xs:element minOccurs="0" name="modelName" type="xs:string"/>
+      <xs:element minOccurs="0" name="modificaceName" type="xs:string"/>
+      <xs:element minOccurs="0" name="motorNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="ownerApartmentNo" type="xs:string"/>
+      <xs:element minOccurs="0" name="ownerCellPhone" type="xs:string"/>
+      <xs:element minOccurs="0" name="ownerCountry" type="xs:string"/>
+      <xs:element minOccurs="0" name="ownerDevisionUnitName" type="xs:string"/>
+      <xs:element minOccurs="0" name="ownerDistrict" type="xs:string"/>
+      <xs:element minOccurs="0" name="ownerDoorNo" type="xs:string"/>
+      <xs:element minOccurs="0" name="ownerFirstName" type="xs:string"/>
+      <xs:element minOccurs="0" name="ownerHomePhone" type="xs:string"/>
+      <xs:element minOccurs="0" name="ownerLastName" type="xs:string"/>
+      <xs:element minOccurs="0" name="ownerMicroDistrictName" type="xs:string"/>
+      <xs:element minOccurs="0" name="ownerProvince" type="xs:string"/>
+      <xs:element minOccurs="0" name="ownerRegnum" type="xs:string"/>
+      <xs:element minOccurs="0" name="ownerStreet" type="xs:string"/>
+      <xs:element minOccurs="0" name="ownerTypeName" type="xs:string"/>
+      <xs:element minOccurs="0" name="ownerWorkPhone" type="xs:string"/>
+      <xs:element minOccurs="0" name="plateNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="purposeId" type="xs:string"/>
+      <xs:element minOccurs="0" name="purposeName" type="xs:string"/>
+      <xs:element minOccurs="0" name="rfidTag" type="xs:string"/>
+      <xs:element minOccurs="0" name="startDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="transmission" type="xs:string"/>
+      <xs:element minOccurs="0" name="type" type="xs:string"/>
+      <xs:element name="typeId" type="xs:int"/>
+      <xs:element minOccurs="0" name="vehicleId" type="xs:string"/>
+      <xs:element name="weight" type="xs:float"/>
+      <xs:element minOccurs="0" name="wheelPosition" type="xs:string"/>
+      <xs:element name="width" type="xs:float"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="addressData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="apartment" type="xs:string"/>
+      <xs:element minOccurs="0" name="door" type="xs:string"/>
+      <xs:element minOccurs="0" name="soum" type="xs:string"/>
+      <xs:element minOccurs="0" name="state" type="xs:string"/>
+      <xs:element minOccurs="0" name="street" type="xs:string"/>
+      <xs:element minOccurs="0" name="town" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100401_getVehicleInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="tns:vehicleRequestData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="vehicleRequestData">
+    <xs:complexContent>
+      <xs:extension base="tns:serviceRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="cabinNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="certificatNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="plateNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="regnum" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="WS100401_getVehicleInfoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="vehicleData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="archiveDate" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="archiveFirstNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="archiveNumber" type="xs:string"/>
+      <xs:element name="axleCount" type="xs:int"/>
+      <xs:element name="buildYear" type="xs:int"/>
+      <xs:element minOccurs="0" name="cabinNumber" type="xs:string"/>
+      <xs:element name="capacity" type="xs:float"/>
+      <xs:element minOccurs="0" name="certificateNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="className" type="xs:string"/>
+      <xs:element minOccurs="0" name="colorName" type="xs:string"/>
+      <xs:element minOccurs="0" name="countryName" type="xs:string"/>
+      <xs:element minOccurs="0" name="fueltype" type="xs:string"/>
+      <xs:element name="height" type="xs:float"/>
+      <xs:element minOccurs="0" name="importDate" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="intent" type="xs:string"/>
+      <xs:element name="length" type="xs:float"/>
+      <xs:element name="manCount" type="xs:int"/>
+      <xs:element minOccurs="0" name="markName" type="xs:string"/>
+      <xs:element name="mass" type="xs:float"/>
+      <xs:element minOccurs="0" name="modelName" type="xs:string"/>
+      <xs:element minOccurs="0" name="motorNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="ownerAddress" type="tns:addressData"/>
+      <xs:element minOccurs="0" name="ownerCountry" type="xs:string"/>
+      <xs:element minOccurs="0" name="ownerFirstname" type="xs:string"/>
+      <xs:element minOccurs="0" name="ownerHandphone" type="xs:string"/>
+      <xs:element minOccurs="0" name="ownerHomephone" type="xs:string"/>
+      <xs:element minOccurs="0" name="ownerLastname" type="xs:string"/>
+      <xs:element minOccurs="0" name="ownerRegnum" type="xs:string"/>
+      <xs:element minOccurs="0" name="ownerType" type="xs:string"/>
+      <xs:element minOccurs="0" name="ownerWorkphone" type="xs:string"/>
+      <xs:element minOccurs="0" name="plateNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="transmission" type="xs:string"/>
+      <xs:element minOccurs="0" name="type" type="xs:string"/>
+      <xs:element name="typeId" type="xs:int"/>
+      <xs:element name="weight" type="xs:float"/>
+      <xs:element minOccurs="0" name="wheelPosition" type="xs:string"/>
+      <xs:element name="width" type="xs:float"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100423_borderRegisteredTransportInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="tns:vehicleBorderPassRequestData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100423_borderRegisteredTransportInfoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="borderRegisteredTransportData">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="listData" nillable="true" type="tns:borderRegisteredTrasportDetailData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="borderRegisteredTrasportDetailData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="countryName" type="xs:string"/>
+      <xs:element minOccurs="0" name="hasTrailer" type="xs:string"/>
+      <xs:element minOccurs="0" name="passDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="passDirection" type="xs:string"/>
+      <xs:element minOccurs="0" name="passPort" type="xs:string"/>
+      <xs:element minOccurs="0" name="passTime" type="xs:string"/>
+      <xs:element minOccurs="0" name="trailerColor" type="xs:string"/>
+      <xs:element minOccurs="0" name="trailerMark" type="xs:string"/>
+      <xs:element minOccurs="0" name="trailerNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="transport" type="xs:string"/>
+      <xs:element minOccurs="0" name="transportCabinNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="transportColor" type="xs:string"/>
+      <xs:element minOccurs="0" name="transportMark" type="xs:string"/>
+      <xs:element minOccurs="0" name="transportModel" type="xs:string"/>
+      <xs:element minOccurs="0" name="transportType" type="xs:string"/>
+      <xs:element minOccurs="0" name="tripNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="tripRoute" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100406_getCitizenVehicleList">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="tns:vehicleRequestData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100406_getCitizenVehicleListResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="listWrapper">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="list" nillable="true" type="xs:anyType"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100412_getTransportInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="tns:transportRequestData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="transportRequestData">
+    <xs:complexContent>
+      <xs:extension base="tns:serviceRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="transportNum" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="WS100412_getTransportInfoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="transportData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="buildDate" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="cabinNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="certificateNum" type="xs:string"/>
+      <xs:element minOccurs="0" name="colorName" type="xs:string"/>
+      <xs:element minOccurs="0" name="countryName" type="xs:string"/>
+      <xs:element minOccurs="0" name="importDate" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="markName" type="xs:string"/>
+      <xs:element minOccurs="0" name="mekhDedicationName" type="xs:string"/>
+      <xs:element minOccurs="0" name="mekhTypeName" type="xs:string"/>
+      <xs:element minOccurs="0" name="modelName" type="xs:string"/>
+      <xs:element minOccurs="0" name="number" type="xs:string"/>
+      <xs:element minOccurs="0" name="tounage" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100419_vehicleBorderPass">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="tns:vehicleBorderPassRequestData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100419_vehicleBorderPassResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="vehicleBorderPassData">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="listData" nillable="true" type="tns:vehicleBorderPassDetailData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="vehicleBorderPassDetailData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="country" type="xs:string"/>
+      <xs:element minOccurs="0" name="passDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="passDirection" type="xs:string"/>
+      <xs:element minOccurs="0" name="passPort" type="xs:string"/>
+      <xs:element minOccurs="0" name="passTime" type="xs:string"/>
+      <xs:element minOccurs="0" name="trailerNum" type="xs:string"/>
+      <xs:element minOccurs="0" name="transKind" type="xs:string"/>
+      <xs:element minOccurs="0" name="transMark" type="xs:string"/>
+      <xs:element minOccurs="0" name="transModel" type="xs:string"/>
+      <xs:element minOccurs="0" name="transNum" type="xs:string"/>
+      <xs:element minOccurs="0" name="transType" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100411_vehicleImportInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="tns:serviceVehicleImportInfoData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="serviceVehicleImportInfoData">
+    <xs:complexContent>
+      <xs:extension base="tns:serviceRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="impExpDclrNo" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="WS100411_vehicleImportInfoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="vehicleImportData">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="listData" nillable="true" type="tns:vehicleImportDetailData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="vehicleImportDetailData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="breakInfo" type="xs:string"/>
+      <xs:element minOccurs="0" name="buildDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="carAdditionalInfo" type="xs:string"/>
+      <xs:element minOccurs="0" name="carMile" type="xs:string"/>
+      <xs:element minOccurs="0" name="changeMode" type="xs:string"/>
+      <xs:element minOccurs="0" name="cstmCd" type="xs:string"/>
+      <xs:element minOccurs="0" name="cstmDutySumAmt" type="xs:string"/>
+      <xs:element minOccurs="0" name="dclrTypeCd" type="xs:string"/>
+      <xs:element minOccurs="0" name="impExpDclrNo" type="xs:string"/>
+      <xs:element minOccurs="0" name="importerAddr" type="xs:string"/>
+      <xs:element minOccurs="0" name="importerNm" type="xs:string"/>
+      <xs:element minOccurs="0" name="importerPhone" type="xs:string"/>
+      <xs:element minOccurs="0" name="importerRgNo" type="xs:string"/>
+      <xs:element minOccurs="0" name="inspctorId" type="xs:string"/>
+      <xs:element minOccurs="0" name="moreImpormation" type="xs:string"/>
+      <xs:element minOccurs="0" name="regDate" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="regUserId" type="xs:string"/>
+      <xs:element minOccurs="0" name="sendDate" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="sendReadyFlag" type="xs:string"/>
+      <xs:element minOccurs="0" name="teamMgrId" type="xs:string"/>
+      <xs:element minOccurs="0" name="teamMgrInspctDate" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="vehCargoCapacity" type="xs:string"/>
+      <xs:element minOccurs="0" name="vehEngineCapacity" type="xs:string"/>
+      <xs:element minOccurs="0" name="vehEngineNo" type="xs:string"/>
+      <xs:element minOccurs="0" name="vehMark" type="xs:string"/>
+      <xs:element minOccurs="0" name="vehModelNo" type="xs:string"/>
+      <xs:element minOccurs="0" name="yearModifyInfo" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100420_getOrganizationVehicleList">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="tns:serviceVehicleOrganizationRequestData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100420_getOrganizationVehicleListResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="vehicleOrganizationData">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="listData" nillable="true" type="tns:vehicleData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100429_transportConclutionResponseInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="tns:getECDataRequestData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100429_transportConclutionResponseInfoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="transportConclutionResponseData">
+    <xs:sequence>
+      <xs:element name="organizationId" type="xs:int"/>
+      <xs:element name="point" type="xs:float"/>
+      <xs:element minOccurs="0" name="result" type="xs:string"/>
+      <xs:element minOccurs="0" name="status" type="xs:string"/>
+      <xs:element minOccurs="0" name="vehicleNumber" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100425_getImportExportItemExpandList">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="tns:getImportExportRequestData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100425_getImportExportItemExpandListResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getItemExpandData">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="listData" nillable="true" type="tns:getItemExpandDetailData"/>
+      <xs:element name="pageCount" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getItemExpandDetailData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="downloadDate" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="hsItemTypeId" type="xs:string"/>
+      <xs:element minOccurs="0" name="hsItemTypeName" type="xs:string"/>
+      <xs:element minOccurs="0" name="hsQty" type="xs:string"/>
+      <xs:element minOccurs="0" name="hsQtyUnit" type="xs:string"/>
+      <xs:element minOccurs="0" name="importExportFlag" type="xs:string"/>
+      <xs:element minOccurs="0" name="itemDedication" type="xs:string"/>
+      <xs:element minOccurs="0" name="itemModel" type="xs:string"/>
+      <xs:element minOccurs="0" name="itemName" type="xs:string"/>
+      <xs:element minOccurs="0" name="measure" type="xs:string"/>
+      <xs:element minOccurs="0" name="month" type="xs:string"/>
+      <xs:element minOccurs="0" name="statDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="value" type="xs:string"/>
+      <xs:element minOccurs="0" name="year" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100431_permittedVehiclesList">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="tns:permittedVehiclesListRequestData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="permittedVehiclesListRequestData">
+    <xs:complexContent>
+      <xs:extension base="tns:serviceRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="orgRegnum" type="xs:string"/>
+          <xs:element name="pageNumber" type="xs:int"/>
+          <xs:element minOccurs="0" name="portName" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="WS100431_permittedVehiclesListResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="permittedVehiclesListData">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="listData" nillable="true" type="tns:permittedVehiclesListDetailData"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="pages" nillable="true" type="tns:permittedVehicleListPagesData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="permittedVehiclesListDetailData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="avaible" type="xs:string"/>
+      <xs:element minOccurs="0" name="boomt" type="xs:string"/>
+      <xs:element minOccurs="0" name="boomtId" type="xs:string"/>
+      <xs:element minOccurs="0" name="builtDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="cabinNumber" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="carError" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="checkedDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="checkinsRegister" type="xs:string"/>
+      <xs:element minOccurs="0" name="checkinsSetRegisterDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="checkinsSetRegisterUserId" type="xs:string"/>
+      <xs:element minOccurs="0" name="color" type="xs:string"/>
+      <xs:element minOccurs="0" name="comment" type="xs:string"/>
+      <xs:element minOccurs="0" name="countryName" type="xs:string"/>
+      <xs:element minOccurs="0" name="createdName" type="xs:string"/>
+      <xs:element minOccurs="0" name="createdUserid" type="xs:string"/>
+      <xs:element minOccurs="0" name="daats" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="driverError" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="driverExpireDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="driverFirstname" type="xs:string"/>
+      <xs:element minOccurs="0" name="driverId" type="xs:string"/>
+      <xs:element minOccurs="0" name="driverLastname" type="xs:string"/>
+      <xs:element minOccurs="0" name="driverProfessionalExpireDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="driverRegister" type="xs:string"/>
+      <xs:element minOccurs="0" name="expireDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="fueltype" type="xs:string"/>
+      <xs:element name="id" type="xs:int"/>
+      <xs:element minOccurs="0" name="importDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="isContainer" type="xs:string"/>
+      <xs:element minOccurs="0" name="isPassed" type="xs:string"/>
+      <xs:element minOccurs="0" name="ishave" type="xs:string"/>
+      <xs:element minOccurs="0" name="mark" type="xs:string"/>
+      <xs:element minOccurs="0" name="model" type="xs:string"/>
+      <xs:element minOccurs="0" name="motorNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="oldId" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="organizationError" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="orgid" type="xs:string"/>
+      <xs:element minOccurs="0" name="orgname" type="xs:string"/>
+      <xs:element minOccurs="0" name="orgregister" type="xs:string"/>
+      <xs:element minOccurs="0" name="orgtypeid" type="xs:string"/>
+      <xs:element minOccurs="0" name="orgtypename" type="xs:string"/>
+      <xs:element minOccurs="0" name="ownerAddress" type="tns:permittedVehiclesAddressData"/>
+      <xs:element minOccurs="0" name="ownerCountry" type="xs:string"/>
+      <xs:element minOccurs="0" name="ownerFirstname" type="xs:string"/>
+      <xs:element minOccurs="0" name="ownerHandphone" type="xs:string"/>
+      <xs:element minOccurs="0" name="ownerLastname" type="xs:string"/>
+      <xs:element minOccurs="0" name="ownerType" type="xs:string"/>
+      <xs:element minOccurs="0" name="premissionReqStatus" type="xs:string"/>
+      <xs:element minOccurs="0" name="recCreateDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="recCreateUserId" type="xs:string"/>
+      <xs:element minOccurs="0" name="recDeleteDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="recDeleteUserId" type="xs:string"/>
+      <xs:element minOccurs="0" name="recStatus" type="xs:string"/>
+      <xs:element minOccurs="0" name="recUpdateDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="recUpdateUserId" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="requestError" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="seatCount" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="trailerError" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="trailerExpireDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="trailerId" type="xs:string"/>
+      <xs:element minOccurs="0" name="trailerId2" type="xs:string"/>
+      <xs:element minOccurs="0" name="trailerNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="trailerNumber2" type="xs:string"/>
+      <xs:element minOccurs="0" name="trailerType" type="xs:string"/>
+      <xs:element minOccurs="0" name="vehiclenumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="wheelPosition" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="fTConflictError" nillable="true" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="nDError" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="permittedVehiclesAddressData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="apartment" type="xs:string"/>
+      <xs:element minOccurs="0" name="door" type="xs:string"/>
+      <xs:element minOccurs="0" name="soum" type="xs:string"/>
+      <xs:element minOccurs="0" name="state" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="permittedVehicleListPagesData">
+    <xs:sequence>
+      <xs:element name="currentPage" type="xs:int"/>
+      <xs:element name="currentPageListCount" type="xs:int"/>
+      <xs:element name="firstItem" type="xs:int"/>
+      <xs:element name="hasMorePages" type="xs:boolean"/>
+      <xs:element name="hasPages" type="xs:boolean"/>
+      <xs:element name="lastItem" type="xs:int"/>
+      <xs:element name="lastPage" type="xs:int"/>
+      <xs:element name="nextPage" type="xs:int"/>
+      <xs:element name="onFirstPage" type="xs:boolean"/>
+      <xs:element name="perPage" type="xs:int"/>
+      <xs:element name="previousPage" type="xs:int"/>
+      <xs:element name="total" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100421_getPreOwnedVehicle">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="tns:vehicleRequestData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100421_getPreOwnedVehicleResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getPreOwnedVehicleData">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="listData" nillable="true" type="tns:getPreOwnedDataDetail"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getPreOwnedDataDetail">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="buildDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="cabinNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="colorName" type="xs:string"/>
+      <xs:element minOccurs="0" name="endDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="firstName" type="xs:string"/>
+      <xs:element minOccurs="0" name="lastName" type="xs:string"/>
+      <xs:element minOccurs="0" name="markName" type="xs:string"/>
+      <xs:element minOccurs="0" name="modelName" type="xs:string"/>
+      <xs:element minOccurs="0" name="ownerId" type="xs:string"/>
+      <xs:element minOccurs="0" name="plateNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="regnum" type="xs:string"/>
+      <xs:element minOccurs="0" name="startDate" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100413_getInternationalDriverLicenseInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="tns:internationalDriverLicenseRequestData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="internationalDriverLicenseRequestData">
+    <xs:complexContent>
+      <xs:extension base="tns:serviceRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="birthDate" type="xs:string"/>
+          <xs:element minOccurs="0" name="regnum" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="WS100413_getInternationalDriverLicenseInfoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="internationalDriverLicenseData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="birthDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="classification" type="xs:string"/>
+      <xs:element minOccurs="0" name="customerInfId" type="xs:string"/>
+      <xs:element minOccurs="0" name="expiredDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="firstName" type="xs:string"/>
+      <xs:element minOccurs="0" name="gender" type="xs:string"/>
+      <xs:element minOccurs="0" name="image" type="xs:base64Binary"/>
+      <xs:element minOccurs="0" name="lastName" type="xs:string"/>
+      <xs:element minOccurs="0" name="licenseDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="licenseNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="placeOfBirth" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100433_unlicensedVehiclesList">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="tns:permittedVehiclesListRequestData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100433_unlicensedVehiclesListResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100434_checkECLIcenseFromKiosk">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="tns:checkECLIcenseFromKioskRequestData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="checkECLIcenseFromKioskRequestData">
+    <xs:complexContent>
+      <xs:extension base="tns:serviceRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="carNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="serviceDate" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="WS100434_checkECLIcenseFromKioskResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="checkECLIcenseFromKioskData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:long"/>
+      <xs:element minOccurs="0" name="kioskName" type="xs:string"/>
+      <xs:element minOccurs="0" name="serviceDate" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="serviceFee" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100437_vehicleLegalEntityTotal">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="tns:orgRegnumRequestData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="orgRegnumRequestData">
+    <xs:complexContent>
+      <xs:extension base="tns:serviceRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="orgRegnum" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="WS100437_vehicleLegalEntityTotalResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="vehicleLegalEntityTotalData">
+    <xs:sequence>
+      <xs:element name="totalVehicles" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100428_transportCheckGPSPayment">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="tns:transportCheckGPSPaymentRequestData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="transportCheckGPSPaymentRequestData">
+    <xs:complexContent>
+      <xs:extension base="tns:serviceRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="organizationId" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="WS100428_transportCheckGPSPaymentResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="transportCheckGPSPaymentData">
+    <xs:sequence>
+      <xs:element name="organizationId" type="xs:int"/>
+      <xs:element minOccurs="0" name="payed" type="xs:string"/>
+      <xs:element minOccurs="0" name="recCreateDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="recDeleteDate" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="recStatus" type="xs:string"/>
+      <xs:element minOccurs="0" name="recUpdateDate" type="xs:dateTime"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100438_getPreOwnedOrgVehicleTotal">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="tns:orgRegnumRequestData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100438_getPreOwnedOrgVehicleTotalResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100402_getVehicleOwnerHistoryList">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="tns:vehicleRequestData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100402_getVehicleOwnerHistoryListResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="vehicleHistoryData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cabinNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="fromDate" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="fullAddress" type="xs:string"/>
+      <xs:element minOccurs="0" name="ownerFirstname" type="xs:string"/>
+      <xs:element minOccurs="0" name="ownerLastname" type="xs:string"/>
+      <xs:element minOccurs="0" name="ownerRegnum" type="xs:string"/>
+      <xs:element minOccurs="0" name="phone" type="xs:string"/>
+      <xs:element minOccurs="0" name="plateNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="toDate" type="xs:dateTime"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100426_transportGetOrganizationInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="tns:serviceVehicleOrganizationRequestData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100426_transportGetOrganizationInfoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="transportGetOrganizationData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ceoName" type="xs:string"/>
+      <xs:element minOccurs="0" name="comment" type="xs:string"/>
+      <xs:element minOccurs="0" name="companyAddress" type="xs:string"/>
+      <xs:element minOccurs="0" name="companyEmail" type="xs:string"/>
+      <xs:element minOccurs="0" name="companyName" type="xs:string"/>
+      <xs:element minOccurs="0" name="companyPhone" type="xs:string"/>
+      <xs:element minOccurs="0" name="companyRegnum" type="xs:string"/>
+      <xs:element minOccurs="0" name="createdDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="createdName" type="xs:string"/>
+      <xs:element minOccurs="0" name="direction" type="xs:string"/>
+      <xs:element name="orgTypeId" type="xs:int"/>
+      <xs:element minOccurs="0" name="orgTypeName" type="xs:string"/>
+      <xs:element name="portId" type="xs:int"/>
+      <xs:element minOccurs="0" name="portName" type="xs:string"/>
+      <xs:element minOccurs="0" name="shippingType" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100435_getPreOwnedVehicleWithOrgRegnum">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="tns:vehicleLegalEntityInfoRequestData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100435_getPreOwnedVehicleWithOrgRegnumResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100432_getVehicleInspectionDataByPlateNo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="tns:vehicleInspectionByPlateNoRequestData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="vehicleInspectionByPlateNoRequestData">
+    <xs:complexContent>
+      <xs:extension base="tns:serviceRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="plateNo" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="WS100432_getVehicleInspectionDataByPlateNoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="vehicleInspectionByPlateNoData">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="listData" nillable="true" type="tns:vehicleInspectionByPlateNoDetailData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="vehicleInspectionByPlateNoDetailData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="expireDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="inspectionDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="plateNo" type="xs:string"/>
+      <xs:element minOccurs="0" name="reportUrl" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100416_getOwnerInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="tns:ownerRequestData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ownerRequestData">
+    <xs:complexContent>
+      <xs:extension base="tns:serviceRequest">
+        <xs:sequence>
+          <xs:element name="ownerId" type="xs:int"/>
+          <xs:element minOccurs="0" name="regnum" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="WS100416_getOwnerInfoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ownerData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="address" type="xs:string"/>
+      <xs:element minOccurs="0" name="cellPhone" type="xs:string"/>
+      <xs:element minOccurs="0" name="country" type="xs:string"/>
+      <xs:element name="countryId" type="xs:int"/>
+      <xs:element minOccurs="0" name="createDate" type="xs:dateTime"/>
+      <xs:element name="devisionUnitId" type="xs:int"/>
+      <xs:element minOccurs="0" name="devisionUnitName" type="xs:string"/>
+      <xs:element name="districtId" type="xs:int"/>
+      <xs:element minOccurs="0" name="districtName" type="xs:string"/>
+      <xs:element minOccurs="0" name="familyName" type="xs:string"/>
+      <xs:element minOccurs="0" name="firstName" type="xs:string"/>
+      <xs:element minOccurs="0" name="homePhone" type="xs:string"/>
+      <xs:element minOccurs="0" name="id" type="xs:string"/>
+      <xs:element name="microDistrictId" type="xs:int"/>
+      <xs:element minOccurs="0" name="microDistrictName" type="xs:string"/>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="phoneNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="proviceName" type="xs:string"/>
+      <xs:element name="provinceId" type="xs:int"/>
+      <xs:element minOccurs="0" name="regnum" type="xs:string"/>
+      <xs:element minOccurs="0" name="workPhone" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100417_specialDriverInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="tns:specialDriverRequestData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="specialDriverRequestData">
+    <xs:complexContent>
+      <xs:extension base="tns:serviceRequest">
+        <xs:sequence>
+          <xs:element name="licenseNumber" type="xs:int"/>
+          <xs:element minOccurs="0" name="regnum" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="WS100417_specialDriverInfoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="specialDriverInfoData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="birthdate" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="bloodType" type="xs:string"/>
+      <xs:element minOccurs="0" name="classB" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="classC" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="classD" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="classDanger" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="classE" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="classInterPassanger" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="classInterTransport" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="classTourist" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="countryName" type="xs:string"/>
+      <xs:element minOccurs="0" name="eyeColor" type="xs:string"/>
+      <xs:element minOccurs="0" name="firstname" type="xs:string"/>
+      <xs:element minOccurs="0" name="gender" type="xs:string"/>
+      <xs:element name="haveLicense" type="xs:int"/>
+      <xs:element name="id" type="xs:int"/>
+      <xs:element minOccurs="0" name="image" type="xs:base64Binary"/>
+      <xs:element minOccurs="0" name="lastname" type="xs:string"/>
+      <xs:element name="licenseNumber" type="xs:int"/>
+      <xs:element minOccurs="0" name="pdlNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="register" type="xs:string"/>
+      <xs:element minOccurs="0" name="surname" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100405_getVehicleTaxInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="tns:vehicleRequestData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100405_getVehicleTaxInfoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100403_getVehiclePenaltyList">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="tns:serviceVehiclePenaltyInfoRequestData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="serviceVehiclePenaltyInfoRequestData">
+    <xs:complexContent>
+      <xs:extension base="tns:serviceRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="plateNumber" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="WS100403_getVehiclePenaltyListResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="vehiclePenaltyInfoData">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="listData" nillable="true" type="tns:vehiclePenaltyInfoDetailData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="vehiclePenaltyInfoDetailData">
+    <xs:sequence>
+      <xs:element name="amount" type="xs:int"/>
+      <xs:element minOccurs="0" name="barCode" type="xs:string"/>
+      <xs:element minOccurs="0" name="localName" type="xs:string"/>
+      <xs:element name="paid" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="passDate" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="paymentBankAccount" type="xs:string"/>
+      <xs:element minOccurs="0" name="paymentBankAccountName" type="xs:string"/>
+      <xs:element minOccurs="0" name="paymentBankName" type="xs:string"/>
+      <xs:element minOccurs="0" name="paymentDate" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="plateNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="qpQRcode" type="xs:string"/>
+      <xs:element minOccurs="0" name="reasonType" type="xs:string"/>
+      <xs:element name="reasonTypeCode" type="xs:int"/>
+      <xs:element minOccurs="0" name="sanc" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100410_isVehicleCheck">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="request" type="tns:vehicleRequestData"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WS100410_isVehicleCheckResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="vehicleType">
+    <xs:sequence>
+      <xs:element name="count" type="xs:int"/>
+      <xs:element minOccurs="0" name="type" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="WS100402_getVehicleOwnerHistoryListResponse">
+    <wsdl:part element="tns:WS100402_getVehicleOwnerHistoryListResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100431_permittedVehiclesListResponse">
+    <wsdl:part element="tns:WS100431_permittedVehiclesListResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100424_borderRegisteredPassengerInfo">
+    <wsdl:part element="tns:WS100424_borderRegisteredPassengerInfo" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100404_getECDataInfo">
+    <wsdl:part element="tns:WS100404_getECDataInfo" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100414_getImportExportItemList">
+    <wsdl:part element="tns:WS100414_getImportExportItemList" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100422_getCitizenPenaltyList">
+    <wsdl:part element="tns:WS100422_getCitizenPenaltyList" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100439_unpaidInvoiceInfo">
+    <wsdl:part element="tns:WS100439_unpaidInvoiceInfo" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100441_umnsVehicleInfo">
+    <wsdl:part element="tns:WS100441_umnsVehicleInfo" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100403_getVehiclePenaltyListResponse">
+    <wsdl:part element="tns:WS100403_getVehiclePenaltyListResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100427_transportOrganizationCarsInfo">
+    <wsdl:part element="tns:WS100427_transportOrganizationCarsInfo" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100426_transportGetOrganizationInfoResponse">
+    <wsdl:part element="tns:WS100426_transportGetOrganizationInfoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100436_vehicleLegalEntityInfo">
+    <wsdl:part element="tns:WS100436_vehicleLegalEntityInfo" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100425_getImportExportItemExpandListResponse">
+    <wsdl:part element="tns:WS100425_getImportExportItemExpandListResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100423_borderRegisteredTransportInfoResponse">
+    <wsdl:part element="tns:WS100423_borderRegisteredTransportInfoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100437_vehicleLegalEntityTotalResponse">
+    <wsdl:part element="tns:WS100437_vehicleLegalEntityTotalResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100434_checkECLIcenseFromKioskResponse">
+    <wsdl:part element="tns:WS100434_checkECLIcenseFromKioskResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100420_getOrganizationVehicleListResponse">
+    <wsdl:part element="tns:WS100420_getOrganizationVehicleListResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100401_getVehicleInfo">
+    <wsdl:part element="tns:WS100401_getVehicleInfo" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100406_getCitizenVehicleList">
+    <wsdl:part element="tns:WS100406_getCitizenVehicleList" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100412_getTransportInfo">
+    <wsdl:part element="tns:WS100412_getTransportInfo" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100414_getImportExportItemListResponse">
+    <wsdl:part element="tns:WS100414_getImportExportItemListResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100411_vehicleImportInfo">
+    <wsdl:part element="tns:WS100411_vehicleImportInfo" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100411_vehicleImportInfoResponse">
+    <wsdl:part element="tns:WS100411_vehicleImportInfoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100420_getOrganizationVehicleList">
+    <wsdl:part element="tns:WS100420_getOrganizationVehicleList" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100417_specialDriverInfoResponse">
+    <wsdl:part element="tns:WS100417_specialDriverInfoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100429_transportConclutionResponseInfo">
+    <wsdl:part element="tns:WS100429_transportConclutionResponseInfo" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100436_vehicleLegalEntityInfoResponse">
+    <wsdl:part element="tns:WS100436_vehicleLegalEntityInfoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100421_getPreOwnedVehicle">
+    <wsdl:part element="tns:WS100421_getPreOwnedVehicle" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100413_getInternationalDriverLicenseInfoResponse">
+    <wsdl:part element="tns:WS100413_getInternationalDriverLicenseInfoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100416_getOwnerInfoResponse">
+    <wsdl:part element="tns:WS100416_getOwnerInfoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100434_checkECLIcenseFromKiosk">
+    <wsdl:part element="tns:WS100434_checkECLIcenseFromKiosk" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100440_payInvoiceResponse">
+    <wsdl:part element="tns:WS100440_payInvoiceResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100437_vehicleLegalEntityTotal">
+    <wsdl:part element="tns:WS100437_vehicleLegalEntityTotal" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100428_transportCheckGPSPayment">
+    <wsdl:part element="tns:WS100428_transportCheckGPSPayment" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100438_getPreOwnedOrgVehicleTotal">
+    <wsdl:part element="tns:WS100438_getPreOwnedOrgVehicleTotal" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100402_getVehicleOwnerHistoryList">
+    <wsdl:part element="tns:WS100402_getVehicleOwnerHistoryList" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100405_getVehicleTaxInfoResponse">
+    <wsdl:part element="tns:WS100405_getVehicleTaxInfoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100435_getPreOwnedVehicleWithOrgRegnumResponse">
+    <wsdl:part element="tns:WS100435_getPreOwnedVehicleWithOrgRegnumResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100427_transportOrganizationCarsInfoResponse">
+    <wsdl:part element="tns:WS100427_transportOrganizationCarsInfoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100435_getPreOwnedVehicleWithOrgRegnum">
+    <wsdl:part element="tns:WS100435_getPreOwnedVehicleWithOrgRegnum" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100419_vehicleBorderPassResponse">
+    <wsdl:part element="tns:WS100419_vehicleBorderPassResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100416_getOwnerInfo">
+    <wsdl:part element="tns:WS100416_getOwnerInfo" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100417_specialDriverInfo">
+    <wsdl:part element="tns:WS100417_specialDriverInfo" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100422_getCitizenPenaltyListResponse">
+    <wsdl:part element="tns:WS100422_getCitizenPenaltyListResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100405_getVehicleTaxInfo">
+    <wsdl:part element="tns:WS100405_getVehicleTaxInfo" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100403_getVehiclePenaltyList">
+    <wsdl:part element="tns:WS100403_getVehiclePenaltyList" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100407_getDriverLicenseInfoResponse">
+    <wsdl:part element="tns:WS100407_getDriverLicenseInfoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100441_umnsVehicleInfoResponse">
+    <wsdl:part element="tns:WS100441_umnsVehicleInfoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100430_transportConflictInfo">
+    <wsdl:part element="tns:WS100430_transportConflictInfo" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100408_updatePenaltyPayment">
+    <wsdl:part element="tns:WS100408_updatePenaltyPayment" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100424_borderRegisteredPassengerInfoResponse">
+    <wsdl:part element="tns:WS100424_borderRegisteredPassengerInfoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100407_getDriverLicenseInfo">
+    <wsdl:part element="tns:WS100407_getDriverLicenseInfo" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100421_getPreOwnedVehicleResponse">
+    <wsdl:part element="tns:WS100421_getPreOwnedVehicleResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100418_vehicleLimitedInfo">
+    <wsdl:part element="tns:WS100418_vehicleLimitedInfo" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100406_getCitizenVehicleListResponse">
+    <wsdl:part element="tns:WS100406_getCitizenVehicleListResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100428_transportCheckGPSPaymentResponse">
+    <wsdl:part element="tns:WS100428_transportCheckGPSPaymentResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100412_getTransportInfoResponse">
+    <wsdl:part element="tns:WS100412_getTransportInfoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100415_vehicleInfoList">
+    <wsdl:part element="tns:WS100415_vehicleInfoList" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100438_getPreOwnedOrgVehicleTotalResponse">
+    <wsdl:part element="tns:WS100438_getPreOwnedOrgVehicleTotalResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100418_vehicleLimitedInfoResponse">
+    <wsdl:part element="tns:WS100418_vehicleLimitedInfoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100409_getVehicleInspectionInfo">
+    <wsdl:part element="tns:WS100409_getVehicleInspectionInfo" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100440_payInvoice">
+    <wsdl:part element="tns:WS100440_payInvoice" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100432_getVehicleInspectionDataByPlateNoResponse">
+    <wsdl:part element="tns:WS100432_getVehicleInspectionDataByPlateNoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100423_borderRegisteredTransportInfo">
+    <wsdl:part element="tns:WS100423_borderRegisteredTransportInfo" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100419_vehicleBorderPass">
+    <wsdl:part element="tns:WS100419_vehicleBorderPass" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100433_unlicensedVehiclesListResponse">
+    <wsdl:part element="tns:WS100433_unlicensedVehiclesListResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100404_getECDataInfoResponse">
+    <wsdl:part element="tns:WS100404_getECDataInfoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100425_getImportExportItemExpandList">
+    <wsdl:part element="tns:WS100425_getImportExportItemExpandList" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100431_permittedVehiclesList">
+    <wsdl:part element="tns:WS100431_permittedVehiclesList" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100413_getInternationalDriverLicenseInfo">
+    <wsdl:part element="tns:WS100413_getInternationalDriverLicenseInfo" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100410_isVehicleCheckResponse">
+    <wsdl:part element="tns:WS100410_isVehicleCheckResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100433_unlicensedVehiclesList">
+    <wsdl:part element="tns:WS100433_unlicensedVehiclesList" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100401_getVehicleInfoResponse">
+    <wsdl:part element="tns:WS100401_getVehicleInfoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100409_getVehicleInspectionInfoResponse">
+    <wsdl:part element="tns:WS100409_getVehicleInspectionInfoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100430_transportConflictInfoResponse">
+    <wsdl:part element="tns:WS100430_transportConflictInfoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100426_transportGetOrganizationInfo">
+    <wsdl:part element="tns:WS100426_transportGetOrganizationInfo" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100432_getVehicleInspectionDataByPlateNo">
+    <wsdl:part element="tns:WS100432_getVehicleInspectionDataByPlateNo" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100439_unpaidInvoiceInfoResponse">
+    <wsdl:part element="tns:WS100439_unpaidInvoiceInfoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100429_transportConclutionResponseInfoResponse">
+    <wsdl:part element="tns:WS100429_transportConclutionResponseInfoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100408_updatePenaltyPaymentResponse">
+    <wsdl:part element="tns:WS100408_updatePenaltyPaymentResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100415_vehicleInfoListResponse">
+    <wsdl:part element="tns:WS100415_vehicleInfoListResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WS100410_isVehicleCheck">
+    <wsdl:part element="tns:WS100410_isVehicleCheck" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="TransportService">
+    <wsdl:operation name="WS100430_transportConflictInfo">
+      <wsdl:input message="tns:WS100430_transportConflictInfo" name="WS100430_transportConflictInfo">
+    </wsdl:input>
+      <wsdl:output message="tns:WS100430_transportConflictInfoResponse" name="WS100430_transportConflictInfoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100408_updatePenaltyPayment">
+      <wsdl:input message="tns:WS100408_updatePenaltyPayment" name="WS100408_updatePenaltyPayment">
+    </wsdl:input>
+      <wsdl:output message="tns:WS100408_updatePenaltyPaymentResponse" name="WS100408_updatePenaltyPaymentResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100424_borderRegisteredPassengerInfo">
+      <wsdl:input message="tns:WS100424_borderRegisteredPassengerInfo" name="WS100424_borderRegisteredPassengerInfo">
+    </wsdl:input>
+      <wsdl:output message="tns:WS100424_borderRegisteredPassengerInfoResponse" name="WS100424_borderRegisteredPassengerInfoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100407_getDriverLicenseInfo">
+      <wsdl:input message="tns:WS100407_getDriverLicenseInfo" name="WS100407_getDriverLicenseInfo">
+    </wsdl:input>
+      <wsdl:output message="tns:WS100407_getDriverLicenseInfoResponse" name="WS100407_getDriverLicenseInfoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100404_getECDataInfo">
+      <wsdl:input message="tns:WS100404_getECDataInfo" name="WS100404_getECDataInfo">
+    </wsdl:input>
+      <wsdl:output message="tns:WS100404_getECDataInfoResponse" name="WS100404_getECDataInfoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100418_vehicleLimitedInfo">
+      <wsdl:input message="tns:WS100418_vehicleLimitedInfo" name="WS100418_vehicleLimitedInfo">
+    </wsdl:input>
+      <wsdl:output message="tns:WS100418_vehicleLimitedInfoResponse" name="WS100418_vehicleLimitedInfoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100415_vehicleInfoList">
+      <wsdl:input message="tns:WS100415_vehicleInfoList" name="WS100415_vehicleInfoList">
+    </wsdl:input>
+      <wsdl:output message="tns:WS100415_vehicleInfoListResponse" name="WS100415_vehicleInfoListResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100414_getImportExportItemList">
+      <wsdl:input message="tns:WS100414_getImportExportItemList" name="WS100414_getImportExportItemList">
+    </wsdl:input>
+      <wsdl:output message="tns:WS100414_getImportExportItemListResponse" name="WS100414_getImportExportItemListResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100422_getCitizenPenaltyList">
+      <wsdl:input message="tns:WS100422_getCitizenPenaltyList" name="WS100422_getCitizenPenaltyList">
+    </wsdl:input>
+      <wsdl:output message="tns:WS100422_getCitizenPenaltyListResponse" name="WS100422_getCitizenPenaltyListResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100439_unpaidInvoiceInfo">
+      <wsdl:input message="tns:WS100439_unpaidInvoiceInfo" name="WS100439_unpaidInvoiceInfo">
+    </wsdl:input>
+      <wsdl:output message="tns:WS100439_unpaidInvoiceInfoResponse" name="WS100439_unpaidInvoiceInfoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100409_getVehicleInspectionInfo">
+      <wsdl:input message="tns:WS100409_getVehicleInspectionInfo" name="WS100409_getVehicleInspectionInfo">
+    </wsdl:input>
+      <wsdl:output message="tns:WS100409_getVehicleInspectionInfoResponse" name="WS100409_getVehicleInspectionInfoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100441_umnsVehicleInfo">
+      <wsdl:input message="tns:WS100441_umnsVehicleInfo" name="WS100441_umnsVehicleInfo">
+    </wsdl:input>
+      <wsdl:output message="tns:WS100441_umnsVehicleInfoResponse" name="WS100441_umnsVehicleInfoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100427_transportOrganizationCarsInfo">
+      <wsdl:input message="tns:WS100427_transportOrganizationCarsInfo" name="WS100427_transportOrganizationCarsInfo">
+    </wsdl:input>
+      <wsdl:output message="tns:WS100427_transportOrganizationCarsInfoResponse" name="WS100427_transportOrganizationCarsInfoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100440_payInvoice">
+      <wsdl:input message="tns:WS100440_payInvoice" name="WS100440_payInvoice">
+    </wsdl:input>
+      <wsdl:output message="tns:WS100440_payInvoiceResponse" name="WS100440_payInvoiceResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100436_vehicleLegalEntityInfo">
+      <wsdl:input message="tns:WS100436_vehicleLegalEntityInfo" name="WS100436_vehicleLegalEntityInfo">
+    </wsdl:input>
+      <wsdl:output message="tns:WS100436_vehicleLegalEntityInfoResponse" name="WS100436_vehicleLegalEntityInfoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100401_getVehicleInfo">
+      <wsdl:input message="tns:WS100401_getVehicleInfo" name="WS100401_getVehicleInfo">
+    </wsdl:input>
+      <wsdl:output message="tns:WS100401_getVehicleInfoResponse" name="WS100401_getVehicleInfoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100423_borderRegisteredTransportInfo">
+      <wsdl:input message="tns:WS100423_borderRegisteredTransportInfo" name="WS100423_borderRegisteredTransportInfo">
+    </wsdl:input>
+      <wsdl:output message="tns:WS100423_borderRegisteredTransportInfoResponse" name="WS100423_borderRegisteredTransportInfoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100406_getCitizenVehicleList">
+      <wsdl:input message="tns:WS100406_getCitizenVehicleList" name="WS100406_getCitizenVehicleList">
+    </wsdl:input>
+      <wsdl:output message="tns:WS100406_getCitizenVehicleListResponse" name="WS100406_getCitizenVehicleListResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100412_getTransportInfo">
+      <wsdl:input message="tns:WS100412_getTransportInfo" name="WS100412_getTransportInfo">
+    </wsdl:input>
+      <wsdl:output message="tns:WS100412_getTransportInfoResponse" name="WS100412_getTransportInfoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100419_vehicleBorderPass">
+      <wsdl:input message="tns:WS100419_vehicleBorderPass" name="WS100419_vehicleBorderPass">
+    </wsdl:input>
+      <wsdl:output message="tns:WS100419_vehicleBorderPassResponse" name="WS100419_vehicleBorderPassResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100411_vehicleImportInfo">
+      <wsdl:input message="tns:WS100411_vehicleImportInfo" name="WS100411_vehicleImportInfo">
+    </wsdl:input>
+      <wsdl:output message="tns:WS100411_vehicleImportInfoResponse" name="WS100411_vehicleImportInfoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100420_getOrganizationVehicleList">
+      <wsdl:input message="tns:WS100420_getOrganizationVehicleList" name="WS100420_getOrganizationVehicleList">
+    </wsdl:input>
+      <wsdl:output message="tns:WS100420_getOrganizationVehicleListResponse" name="WS100420_getOrganizationVehicleListResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100429_transportConclutionResponseInfo">
+      <wsdl:input message="tns:WS100429_transportConclutionResponseInfo" name="WS100429_transportConclutionResponseInfo">
+    </wsdl:input>
+      <wsdl:output message="tns:WS100429_transportConclutionResponseInfoResponse" name="WS100429_transportConclutionResponseInfoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100425_getImportExportItemExpandList">
+      <wsdl:input message="tns:WS100425_getImportExportItemExpandList" name="WS100425_getImportExportItemExpandList">
+    </wsdl:input>
+      <wsdl:output message="tns:WS100425_getImportExportItemExpandListResponse" name="WS100425_getImportExportItemExpandListResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100431_permittedVehiclesList">
+      <wsdl:input message="tns:WS100431_permittedVehiclesList" name="WS100431_permittedVehiclesList">
+    </wsdl:input>
+      <wsdl:output message="tns:WS100431_permittedVehiclesListResponse" name="WS100431_permittedVehiclesListResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100421_getPreOwnedVehicle">
+      <wsdl:input message="tns:WS100421_getPreOwnedVehicle" name="WS100421_getPreOwnedVehicle">
+    </wsdl:input>
+      <wsdl:output message="tns:WS100421_getPreOwnedVehicleResponse" name="WS100421_getPreOwnedVehicleResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100413_getInternationalDriverLicenseInfo">
+      <wsdl:input message="tns:WS100413_getInternationalDriverLicenseInfo" name="WS100413_getInternationalDriverLicenseInfo">
+    </wsdl:input>
+      <wsdl:output message="tns:WS100413_getInternationalDriverLicenseInfoResponse" name="WS100413_getInternationalDriverLicenseInfoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100433_unlicensedVehiclesList">
+      <wsdl:input message="tns:WS100433_unlicensedVehiclesList" name="WS100433_unlicensedVehiclesList">
+    </wsdl:input>
+      <wsdl:output message="tns:WS100433_unlicensedVehiclesListResponse" name="WS100433_unlicensedVehiclesListResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100434_checkECLIcenseFromKiosk">
+      <wsdl:input message="tns:WS100434_checkECLIcenseFromKiosk" name="WS100434_checkECLIcenseFromKiosk">
+    </wsdl:input>
+      <wsdl:output message="tns:WS100434_checkECLIcenseFromKioskResponse" name="WS100434_checkECLIcenseFromKioskResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100437_vehicleLegalEntityTotal">
+      <wsdl:input message="tns:WS100437_vehicleLegalEntityTotal" name="WS100437_vehicleLegalEntityTotal">
+    </wsdl:input>
+      <wsdl:output message="tns:WS100437_vehicleLegalEntityTotalResponse" name="WS100437_vehicleLegalEntityTotalResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100428_transportCheckGPSPayment">
+      <wsdl:input message="tns:WS100428_transportCheckGPSPayment" name="WS100428_transportCheckGPSPayment">
+    </wsdl:input>
+      <wsdl:output message="tns:WS100428_transportCheckGPSPaymentResponse" name="WS100428_transportCheckGPSPaymentResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100438_getPreOwnedOrgVehicleTotal">
+      <wsdl:input message="tns:WS100438_getPreOwnedOrgVehicleTotal" name="WS100438_getPreOwnedOrgVehicleTotal">
+    </wsdl:input>
+      <wsdl:output message="tns:WS100438_getPreOwnedOrgVehicleTotalResponse" name="WS100438_getPreOwnedOrgVehicleTotalResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100402_getVehicleOwnerHistoryList">
+      <wsdl:input message="tns:WS100402_getVehicleOwnerHistoryList" name="WS100402_getVehicleOwnerHistoryList">
+    </wsdl:input>
+      <wsdl:output message="tns:WS100402_getVehicleOwnerHistoryListResponse" name="WS100402_getVehicleOwnerHistoryListResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100426_transportGetOrganizationInfo">
+      <wsdl:input message="tns:WS100426_transportGetOrganizationInfo" name="WS100426_transportGetOrganizationInfo">
+    </wsdl:input>
+      <wsdl:output message="tns:WS100426_transportGetOrganizationInfoResponse" name="WS100426_transportGetOrganizationInfoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100435_getPreOwnedVehicleWithOrgRegnum">
+      <wsdl:input message="tns:WS100435_getPreOwnedVehicleWithOrgRegnum" name="WS100435_getPreOwnedVehicleWithOrgRegnum">
+    </wsdl:input>
+      <wsdl:output message="tns:WS100435_getPreOwnedVehicleWithOrgRegnumResponse" name="WS100435_getPreOwnedVehicleWithOrgRegnumResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100432_getVehicleInspectionDataByPlateNo">
+      <wsdl:input message="tns:WS100432_getVehicleInspectionDataByPlateNo" name="WS100432_getVehicleInspectionDataByPlateNo">
+    </wsdl:input>
+      <wsdl:output message="tns:WS100432_getVehicleInspectionDataByPlateNoResponse" name="WS100432_getVehicleInspectionDataByPlateNoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100416_getOwnerInfo">
+      <wsdl:input message="tns:WS100416_getOwnerInfo" name="WS100416_getOwnerInfo">
+    </wsdl:input>
+      <wsdl:output message="tns:WS100416_getOwnerInfoResponse" name="WS100416_getOwnerInfoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100417_specialDriverInfo">
+      <wsdl:input message="tns:WS100417_specialDriverInfo" name="WS100417_specialDriverInfo">
+    </wsdl:input>
+      <wsdl:output message="tns:WS100417_specialDriverInfoResponse" name="WS100417_specialDriverInfoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100405_getVehicleTaxInfo">
+      <wsdl:input message="tns:WS100405_getVehicleTaxInfo" name="WS100405_getVehicleTaxInfo">
+    </wsdl:input>
+      <wsdl:output message="tns:WS100405_getVehicleTaxInfoResponse" name="WS100405_getVehicleTaxInfoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100403_getVehiclePenaltyList">
+      <wsdl:input message="tns:WS100403_getVehiclePenaltyList" name="WS100403_getVehiclePenaltyList">
+    </wsdl:input>
+      <wsdl:output message="tns:WS100403_getVehiclePenaltyListResponse" name="WS100403_getVehiclePenaltyListResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100410_isVehicleCheck">
+      <wsdl:input message="tns:WS100410_isVehicleCheck" name="WS100410_isVehicleCheck">
+    </wsdl:input>
+      <wsdl:output message="tns:WS100410_isVehicleCheckResponse" name="WS100410_isVehicleCheckResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="TransportServiceServiceSoapBinding" type="tns:TransportService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="WS100430_transportConflictInfo">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="WS100430_transportConflictInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="WS100430_transportConflictInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100408_updatePenaltyPayment">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="WS100408_updatePenaltyPayment">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="WS100408_updatePenaltyPaymentResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100424_borderRegisteredPassengerInfo">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="WS100424_borderRegisteredPassengerInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="WS100424_borderRegisteredPassengerInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100407_getDriverLicenseInfo">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="WS100407_getDriverLicenseInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="WS100407_getDriverLicenseInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100404_getECDataInfo">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="WS100404_getECDataInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="WS100404_getECDataInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100418_vehicleLimitedInfo">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="WS100418_vehicleLimitedInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="WS100418_vehicleLimitedInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100415_vehicleInfoList">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="WS100415_vehicleInfoList">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="WS100415_vehicleInfoListResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100414_getImportExportItemList">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="WS100414_getImportExportItemList">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="WS100414_getImportExportItemListResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100422_getCitizenPenaltyList">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="WS100422_getCitizenPenaltyList">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="WS100422_getCitizenPenaltyListResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100439_unpaidInvoiceInfo">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="WS100439_unpaidInvoiceInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="WS100439_unpaidInvoiceInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100409_getVehicleInspectionInfo">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="WS100409_getVehicleInspectionInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="WS100409_getVehicleInspectionInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100441_umnsVehicleInfo">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="WS100441_umnsVehicleInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="WS100441_umnsVehicleInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100427_transportOrganizationCarsInfo">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="WS100427_transportOrganizationCarsInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="WS100427_transportOrganizationCarsInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100440_payInvoice">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="WS100440_payInvoice">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="WS100440_payInvoiceResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100436_vehicleLegalEntityInfo">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="WS100436_vehicleLegalEntityInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="WS100436_vehicleLegalEntityInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100401_getVehicleInfo">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="WS100401_getVehicleInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="WS100401_getVehicleInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100423_borderRegisteredTransportInfo">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="WS100423_borderRegisteredTransportInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="WS100423_borderRegisteredTransportInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100406_getCitizenVehicleList">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="WS100406_getCitizenVehicleList">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="WS100406_getCitizenVehicleListResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100412_getTransportInfo">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="WS100412_getTransportInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="WS100412_getTransportInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100419_vehicleBorderPass">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="WS100419_vehicleBorderPass">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="WS100419_vehicleBorderPassResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100411_vehicleImportInfo">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="WS100411_vehicleImportInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="WS100411_vehicleImportInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100420_getOrganizationVehicleList">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="WS100420_getOrganizationVehicleList">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="WS100420_getOrganizationVehicleListResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100429_transportConclutionResponseInfo">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="WS100429_transportConclutionResponseInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="WS100429_transportConclutionResponseInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100425_getImportExportItemExpandList">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="WS100425_getImportExportItemExpandList">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="WS100425_getImportExportItemExpandListResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100431_permittedVehiclesList">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="WS100431_permittedVehiclesList">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="WS100431_permittedVehiclesListResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100421_getPreOwnedVehicle">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="WS100421_getPreOwnedVehicle">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="WS100421_getPreOwnedVehicleResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100413_getInternationalDriverLicenseInfo">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="WS100413_getInternationalDriverLicenseInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="WS100413_getInternationalDriverLicenseInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100433_unlicensedVehiclesList">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="WS100433_unlicensedVehiclesList">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="WS100433_unlicensedVehiclesListResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100434_checkECLIcenseFromKiosk">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="WS100434_checkECLIcenseFromKiosk">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="WS100434_checkECLIcenseFromKioskResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100437_vehicleLegalEntityTotal">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="WS100437_vehicleLegalEntityTotal">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="WS100437_vehicleLegalEntityTotalResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100428_transportCheckGPSPayment">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="WS100428_transportCheckGPSPayment">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="WS100428_transportCheckGPSPaymentResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100438_getPreOwnedOrgVehicleTotal">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="WS100438_getPreOwnedOrgVehicleTotal">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="WS100438_getPreOwnedOrgVehicleTotalResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100402_getVehicleOwnerHistoryList">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="WS100402_getVehicleOwnerHistoryList">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="WS100402_getVehicleOwnerHistoryListResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100426_transportGetOrganizationInfo">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="WS100426_transportGetOrganizationInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="WS100426_transportGetOrganizationInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100435_getPreOwnedVehicleWithOrgRegnum">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="WS100435_getPreOwnedVehicleWithOrgRegnum">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="WS100435_getPreOwnedVehicleWithOrgRegnumResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100432_getVehicleInspectionDataByPlateNo">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="WS100432_getVehicleInspectionDataByPlateNo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="WS100432_getVehicleInspectionDataByPlateNoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100416_getOwnerInfo">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="WS100416_getOwnerInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="WS100416_getOwnerInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100417_specialDriverInfo">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="WS100417_specialDriverInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="WS100417_specialDriverInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100405_getVehicleTaxInfo">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="WS100405_getVehicleTaxInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="WS100405_getVehicleTaxInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100403_getVehiclePenaltyList">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="WS100403_getVehiclePenaltyList">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="WS100403_getVehiclePenaltyListResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS100410_isVehicleCheck">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="WS100410_isVehicleCheck">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="WS100410_isVehicleCheckResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TransportServiceService">
+    <wsdl:port binding="tns:TransportServiceServiceSoapBinding" name="TransportServicePort">
+      <soap:address location="https://xyp.gov.mn/transport-1.3.0/ws"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

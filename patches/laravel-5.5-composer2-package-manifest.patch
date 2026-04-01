@@ -1,0 +1,13 @@
+--- a/src/Illuminate/Foundation/PackageManifest.php
++++ b/src/Illuminate/Foundation/PackageManifest.php
+@@ -110,7 +110,9 @@ class PackageManifest
+         $packages = [];
+ 
+         if ($this->files->exists($path = $this->vendorPath.'/composer/installed.json')) {
+-            $packages = json_decode($this->files->get($path), true);
++            $installed = json_decode($this->files->get($path), true);
++            // Composer 2.x wraps packages in a "packages" key (Laravel 5.5 expects a flat list).
++            $packages = isset($installed['packages']) ? $installed['packages'] : (array) $installed;
+         }
+ 
+         $ignoreAll = in_array('*', $ignore = $this->packagesToIgnore());
