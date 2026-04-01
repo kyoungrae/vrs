@@ -619,7 +619,7 @@ class ReportController extends BaseController
                         $this->center($cell);
                     });
                     $sheet->appendRow(array("","","","", "", "",""));
-                    $sheet->appendRow(array("","№", "일자", "아카이브 번호", "번호판", "면수", "시작 번호", "종료 번호","Устгах гэрчилгээ"));
+                    $sheet->appendRow(array("","№", "일자", "아카이브 번호", "번호판", "면수", "시작 번호", "종료 번호","삭제 гэрчилгээ"));
                     $sheet->getStyle('B8:I8')->getFont()->setBold(true);
                     $sheet->getStyle('B8:I8')->getFont()->setSize(12);
                     $sheet->getStyle('B8:I8')->getAlignment()->setWrapText(true);
@@ -819,8 +819,8 @@ class ReportController extends BaseController
         $start = $request->route("start");
         $end = $request->route("end");
         if($branch != "none" && $start != "none" && $end != "none"){
-            Excel::create("이전ийн тайлан", function($excel) use($branch, $start, $end) {
-                $excel->setTitle("이전ийн тайлан");
+            Excel::create("이전ийн 보고서", function($excel) use($branch, $start, $end) {
+                $excel->setTitle("이전ийн 보고서");
                 $excel->setCreator("ATUT");
                 $excel->sheet("보고서", function($sheet) use($branch, $start, $end) {
                     //Header үүсгэх
@@ -868,7 +868,7 @@ class ReportController extends BaseController
                     $sheet->setPaperSize(\PHPExcel_Worksheet_PageSetup::PAPERSIZE_A4);
                     $sheet->appendRow(array("","","","","",""));
 
-                    $sheet->appendRow(array('ШИЛЖИЛТИЙН ДЭЛГЭРЭНГҮЙ ТАЙЛАН'));
+                    $sheet->appendRow(array('ШИЛЖИЛТИЙН ДЭЛГЭРЭНГҮЙ 보고서'));
                     $sheet->getStyle('A4:F4')->getFont()->setBold(true);
                     $sheet->getStyle('A4:F4')->getFont()->setSize(12);
                     $sheet->mergeCells('A4:F4');
@@ -895,7 +895,7 @@ class ReportController extends BaseController
                     $sheet->appendRow(array(
                         "№",
                         "아카이브 번호",
-                        "Өмнөх 번호",
+                        "이전 번호",
                         "Одоогийн 번호",
                         "증명서 번호",
                         "서비스"
@@ -1137,7 +1137,7 @@ class ReportController extends BaseController
                     $sheet->setPaperSize(\PHPExcel_Worksheet_PageSetup::PAPERSIZE_A4);
                     $sheet->appendRow(array("","","","",""));
 
-                    $sheet->appendRow(array('ИМПОРТЫН ДЭЛГЭРЭНГҮЙ ТАЙЛАН'));
+                    $sheet->appendRow(array('ИМПОРТЫН ДЭЛГЭРЭНГҮЙ 보고서'));
                     $sheet->getStyle('A4:E4')->getFont()->setBold(true);
                     $sheet->getStyle('A4:E4')->getFont()->setSize(12);
                     $sheet->mergeCells('A4:E4');
@@ -1355,8 +1355,8 @@ class ReportController extends BaseController
         $start = $request->route("start");
         $end = $request->route("end");
         if($user != "none" && $start != "none" && $end != "none"){
-            Excel::create("Мэргэ년тний тайлан", function($excel) use($user, $start, $end) {
-                $excel->setTitle("Мэргэ년тний тайлан");
+            Excel::create("Мэргэ년тний 보고서", function($excel) use($user, $start, $end) {
+                $excel->setTitle("Мэргэ년тний 보고서");
                 $excel->setCreator("ATUT");
                 $excel->sheet("보고서", function($sheet) use($user, $start, $end) {
                     //Header үүсгэх
@@ -1413,7 +1413,7 @@ class ReportController extends BaseController
                     $sheet->setPaperSize(\PHPExcel_Worksheet_PageSetup::PAPERSIZE_A4);
                     $sheet->appendRow(array("","","","", "", "", ""));
 
-                    $sheet->appendRow(array('МЭРГЭЖИЛТНИЙ ТАЙЛАН'));
+                    $sheet->appendRow(array('МЭРГЭЖИЛТНИЙ 보고서'));
                     $sheet->getStyle('A4:O4')->getFont()->setBold(true);
                     $sheet->getStyle('A4:O4')->getFont()->setSize(12);
                     $sheet->mergeCells('A4:O4');
@@ -1675,8 +1675,8 @@ class ReportController extends BaseController
         $start = $request->route("start");
         $end = $request->route("end");
         if($user != "none" && $start != "none" && $end != "none"){
-            Excel::create("Мэргэ년тний дэлгэрэнгүй тайлан", function($excel) use($op, $user, $start, $end) {
-                $excel->setTitle("Мэргэ년тний дэлгэрэнгүй тайлан");
+            Excel::create("Мэргэ년тний дэлгэрэнгүй 보고서", function($excel) use($op, $user, $start, $end) {
+                $excel->setTitle("Мэргэ년тний дэлгэрэнгүй 보고서");
                 $excel->setCreator("ATUT");
                 $excel->sheet("보고서", function($sheet) use($op, $user, $start, $end) {
                     //Header үүсгэх
@@ -1731,9 +1731,9 @@ class ReportController extends BaseController
                     $sheet->appendRow(array("","","","", "", "", ""));
 
                     if($op == "ШХ"){
-                        $sheet->appendRow(array('МЭРГЭЖИЛТНИЙ ШИЛЖИЛТ ХӨДӨЛГӨӨНИЙ ДЭЛГЭРЭНГҮЙ ТАЙЛАН'));
+                        $sheet->appendRow(array('МЭРГЭЖИЛТНИЙ ШИЛЖИЛТ ХӨДӨЛГӨӨНИЙ ДЭЛГЭРЭНГҮЙ 보고서'));
                     } else {
-                        $sheet->appendRow(array('МЭРГЭЖИЛТНИЙ ИМПОРТЫН ДЭЛГЭРЭНГҮЙ ТАЙЛАН'));
+                        $sheet->appendRow(array('МЭРГЭЖИЛТНИЙ ИМПОРТЫН ДЭЛГЭРЭНГҮЙ 보고서'));
                     }
 
                     $sheet->getStyle('A4:L4')->getFont()->setBold(true);
@@ -1768,7 +1768,7 @@ class ReportController extends BaseController
                         "Арлын дгаар",
                         "작업일",
                         "Өмч. 성명",
-                        "Регистрийн №",
+                        "등록번호/IDийн №",
                         "주소",
                         "서비스"
                     ));
@@ -1914,8 +1914,8 @@ class ReportController extends BaseController
         $start = $request->route("start");
         $end = $request->route("end");
         if($branch != "none" && $start != "none" && $end != "none"){
-            Excel::create("차량 -ийн УД шинээр олголтын тайлан", function($excel) use($branch, $start, $end) {
-                $excel->setTitle("Тээврийн хэрэгслийн 번호판 шинээр олголтын тайлан");
+            Excel::create("차량 -ийн УД шинээр олголтын 보고서", function($excel) use($branch, $start, $end) {
+                $excel->setTitle("Тээврийн хэрэгслийн 번호판 шинээр олголтын 보고서");
                 $excel->setCreator("ATUT");
                 $excel->sheet("보고서", function($sheet) use($branch, $start, $end) {
                     //Header үүсгэх
@@ -1969,7 +1969,7 @@ class ReportController extends BaseController
                         $this->cellRight($cell);
                     });
 
-                    $sheet->appendRow(array('차량 -ИЙН УД ШИНЭЭР ОЛГОЛТЫН ТАЙЛАН'));
+                    $sheet->appendRow(array('차량 -ИЙН УД ШИНЭЭР ОЛГОЛТЫН 보고서'));
                     $sheet->getStyle('A4:F4')->getFont()->setBold(true);
                     $sheet->getStyle('A4:F4')->getFont()->setSize(12);
                     $sheet->mergeCells('A4:F4');
@@ -1992,7 +1992,7 @@ class ReportController extends BaseController
                         "일자",
                         "비율 хүнд",
                         "ААН, 기관д",
-                        "Төрийн байгууллагад",
+                        "Төрийн 기관/단체д",
                         "합계"
                     ));
 
@@ -2233,8 +2233,8 @@ class ReportController extends BaseController
             } else {
                 $filter .= "AND STATUS != 9 AND STATUS != 10 ";
             }
-            Excel::create("차량 -ийн лавлагаа", function($excel) use($filter, $register, $lastName, $firstName) {
-                $excel->setTitle("Тээврийн хэрэгслийн лавлагаа /Эзэмшигчээр/");
+            Excel::create("차량 -ийн 확인서/조회", function($excel) use($filter, $register, $lastName, $firstName) {
+                $excel->setTitle("Тээврийн хэрэгслийн 확인서/조회 /Эзэмшигчээр/");
                 $excel->setCreator("ATUT");
                 $excel->sheet("보고서", function($sheet) use($filter, $register, $lastName, $firstName) {
                     //Header үүсгэх
@@ -2322,7 +2322,7 @@ class ReportController extends BaseController
                     }
 
                     $sheet->appendRow(array(
-                        "성: ".$lastName, "", "이름: ".$firstName, "", "", "Регистр: ".$register, "", ""
+                        "성: ".$lastName, "", "이름: ".$firstName, "", "", "등록번호/ID: ".$register, "", ""
                     ));
                     $sheet->mergeCells('A6:B6');
                     $sheet->mergeCells('C6:D6');
@@ -2429,8 +2429,8 @@ class ReportController extends BaseController
             } else {
                 $filter .= " AND END_DATE IS NULL AND STATUS != 9 AND STATUS != 10 ";
             }
-            Excel::create("차량 -ийн лавлагаа", function($excel) use($filter, $register, $lastName, $firstName) {
-                $excel->setTitle("Тээврийн хэрэгслийн лавлагаа /Өмчлөгчөөр/");
+            Excel::create("차량 -ийн 확인서/조회", function($excel) use($filter, $register, $lastName, $firstName) {
+                $excel->setTitle("Тээврийн хэрэгслийн 확인서/조회 /Өмчлөгчөөр/");
                 $excel->setCreator("ATUT");
                 $excel->sheet("보고서", function($sheet) use($filter, $register, $lastName, $firstName) {
                     //Header үүсгэх
@@ -2519,7 +2519,7 @@ class ReportController extends BaseController
                     }
 
                     $sheet->appendRow(array(
-                        "성: ".$lastName, "", "이름: ".$firstName, "", "", "Регистр: ".$register, "", ""
+                        "성: ".$lastName, "", "이름: ".$firstName, "", "", "등록번호/ID: ".$register, "", ""
                     ));
                     $sheet->mergeCells('A6:B6');
                     $sheet->mergeCells('C6:D6');
@@ -2697,8 +2697,8 @@ class ReportController extends BaseController
                 
               
             }
-            Excel::create("차량 -ийн лавлагаа", function($excel) use($filter, $register, $lastName, $firstName) {
-                $excel->setTitle("Тээврийн хэрэгслийн лавлагаа өмнөх өмчлөгчөөр");
+            Excel::create("차량 -ийн 확인서/조회", function($excel) use($filter, $register, $lastName, $firstName) {
+                $excel->setTitle("Тээврийн хэрэгслийн 확인서/조회 өмнөх 소유자өөр");
                 $excel->setCreator("ATUT");
                 $excel->sheet("보고서", function($sheet) use($filter, $register, $lastName, $firstName) {
                     //Header үүсгэх
@@ -2790,7 +2790,7 @@ class ReportController extends BaseController
                     }
 
                     $sheet->appendRow(array(
-                        "성: ".$lastName, "", "", "이름: ".$firstName, "", "", "", "Регистр: ".$register, "", ""
+                        "성: ".$lastName, "", "", "이름: ".$firstName, "", "", "", "등록번호/ID: ".$register, "", ""
                     ));
                     $sheet->mergeCells('A6:C6');
                     $sheet->mergeCells('D6:F6');
@@ -5299,8 +5299,8 @@ protected function exportToExcelEpayReportr(Request $request){
         $end = $request->route("end");
 
         if($start != "none" && $end != "none"){
-            Excel::create("말소ын тайлан", function($excel) use($user, $start, $end) {
-                $excel->setTitle("말소ын тайлан");
+            Excel::create("말소ын 보고서", function($excel) use($user, $start, $end) {
+                $excel->setTitle("말소ын 보고서");
                 $excel->setCreator("ATUT");
                 $excel->sheet("보고서", function($sheet) use($user, $start, $end) {
                     //Header үүсгэх
@@ -5349,7 +5349,7 @@ protected function exportToExcelEpayReportr(Request $request){
                     $sheet->setPaperSize(\PHPExcel_Worksheet_PageSetup::PAPERSIZE_A4);
                     $sheet->appendRow(array("","","","", "", "", ""));
 
-                    $sheet->appendRow(array('ХАСАГДСАН 차량 -ИЙН ТАЙЛАН'));
+                    $sheet->appendRow(array('ХАСАГДСАН 차량 -ИЙН 보고서'));
                     $sheet->getStyle('A4:G4')->getFont()->setBold(true);
                     $sheet->getStyle('A4:G4')->getFont()->setSize(12);
                     $sheet->mergeCells('A4:G4');
@@ -5634,8 +5634,8 @@ protected function exportToExcelEpayReportr(Request $request){
                     $endDate = $request->route("endDate");
          //   return $plateColor;
                     if($startDate != "none" && $endDate != "none"){
-                        Excel::create("Дугаарын хадаглалт тайлан", function($excel) use( $startDate, $endDate) {
-                            $excel->setTitle("Дугаарын хадаглалт тайлан");
+                        Excel::create("번호ын хадаглалт 보고서", function($excel) use( $startDate, $endDate) {
+                            $excel->setTitle("번호ын хадаглалт 보고서");
                             $excel->setCreator("ATUT");
                             $excel->sheet("보고서", function($sheet) use( $startDate, $endDate) {
                                 //Header үүсгэх
@@ -5683,7 +5683,7 @@ protected function exportToExcelEpayReportr(Request $request){
                                 $sheet->setPaperSize(\PHPExcel_Worksheet_PageSetup::PAPERSIZE_A4);
                                 $sheet->appendRow(array("","","","", "", "", ""));
             
-                                $sheet->appendRow(array('ДУГААРЫН ХАДАГЛАЛТ ТАЙЛАН'));
+                                $sheet->appendRow(array('ДУГААРЫН ХАДАГЛАЛТ 보고서'));
                                 $sheet->getStyle('A4:G4')->getFont()->setBold(true);
                                 $sheet->getStyle('A4:G4')->getFont()->setSize(12);
                                 $sheet->mergeCells('A4:G4');
@@ -5863,8 +5863,8 @@ protected function exportToExcelEpayReportr(Request $request){
                   $endDate = $request->route("endDate");
        //   return $plateColor;
                   if($startDate != "none" && $endDate != "none"){
-                      Excel::create("Дугаарын өнгө тайлан", function($excel) use($plateColor, $startDate, $endDate) {
-                          $excel->setTitle("Дугаарын өнгө тайлан");
+                      Excel::create("번호ын өнгө 보고서", function($excel) use($plateColor, $startDate, $endDate) {
+                          $excel->setTitle("번호ын өнгө 보고서");
                           $excel->setCreator("ATUT");
                           $excel->sheet("보고서", function($sheet) use($plateColor, $startDate, $endDate) {
                               //Header үүсгэх
@@ -5913,7 +5913,7 @@ protected function exportToExcelEpayReportr(Request $request){
                               $sheet->setPaperSize(\PHPExcel_Worksheet_PageSetup::PAPERSIZE_A4);
                               $sheet->appendRow(array("","","","", "", ""));
           
-                              $sheet->appendRow(array('ДУГААРЫН ӨНГӨ ТАЙЛАН'));
+                              $sheet->appendRow(array('ДУГААРЫН ӨНГӨ 보고서'));
                               $sheet->getStyle('A4:G4')->getFont()->setBold(true);
                               $sheet->getStyle('A4:G4')->getFont()->setSize(12);
                               $sheet->mergeCells('A4:G4');
@@ -5931,7 +5931,7 @@ protected function exportToExcelEpayReportr(Request $request){
                                   $this->cellRight($cell);
                               });
                               $sheet->appendRow(array("","","","", "",""));
-                              $sheet->appendRow(array("№", "지점", "차량-н төрөл","이름", "색상","개수", "일자"));
+                              $sheet->appendRow(array("№", "지점", "차량-н 유형","이름", "색상","개수", "일자"));
                               $sheet->getStyle('A8:G8')->getFont()->setBold(true);
                               $sheet->getStyle('A8:G8')->getFont()->setSize(12);
                               $this->setPrintMargins($sheet, 0.2, 0.25, 0.2, 0.25);
@@ -6105,8 +6105,8 @@ protected function exportToExcelEpayReportr(Request $request){
         $start = $request->route("start");
         $end = $request->route("end");
         if($department != "none" && $start != "none" && $end != "none"){
-            Excel::create("지점ын тайлан", function($excel) use($department, $start, $end) {
-                $excel->setTitle("지점ын тайлан");
+            Excel::create("지점ын 보고서", function($excel) use($department, $start, $end) {
+                $excel->setTitle("지점ын 보고서");
                 $excel->setCreator("ATUT");
                 $excel->sheet("보고서", function($sheet) use($department, $start, $end) {
                     //Header үүсгэх
@@ -6164,7 +6164,7 @@ protected function exportToExcelEpayReportr(Request $request){
                     $sheet->setPaperSize(\PHPExcel_Worksheet_PageSetup::PAPERSIZE_A4);
                     $sheet->appendRow(array("","","","", "", "", ""));
 
-                    $sheet->appendRow(array('САЛБАРЫН ТАЙЛАН'));
+                    $sheet->appendRow(array('САЛБАРЫН 보고서'));
                     $sheet->getStyle('A4:P4')->getFont()->setBold(true);
                     $sheet->getStyle('A4:P4')->getFont()->setSize(12);
                     $sheet->mergeCells('A4:P4');

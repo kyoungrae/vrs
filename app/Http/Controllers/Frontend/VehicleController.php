@@ -422,10 +422,10 @@ class VehicleController extends BaseController
             $isBuild = trim($request->get("is_build"));
            // return $isBuild;
             
-           //return $seriesCheck->series_id;   // naa 35 dk 144
            $buildCheck = $this->buildCheck($owner,$isBuild);
 
-            if ($buildCheck || $seriesCheck->series_id == 35 || $seriesCheck->series_id==144 | $seriesCheck->series_id==735) {
+            $seriesCheck = SeriesNumber::where("NAME", $plate_no)->first();
+            if ($buildCheck || ($seriesCheck && ($seriesCheck->series_id == 35 || $seriesCheck->series_id == 144 || $seriesCheck->series_id == 735))) {
        
             if(!$this->isDuplicate($plate_no)){
                 if($this->giveNumber($plate_no, $userPkId)){
@@ -490,7 +490,7 @@ class VehicleController extends BaseController
                                             $message = $this->message("success", $cabin_no . " 차대번호 차량이 성공적으로 등록되었습니다.");
                                             return redirect(url('/vehicle/' . $this->enc($plate_no)))->with("message", $message);
                                         } else {
-                                            $message = $this->message("info", $plate_no . "아카이브 번호 үүсгэхэд алдаа гарлаа дахин үйлдлээ хийнэ үү.");
+                                            $message = $this->message("info", $plate_no . "아카이브 번호 생성 중 오류가 발생했습니다 다시 작업/처리 해주세요.");
                                             return redirect(url('/vehicle/' . $this->enc($cabin_no) . '/new'))->with("message", $message);
                                         }
                                     } catch (\Exception $ex){
@@ -610,7 +610,7 @@ class VehicleController extends BaseController
                             }
                             $message = $this->message("success", "증명서 교체가 성공적으로 처리되었습니다.");
                         } else {
-                            $message = $this->message("info", "아카이브 번호 үүсгэхэд алдаа гарлаа дахин үйлдлээ хийнэ үү.");
+                            $message = $this->message("info", "아카이브 번호 생성 중 오류가 발생했습니다 다시 작업/처리 해주세요.");
                         }
                     } catch (\Exception $ex){
                         DB::rollBack();
@@ -694,7 +694,7 @@ class VehicleController extends BaseController
                             $message = $this->message("success", "증명서 재발급이 성공적으로 처리되었습니다.");
                             DB::commit();
                         } else {
-                            $message = $this->message("info", "아카이브 번호 үүсгэхэд алдаа гарлаа дахин үйлдлээ хийнэ үү.");
+                            $message = $this->message("info", "아카이브 번호 생성 중 오류가 발생했습니다 다시 작업/처리 해주세요.");
                         }
                     } catch (\Exception $ex){
                         DB::rollBack();
@@ -830,7 +830,7 @@ public  function changePlateBuildCheck($isBuild,$prov)
                                                 $message = $this->message("success", "번호판이 성공적으로 교체되었습니다.");
                                                 DB::commit();
                                             } else {
-                                                $message = $this->message("info", "아카이브 번호 үүсгэхэд алдаа гарлаа дахин үйлдлээ хийнэ үү.");
+                                                $message = $this->message("info", "아카이브 번호 생성 중 오류가 발생했습니다 다시 작업/처리 해주세요.");
                                             }
                                         } catch (\Exception $ex){
                                             DB::rollBack();
@@ -907,7 +907,7 @@ public  function changePlateBuildCheck($isBuild,$prov)
             $vehicleCheck = Vehicle::where("plate_no", $plate_no)->first();
          //dd($restoreStatusCheck);
             if ($restoreStatusCheck === "" && $vehicleCheck['status'] === "10") {
-                $message = $this->message("info", "아카이브ын төрөл сонгоогүй байна.");
+                $message = $this->message("info", "아카이브ын 유형 선택하지 않은 입니다.");
                                                 return redirect(url('/vehicle/' . $this->enc($plate_no)))->with("message", $message);
             }
             if ($vehicleCheck['status'] === "10" ) {
@@ -948,7 +948,7 @@ if ($restoreStatusCheck === "1") {
                                                 DB::commit();
                                                 return redirect(url('/vehicle/' . $this->enc($plate_no)))->with("message", $message);
                                             } else {
-                                                $message = $this->message("info", "아카이브 번호 үүсгэхэд алдаа гарлаа дахин үйлдлээ хийнэ үү.");
+                                                $message = $this->message("info", "아카이브 번호 생성 중 오류가 발생했습니다 다시 작업/처리 해주세요.");
                                                 return redirect(url('/vehicle/' . $this->enc($plate_no)))->with("message", $message);
                                             }
                                         } catch (\Exception $ex){
@@ -1024,7 +1024,7 @@ if ($restoreStatusCheck === "1") {
                                                 DB::commit();
                                                 return redirect(url('/vehicle/' . $this->enc($plate_no)))->with("message", $message);
                                             // } else {
-                                            //     $message = $this->message("info", "아카이브 번호 үүсгэхэд алдаа гарлаа дахин үйлдлээ хийнэ үү.");
+                                            //     $message = $this->message("info", "아카이브 번호 생성 중 오류가 발생했습니다 다시 작업/처리 해주세요.");
                                             //     return redirect(url('/vehicle/' . $this->enc($plate_no)))->with("message", $message);
                                             // }
                                         } catch (\Exception $ex){
@@ -1062,7 +1062,6 @@ if ($restoreStatusCheck === "1") {
                     //     $plate_no = $plate_old_no;
                     // }
               
-                return redirect(url('/vehicle/'.$this->enc($plate_no)))->with("message", $message);
                // return $vehicleCheck->status;
 
 }
@@ -1128,7 +1127,7 @@ if ($restoreStatusCheck === "1") {
                                                     DB::commit();
                                                     return redirect(url('/vehicle/' . $this->enc($plate_no)))->with("message", $message);
                                                 } else {
-                                                    $message = $this->message("info", "아카이브 번호 үүсгэхэд алдаа гарлаа дахин үйлдлээ хийнэ үү.");
+                                                    $message = $this->message("info", "아카이브 번호 생성 중 오류가 발생했습니다 다시 작업/처리 해주세요.");
                                                     return redirect(url('/vehicle/' . $this->enc($plate_no)))->with("message", $message);
                                                 }
                                             } catch (\Exception $ex){
@@ -1178,7 +1177,6 @@ if ($restoreStatusCheck === "1") {
            
         } catch (\Exception $ex){
             $this->writeLog("Restore plate error: ".$ex);
-            return $ex;
             $message = $this->message("danger", "말소 차량 복구 중 오류가 발생했습니다.");
             return redirect(url('/vehicle/'.$this->enc($plate_no)))->with("message", $message);
         }
@@ -1580,7 +1578,7 @@ if ($restoreStatusCheck === "1") {
                                                     DB::commit();
                                                     return redirect(url('/vehicle/' . $this->enc($plate_no)))->with("message", $message);
                                                 } else {
-                                                    $message = $this->message("info", "아카이브 번호 үүсгэхэд алдаа гарлаа дахин үйлдлээ хийнэ үү.");
+                                                    $message = $this->message("info", "아카이브 번호 생성 중 오류가 발생했습니다 다시 작업/처리 해주세요.");
                                                     return redirect(url('/vehicle/' . $this->enc($plate_no)))->with("message", $message);
                                                 }
                                             } catch (\Exception $ex){
@@ -1784,10 +1782,10 @@ if ($restoreStatusCheck === "1") {
                                         return redirect(url('/vehicle/'.$this->enc($plate_no)))->with("message", $message);
                                     }
                                 } else {
-                                    $message = $this->message("info", "아카이브 번호 үүсгэхэд алдаа гарлаа дахин үйлдлээ хийнэ үү.");
+                                    $message = $this->message("info", "아카이브 번호 생성 중 오류가 발생했습니다 다시 작업/처리 해주세요.");
                                 }
                             } else {
-                                $message = $this->message("info", "Шилжүүлэх өмчлөгч одоогийн өмчлөгч байна.");
+                                $message = $this->message("info", "Шилжүүлэх 소유자 одоогийн 소유자 입니다.");
                             }
                         } else {
                             if (!is_array($result) && $result == false) {
@@ -1809,7 +1807,7 @@ if ($restoreStatusCheck === "1") {
                     $message = $this->message("info", "이전 хийх 차량 찾을 수 없습니다.");
                 }
             } else {
-                $message = $this->message("info", "Шилжүүлэх өмчлөгч 찾을 수 없습니다.");
+                $message = $this->message("info", "Шилжүүлэх 소유자 찾을 수 없습니다.");
             }
             return redirect(url('/vehicle/'.$this->enc($plate_no)))->with("message", $message);
         } catch (\Exception $ex){
@@ -1940,12 +1938,12 @@ if ($restoreStatusCheck === "1") {
                 'UPDATED_BY' => $userPkId
             ]);
             DB::commit();
-            $message = $this->message("success", "차량 -ийн хязгаарлалт 성공적으로 처리되었습니다.");
+            $message = $this->message("success", "차량 -ийн 제한 성공적으로 처리되었습니다.");
             return redirect(url('/vehicle/'.$this->enc($plate_no)))->with("message", $message);
         } catch (\Exception $ex){
             DB::rollBack();
             $this->writeLog("Vehicle limit error: ".$ex->getMessage());
-            $message = $this->message("danger", "차량 -ийн хязгаарлалт хийхэд 오류가 발생했습니다.");
+            $message = $this->message("danger", "차량 -ийн 제한 할 때 오류가 발생했습니다.");
             return redirect(url('/vehicle/'.$this->enc($plate_no)))->with("message", $message);
         }
     }
@@ -1973,7 +1971,7 @@ if ($restoreStatusCheck === "1") {
                 'UPDATED_BY' => $userPkId
             ]);
 
-            $message = $this->message("success", "차량 성공적으로 идэвхижлээ.");
+            $message = $this->message("success", "차량 성공적으로 활성화되었습니다.");
             DB::commit();
             return redirect(url('/vehicle/'.$this->enc($plate_no)))->with("message", $message);
         } catch (\Exception $ex){
@@ -2018,12 +2016,12 @@ if ($restoreStatusCheck === "1") {
                 ]);
             }
             DB::commit();
-            $message = $this->message("success", "차량 -ийн хязгаарлалт 성공적으로 복구되었습니다.");
+            $message = $this->message("success", "차량 -ийн 제한 성공적으로 복구되었습니다.");
             return redirect(url('/vehicle/'.$this->enc($plate_no)))->with("message", $message);
         } catch (\Exception $ex){
             DB::rollBack();
             $this->writeLog("Vehicle limit restore error: ".$ex->getMessage());
-            $message = $this->message("danger", "차량 -ийн хязгаарлалт сэргээхэд 오류가 발생했습니다.");
+            $message = $this->message("danger", "차량 -ийн 제한 복구 중 오류가 발생했습니다.");
             return redirect(url('/vehicle/'.$this->enc($plate_no)))->with("message", $message);
         }
     }
@@ -2090,9 +2088,9 @@ if ($restoreStatusCheck === "1") {
 
                             session()->put('vehicleElectron',['eForm'=>'1','finger'=> $finger,'checkTorguuli'=>$checkTorguuli]);
                             
-                            $message = $this->message("success", "차량 -ийн мэдээлэл 성공적으로 хасагдлаа.");
+                            $message = $this->message("success", "차량 -ийн 정보 성공적으로 삭제/말소되었습니다.");
                         } else {
-                            $message = $this->message("info", "아카이브 번호 үүсгэхэд алдаа гарлаа дахин үйлдлээ хийнэ үү.");
+                            $message = $this->message("info", "아카이브 번호 생성 중 오류가 발생했습니다 다시 작업/처리 해주세요.");
                         }
                     } catch (\Exception $ex){
                         DB::rollBack();
@@ -2101,7 +2099,7 @@ if ($restoreStatusCheck === "1") {
                         return redirect(url('/vehicle/'.$this->enc($plate_old_no)))->with("message", $message);
                     }
                 } else {
-                    $message = $this->message("info", "ХХ сери үүсээгүй эсвэл ХХ серитэй сул 번호 байхгүй байна.");
+                    $message = $this->message("info", "ХХ сери үүсээгүй эсвэл ХХ серитэй сул 번호 байхгүй 입니다.");
                     $plate_no = $plate_old_no;
                 }
             } else {
@@ -2149,14 +2147,14 @@ if ($restoreStatusCheck === "1") {
                         $this->createPrintPlate($vehicle->plate_no, $service->id, $userPkId,$plateColor);
                         session()->put('vehicleElectron',['eForm'=>'1','finger'=> $finger]);
                         DB::commit();
-                        $message = $this->message("success", "차량 -ийн тэмдэгт гээлт 성공적으로 등록되었습니다.");
+                        $message = $this->message("success", "차량 -ийн 표식/문자 분실 성공적으로 등록되었습니다.");
                     } else {
-                        $message = $this->message("info", "아카이브 번호 үүсгэхэд алдаа гарлаа дахин үйлдлээ хийнэ үү.");
+                        $message = $this->message("info", "아카이브 번호 생성 중 오류가 발생했습니다 다시 작업/처리 해주세요.");
                     }
                 } catch (\Exception $ex){
                     DB::rollBack();
                     $this->writeLog("Remove vehicle plate transaction error: ".$ex->getMessage());
-                    $message = $this->message("danger", "차량 тэмдэгт гээлт бүртгэхэд 오류가 발생했습니다.");
+                    $message = $this->message("danger", "차량 표식/문자 분실 등록하기эд 오류가 발생했습니다.");
                     return redirect(url('/vehicle/'.$this->enc($plate_no)))->with("message", $message);
                 }
             } else {
@@ -2165,7 +2163,7 @@ if ($restoreStatusCheck === "1") {
             return redirect(url('/vehicle/'.$this->enc($plate_no)))->with("message", $message);
         } catch (\Exception $ex){
             $this->writeLog("Remove vehicle plate error: ".$ex->getMessage());
-            $message = $this->message("danger", "차량 тэмдэгт гээлт бүртгэхэд 오류가 발생했습니다.");
+            $message = $this->message("danger", "차량 표식/문자 분실 등록하기эд 오류가 발생했습니다.");
             return redirect(url('/vehicle/'.$this->enc($plate_no)))->with("message", $message);
         }
     }
@@ -2200,7 +2198,7 @@ if ($restoreStatusCheck === "1") {
                 } catch (\Exception $ex){
                     DB::rollBack();
                     $this->writeLog("Remove vehicle plate transaction error: ".$ex->getMessage());
-                    $message = $this->message("danger", "차량 тэмдэгт гээлт бүртгэхэд 오류가 발생했습니다.");
+                    $message = $this->message("danger", "차량 표식/문자 분실 등록하기эд 오류가 발생했습니다.");
                     return redirect(url('/vehicle/'.$this->enc($plate_no)))->with("message", $message);
                 }
             } else {
@@ -2209,7 +2207,7 @@ if ($restoreStatusCheck === "1") {
             return redirect(url('/vehicle/'.$this->enc($plate_no)))->with("message", $message);
         } catch (\Exception $ex){
             $this->writeLog("Remove vehicle plate error: ".$ex->getMessage());
-            $message = $this->message("danger", "차량 тэмдэгт гээлт бүртгэхэд 오류가 발생했습니다.");
+            $message = $this->message("danger", "차량 표식/문자 분실 등록하기эд 오류가 발생했습니다.");
             return redirect(url('/vehicle/'.$this->enc($plate_no)))->with("message", $message);
         }
     }
@@ -2512,8 +2510,8 @@ if ($restoreStatusCheck === "1") {
                 return true;
             }
         } catch (\Exception $ex){
-            $this->writeLog("주소ийн мэдээлэл шалгахад 오류가 발생했습니다. ".$ex);
-            $message = $this->message("info", "Серийн мэдээлэл шивэгдээгүй эсвэл эзэмшигчийн хаягийн мэдээлэл дутуу байна.");
+            $this->writeLog("주소ийн 정보 확인할 때 오류가 발생했습니다. ".$ex);
+            $message = $this->message("info", "Серийн 정보 입력되지 않은 эсвэл 소유권자ийн хаягийн 정보 누락된 입니다.");
             return array(true, $message);
         }
     }
@@ -2687,7 +2685,7 @@ if ($restoreStatusCheck === "1") {
         try {
          
             $vehicles = DB::table("REG_VEHICLE_VIEW")->where("id", $vehicle)->get();
-$vehicles=json_decode($vehicles,"utf-8")[0];
+            $vehicles = json_decode($vehicles->toJson(), true)[0];
            // return $vehicles;
             $Diagnostic = DB::table("MVIS.INS_INSPRESULT_SHORT_VIEW")
                 ->where("SERVICE_TYPE_ID", "1")
@@ -2754,7 +2752,7 @@ $vehicles=json_decode($vehicles,"utf-8")[0];
         try {
          
             $vehicles = DB::table("REG_VEHICLE_VIEW")->where("id", $vehicle)->get();
-$vehicles=json_decode($vehicles,"utf-8")[0];
+            $vehicles = json_decode($vehicles->toJson(), true)[0];
          
             $Diagnostic = DB::table("MVIS.INS_INSPRESULT_SHORT_VIEW")
                 ->where("SERVICE_TYPE_ID", "1")
@@ -2763,8 +2761,7 @@ $vehicles=json_decode($vehicles,"utf-8")[0];
                 ->orderBy("DATEINSPAPPR", "DESC")
                 ->get()
                 ->first();
-                return $Diagnostic;
-                $insp=(int)$Diagnostic->passed;
+                $insp = (int)$Diagnostic->passed;
           if($Diagnostic->dateagain != null && \Carbon\Carbon::parse($Diagnostic->dateagain)->format("Y-m-d") <= \Carbon\Carbon::now()->format("Y-m-d")){
        
                  //  return $Diagnostic->passed;

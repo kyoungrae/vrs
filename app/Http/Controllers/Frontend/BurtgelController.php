@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Session;
 class BurtgelController extends BaseController
 {
     /**
-     * Дугаар хайлтын хэсгийн нүүр хуудас
+     * 번호 хайлтын хэсгийн нүүр хуудас
      * @param Request $request - дамжуулна
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -60,25 +60,25 @@ class BurtgelController extends BaseController
                 $seriesNumberId = $request->get("seriesNumberId");
                 $provinceID = $request->get("provi");
 
-                //Дугаар хайлтын оронгууд
+                //번호 хайлтын оронгууд
                 $d1 = ""; 
                 $d2 = "";
                 $d3 = "";
                 $d4 = "";
                 if ($seriesNumberId != null && $seriesNumberId != "") {
                     if (Session::token() != $request->get("_token")) {
-                        $message = $this->message("warning", "Захиалга ам년тгүй боллоо.");
+                        $message = $this->message("warning", "Захиалга ам년тгүй 경우лоо.");
                         return view('Touch.burtgel', compact('limitPerDay', 'province', 'provinceID', 'type', 'message'));
                     }
 
                     $rules = ['captcha' => 'required|captcha'];
                     $validator = validator()->make(request()->all(), $rules);
                     if ($validator->fails()) {
-                        $message = $this->message("info", "Баталгаажуулах код буруу байна.");
+                        $message = $this->message("info", "Баталгаажуулах код буруу 입니다.");
                         return view('Touch.burtgel', compact( 'limitPerDay', 'province', 'provinceID', 'type', 'message'));
                     } else {
                         $seriesNumberId = self::dec($seriesNumberId);
-                        //Регистрийн номер угсаралт
+                        //등록번호/IDийн номер угсаралт
                         $first = $request->get("first");
                         $second = $request->get("second");
                         $option = $request->get("registeroption");
@@ -111,7 +111,7 @@ class BurtgelController extends BaseController
                             $postfix = "=03";
                         }
 
-                        //Регистр бичсэн эсэх
+                        //등록번호/ID бичсэн эсэх
                         if ($option == "person") {
                             $is_register = $this->checkRegister($register, $option);
                             if($is_register == false){
@@ -121,11 +121,11 @@ class BurtgelController extends BaseController
                             $postfix = "=01";
                         }
 
-                        //Регистр бичсэн эсэх
+                        //등록번호/ID бичсэн эсэх
                         if($option == "foreign"){
                             $check_foreign = SeriesNumber::where("IP_ADDRESS", $request->ip().$postfix)->where("IS_GIVEN", 0)->where("IS_ORDER", (int)1)->get();
                             if ($check_foreign->count() > 20000) {
-                                $message = $this->message("warning", "Захиалга ам년тгүй боллоо.");
+                                $message = $this->message("warning", "Захиалга ам년тгүй 경우лоо.");
                                 return view('Touch.burtgel', compact( 'limitPerDay', 'province', 'provinceID', 'type', 'message'));
                             }
                         } else {
@@ -137,7 +137,7 @@ class BurtgelController extends BaseController
 
                         //섬 бичсэн эсэх
                         if ($aral == "00000" && $type == null) {
-                            $message = $this->message("warning", "Та арлын 번호аа зөв оруулна уу.");
+                            $message = $this->message("warning", "Та 차대 번호аа зөв 입력해 주세요.");
                             return view('Touch.burtgel', compact( 'limitPerDay', 'province', 'provinceID', 'type', 'message'));
                         }
 
@@ -162,7 +162,7 @@ class BurtgelController extends BaseController
                             ->get()
                             ->count();
                         if ($checkOwnerList >= $ownerQty) {
-                            $message = $this->message("warning", "Таны өнөөдрийн захиалга хийх эрх дууссан байна.");
+                            $message = $this->message("warning", "Таны өнөөдрийн захиалга хийх эрх дууссан 입니다.");
                             return view('Touch.burtgel', compact( 'limitPerDay', 'province', 'provinceID', 'type', 'message'));
                         }
 
@@ -177,7 +177,7 @@ class BurtgelController extends BaseController
                             ->count();
 
                         if ($checkDuplicate > 0) {
-                            $message = $this->message("warning", "Дугаар захиалагдсан байна. Та өөр 번호 захиална уу.");
+                            $message = $this->message("warning", "번호 захиалагдсан 입니다. Та өөр 번호 захиална 주세요.");
                             return view('Touch.burtgel', compact( 'limitPerDay', 'province', 'provinceID', 'type', 'message'));
                         } else {
                             $numberText = SeriesNumber::where("ID", $seriesNumberId)->where("IS_ORDER", (int)0)->get();
@@ -197,8 +197,8 @@ class BurtgelController extends BaseController
                                 'ORDER_CABIN' => $aral
                             ]);
 
-                            $message_info = '<table class="table table-bordered" style="font-size: 16px;"><tbody><tr><th><div>Захиалсан 번호</div></th><th><div>'.$numberText.'</div></th></tr><tr><th><div>등록번호</div></th><th><div>'.$register.'</div></th></tr><tr><th><div>차체번호</div></th><th><div>'.$aral.'</div></th></tr><tr><th><div>주문 일자</div></th><th><div>'.$order_date.'</div></th></tr><tr><th><div>Хүчинтэй огноо</div></th><th><div>'.Carbon::parse($order_date)->addDay(1).'</div></th></tr></tbody></table>';
-                            $message = $this->message("success", '24 цагийн хугацаанд хүчинтэй.<br>'.$message_info.'<div style="color:red">Захиалгын мэдээллийг баталгаажуулах үүднээс дэлгэцийн зургийг дарж авна уу!</div>');
+                            $message_info = '<table class="table table-bordered" style="font-size: 16px;"><tbody><tr><th><div>Захиалсан 번호</div></th><th><div>'.$numberText.'</div></th></tr><tr><th><div>등록번호</div></th><th><div>'.$register.'</div></th></tr><tr><th><div>차체번호</div></th><th><div>'.$aral.'</div></th></tr><tr><th><div>주문 일자</div></th><th><div>'.$order_date.'</div></th></tr><tr><th><div>Хүчинтэй 날짜</div></th><th><div>'.Carbon::parse($order_date)->addDay(1).'</div></th></tr></tbody></table>';
+                            $message = $this->message("success", '24 цагийн хугацаанд хүчинтэй.<br>'.$message_info.'<div style="color:red">Захиалгын мэдээллийг 확인 үүднээс дэлгэцийн зургийг дарж авна уу!</div>');
                             return view('Touch.burtgel', compact('limitPerDay', 'province', 'provinceID', 'type', 'message'));
                         }
                     }
@@ -214,13 +214,13 @@ class BurtgelController extends BaseController
                     $d4 = $request->get("d4");
 
                     $searchNumber = $d1 . $d2 . $d3 . $d4;
-                    //Дугаар хайх товч дарсан эсэх
+                    //번호 검색 товч дарсан эсэх
                     if($searchNumber == "0000") {
                         $all_numbers = $this->selectNumbers($seriesId, $user_position_id);
                         $numbers = $this->boardNumbers($all_numbers, $selectPerDay, "all");
                     }
                     else {
-                        //Дугаар хайлт
+                        //번호 хайлт
                         $searchNumber = preg_replace("/[^0-9]/", "", $searchNumber);
                         $all_numbers = $this->selectSearchNnumber($seriesId, $searchNumber, $user_position_id);
                         $numbers = $this->boardNumbers($all_numbers, $selectPerDay, "search");
@@ -240,7 +240,7 @@ class BurtgelController extends BaseController
                 return view('Touch.burtgel',compact('limitPerDay','province', 'provinceID', 'type'));
             }
         } catch (\Exception $ex){
-            $this->writeLog("Дугаар захиалга алдаа гарлаа: ".$ex);
+            $this->writeLog("번호 захиалга 오류가 발생했습니다: ".$ex);
             return redirect(url("/"));
         }
     }

@@ -121,9 +121,9 @@
                                                         <td>{{ ISSET($vehicle) ? $vehicle->updated_date : "" }}</td>
                                                         <td>{{ ISSET($vehicle) ? $vehicle->start_date : "" }}</td>
                                                         <td>{{ ISSET($vehicle) ? $vehicle->archive_no : "" }}</td>
-                                                        <td>{{ ISSET($vehicle) ? $vehicle->family_name : "" }}</td>
-                                                        <td>{{ ISSET($vehicle) ? $vehicle->last_name : "" }}</td>
-                                                        <td>{{ ISSET($vehicle) ? $vehicle->first_name : "" }}</td>
+                                                        <td>{{ ISSET($vehicle) ? ($vehicle->family_name ?? $vehicle->FAMILY_NAME ?? $vehicle->FamilyName ?? "") : "" }}</td>
+                                                        <td>{{ ISSET($vehicle) ? ($vehicle->last_name ?? $vehicle->LAST_NAME ?? $vehicle->LastName ?? "") : "" }}</td>
+                                                        <td>{{ ISSET($vehicle) ? ($vehicle->first_name ?? $vehicle->FIRST_NAME ?? $vehicle->FirstName ?? "") : "" }}</td>
                                                         <td>{{ ISSET($vehicle) ? $vehicle->engine_capacity : "" }}</td>
                                                         <td>{{ ISSET($vehicle) ? $vehicle->purpose_name : "" }}</td>
                                                         <td>{{ ISSET($vehicle) ? $vehicle->vehicle_type_name : "" }}</td>
@@ -141,9 +141,9 @@
                                                         <td>{{ ISSET($vehicle) ? $vehicle->first_archive_no : "" }}</td>
                                                         <td>{{ ISSET($vehicle) ? $vehicle->declaration_no : "" }}</td>
                                                         <td>{{ ISSET($vehicle) ? $vehicle->status_name : "" }}</td>
-                                                        <td>{{ ISSET($vehicle) ? $vehicle->owner_country_name : "" }}</td>
+                                                        <td>{{ ISSET($vehicle) ? ($vehicle->owner_country_name ?? $vehicle->OWNER_COUNTRY_NAME ?? $vehicle->OwnerCountryName ?? "") : "" }}</td>
                                                         <td>{{ ISSET($vehicle) ? $vehicle->register_no : "" }}</td>
-                                                        <td>{{ ISSET($vehicle) ? $vehicle->owner_type_name : "" }}</td>
+                                                        <td>{{ ISSET($vehicle) ? ($vehicle->owner_type_name ?? $vehicle->OWNER_TYPE_NAME ?? $vehicle->OwnerTypeName ?? "") : "" }}</td>
                                                         <td>{{ ISSET($vehicle) ? $vehicle->address_detail : "" }}</td>
                                                         <td>{{ ISSET($vehicle) ? $vehicle->owner_homephone : "" }}</td>
                                                         <td>{{ ISSET($vehicle) ? $vehicle->owner_workphone : "" }}</td>

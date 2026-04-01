@@ -378,7 +378,7 @@
                     //   $("#customerRegnum1").val(data['register_no']);
                     // $("#orderPlate").html("");
                     // var html = '<table class="table table-bordered" >'+
-                    //     '<tr>'+'<td colspan="2" style="text-align: center;font-weight: bold;">'+"Захиалсан 번호ын мэдээлэл"+'</td>'+'</tr>'+
+                    //     '<tr>'+'<td colspan="2" style="text-align: center;font-weight: bold;">'+"Захиалсан 번호ын 정보"+'</td>'+'</tr>'+
                     //     '<tr >' +
                     //   ' <td >' + '<strong> 예약된 등록번호 </strong>'+ ' </td>' +
                     //    ' <td >'  +data['register_no']+ ' </td>' +

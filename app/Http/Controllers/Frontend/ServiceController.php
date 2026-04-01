@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Session;
 class ServiceController extends BaseController
 {
     /*
-     * service1 => Иргэний мэдээлэл зурагтай
+     * service1 => Иргэний 정보 зурагтай
      * service2 => 세관
      * service3 => 과태료
      * service4 => 세금
@@ -88,7 +88,7 @@ public function transactionCheck(Request $request){
             //         return $checkTrailerMehMotoMove;
             //     }
             //     else{
-            //         return response()->json(['status'=>'error','msg'=>'Уг үйлчигээний төлбөр төлөгдөөгүй байна.']);
+            //         return response()->json(['status'=>'error','msg'=>'Уг үйлчигээний төлбөр төлөгдөөгүй 입니다.']);
             //     }
             // }else{
                 $check = Transaction::query()
@@ -101,7 +101,7 @@ public function transactionCheck(Request $request){
                     return $check;
         
                    }   else{
-                        return response()->json(['status'=>'error','msg'=>'Уг үйлчигээний төлбөр төлөгдөөгүй байна.']);
+                        return response()->json(['status'=>'error','msg'=>'Уг үйлчигээний төлбөр төлөгдөөгүй 입니다.']);
                 //    }
            // }
            
@@ -236,7 +236,7 @@ public function transactionCheck(Request $request){
     //  if (count($seriesCheck) > 0) {
     //     return response()->json([
     //         'status' => 400,
-    //         'message' => "Уг 번호ыг хадаглах боломжгүй байна."
+    //         'message' => "Уг 번호ыг хадаглах 경우омжгүй 입니다."
             
     //     ]);
     //  } else {
@@ -258,7 +258,7 @@ public function transactionCheck(Request $request){
             // return $result_json;
             return response()->json([
                 'status' => 400,
-                'message' => "Уг 번호ыг хадаглах боломжгүй байна."
+                'message' => "Уг 번호ыг хадаглах 경우омжгүй 입니다."
                 
             ]);
         }else{
@@ -278,7 +278,7 @@ public function transactionCheck(Request $request){
             // ]);
             return response()->json([
                 'status' => 400,
-                'message' => "Уг 번호ыг хадаглах боломжгүй байна."
+                'message' => "Уг 번호ыг хадаглах 경우омжгүй 입니다."
                 
             ]);
               // return json_encode($orderVrs);
@@ -953,9 +953,17 @@ if ($request->param == 0) {
                     $declaration = self::dec($request->get("param1"));
                     $valid = $request->get("param2");
                     if(self::dec($valid) == Carbon::now()->format("Y-m-d")){
+                        if (!class_exists('\\SoapClient')) {
+                            $this->writeLog("HUR 연결 시 오류: SoapClient extension is not installed.");
+                            return response()->json([
+                                "status" => "error",
+                                "message" => "SOAP extension is not installed on server.",
+                                "error_code" => "SOAP_EXTENSION_MISSING"
+                            ]);
+                        }
                         $client = new \SoapClient(
                           // "https://xyp.gov.mn/transport-1.3.0/ws?WSDL",
-                        "/usr/share/nginx/html/system/public/transport.xml",
+                        public_path('transport.xml'),
                             [
                                 'soapVersion' => SOAP_1_2,
                                 'stream_context' => stream_context_create([
@@ -973,22 +981,27 @@ if ($request->param == 0) {
                         );
                         $payload = ['impExpDclrNo' => $declaration];
                         $result = $client->WS100411_vehicleImportInfo(array("request"=>$payload));
-                        echo json_encode($result,JSON_UNESCAPED_UNICODE);
+                        return response()->json($result);
 
                       
 
                     } else {
-                        return redirect(route("error"));
+                        return response()->json(["message" => "Invalid request token."], 400);
                     }
                 } else {
-                    return redirect(route("error"));
+                    return response()->json(["message" => "param1/param2 is required."], 400);
                 }
-            }catch (\Exception $ex) {
+            }catch (\Throwable $ex) {
                 $this->writeLog("HUR 연결 시 오류: " . $ex->getMessage());
-                echo "<div style='color:red'>HUR 연결 시 오류가 발생했습니다.</div>";
+                return response()->json([
+                    "status" => "error",
+                    "message" => "HUR service request failed.",
+                    "detail" => $ex->getMessage(),
+                    "error_code" => "HUR_UNREACHABLE"
+                ]);
             }
         } else {
-            return redirect(route("error"));
+            return response()->json(["message" => "Method not allowed."], 405);
         }
     }
     public function otpApprove(Request $request){
@@ -1004,7 +1017,7 @@ if ($request->param == 0) {
                     if(self::dec($valid) == Carbon::now()->format("Y-m-d")){
                         $client = new \SoapClient(
                           // "https://xyp.gov.mn/meta-1.5.0/ws?WSDL",
-                         "/usr/share/nginx/html/system/public/transport.xml",
+                         public_path('transport.xml'),
                             [
                                 'soapVersion' => SOAP_1_2,
                                 'stream_context' => stream_context_create([
@@ -1056,7 +1069,7 @@ if ($request->param == 0) {
         }
         if($request->isMethod("POST")){
              if($request->get("param2") == null)
-            return response()->json(['error' => 'otp хоосон байна!'], 400);
+            return response()->json(['error' => 'otp хоосон 입니다!'], 400);
      
 
             try{
@@ -1072,7 +1085,7 @@ if ($request->param == 0) {
                         try {
                             $client = new \SoapClient(
                                // "https://xyp.gov.mn/meta-1.5.0/ws?WSDL",
-                             "/usr/share/nginx/html/system/public/transport.xml",
+                             public_path('transport.xml'),
                                 [
                                     'soapVersion' => SOAP_1_2,
                                     'stream_context' => stream_context_create([
@@ -1231,7 +1244,7 @@ if ($request->param == 0) {
                     if(self::dec($valid) == Carbon::now()->format("Y-m-d")){
                         $client = new \SoapClient(
                            // "https://xyp.gov.mn/transport-1.3.0/ws?WSDL",
-                            "/usr/share/nginx/html/system/public/transport.xml",
+                            public_path('transport.xml'),
                             [
                                 'soapVersion' => SOAP_1_2,
                                 'stream_context' => stream_context_create([

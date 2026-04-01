@@ -128,7 +128,7 @@ class VehicleSearchController extends BaseController
                 $search = true;
             }
 
-            //Өөрчлөлт оруулсан огноогоор
+            //Өөрчлөлт оруулсан 날짜гоор
             $modifieddate = $request->get("modifieddate");
             $modifieddate2 = $request->get("modifieddate2");
 
@@ -316,7 +316,7 @@ class VehicleSearchController extends BaseController
                 $search = true;
             }
 
-            //Өөрчлөлт оруулсан огноогоор
+            //Өөрчлөлт оруулсан 날짜гоор
             $importdate = $request->get("importdate");
             $importdate2 = $request->get("importdate2");
 
@@ -423,7 +423,7 @@ class VehicleSearchController extends BaseController
                 $search = true;
             }
 
-            //Өөрчлөлт оруулсан огноогоор
+            //Өөрчлөлт оруулсан 날짜гоор
             $ownerdate = $request->get("ownerdate");
             $ownerdate2 = $request->get("ownerdate2");
 
@@ -553,7 +553,7 @@ class VehicleSearchController extends BaseController
                                 }
                                 elseif($delete == "oruuljirsen"){
                                     array_push($columns_diff, "import_date");
-                                    array_push($titles, "Импорт огноо");
+                                    array_push($titles, "Импорт 날짜");
                                 }
                                 elseif($delete == "modificacename"){
                                     array_push($columns_diff, "modificace_name");

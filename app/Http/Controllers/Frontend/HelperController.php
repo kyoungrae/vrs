@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class HelperController extends BaseController
 {
     /**
-     * 오류ны мэдээлэл илгээх хэсгийн нүүр хуудас
+     * 오류ны 정보 илгээх хэсгийн нүүр хуудас
      * @param Request $request - дамжуулна
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -71,7 +71,7 @@ class HelperController extends BaseController
         }
     }
     /**
-     * 오류ны мэдээлэл илгээх хэсгийн нүүр хуудас
+     * 오류ны 정보 илгээх хэсгийн нүүр хуудас
      * @param Request $request - дамжуулна
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */

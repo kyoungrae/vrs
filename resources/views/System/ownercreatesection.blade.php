@@ -241,7 +241,7 @@
             </div>
             {{-- <div class="row row-xs align-items-center mg-b-5">
                 <div class="col-lg-8 col-md-12 col-sm-12">
-                    <label class="form-label mg-b-0" style="font-weight: bold">신규 өмчлөгийн ИБ -ийн мэдээлэл харах</label>
+                    <label class="form-label mg-b-0" style="font-weight: bold">신규 өмчлөгийн ИБ -ийн 정보 харах</label>
                 </div>
                 <div class="col-lg-4 col-md-12 col-sm-12">
                     <label class="ckbox">

@@ -141,7 +141,7 @@ class SettingsController extends BaseController
             $message = $this->message("success", "Хэлтэс 성공적으로 устлаа.");
         } catch (\Exception $ex){
             $this->writeLog("Department delete error: ".$ex->getMessage());
-            $message = $this->message("danger", "Хэлтэс устгахад 오류가 발생했습니다.");
+            $message = $this->message("danger", "Хэлтэс 삭제할 때 오류가 발생했습니다.");
         }
         return redirect(route('refdepartment'))->with("message", $message);
     }
@@ -187,7 +187,7 @@ class SettingsController extends BaseController
                         ]);
                         $message = $this->message("success", "아카이브ын салбар 성공적으로 등록되었습니다.");
                     } else {
-                        $message = $this->message("info", "아카이브ын салбарын товч нэр давхцаж байна.");
+                        $message = $this->message("info", "아카이브ын салбарын товч нэр давхцаж 입니다.");
                     }
                 }
                 return redirect(route("archive"))->with("message", $message);
@@ -228,7 +228,7 @@ class SettingsController extends BaseController
             $message = $this->message("success", "아카이브ын салбар 성공적으로 устлаа.");
         } catch (\Exception $ex){
             $this->writeLog("Archive department delete error: ".$ex->getMessage());
-            $message = $this->message("success", "아카이브ын салбар устгахад 오류가 발생했습니다..");
+            $message = $this->message("success", "아카이브ын салбар 삭제할 때 오류가 발생했습니다..");
         }
         return redirect(route('archive'))->with("message", $message);
     }

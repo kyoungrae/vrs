@@ -282,7 +282,7 @@
                                 </div>
                             @else
 
-                                @if(in_array($Diagnostic->passed_name, ['Тэнцээгүй', '불합격'], true))
+                                @if(in_array($Diagnostic->passed_name, ['불합격/실패', '불합격'], true))
                                     <div class="alert alert-outline-danger" role="alert">
                                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                             <span aria-hidden="true">×</span>
@@ -297,7 +297,7 @@
                                 @endif
                             @endif
                         @else
-                            @if($Diagnostic == null || in_array($Diagnostic->passed_name, ['Тэнцээгүй', '불합격'], true)  )
+                            @if($Diagnostic == null || in_array($Diagnostic->passed_name, ['불합격/실패', '불합격'], true)  )
                                 <div class="alert alert-outline-danger" role="alert">
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">×</span>
@@ -888,7 +888,7 @@
                                               
                                           {{-- {{var_dump( session()->get('auth')->provinceid)}} --}}
                                                 {{----------------------------------------------------------}}
-                                                @if ($Diagnostic == null || in_array($Diagnostic->passed_name, ['Тэнцээгүй', '불합격'], true) ||  \Carbon\Carbon::parse($Diagnostic->dateagain)->format("Y-m-d") <= \Carbon\Carbon::now()->format("Y-m-d"))
+                                                @if ($Diagnostic == null || in_array($Diagnostic->passed_name, ['불합격/실패', '불합격'], true) ||  \Carbon\Carbon::parse($Diagnostic->dateagain)->format("Y-m-d") <= \Carbon\Carbon::now()->format("Y-m-d"))
                                                 @if ($vehicle->purpose_id ==7)
                                                 @if($service->code == "NEW")
                                                 <div id="menu_{{ $service->code }}" class="media">
@@ -1019,7 +1019,7 @@
                                                     @if($vehicle->purpose_id ==7  || $vehicle->purpose_id ==8)
                                                     @if($service->code != "NEW"  && $service->code != "RESTRICT" && $service->code != "CHANGE_PLATE_TWO" && $service->code != "ACTIVE_VEHICLE" && $service->code != "RESTORE_PLATE" && $service->code != "REMOVE" )
                                                     @if($Diagnostic != null)
-                                                    @if(!in_array($Diagnostic->passed_name, ['Тэнцээгүй', '불합격'], true))
+                                                    @if(!in_array($Diagnostic->passed_name, ['불합격/실패', '불합격'], true))
                                                         @if($Diagnostic->dateagain == null || \Carbon\Carbon::parse($Diagnostic->dateagain)->format("Y-m-d") > \Carbon\Carbon::now()->format("Y-m-d") )
                                                             <div id="menu_{{ $service->code }}" class="media">
                                                                 <div class="media-icon bg-success"><i class="{{ $service->icon }}"></i></div>
@@ -1044,7 +1044,7 @@
                                                         @if($service->code != "NEW"  && $service->code != "RESTRICT" && $service->code != "CHANGE_PLATE_TWO" && $service->code != "ACTIVE_VEHICLE" && $service->code != "RESTORE_PLATE" && $service->code != "REMOVE" )
                                                         
                                                             @if($Diagnostic != null)
-                                                            @if(!in_array($Diagnostic->passed_name, ['Тэнцээгүй', '불합격'], true))
+                                                            @if(!in_array($Diagnostic->passed_name, ['불합격/실패', '불합격'], true))
                                                                 @if($Diagnostic->dateagain == null || \Carbon\Carbon::parse($Diagnostic->dateagain)->format("Y-m-d") > \Carbon\Carbon::now()->format("Y-m-d") )
                                                              
 
@@ -1069,7 +1069,7 @@
                                                         @elseif ( session()->get('auth')->iscity == 0 && $vehicle->owner_province_id != 11)  
                                                         @if($service->code != "NEW"  && $service->code != "RESTRICT" && $service->code != "CHANGE_PLATE_TWO" && $service->code != "ACTIVE_VEHICLE" && $service->code != "RESTORE_PLATE" && $service->code != "REMOVE" )
                                                             @if($Diagnostic != null)
-                                                            @if(!in_array($Diagnostic->passed_name, ['Тэнцээгүй', '불합격'], true))
+                                                            @if(!in_array($Diagnostic->passed_name, ['불합격/실패', '불합격'], true))
                                                                 @if($Diagnostic->dateagain == null || \Carbon\Carbon::parse($Diagnostic->dateagain)->format("Y-m-d") > \Carbon\Carbon::now()->format("Y-m-d") )
                                                                     <div id="menu_{{ $service->code }}" class="media">
                                                                         <div class="media-icon bg-success"><i class="{{ $service->icon }}"></i></div>
@@ -1103,7 +1103,7 @@
                                                     {{-- {{\Carbon\Carbon::parse($Diagnostic->dateagain)->format("Y-m-d")}} --}}
                                                     
                                                         @if($vehicle->status == null && $Diagnostic != null)
-                                                            @if(!in_array($Diagnostic->passed_name, ['Тэнцээгүй', '불합격'], true) &&  \Carbon\Carbon::parse($Diagnostic->dateagain)->format("Y-m-d") > \Carbon\Carbon::now()->format("Y-m-d"))
+                                                            @if(!in_array($Diagnostic->passed_name, ['불합격/실패', '불합격'], true) &&  \Carbon\Carbon::parse($Diagnostic->dateagain)->format("Y-m-d") > \Carbon\Carbon::now()->format("Y-m-d"))
                                                             
                                                             
                                                             @if($service->code == "NEW")
@@ -2745,7 +2745,7 @@
          
             <div class="col-lg-12 " id="payTableDiv" >
              <table style="display:none; " id="selectPay">
-                 <td><span>결제 сонгох:</span></td>
+                 <td><span>결제 선택:</span></td>
                  <td>  <select name="" style="   height: 40px !important;
                     font-size: 14px;
                     font-weight: bold;
@@ -2788,7 +2788,7 @@
                     <div class="col-8">
                         <div class="row row-xs align-items-center mg-b-5">
                             <div class="col-lg-3 col-md-12 col-sm-12">
-                                <label class="form-label mg-b-0 required-input">Регистр</label>
+                                <label class="form-label mg-b-0 required-input">등록번호/ID</label>
                             </div>
                             <div class="col-lg-9 col-md-12 col-sm-12">
                                 <input id="otherRegister" name="otherRegister" oninput="translate2MGLTwo('otherRegister', this.value)" type="text" value="" class="form-control" autocomplete="off">
@@ -2826,7 +2826,7 @@
                     <div class="col-12">
                         {{-- <div class="row row-xs align-items-center mg-b-5">
                             <div class="col-lg-3 col-md-12 col-sm-12">
-                                <label class="form-label mg-b-0 required-input">Регистр</label>
+                                <label class="form-label mg-b-0 required-input">등록번호/ID</label>
                             </div>
                             <div class="col-lg-9 col-md-12 col-sm-12">
                                 <input id="otherRegister" name="otherRegister" oninput="translate2MGLTwo('otherRegister', this.value)" type="text" value="" class="form-control" autocomplete="off">
@@ -3099,7 +3099,7 @@ if (hasNYearsPassed(is_build) && total_weight < 3500 && (purposeCheck == 1 || pu
                      if(day > 0 && day < 32 && month > 0 && month < 33){
                      loadData(this.value, "man");
                      } else {
-                     alert('등록번호 алдаатай байна!');
+                     alert('등록번호 алдаатай 입니다!');
                      }
                      } else {
                      alert('등록번호를 올바르게 입력하세요!');
@@ -3229,7 +3229,7 @@ if (hasNYearsPassed(is_build) && total_weight < 3500 && (purposeCheck == 1 || pu
             });
         });
         $("#device2").change();
-        //Принтер тохиргоо хадгалах
+        //Принтер тохиргоо 저장
         $("#btnSavePrinter").click(function(){
             var printerDevice=$("#device").val();
             var printerX=$("#confX").val();
@@ -3392,7 +3392,7 @@ if (hasNYearsPassed(is_build) && total_weight < 3500 && (purposeCheck == 1 || pu
                 } else if(response == "limited"){
                     $("#change_plate_two_btn").css("display", "none");
                     $("#change_plate_two_pay").css("display", "none");
-                    alert(plate + " 번호тай 차량 хязгаарлалттай байна.");
+                    alert(plate + " 번호тай 차량 제한тай 입니다.");
                 } else {
                     
                     $("#change_cabin_no" + type + "_id").text(response["cabin_no"]);
@@ -3540,7 +3540,7 @@ if (hasNYearsPassed(is_build) && total_weight < 3500 && (purposeCheck == 1 || pu
                                     $("#main_form").submit();
                                 }
                             }else{
-                                alert("Дугаарын дэвсгэр өнгө сонгоно уу.");
+                                alert("번호ын дэвсгэр өнгө 선택해 주세요.");
                             }
                         }
                     } else {
@@ -3954,7 +3954,7 @@ var html = '<tr>' +
                        
                         $("#checkTorguuli").val(torguuliData);
                       
-                       // console.log(torguuliData.length < 1 ? $('#number_id').val()+" 번호판тай тээврийн хэрэгслийг "+ today +" шалгахад төлөх торгууль байхгүй байна " : torguuliData);
+                       // console.log(torguuliData.length < 1 ? $('#number_id').val()+" 번호판тай тээврийн хэрэгслийг "+ today +" 확인할 때 төлөх торгууль байхгүй 입니다 " : torguuliData);
                         //console.log(torguuli_count);
                         $("#totalUnPaid").html(torguuli_count);
                         $('#torguuli').modal('show');
@@ -4910,7 +4910,7 @@ function checkPayData() {
                         if(data == "<div style='color:red'>지문 정보가 일치하지 않습니다</div>"){
                             $( "#fingerInfo" ).css( "color", "red" );
                             if(is_three){
-                                text = "Гуравдагч этгээдийн хурууны хээ таарахгүй байна. РД:"+register;
+                                text = "Гуравдагч этгээдийн хурууны хээ 일치하지 않음 입니다. РД:"+register;
                                 $("#registerThree").val("");
                             } else {
                                 text = "지문이 일치하지 않습니다. РД:"+register;
@@ -4924,7 +4924,7 @@ function checkPayData() {
                         } else {
                             $( "#fingerInfo" ).css( "color", "green" );
                             if(is_three){
-                                text = "Гуравдагч этгээдийн хурууны хээ таарч байна. РД:"+register;
+                                text = "Гуравдагч этгээдийн хурууны хээ таарч 입니다. РД:"+register;
                                 is_three_valid = true;
                             } else {
                                 text = "지문이 일치합니다. РД:"+register;
@@ -5856,13 +5856,13 @@ document.getElementById("payAmount").value =newArray[1];
     //     mode: 'remote',
     //     method: 'post',
     //     fitColumns:'true',
-    //     loadMsg: 'Хайж байна...',
+    //     loadMsg: 'Хайж 입니다...',
     //     columns: [[
     //         {field: 'plate_no', title: '번호판', width: 60},
     //         {field: 'cabin_no', title: '차체번호', width: 80},
     //         {field: 'mark_name', title: '브랜드', width: 80},
     //         {field: 'model_name', title: '형식', width: 80},
-    //         {field: 'vehicle_type_name', title: '차량 төрөл', width: 80},
+    //         {field: 'vehicle_type_name', title: '차량 유형', width: 80},
     //         {field: 'color_name', title: '색상', width: 60},
     //         {field: 'purpose_name', title: '용도', width: 90},
     //         {field: 'build_year', title: '작업일', width: 60},

@@ -373,7 +373,7 @@ if (count($plateNumberOrderList) > 0) {
                return redirect(url('/plateSave'))->with("message", $message);
      
              } else {
-                $message = $this->message("warning", "Дугаар захиалхад алдаа гарлаа өөр тх-дээр захиалсан байна.");
+                $message = $this->message("warning", "번호 захиалхад 오류가 발생했습니다 өөр тх-дээр захиалсан 입니다.");
                 //   return $request;
                    return redirect(url('/plateSave'))->with("message", $message);
              }
@@ -457,7 +457,7 @@ if (count($plateNumberOrderList) > 0) {
                  //   return $request;
                     return redirect(url('/plateSave'))->with("message", $message);
             }else{
-                $message = $this->message("danger", "Сунгах эрх дууссан байна.");
+                $message = $this->message("danger", "Сунгах эрх дууссан 입니다.");
                 //   return $request;
                    return redirect(url('/plateSave'))->with("message", $message);
             }
@@ -588,7 +588,7 @@ if (count($plateNumberOrderList) > 0) {
                         $message = $this->message("success", "번호판 성공적으로 хадаглагдлаа.");
                         return redirect(url('/plateSave'))->with("message", $message);
                     }else{
-                        $message = $this->message("danger", "번호판 хадгалахад алдаа гарлаа тээврийн хэрэгслийн 번호판аа зөв оруулсан эсэхээ шалгана уу!!!.");
+                        $message = $this->message("danger", "번호판 저장ад 오류가 발생했습니다 тээврийн хэрэгслийн 번호판аа зөв оруулсан эсэхээ шалгана уу!!!.");
                         return redirect(url('/plateSave/indexSavePlateStore'))->with("message", $message);
                     }
                

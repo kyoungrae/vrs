@@ -39,7 +39,7 @@ class PlateFactoryController extends BaseController
                     ]);
                     $message = $this->message("success", $plate_no." 번호판 성공적으로 хэвлэгдлээ.");
                 } else {
-                    $message = $this->message("info", $plate_no." 번호판 찾을 수 없습니다 дахин шалгана уу!");
+                    $message = $this->message("info", $plate_no." 번호판 찾을 수 없습니다 다시 шалгана уу!");
                 }
                 $numbers = SystemPlateFactory::where("PRINT_ID", $userPkId)->where("IS_PRINT", 1)->orderBy("UPDATE_DATE")->get();
                 return view("System.platefactory", compact('types', 'numbers', 'message'));
@@ -49,7 +49,7 @@ class PlateFactoryController extends BaseController
             }
         } catch (\Exception $ex){
             $this->writeLog("Print plate error: ".$ex->getMessage());
-            $message = $this->message("danger", "번호판 хэвлэхэд 오류가 발생했습니다.");
+            $message = $this->message("danger", "번호판 출력эд 오류가 발생했습니다.");
             $numbers = SystemPlateFactory::where("PRINT_ID", $userPkId)->where("IS_PRINT", 1)->orderBy("UPDATE_DATE")->get();
             return view("System.platefactory", compact('types', 'numbers', 'message'));
         }

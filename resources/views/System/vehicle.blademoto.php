@@ -216,7 +216,7 @@
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">×</span>
                                     </button>
-                                    <h5>{{ $vehicle->plate_no }} 번호판 {{ $vehicle_count }} 차량 -д олгогдсон байна. Давхардлыг арилгасны дараа үйлчилгээ хийнэ үү!!!</h5>
+                                    <h5>{{ $vehicle->plate_no }} 번호판 {{ $vehicle_count }} 차량 -д олгогдсон 입니다. Давхардлыг арилгасны дараа үйлчилгээ 해주세요!!!</h5>
                                 </div>
                             @endif
                         @endif
@@ -233,7 +233,7 @@
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">×</span>
                             </button>
-                            <h5>{{ $vehicle->plate_no }} 번호판тай 차량은 RFID TAG наалгаагүй байна .</h5>
+                            <h5>{{ $vehicle->plate_no }} 번호판тай 차량은 RFID TAG наалгаагүй 입니다 .</h5>
                         </div>
                     @endif
                         @if($vehicle->is_pending == 1)
@@ -274,7 +274,7 @@
                                 </div>
                             @else
 
-                                @if(in_array($Diagnostic->passed_name, ['Тэнцээгүй', '불합격'], true))
+                                @if(in_array($Diagnostic->passed_name, ['불합격/실패', '불합격'], true))
                                     <div class="alert alert-outline-danger" role="alert">
                                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                             <span aria-hidden="true">×</span>
@@ -284,7 +284,7 @@
                                 @endif
                             @endif
                         @else
-                            @if($Diagnostic == null || in_array($Diagnostic->passed_name, ['Тэнцээгүй', '불합격'], true)  )
+                            @if($Diagnostic == null || in_array($Diagnostic->passed_name, ['불합격/실패', '불합격'], true)  )
                                 <div class="alert alert-outline-danger" role="alert">
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">×</span>
@@ -292,7 +292,7 @@
                                     @if ( in_array(\Illuminate\Support\Str::substr($vehicle->plate_no, -3), ['MMA', 'ММА'], true) || $vehicle->purpose_id == 2 || $vehicle->purpose_id ==4 || $vehicle->purpose_id ==5 ||$vehicle->purpose_id ==7 || $vehicle->purpose_id ==8)
                                     <h5>차량이 검사에 참여하지 않았습니다. MNS 6278 기준을 초과한 경우 MMA를 부여합니다.</h5>
                                     @else     
-                                    <h5>차량 заавал үзлэгт орсон байх ёстой.</h5>
+                                    <h5>차량 필수 үзлэгт орсон байх ёстой.</h5>
                                     @endif
                                   
                                  
@@ -707,7 +707,7 @@
                                     <thead>
                                     <tr>
                                         <th style=" width: 18%; ">시작 일자</th>
-                                        <th>Регистр</th>
+                                        <th>등록번호/ID</th>
                                         <th>성명</th>
                                         <th>자택 주소</th>
                                         <th>연락처</th>
@@ -874,7 +874,7 @@
                                               
                                           {{-- {{var_dump( session()->get('auth')->provinceid)}} --}}
                                                 {{----------------------------------------------------------}}
-                                                @if ($Diagnostic == null || in_array($Diagnostic->passed_name, ['Тэнцээгүй', '불합격'], true) ||  \Carbon\Carbon::parse($Diagnostic->dateagain)->format("Y-m-d") <= \Carbon\Carbon::now()->format("Y-m-d"))
+                                                @if ($Diagnostic == null || in_array($Diagnostic->passed_name, ['불합격/실패', '불합격'], true) ||  \Carbon\Carbon::parse($Diagnostic->dateagain)->format("Y-m-d") <= \Carbon\Carbon::now()->format("Y-m-d"))
                                                     
                                                 @if ( session()->get('auth')->iscity == 1 && $vehicle->owner_province_id == 22)
                                                 @if (  $vehicle->purpose_id == 2 || $vehicle->purpose_id ==4 || $vehicle->purpose_id ==5 || $vehicle->purpose_id ==7 || $vehicle->purpose_id ==8)
@@ -995,7 +995,7 @@
                                                     @if($vehicle->purpose_id ==7  || $vehicle->purpose_id ==8)
                                                     @if($service->code != "NEW"  && $service->code != "RESTRICT" && $service->code != "CHANGE_PLATE_TWO" && $service->code != "ACTIVE_VEHICLE" && $service->code != "RESTORE_PLATE" && $service->code != "REMOVE" )
                                                     @if($Diagnostic != null)
-                                                    @if(!in_array($Diagnostic->passed_name, ['Тэнцээгүй', '불합격'], true))
+                                                    @if(!in_array($Diagnostic->passed_name, ['불합격/실패', '불합격'], true))
                                                         @if($Diagnostic->dateagain == null || \Carbon\Carbon::parse($Diagnostic->dateagain)->format("Y-m-d") > \Carbon\Carbon::now()->format("Y-m-d") )
                                                             <div id="menu_{{ $service->code }}" class="media">
                                                                 <div class="media-icon bg-success"><i class="{{ $service->icon }}"></i></div>
@@ -1019,7 +1019,7 @@
                                                     @if ( session()->get('auth')->iscity == 1 && $vehicle->owner_province_id == 22)
                                                         @if($service->code != "NEW"  && $service->code != "RESTRICT" && $service->code != "CHANGE_PLATE_TWO" && $service->code != "ACTIVE_VEHICLE" && $service->code != "RESTORE_PLATE" && $service->code != "REMOVE" )
                                                             @if($Diagnostic != null)
-                                                            @if(!in_array($Diagnostic->passed_name, ['Тэнцээгүй', '불합격'], true))
+                                                            @if(!in_array($Diagnostic->passed_name, ['불합격/실패', '불합격'], true))
                                                                 @if($Diagnostic->dateagain == null || \Carbon\Carbon::parse($Diagnostic->dateagain)->format("Y-m-d") > \Carbon\Carbon::now()->format("Y-m-d") )
                                                                     <div id="menu_{{ $service->code }}" class="media">
                                                                         <div class="media-icon bg-success"><i class="{{ $service->icon }}"></i></div>
@@ -1042,7 +1042,7 @@
                                                         @elseif ( session()->get('auth')->iscity == 0 && $vehicle->owner_province_id != 22)  
                                                         @if($service->code != "NEW"  && $service->code != "RESTRICT" && $service->code != "CHANGE_PLATE_TWO" && $service->code != "ACTIVE_VEHICLE" && $service->code != "RESTORE_PLATE" && $service->code != "REMOVE" )
                                                             @if($Diagnostic != null)
-                                                            @if(!in_array($Diagnostic->passed_name, ['Тэнцээгүй', '불합격'], true))
+                                                            @if(!in_array($Diagnostic->passed_name, ['불합격/실패', '불합격'], true))
                                                                 @if($Diagnostic->dateagain == null || \Carbon\Carbon::parse($Diagnostic->dateagain)->format("Y-m-d") > \Carbon\Carbon::now()->format("Y-m-d") )
                                                                     <div id="menu_{{ $service->code }}" class="media">
                                                                         <div class="media-icon bg-success"><i class="{{ $service->icon }}"></i></div>
@@ -1076,7 +1076,7 @@
                                                     {{-- {{\Carbon\Carbon::parse($Diagnostic->dateagain)->format("Y-m-d")}} --}}
                                                     
                                                         @if($vehicle->status == null && $Diagnostic != null)
-                                                            @if(!in_array($Diagnostic->passed_name, ['Тэнцээгүй', '불합격'], true) &&  \Carbon\Carbon::parse($Diagnostic->dateagain)->format("Y-m-d") > \Carbon\Carbon::now()->format("Y-m-d"))
+                                                            @if(!in_array($Diagnostic->passed_name, ['불합격/실패', '불합격'], true) &&  \Carbon\Carbon::parse($Diagnostic->dateagain)->format("Y-m-d") > \Carbon\Carbon::now()->format("Y-m-d"))
                                                             
                                                             
                                                             @if($service->code == "NEW")
@@ -1731,7 +1731,7 @@
                         <div class="col-lg-12">
                             <div class="row row-xs align-items-center mg-b-5">
                                 <div class="col-lg-6 col-md-12 col-sm-12">
-                                    <label class="form-label mg-b-0 required-input">Тайлбар</label>
+                                    <label class="form-label mg-b-0 required-input">설명</label>
                                 </div>
                                 <div class="col-lg-6 col-md-12 col-sm-12">
                                     <textarea type="text" rows="4" class="form-control richtextbox" name="description" required></textarea>
@@ -1860,7 +1860,7 @@
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content modal-content-demo">
             <div class="modal-header">
-                <h6 id="owner_titile_id" class="modal-title">소유자 정보</h6><h5 style="color: red">Өмчлөгчийн мэдээллийг дуудахдаа РД оруулах мөн өмчлөгчийн ТӨРӨЛ -г заавал сонгох ёстой!!!</h5>
+                <h6 id="owner_titile_id" class="modal-title">소유자 정보</h6><h5 style="color: red">Өмчлөгчийн мэдээллийг дуудахдаа РД оруулах 또한 소유자ийн ТӨРӨЛ -г 필수 선택 ёстой!!!</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -1876,7 +1876,7 @@
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content modal-content-demo">
             <div class="modal-header">
-                <h6 class="modal-title">아카이브ын мэдээлэл</h6>
+                <h6 class="modal-title">아카이브ын 정보</h6>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -1894,11 +1894,11 @@
                                     <th>차체번호</th>
                                     <th>엔진 번호</th>
                                     <th>제조 연도</th>
-                                    <th>Импортын огноо</th>
+                                    <th>Импортын 날짜</th>
                                     <th>증명서 번호</th>
                                     <th>Өмчлөгч</th>
                                     <th>담당자</th>
-                                    <th>Нэмэлт мэдээлэл</th>
+                                    <th>Нэмэлт 정보</th>
                                     <th>작업</th>
                                 </tr>
                                 </thead>
@@ -1921,7 +1921,7 @@
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content modal-content-demo">
             <div class="modal-header">
-                <h6 class="modal-title">기타 тээврийн хэрэгслийн мэдээлэл</h6>
+                <h6 class="modal-title">기타 тээврийн хэрэгслийн 정보</h6>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -1962,7 +1962,7 @@
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content modal-content-demo">
             <div class="modal-header">
-                <h6 class="modal-title">제한 사항ын мэдээлэл</h6>
+                <h6 class="modal-title">제한 사항ын 정보</h6>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -1977,11 +1977,11 @@
                                     <th>유형</th>
                                     <th>공문 №</th>
                                     <th>전화번호</th>
-                                    <th>제한ласан огноо</th>
+                                    <th>제한ласан 날짜</th>
                                     <th>제한ласан 담당자</th>
-                                    <th>Сэргээсэн төрөл</th>
+                                    <th>Сэргээсэн 유형</th>
                                     <th>Сэргээсэн албан тоот №</th>
-                                    <th>Сэргээсэн огноо</th>
+                                    <th>Сэргээсэн 날짜</th>
                                     <th>Сэргээсэн 담당자</th>
                                     <th>작업</th>
                                 </tr>
@@ -2384,7 +2384,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content modal-content-demo">
             <div class="modal-header">
-                <h6 class="modal-title">검사ийн мэдээлэл</h6>
+                <h6 class="modal-title">검사ийн 정보</h6>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -2435,7 +2435,7 @@
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document" style=" width: 65%; ">
         <div class="modal-content modal-content-demo">
             <div class="modal-header">
-                <h6 class="modal-title">Торгуулийн мэдээлэл</h6>
+                <h6 class="modal-title">Торгуулийн 정보</h6>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -2500,7 +2500,7 @@
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document" style=" width: 65%; ">
         <div class="modal-content modal-content-demo">
             <div class="modal-header">
-                <h6 class="modal-title">세금ын мэдээлэл</h6>
+                <h6 class="modal-title">세금ын 정보</h6>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -2513,7 +2513,7 @@
                             <div>Жил</div>
                         </th>
                         <th>
-                            <div>납부 огноо</div>
+                            <div>납부 날짜</div>
                         </th>
                         <th>
                             <div>상세</div>
@@ -2536,7 +2536,7 @@
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document" style=" width: 40%; ">
         <div class="modal-content modal-content-demo">
             <div class="modal-header">
-                <h6 class="modal-title">Зам ашигласны төлбөрийн мэдээлэл</h6>
+                <h6 class="modal-title">Зам ашигласны төлбөрийн 정보</h6>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -2712,7 +2712,7 @@
          
             <div class="col-lg-12 " id="payTableDiv" >
              <table style="display:none; " id="selectPay">
-                 <td><span>결제 сонгох:</span></td>
+                 <td><span>결제 선택:</span></td>
                  <td>  <select name="" style="   height: 40px !important;
                     font-size: 14px;
                     font-weight: bold;
@@ -2755,7 +2755,7 @@
                     <div class="col-8">
                         <div class="row row-xs align-items-center mg-b-5">
                             <div class="col-lg-3 col-md-12 col-sm-12">
-                                <label class="form-label mg-b-0 required-input">Регистр</label>
+                                <label class="form-label mg-b-0 required-input">등록번호/ID</label>
                             </div>
                             <div class="col-lg-9 col-md-12 col-sm-12">
                                 <input id="otherRegister" name="otherRegister" oninput="translate2MGLTwo('otherRegister', this.value)" type="text" value="" class="form-control" autocomplete="off">
@@ -2793,7 +2793,7 @@
                     <div class="col-12">
                         {{-- <div class="row row-xs align-items-center mg-b-5">
                             <div class="col-lg-3 col-md-12 col-sm-12">
-                                <label class="form-label mg-b-0 required-input">Регистр</label>
+                                <label class="form-label mg-b-0 required-input">등록번호/ID</label>
                             </div>
                             <div class="col-lg-9 col-md-12 col-sm-12">
                                 <input id="otherRegister" name="otherRegister" oninput="translate2MGLTwo('otherRegister', this.value)" type="text" value="" class="form-control" autocomplete="off">
@@ -3043,7 +3043,7 @@
                      if(day > 0 && day < 32 && month > 0 && month < 33){
                      loadData(this.value, "man");
                      } else {
-                     alert('등록번호 алдаатай байна!');
+                     alert('등록번호 алдаатай 입니다!');
                      }
                      } else {
                      alert('등록번호를 올바르게 입력하세요!');
@@ -3173,7 +3173,7 @@
             });
         });
         $("#device2").change();
-        //Принтер тохиргоо хадгалах
+        //Принтер тохиргоо 저장
         $("#btnSavePrinter").click(function(){
             var printerDevice=$("#device").val();
             var printerX=$("#confX").val();
@@ -3336,7 +3336,7 @@
                 } else if(response == "limited"){
                     $("#change_plate_two_btn").css("display", "none");
                     $("#change_plate_two_pay").css("display", "none");
-                    alert(plate + " 번호тай 차량 хязгаарлалттай байна.");
+                    alert(plate + " 번호тай 차량 제한тай 입니다.");
                 } else {
                     
                     $("#change_cabin_no" + type + "_id").text(response["cabin_no"]);
@@ -3472,7 +3472,7 @@
                                 }
                             }
                             else {
-                                alert("Нэмэлт мэдээлэл хэсэг заавал бөглөнө үү.");
+                                alert("Нэмэлт 정보 хэсэг 필수 бөглөнө 주세요.");
                             }
                         } else {
                             if(plateColor > 0){
@@ -3484,7 +3484,7 @@
                                     $("#main_form").submit();
                                 }
                             }else{
-                                alert("Дугаарын дэвсгэр өнгө сонгоно уу.");
+                                alert("번호ын дэвсгэр өнгө 선택해 주세요.");
                             }
                         }
                     } else {
@@ -3495,16 +3495,16 @@
 
                             if(gaali_text.length < 1){
                                 is_show_modal = 1;
-                                alert("세관 신고 번호ыг заавал бөглөнө үү.");
+                                alert("세관 신고 번호ыг 필수 бөглөнө 주세요.");
                             }
                             if(plateColor < 1){
                                 is_show_modal = 1;
-                                alert("Дугаарын өнгө заавал сонгоно уу");
+                                alert("번호ын өнгө 필수 선택해 주세요");
                             }
                             if(gaali_text == "DK"){
                                 if(!curr_plate.includes("ДК")){
                                     is_show_modal = 1;
-                                    alert("ДК гаалийн мэдүүлэгтэй машинд заавал ДК 번호 олгоно.");
+                                    alert("ДК гаалийн мэдүүлэгтэй машинд 필수 ДК 번호 олгоно.");
                                 }
                             } else {
                                 if(curr_plate.includes("ДК") && gaali_text != "DK"){
@@ -3523,13 +3523,13 @@
                         }
                     }
                 } else {
-                    alert("Хуудасны 번호 0 -с их 99 -с бага байна.");
+                    alert("Хуудасны 번호 0 -с их 99 -с бага 입니다.");
                 }
             } else {
-                alert("저장 үйлдэл хийхийн тулд үйлчилгээнээс аль нэгийг сонгох ёстой.");
+                alert("저장 үйлдэл хийхийн тулд үйлчилгээнээс аль нэгийг 선택 ёстой.");
             }
         } else {
-            alert("차량 -ийн 번호판ыг заавал оруулна уу.");
+            alert("차량 -ийн 번호판ыг 필수 입력해 주세요.");
         }
     }
 
@@ -3897,7 +3897,7 @@ var html = '<tr>' +
                        
                         $("#checkTorguuli").val(torguuliData);
                       
-                       // console.log(torguuliData.length < 1 ? $('#number_id').val()+" 번호판тай тээврийн хэрэгслийг "+ today +" шалгахад төлөх торгууль байхгүй байна " : torguuliData);
+                       // console.log(torguuliData.length < 1 ? $('#number_id').val()+" 번호판тай тээврийн хэрэгслийг "+ today +" 확인할 때 төлөх торгууль байхгүй 입니다 " : torguuliData);
                         //console.log(torguuli_count);
                         $("#totalUnPaid").html(torguuli_count);
                         $('#torguuli').modal('show');
@@ -4027,7 +4027,7 @@ var html = '<tr>' +
                     $(".containerBody").fadeIn();
                     $( "#fingerInfo" ).css( "display", "block" );
                     $( "#fingerInfo" ).css( "color", "red" );
-                    $( "#fingerInfo" ).text( "계약 번호аа оруулна уу." );
+                    $( "#fingerInfo" ).text( "계약 번호аа 입력해 주세요." );
                 }
                
                 },
@@ -4139,7 +4139,7 @@ var html = '<tr>' +
 
                    var html = '<tr >' +
                       
-                                       ' <td style="color:red;">' + '오류 уг тэээврийн хэрэгсэл дээр гэрээ хийгдээгүй байна.' + ' </td>' +
+                                       ' <td style="color:red;">' + '오류 уг тэээврийн хэрэгсэл дээр гэрээ хийгдээгүй 입니다.' + ' </td>' +
                                       
                                        
                                        ' </tr>';
@@ -4262,7 +4262,7 @@ var html = '<tr>' +
                 menu_tor(name);
             }
         } else {
-            alert("Тээврийн хэрэгсэл сонгогдсоны дараа үйлдэл хийх боломжтой.");
+            alert("Тээврийн хэрэгсэл сонгогдсоны дараа үйлдэл хийх 경우омжтой.");
         }
     }
 
@@ -4601,7 +4601,7 @@ function checkPayData() {
     }else{
         $( "#payInfo" ).css( "display", "block" );
                     $( "#payInfo" ).css( "color", "red" );
-                    $( "#payInfo" ).text( "Та төлбөр төлсөн төрөлийг заавал сонгох ёстой." );
+                    $( "#payInfo" ).text( "Та төлбөр төлсөн 유형ийг 필수 선택 ёстой." );
     }
     
 }
@@ -4641,7 +4641,7 @@ function checkPayData() {
                 } else {
                     $( "#fingerInfo" ).css( "display", "block" );
                     $( "#fingerInfo" ).css( "color", "red" );
-                    $( "#fingerInfo" ).text( "공문 번호ыг заавал бөглөх ёстой." );
+                    $( "#fingerInfo" ).text( "공문 번호ыг 필수 бөглөх ёстой." );
                 }
             }else if(ntrCheck == true){
                 if($("#fingerDesc").val().length > 0){
@@ -4657,7 +4657,7 @@ function checkPayData() {
                 } else {
                     $( "#fingerInfo" ).css( "display", "block" );
                     $( "#fingerInfo" ).css( "color", "red" );
-                    $( "#fingerInfo" ).text( "Нотриатын гэрээний 번호ыг заавал бөглөх ёстой." );
+                    $( "#fingerInfo" ).text( "Нотриатын гэрээний 번호ыг 필수 бөглөх ёстой." );
                 }
             } else if(confirm == true){
                 if($("#fingerDesc").val().length > 0){
@@ -4683,7 +4683,7 @@ function checkPayData() {
                 } else {
                     $( "#fingerInfo" ).css( "display", "block" );
                     $( "#fingerInfo" ).css( "color", "red" );
-                    $( "#fingerInfo" ).text( "Нотриатын баримтын 번호ыг заавал бөглөх ёстой." );
+                    $( "#fingerInfo" ).text( "Нотриатын баримтын 번호ыг 필수 бөглөх ёстой." );
                 }
             } else {
                 $("#fingerTotalDescription").val($("#fingerDesc").val());
@@ -4851,7 +4851,7 @@ function checkPayData() {
                         if(data == "<div style='color:red'>지문 정보가 일치하지 않습니다</div>"){
                             $( "#fingerInfo" ).css( "color", "red" );
                             if(is_three){
-                                text = "Гуравдагч этгээдийн хурууны хээ таарахгүй байна. РД:"+register;
+                                text = "Гуравдагч этгээдийн хурууны хээ 일치하지 않음 입니다. РД:"+register;
                                 $("#registerThree").val("");
                             } else {
                                 text = "지문이 일치하지 않습니다. РД:"+register;
@@ -4865,7 +4865,7 @@ function checkPayData() {
                         } else {
                             $( "#fingerInfo" ).css( "color", "green" );
                             if(is_three){
-                                text = "Гуравдагч этгээдийн хурууны хээ таарч байна. РД:"+register;
+                                text = "Гуравдагч этгээдийн хурууны хээ таарч 입니다. РД:"+register;
                                 is_three_valid = true;
                             } else {
                                 text = "지문이 일치합니다. РД:"+register;
@@ -5779,7 +5779,7 @@ document.getElementById("payAmount").value =newArray[1];
                     mywindow.close();
                     return true;
                 } else {
-                    alert("증명서 인쇄эд алдаа гарлаа дахин хэвлэнэ үү!");
+                    alert("증명서 인쇄эд 오류가 발생했습니다 다시 хэвлэнэ үү!");
                 }
                 $(".avtoteeverPreloader").fadeOut();
                 $(".containerBody").fadeIn();
@@ -5797,13 +5797,13 @@ document.getElementById("payAmount").value =newArray[1];
     //     mode: 'remote',
     //     method: 'post',
     //     fitColumns:'true',
-    //     loadMsg: 'Хайж байна...',
+    //     loadMsg: 'Хайж 입니다...',
     //     columns: [[
     //         {field: 'plate_no', title: '번호판', width: 60},
     //         {field: 'cabin_no', title: '차체번호', width: 80},
     //         {field: 'mark_name', title: '브랜드', width: 80},
     //         {field: 'model_name', title: '형식', width: 80},
-    //         {field: 'vehicle_type_name', title: '차량 төрөл', width: 80},
+    //         {field: 'vehicle_type_name', title: '차량 유형', width: 80},
     //         {field: 'color_name', title: '색상', width: 60},
     //         {field: 'purpose_name', title: '용도', width: 90},
     //         {field: 'build_year', title: '작업일', width: 60},

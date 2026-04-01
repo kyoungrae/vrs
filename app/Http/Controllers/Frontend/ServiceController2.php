@@ -14,10 +14,10 @@ use App\Owner;
 use App\PlateNumberSave;
 use App\EpayTransaction;
 use Illuminate\Support\Facades\Session;
-class ServiceController extends BaseController
+class ServiceController2 extends BaseController
 {
     /*
-     * service1 => Иргэний мэдээлэл зурагтай
+     * service1 => Иргэний 정보 зурагтай
      * service2 => 세관
      * service3 => 과태료
      * service4 => 세금
@@ -88,7 +88,7 @@ public function transactionCheck(Request $request){
             //         return $checkTrailerMehMotoMove;
             //     }
             //     else{
-            //         return response()->json(['status'=>'error','msg'=>'Уг үйлчигээний төлбөр төлөгдөөгүй байна.']);
+            //         return response()->json(['status'=>'error','msg'=>'Уг үйлчигээний төлбөр төлөгдөөгүй 입니다.']);
             //     }
             // }else{
                 $check = Transaction::query()
@@ -101,7 +101,7 @@ public function transactionCheck(Request $request){
                     return $check;
         
                    }   else{
-                        return response()->json(['status'=>'error','msg'=>'Уг үйлчигээний төлбөр төлөгдөөгүй байна.']);
+                        return response()->json(['status'=>'error','msg'=>'Уг үйлчигээний төлбөр төлөгдөөгүй 입니다.']);
                 //    }
            // }
            
@@ -236,7 +236,7 @@ public function transactionCheck(Request $request){
     //  if (count($seriesCheck) > 0) {
     //     return response()->json([
     //         'status' => 400,
-    //         'message' => "Уг 번호ыг хадгалах боломжгүй байна."
+    //         'message' => "Уг 번호ыг 저장 경우омжгүй 입니다."
             
     //     ]);
     //  } else {
@@ -258,7 +258,7 @@ public function transactionCheck(Request $request){
             // return $result_json;
             return response()->json([
                 'status' => 400,
-                'message' => "Уг 번호ыг хадгалах боломжгүй байна."
+                'message' => "Уг 번호ыг 저장 경우омжгүй 입니다."
                 
             ]);
         }else{
@@ -883,7 +883,7 @@ if ($request->param == 0) {
                     if(self::dec($valid) == Carbon::now()->format("Y-m-d")){
                         $client = new \SoapClient(
                          //   "https://xyp.gov.mn/transport-1.3.0/ws?WSDL",
-                         "/usr/share/nginx/html/system/public/transport.xml",
+                         public_path('transport.xml'),
                             [
                                 'soapVersion' => SOAP_1_2,
                                 'stream_context' => stream_context_create([
@@ -934,7 +934,7 @@ if ($request->param == 0) {
                     if(self::dec($valid) == Carbon::now()->format("Y-m-d")){
                         $client = new \SoapClient(
                             //"https://xyp.gov.mn/transport-1.3.0/ws?WSDL",
-                            "/usr/share/nginx/html/system/public/transport.xml",
+                            public_path('transport.xml'),
                             [
                                 'soapVersion' => SOAP_1_2,
                                 'stream_context' => stream_context_create([

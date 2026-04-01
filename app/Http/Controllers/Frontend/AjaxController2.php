@@ -246,7 +246,7 @@ class AjaxController extends BaseController
         $register = $request->get("register");
         try{
             $owners = Owner::where("REGISTER_NO", "LIKE", $register."%")->get();
-            $html = '<option value="0">지점 сонгох</option>';
+            $html = '<option value="0">지점 선택</option>';
             if($owners->count() > 0){
                 $owner_count = 0;
                 foreach ($owners as $owner){
@@ -839,7 +839,7 @@ class AjaxController extends BaseController
             }
         }catch (\Exception $ex){
             DB::rollBack();
-            $this->writeLog("Гэрчилгээ хэвлэлт бүртгэл алдаатай байна: ".$ex);
+            $this->writeLog("Гэрчилгээ хэвлэлт 등록 алдаатай 입니다: ".$ex);
             return "error";
         }
     }
@@ -852,16 +852,16 @@ class AjaxController extends BaseController
             $owner = Owner::where("REGISTER_NO", "LIKE", $request->get("Register")."%")->get();
             if($owner->count() > 0){
                 RegReferenceLog::create([
-                    'Ref_Type' => $request->get("RefType"), //보고서 төрөл: 1 бол одоогийн өмчилж буй, 2 бол өмнөх өмчилж байсан
-                    'Type_Id' => $request->get("TypeId"), //1 бол албан тоотоор буюу хурууны хээ ашиглаагүй, 2 хурууны хээгээр
-                    'User_Type_Id' => $owner->first()->type_id, //Лавлагаагаар илэрсэн 차량 -ийн өмчлөгчийн хувь хүн болон албан байгууллага төрөл Ө.Х өмчлөгчийн төрөл
-                    'User_Id' => $owner->first()->id, //비율 хүн болон албан байгууллага өмчлөгчийн ID
+                    'Ref_Type' => $request->get("RefType"), //보고서 유형: 1 경우 одоогийн өмчилж буй, 2 경우 өмнөх өмчилж байсан
+                    'Type_Id' => $request->get("TypeId"), //1 경우 албан тоотоор буюу хурууны хээ ашиглаагүй, 2 хурууны хээгээр
+                    'User_Type_Id' => $owner->first()->type_id, //조회гаар илэрсэн 차량 -ийн 소유자ийн 비율/개인 хүн 경우он албан 기관/단체 유형 Ө.Х 소유자ийн 유형
+                    'User_Id' => $owner->first()->id, //비율 хүн 경우он албан 기관/단체 소유자ийн ID
                     'DocNumber' => $request->get("DocNumber"), //공문 번호
-                    'Vehicle_Count' => $request->get("VehicleCount"), //Нэг лавлагаагаар авсан 차량 -ийн тоо
-                    'Request_Type' => $request->get("RequestType"), //Хүсэлт гаргасан байгууллага ID
-                    'Request_Name' => $request->get("RequestText"), //Хүсэлт гаргасан байгууллага нэр
-                    'Description' => $request->get("Description"), //Хурууны хээ болон 번호 тайлбар
-                    'CreatedBy' => $request->get("CreatedBy"), //Лавлагаа гаргасан
+                    'Vehicle_Count' => $request->get("VehicleCount"), //Нэг 확인서/조회гаар авсан 차량 -ийн тоо
+                    'Request_Type' => $request->get("RequestType"), //Хүсэлт гаргасан 기관/단체 ID
+                    'Request_Name' => $request->get("RequestText"), //Хүсэлт гаргасан 기관/단체 нэр
+                    'Description' => $request->get("Description"), //Хурууны хээ 경우он 번호 тайлбар
+                    'CreatedBy' => $request->get("CreatedBy"), //조회 гаргасан
                     'CreatedDate' => $request->get("CreatedDate")
                 ]);
                 return "1";

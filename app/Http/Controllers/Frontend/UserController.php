@@ -72,7 +72,7 @@ class UserController extends BaseController
                     $id = $this->dec($key);
 //                    $is_create = MainUser::withTrashed()->where("USERNAME", $userName)->get()->count();
 //                    if($is_create > 1){
-//                        $message = $this->message("danger", "Хэрэглэгчийн нэр давхцаж байна.");
+//                        $message = $this->message("danger", "Хэрэглэгчийн нэр давхцаж 입니다.");
 //                    } else {
                     MainUser::where("Id", $id)->update([
                         'ProvinceId' => $province,
@@ -92,14 +92,14 @@ class UserController extends BaseController
                             'LAST_CHANGE_PASSWORD' => Carbon::now()->format("Y-m-d H:i:s")
                         ]);
                     }
-                    $message = $this->message("success", "Хэрэглэгчийн мэдээлэл 성공적으로 수정되었습니다.");
+                    $message = $this->message("success", "Хэрэглэгчийн 정보 성공적으로 수정되었습니다.");
 //                    }
                     return redirect("/user/edit/".$key)->with("message", $message);
                 } else {
                     $is_create = MainUser::withTrashed()->where("USERNAME", $userName)->get()->count();
                     
                     if($is_create > 0){
-                        $message = $this->message("danger", "Хэрэглэгчийн нэр давхцаж байна.");
+                        $message = $this->message("danger", "Хэрэглэгчийн нэр давхцаж 입니다.");
                        
                     } else {
                         MainUser::create([
@@ -179,10 +179,10 @@ class UserController extends BaseController
                 $key = $this->dec($key);
                 MainUser::where("Id", $key)->delete();
             }
-            $message = $this->message("success", "Хэрэглэгчийн мэдээлэл 성공적으로 устлаа.");
+            $message = $this->message("success", "Хэрэглэгчийн 정보 성공적으로 устлаа.");
         } catch (\Exception $ex){
             $this->writeLog("User delete error: ".$ex->getMessage());
-            $message = $this->message("success", "Хэрэглэгчийн мэдээлэл устгахад 오류가 발생했습니다.");
+            $message = $this->message("success", "Хэрэглэгчийн 정보 삭제할 때 오류가 발생했습니다.");
         }
         return redirect(route('userlist'))->with("message", $message);
     }
@@ -212,10 +212,10 @@ class UserController extends BaseController
                     $message = "";
                     foreach ($errors as $key=>$value){
                         if($key == "password"){
-                            $message = "Хамгийн багадаа 6 урттай мөн 1 жижиг, 1 том, 1 тоо, 1 тусгай тэмдэгт @$!%*#?&; орсон байх ёстой.";
+                            $message = "Хамгийн багадаа 6 урттай 또한 1 жижиг, 1 том, 1 тоо, 1 тусгай 표식/문자 @$!%*#?&; орсон байх ёстой.";
                         }
                         if($key == "passwordcomfirm"){
-                            $message .= "Баталгаажуулах нууц үг буруу байна.";
+                            $message .= "Баталгаажуулах нууц үг буруу 입니다.";
                         }
                     }
                     $message = $this->message("danger",  $message);
@@ -231,7 +231,7 @@ class UserController extends BaseController
                     ]);
                     return redirect(route("logout"));
                 } else {
-                    $message = $this->message("warning", "Давтах нууц үг ялгаатай байна!");
+                    $message = $this->message("warning", "Давтах нууц үг ялгаатай 입니다!");
                     return view('System.userpassword', compact("message"));
                 }
             } else {
@@ -239,7 +239,7 @@ class UserController extends BaseController
             }
         } catch (\Exception $ex){
             $this->writeLog("Change password error: ".$ex->getMessage());
-            $message = $this->message("danger", "Нууц үг солиход 오류가 발생했습니다.");
+            $message = $this->message("danger", "Нууц үг 교체할 때 오류가 발생했습니다.");
             return view('System.userpassword')->with("message", $message);
         }
     }
@@ -277,7 +277,7 @@ class UserController extends BaseController
             if($request->isMethod("POST")  ) {
                 $seriesNumberId = $request->get("seriesNumberId");
                 if ($seriesNumberId != null) {
-                    //Регистрийн номер угсаралт
+                    //등록번호/IDийн номер угсаралт
                     $first = $request->get("first");
                     $second = $request->get("second");
                     $option = $request->get("registeroption");
@@ -324,8 +324,8 @@ class UserController extends BaseController
                         $numberText = "";
                     }
                     $order_date = Carbon::now()->format("Y-m-d H:i:s");
-                    $message_info = '<table class="table table-bordered" style="font-size: 16px;"><tbody><tr><th><div>Захиалсан 번호</div></th><th><div>'.$numberText.'</div></th></tr><tr><th><div>등록번호</div></th><th><div>'.$register.'</div></th></tr><tr><th><div>차체번호</div></th><th><div>'.$aral.'</div></th></tr><tr><th><div>주문 일자</div></th><th><div>'.$order_date.'</div></th></tr><tr><th><div>Хүчинтэй огноо</div></th><th><div>'.Carbon::parse($order_date)->addDay(1).'</div></th></tr></tbody></table>';
-                    $message = $this->message("success", '24 цагийн хугацаанд хүчинтэй.<br>'.$message_info.'<div style="color:red">Захиалгын мэдээллийг баталгаажуулах үүднээс дэлгэцийн зургийг дарж авна уу!</div>');
+                    $message_info = '<table class="table table-bordered" style="font-size: 16px;"><tbody><tr><th><div>Захиалсан 번호</div></th><th><div>'.$numberText.'</div></th></tr><tr><th><div>등록번호</div></th><th><div>'.$register.'</div></th></tr><tr><th><div>차체번호</div></th><th><div>'.$aral.'</div></th></tr><tr><th><div>주문 일자</div></th><th><div>'.$order_date.'</div></th></tr><tr><th><div>Хүчинтэй 날짜</div></th><th><div>'.Carbon::parse($order_date)->addDay(1).'</div></th></tr></tbody></table>';
+                    $message = $this->message("success", '24 цагийн хугацаанд хүчинтэй.<br>'.$message_info.'<div style="color:red">Захиалгын мэдээллийг 확인 үүднээс дэлгэцийн зургийг дарж авна уу!</div>');
                 }
             }
 
@@ -357,7 +357,7 @@ class UserController extends BaseController
             }
         }catch (\Exception $ex){
             $this->writeLog("Local plate order error: ".$ex->getMessage());
-            $message = $this->message("danger", "Дугаар захиалхад 오류가 발생했습니다.");
+            $message = $this->message("danger", "번호 захиалхад 오류가 발생했습니다.");
             return view('System.usermynumbers')->with("message", $message);
         }
     }

@@ -9,7 +9,14 @@ services:
     ports:
       - "8000:8000"
     command: >
-      sh -c "curl -sS https://getcomposer.org/installer | php -- --1 --install-dir=/usr/local/bin --filename=composer
+      sh -c "if ! php -m | grep -qi '^soap$'; then
+      echo 'deb http://archive.debian.org/debian jessie main' > /etc/apt/sources.list
+      && echo 'deb http://archive.debian.org/debian-security jessie/updates main' >> /etc/apt/sources.list
+      && apt-get -o Acquire::Check-Valid-Until=false update
+      && apt-get -o Acquire::AllowInsecureRepositories=true --allow-unauthenticated install -y libxml2-dev
+      && docker-php-ext-install soap;
+      fi
+      && curl -sS https://getcomposer.org/installer | php -- --1 --install-dir=/usr/local/bin --filename=composer
       && composer install --no-interaction
       && php artisan serve --host=0.0.0.0 --port=8000"
     volumes:

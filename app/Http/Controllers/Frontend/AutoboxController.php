@@ -202,7 +202,7 @@ class AutoboxController extends BaseController
                 } else {
                     return response()->json([
                         'statusCode' =>400,
-                        'message' => "Уг өмчлөг бүртгэлтэй байна.",
+                        'message' => "Уг өмчлөг 등록тэй 입니다.",
                       
                     ]);
                 }
@@ -215,7 +215,7 @@ class AutoboxController extends BaseController
         
     } else {
         $Result["success"] = false;
-        $Result["message"] = "Token буруу байна !!!";
+        $Result["message"] = "Token буруу 입니다 !!!";
         return response()->json($Result, 200);
 
     }
@@ -249,7 +249,7 @@ class AutoboxController extends BaseController
                 }
                 else{
                     $Result["success"] = false;
-                    $Result["message"] = "Хандалт буруу байна !!!";
+                    $Result["message"] = "Хандалт буруу 입니다 !!!";
                     return response()->json($Result, 200);
                 }
      //return $this->certifcate();
@@ -257,14 +257,14 @@ class AutoboxController extends BaseController
 
             } catch (\Exception $ex) {
                 $Result["success"] = false;
-                $Result["message"] = "오류 гарлаа !!!";
+                $Result["message"] = "오류 발생했습니다 !!!";
             }
 
        //     return response()->json($Result, 200);
 
         } else {
             $Result["success"] = false;
-            $Result["message"] = "Token буруу байна !!!";
+            $Result["message"] = "Token буруу 입니다 !!!";
             return response()->json($Result, 200);
 
         }
@@ -381,11 +381,11 @@ class AutoboxController extends BaseController
                                         } else {
                                             return response()->json([
                                                 'statusCode' =>400,
-                                                'message' => $plate_no . "아카이브 번호 үүсгэхэд алдаа гарлаа дахин үйлдлээ хийнэ үү."
+                                                'message' => $plate_no . "아카이브 번호 생성 중 오류가 발생했습니다 다시 작업/처리 해주세요."
                                                
                                               
                                             ]);
-                                            // $message = $this->message("info", $plate_no . "아카이브 번호 үүсгэхэд алдаа гарлаа дахин үйлдлээ хийнэ үү.");
+                                            // $message = $this->message("info", $plate_no . "아카이브 번호 생성 중 오류가 발생했습니다 다시 작업/처리 해주세요.");
                                             // return redirect(url('/vehicle/' . $this->enc($cabin_no) . '/new'))->with("message", $message);
                                         }
                                     } catch (\Exception $ex){
@@ -630,20 +630,20 @@ class AutoboxController extends BaseController
                                 } else {
                                     return response()->json([
                                         'statusCode' =>400,
-                                        'message' => "아카이브 번호 үүсгэхэд алдаа гарлаа дахин үйлдлээ хийнэ үү."
+                                        'message' => "아카이브 번호 생성 중 오류가 발생했습니다 다시 작업/처리 해주세요."
                                        
                                       
                                     ]);
-                                    //$message = $this->message("info", "아카이브 번호 үүсгэхэд алдаа гарлаа дахин үйлдлээ хийнэ үү.");
+                                    //$message = $this->message("info", "아카이브 번호 생성 중 오류가 발생했습니다 다시 작업/처리 해주세요.");
                                 }
                             } else {
                                 return response()->json([
                                     'statusCode' =>400,
-                                    'message' => "Шилжүүлэх өмчлөгч одоогийн өмчлөгч байна."
+                                    'message' => "Шилжүүлэх 소유자 одоогийн 소유자 입니다."
                                    
                                   
                                 ]);
-                               // $message = $this->message("info", "Шилжүүлэх өмчлөгч одоогийн өмчлөгч байна.");
+                               // $message = $this->message("info", "Шилжүүлэх 소유자 одоогийн 소유자 입니다.");
                             }
                         } else {
                             if (!is_array($result) && $result == false) {
@@ -681,18 +681,18 @@ class AutoboxController extends BaseController
             } else {
                 return response()->json([
                     'statusCode' =>400,
-                    'message' => "Шилжүүлэх өмчлөгч 찾을 수 없습니다."
+                    'message' => "Шилжүүлэх 소유자 찾을 수 없습니다."
                    
                   
                 ]);
-               // $message = $this->message("info", "Шилжүүлэх өмчлөгч 찾을 수 없습니다.");
+               // $message = $this->message("info", "Шилжүүлэх 소유자 찾을 수 없습니다.");
             }
           //  return redirect(url('/vehicle/'.$this->enc($plate_no)))->with("message", $message);
         } catch (\Exception $ex){
             $this->writeLog("Move owner error: ".$ex->getMessage());
             return response()->json([
                 'statusCode' =>400,
-                'message' => "Өмчлөгч хооронд 이전 хийхэд алдаа гарлаа"
+                'message' => "Өмчлөгч хооронд 이전 할 때 오류가 발생했습니다"
                
               
             ]);
@@ -851,11 +851,11 @@ class AutoboxController extends BaseController
                                                 } else {
                                                     return response()->json([
                                                         'statusCode' =>400,
-                                                        'message' =>  "아카이브 번호 үүсгэхэд алдаа гарлаа дахин үйлдлээ хийнэ үү."
+                                                        'message' =>  "아카이브 번호 생성 중 오류가 발생했습니다 다시 작업/처리 해주세요."
                                                        
                                                       
                                                     ]);
-                                                   // $message = $this->message("info", "아카이브 번호 үүсгэхэд алдаа гарлаа дахин үйлдлээ хийнэ үү.");
+                                                   // $message = $this->message("info", "아카이브 번호 생성 중 오류가 발생했습니다 다시 작업/처리 해주세요.");
                                                    // return redirect(url('/vehicle/' . $this->enc($plate_no)))->with("message", $message);
                                                 }
                                             } catch (\Exception $ex){
@@ -1071,11 +1071,11 @@ class AutoboxController extends BaseController
                                             } else {
                                                 return response()->json([
                                                     'statusCode' =>400,
-                                                    'message' => "아카이브 번호 үүсгэхэд алдаа гарлаа дахин үйлдлээ хийнэ үү."
+                                                    'message' => "아카이브 번호 생성 중 오류가 발생했습니다 다시 작업/처리 해주세요."
                                                    
                                                   
                                                 ]);
-                                                // $message = $this->message("info", "아카이브 번호 үүсгэхэд алдаа гарлаа дахин үйлдлээ хийнэ үү.");
+                                                // $message = $this->message("info", "아카이브 번호 생성 중 오류가 발생했습니다 다시 작업/처리 해주세요.");
                                             }
                                         } catch (\Exception $ex){
                                             DB::rollBack();
@@ -1095,7 +1095,7 @@ class AutoboxController extends BaseController
                                         $plate_no = $plate_old_no;
                                         return response()->json([
                                             'statusCode' =>400,
-                                            'message' => "오류 ".$plate_no." 번호판ын захиалга хийгдээгүй байна"
+                                            'message' => "오류 ".$plate_no." 번호판ын захиалга хийгдээгүй 입니다"
                                            
                                           
                                         ]);
@@ -1156,7 +1156,7 @@ class AutoboxController extends BaseController
             } else {
                 return response()->json([
                     'statusCode' =>400,
-                    'message' =>"Солих 번호판 тухайн 차량 ашиглаж байна"
+                    'message' =>"Солих 번호판 тухайн 차량 ашиглаж 입니다"
                    
                   
                 ]);
@@ -1267,19 +1267,19 @@ class AutoboxController extends BaseController
                             }
                             return response()->json([
                                 'statusCode' =>400,
-                                'message' =>  "차량 -ийн мэдээлэл 성공적으로 хасагдлаа."
+                                'message' =>  "차량 -ийн 정보 성공적으로 삭제/말소되었습니다."
                                
                               
                             ]);
-                          //  $message = $this->message("success", "차량 -ийн мэдээлэл 성공적으로 хасагдлаа.");
+                          //  $message = $this->message("success", "차량 -ийн 정보 성공적으로 삭제/말소되었습니다.");
                         } else {
                             return response()->json([
                                 'statusCode' =>400,
-                                'message' =>  "아카이브 번호 үүсгэхэд алдаа гарлаа дахин үйлдлээ хийнэ үү."
+                                'message' =>  "아카이브 번호 생성 중 오류가 발생했습니다 다시 작업/처리 해주세요."
                                
                               
                             ]);
-                          //  $message = $this->message("info", "아카이브 번호 үүсгэхэд алдаа гарлаа дахин үйлдлээ хийнэ үү.");
+                          //  $message = $this->message("info", "아카이브 번호 생성 중 오류가 발생했습니다 다시 작업/처리 해주세요.");
                         }
                     } catch (\Exception $ex){
                         DB::rollBack();
@@ -1296,11 +1296,11 @@ class AutoboxController extends BaseController
                 } else {
                     return response()->json([
                         'statusCode' =>400,
-                        'message' =>  "ХХ сери үүсээгүй эсвэл ХХ серитэй сул 번호 байхгүй байна."
+                        'message' =>  "ХХ сери үүсээгүй эсвэл ХХ серитэй сул 번호 байхгүй 입니다."
                        
                       
                     ]);
-                   // $message = $this->message("info", "ХХ сери үүсээгүй эсвэл ХХ серитэй сул 번호 байхгүй байна.");
+                   // $message = $this->message("info", "ХХ сери үүсээгүй эсвэл ХХ серитэй сул 번호 байхгүй 입니다.");
                     //$plate_no = $plate_old_no;
                 }
             } else {
@@ -1459,8 +1459,8 @@ public function electronForm($vehicle1, $owners,$finger)
                 return true;
             }
         } catch (\Exception $ex){
-            $this->writeLog("주소ийн мэдээлэл шалгахад 오류가 발생했습니다. ".$ex);
-            $message = $this->message("info", "Серийн мэдээлэл шивэгдээгүй эсвэл эзэмшигчийн хаягийн мэдээлэл дутуу байна.");
+            $this->writeLog("주소ийн 정보 확인할 때 오류가 발생했습니다. ".$ex);
+            $message = $this->message("info", "Серийн 정보 입력되지 않은 эсвэл 소유권자ийн хаягийн 정보 누락된 입니다.");
             return array(true, $message);
         }
     }
@@ -1830,7 +1830,7 @@ public function indexBurtgelAutoBox(Request $request, $type = 0)
         
                 // $agent = new Agent();
                 // if($agent->isRobot()){
-                //     Log::emergency("Robot хандсан байна => ". $agent->robot());
+                //     Log::emergency("Robot хандсан 입니다 => ". $agent->robot());
                 //     return view('Touch.burtgel',compact('limitPerDay','province', 'provinceID', 'type'));
                 // }
         
@@ -1872,7 +1872,7 @@ public function indexBurtgelAutoBox(Request $request, $type = 0)
               
                 ]);
         }
-                    //Дугаар хайлтын оронгууд
+                    //번호 хайлтын оронгууд
                     $d1 = "";
                     $d2 = "";
                     $d3 = "";
@@ -1881,7 +1881,7 @@ public function indexBurtgelAutoBox(Request $request, $type = 0)
                   
                             // $seriesNumberId = $seriesNumberId;
                           //  return  $seriesNumberId;
-                            //Регистрийн номер угсаралт
+                            //등록번호/IDийн номер угсаралт
                             $first = $request->get("first");
                             $second = $request->get("second");
                             $option = $request->get("registeroption");
@@ -1914,7 +1914,7 @@ public function indexBurtgelAutoBox(Request $request, $type = 0)
                                 $postfix = "=03";
                             }
         
-                            //Регистр бичсэн эсэх
+                            //등록번호/ID бичсэн эсэх
                             if ($option == "person") {
                                 $is_register = $this->checkRegister($register, $option);
                                 if($is_register == false){
@@ -1929,16 +1929,16 @@ public function indexBurtgelAutoBox(Request $request, $type = 0)
                                 $postfix = "=01";
                             }
         
-                            //Регистр бичсэн эсэх
+                            //등록번호/ID бичсэн эсэх
                             if($option == "foreign"){
                                 $check_foreign = SeriesNumber::where("IP_ADDRESS", $request->ip().$postfix)->where("IS_GIVEN", 0)->where("IS_ORDER", (int)1)->get();
                                 if ($check_foreign->count() > 20000) {
                                     return response()->json([
                                         'statusCode' =>400,
-                                        'message' => "Захиалга ам년тгүй боллоо..",
+                                        'message' => "Захиалга ам년тгүй 경우лоо..",
                                       
                                         ]);
-                                    // $message = $this->message("warning", "Захиалга ам년тгүй боллоо.");
+                                    // $message = $this->message("warning", "Захиалга ам년тгүй 경우лоо.");
                                     // return view('Touch.burtgel', compact( 'limitPerDay', 'province', 'provinceID', 'type', 'message'));
                                 }
                             } else {
@@ -1957,10 +1957,10 @@ public function indexBurtgelAutoBox(Request $request, $type = 0)
                             if ($aral == "00000" && $type == null) {
                                 return response()->json([
                                     'statusCode' =>400,
-                                    'message' => "Та арлын 번호аа зөв оруулна уу.",
+                                    'message' => "Та 차대 번호аа зөв 입력해 주세요.",
                                   
                                     ]);
-                                // $message = $this->message("warning", "Та арлын 번호аа зөв оруулна уу.");
+                                // $message = $this->message("warning", "Та 차대 번호аа зөв 입력해 주세요.");
                                 // return view('Touch.burtgel', compact( 'limitPerDay', 'province', 'provinceID', 'type', 'message'));
                             }
         
@@ -1987,10 +1987,10 @@ public function indexBurtgelAutoBox(Request $request, $type = 0)
                             if ($checkOwnerList >= $ownerQty) {
                                 return response()->json([
                                     'statusCode' =>400,
-                                    'message' => "Таны өнөөдрийн захиалга хийх эрх дууссан байна.",
+                                    'message' => "Таны өнөөдрийн захиалга хийх эрх дууссан 입니다.",
                                   
                                     ]);
-                                // $message = $this->message("warning", "Таны өнөөдрийн захиалга хийх эрх дууссан байна.");
+                                // $message = $this->message("warning", "Таны өнөөдрийн захиалга хийх эрх дууссан 입니다.");
                                 // return view('Touch.burtgel', compact( 'limitPerDay', 'province', 'provinceID', 'type', 'message'));
                             }
         
@@ -2007,10 +2007,10 @@ public function indexBurtgelAutoBox(Request $request, $type = 0)
                             if ($checkDuplicate > 0) {
                                 return response()->json([
                                     'statusCode' =>400,
-                                    'message' => "Дугаар захиалагдсан байна. Та өөр 번호 захиална уу",
+                                    'message' => "번호 захиалагдсан 입니다. Та өөр 번호 захиална уу",
                                   
                                     ]);
-                                // $message = $this->message("warning", "Дугаар захиалагдсан байна. Та өөр 번호 захиална уу.");
+                                // $message = $this->message("warning", "번호 захиалагдсан 입니다. Та өөр 번호 захиална 주세요.");
                                 // return view('Touch.burtgel', compact( 'limitPerDay', 'province', 'provinceID', 'type', 'message'));
                             } else {
                                 $numberText = SeriesNumber::where("ID", $seriesNumberId)->where("IS_ORDER", (int)0)->get();
@@ -2033,7 +2033,7 @@ public function indexBurtgelAutoBox(Request $request, $type = 0)
         
                                 return response()->json([
                                     'statusCode' =>200,
-                                    'message' => "Дугаар захиалга 성공적으로.",
+                                    'message' => "번호 захиалга 성공적으로.",
                                     'data'=>[
                                         'order_plate'=>$numberText,
                                         'order_register'=>$register,
@@ -2043,8 +2043,8 @@ public function indexBurtgelAutoBox(Request $request, $type = 0)
                                         'info'=>"24 цагийн хугацаанд хүчинтэй"
                                     ],
                                     ]);
-                                // $message_info = '<table class="table table-bordered" style="font-size: 16px;"><tbody><tr><th><div>Захиалсан 번호</div></th><th><div>'.$numberText.'</div></th></tr><tr><th><div>등록번호</div></th><th><div>'.$register.'</div></th></tr><tr><th><div>차체번호</div></th><th><div>'.$aral.'</div></th></tr><tr><th><div>주문 일자</div></th><th><div>'.$order_date.'</div></th></tr><tr><th><div>Хүчинтэй огноо</div></th><th><div>'.Carbon::parse($order_date)->addDay(1).'</div></th></tr></tbody></table>';
-                                // $message = $this->message("success", '24 цагийн хугацаанд хүчинтэй.<br>'.$message_info.'<div style="color:red">Захиалгын мэдээллийг баталгаажуулах үүднээс дэлгэцийн зургийг дарж авна уу!</div>');
+                                // $message_info = '<table class="table table-bordered" style="font-size: 16px;"><tbody><tr><th><div>Захиалсан 번호</div></th><th><div>'.$numberText.'</div></th></tr><tr><th><div>등록번호</div></th><th><div>'.$register.'</div></th></tr><tr><th><div>차체번호</div></th><th><div>'.$aral.'</div></th></tr><tr><th><div>주문 일자</div></th><th><div>'.$order_date.'</div></th></tr><tr><th><div>Хүчинтэй 날짜</div></th><th><div>'.Carbon::parse($order_date)->addDay(1).'</div></th></tr></tbody></table>';
+                                // $message = $this->message("success", '24 цагийн хугацаанд хүчинтэй.<br>'.$message_info.'<div style="color:red">Захиалгын мэдээллийг 확인 үүднээс дэлгэцийн зургийг дарж авна уу!</div>');
                                 // return view('Touch.burtgel', compact('limitPerDay', 'province', 'provinceID', 'type', 'message'));
                             }
                         
@@ -2061,7 +2061,7 @@ public function indexBurtgelAutoBox(Request $request, $type = 0)
                         $d4 = $request->get("d4");
         
                         $searchNumber = $d1 . $d2 . $d3 . $d4;
-                        //Дугаар хайх товч дарсан эсэх
+                        //번호 검색 товч дарсан эсэх
                         if($searchNumber == "0000") { 
                            
                         
@@ -2071,13 +2071,13 @@ public function indexBurtgelAutoBox(Request $request, $type = 0)
                           //  return $numbers;
                         }
                         else {
-                            //Дугаар хайлт
+                            //번호 хайлт
                            
                         //     $rules = ['captcha1' => 'required|captcha'];
                         //     $validator = validator()->make(request()->all(), $rules);
                         // //    dd( $$validator->fails());
                         //     if ($validator->fails()) {
-                        //         $message = $this->message("info", "Баталгаажуулах код буруу байна.");
+                        //         $message = $this->message("info", "Баталгаажуулах код буруу 입니다.");
                         //         return $message;
                         //     } else {
                                    
@@ -2097,7 +2097,7 @@ public function indexBurtgelAutoBox(Request $request, $type = 0)
                       //  return $seriesId;
                       return response()->json([
                         'statusCode' =>200,
-                        'message' => "Дугаар захиалга дата.",
+                        'message' => "번호 захиалга дата.",
                         'data'=>[
                             'seriesId'=>$seriesId,
                             'tmp_series_id'=>$tmp_series_id,
@@ -2119,7 +2119,7 @@ public function indexBurtgelAutoBox(Request $request, $type = 0)
                         // Log::info("Yes");
                         return response()->json([
                             'statusCode' =>200,
-                            'message' => "Дугаар захиалга дата.",
+                            'message' => "번호 захиалга дата.",
                             'data'=>[
                                 'limitPerDay'=>$limitPerDay,
                                 'province'=>$province,
@@ -2131,18 +2131,18 @@ public function indexBurtgelAutoBox(Request $request, $type = 0)
                     }
                 } catch (\Exception $ex) {
                     $Result["success"] = false;
-                    $Result["message"] = "오류 гарлаа !!!";
+                    $Result["message"] = "오류 발생했습니다 !!!";
                 }
             } else {
                 $Result["success"] = false;
-                $Result["message"] = "Token буруу байна !!!";
+                $Result["message"] = "Token буруу 입니다 !!!";
                 return response()->json($Result, 200);
         
             }
                 } else {
                     return response()->json([
                         'statusCode' =>200,
-                        'message' => "Дугаар захиалга аймаг дата.",
+                        'message' => "번호 захиалга аймаг дата.",
                         'data'=>[
                             'limitPerDay'=>$limitPerDay,
                             'province'=>$province,
@@ -2158,7 +2158,7 @@ public function indexBurtgelAutoBox(Request $request, $type = 0)
                    // return view('Touch.burtgel',compact('limitPerDay','province', 'provinceID', 'type'));
                 }
             } catch (\Exception $ex){
-                $this->writeLog("Дугаар захиалга алдаа гарлаа: ".$ex);
+                $this->writeLog("번호 захиалга 오류가 발생했습니다: ".$ex);
                 return redirect(url("/"));
             }
     
@@ -2476,10 +2476,10 @@ public function plateSaveStore(Request $request)
                   //  DB::update("UPDATE SERIES_NUMBER SET IS_HIDDEN=1, IS_SAVE=1,ORDER_USER='ДХ'  WHERE ID= $series_number->id");
                   
                 }else{
-                   // $message = $this->message("danger", "번호판 хадгалахад алдаа гарлаа тээврийн хэрэгслийн 번호판аа зөв оруулсан эсэхээ шалган уу!!!.");
+                   // $message = $this->message("danger", "번호판 저장ад 오류가 발생했습니다 тээврийн хэрэгслийн 번호판аа зөв оруулсан эсэхээ шалган уу!!!.");
                     return response()->json([
                         'statusCode' =>400,
-                        'message' =>"번호판 хадгалахад алдаа гарлаа тээврийн хэрэгслийн 번호판аа зөв оруулсан эсэхээ шалган уу!!!.."
+                        'message' =>"번호판 저장ад 오류가 발생했습니다 тээврийн хэрэгслийн 번호판аа зөв оруулсан эсэхээ шалган уу!!!.."
                        
                       
                     ]);
@@ -2488,7 +2488,7 @@ public function plateSaveStore(Request $request)
         }else{
         return response()->json([
             'statusCode' =>400,
-            'message' =>"Токен буруу байна."
+            'message' =>"Токен буруу 입니다."
            
           
         ]);
@@ -2503,7 +2503,7 @@ public function plateSaveOrder(Request $request)
         if (! $request->isMethod('POST')) {
             return response()->json([
                 'statusCode' => 400,
-                'message' => 'Зөвхөн POST хүсэлт зөвшөөрөгдөнө.',
+                'message' => 'Зөвхөн POST 요청 зөвшөөрөгдөнө.',
             ]);
         }
 
@@ -2519,7 +2519,7 @@ public function plateSaveOrder(Request $request)
         if (! $tokenCheck) {
             return response()->json([
                 'statusCode' => 400,
-                'message' => 'Токен буруу байна.',
+                'message' => 'Токен буруу 입니다.',
             ]);
         }
 
@@ -2564,7 +2564,7 @@ public function plateSaveOrder(Request $request)
 
         return response()->json([
             'statusCode' => 400,
-            'message' => 'Дугаар захиалхад алдаа гарлаа өөр тх-дээр захиалсан байна..',
+            'message' => '번호 захиалхад 오류가 발생했습니다 өөр тх-дээр захиалсан 입니다..',
         ]);
     } catch (\Exception $ex) {
         DB::rollBack();
@@ -2572,7 +2572,7 @@ public function plateSaveOrder(Request $request)
 
         return response()->json([
             'statusCode' => 500,
-            'message' => '오류 гарлаа.',
+            'message' => '오류 발생했습니다.',
         ]);
     }
 }

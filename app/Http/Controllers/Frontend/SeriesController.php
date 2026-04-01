@@ -58,11 +58,11 @@ class SeriesController extends BaseController
                         'Created_By_Id' => $userPkId,
                         'Updated_By_Id' => $userPkId
                     ]);
-                    $message = $this->message("success", "Cерийн мэдээлэл 성공적으로 수정되었습니다.");
+                    $message = $this->message("success", "Cерийн 정보 성공적으로 수정되었습니다.");
                 } else {
                     $is_create = Series::where("NAME", $series)->get()->count();
                     if($is_create > 0){
-                        $message = $this->message("info", "Үүсгэх сери давхцаж байна.");
+                        $message = $this->message("info", "Үүсгэх сери давхцаж 입니다.");
                     } else {
                         Series::create([
                             'NAME' => $series,
@@ -89,7 +89,7 @@ class SeriesController extends BaseController
             }
         } catch (\Exception $ex){
             $this->writeLog("Series create error: ".$ex->getMessage());
-            $message = $this->message("danger", "Сери үүсгэхэд 오류가 발생했습니다.");
+            $message = $this->message("danger", "Сери 생성 중 오류가 발생했습니다.");
             return redirect(route("createseries"))->with("message", $message);
         }
     }
@@ -140,7 +140,7 @@ class SeriesController extends BaseController
                             'IS_AUTO' => $auto,
                             'Updated_By_Id' => $userPkId
                         ]);
-                    $message = $this->message("success", "Серийн мэдээлэл 성공적으로 수정되었습니다.");
+                    $message = $this->message("success", "Серийн 정보 성공적으로 수정되었습니다.");
                     return redirect(url("/series/open/edit/".$id))->with("message", $message);
                 } else {
                     $series = $request->get("series");
@@ -155,7 +155,7 @@ class SeriesController extends BaseController
                     $interval_create = SeriesInterval::where("SERIES_ID", $series)->where("FROM_NUMBER", 1)->where('TO_NUMBER', 9999)->get()->count();
                     $number_create = SeriesNumber::where("SERIES_ID", $series)->get()->count();
                     if($interval_create > 0 && $number_create == 9999){
-                        $message = $this->message("success", $series_name." -ийн бүх 번호 үүссэн байна.");
+                        $message = $this->message("success", $series_name." -ийн бүх 번호 үүссэн 입니다.");
                         return view('System.seriesopen', compact('seriess', 'provinces', 'message'));
                     } else {
                         if($interval_create == 0){
@@ -415,7 +415,7 @@ class SeriesController extends BaseController
     }
 
     /**
-     * Сер хайх
+     * Сер 검색
      * @param Request $request - дамжуулна
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
