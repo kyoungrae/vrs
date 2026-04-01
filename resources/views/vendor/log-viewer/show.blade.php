@@ -106,7 +106,7 @@
                         </thead>
                         <tbody>
                             @foreach($entries as $key => $entry)
-                                <?php /** @var  Arcanedev\LogViewer\Entities\LogEntry  $entry */ ?>
+                                {{-- @var Arcanedev\LogViewer\Entities\LogEntry $entry --}}
                                 <tr>
                                     <td>
                                         <span class="label label-env">{{ $entry->env }}</span>
@@ -141,13 +141,14 @@
                                         </td>
                                     </tr>
                                 @endif
-                            @empty
+                            @endforeach
+                            @if ($entries->isEmpty())
                                 <tr>
                                     <td colspan="5" class="text-center">
                                         <span class="label label-default">{{ trans('log-viewer::general.empty-logs') }}</span>
                                     </td>
                                 </tr>
-                            @endforelse
+                            @endif
                         </tbody>
                     </table>
                 </div>

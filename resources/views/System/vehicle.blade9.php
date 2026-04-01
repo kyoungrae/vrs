@@ -561,7 +561,7 @@
                                                 <div class="col-lg-6 col-md-12 col-sm-12">
                                                     <input type="text" id="number_id" name="number"
                                                         value="{{ isset($vehicle) ? (isset($vehicle->plate_no) ? $vehicle->plate_no : "
-                                                        9597ХӨҮ") : "9597ХӨҮ" }}"
+                                                        9597ХӨҮ1") : "9597ХӨҮ1" }}"
                                                         class="form-control number text-uppercase"
                                                         oninput="translate2MGL(this.value)" autocomplete="off"
                                                         autofocus>
@@ -3102,9 +3102,9 @@ echo "<span>" . $name . "</span>";
 <input type="hidden" id="userPkId" value="<?php if (isset($vehicle))
     echo $userPkId; ?>"/>
                                                         <input type="hidden" id="vehicleId" value="<?php if (isset($vehicle))
-    echo $vehicle->id; ?>" />
+    echo (isset($vehicle) && is_object($vehicle)) ? $vehicle->id : ''; ?>" />
                                                         <input type="hidden" id="purposeId" value="<?php if (isset($vehicle))
-    echo $vehicle->purpose_id; ?>" />
+    echo (isset($vehicle) && is_object($vehicle)) ? $vehicle->purpose_id : ''; ?>" />
 
                                                         <script src="{{ asset('lib/jquery/jquery.min.js') }}"></script>
                                                         <script

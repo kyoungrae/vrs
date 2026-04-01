@@ -377,7 +377,7 @@
                                         <label class="form-label mg-b-0">번호판(이전소유자 정보 : 0373УНГ , 아카이브 정보 :0446УНГ )</label>
                                     </div>
                                     <div class="col-lg-6 col-md-12 col-sm-12">
-                                        <input type="text" id="number_id" name="number" value="{{ isset($vehicle) ? (isset($vehicle->plate_no) ? $vehicle->plate_no : "9597ХӨҮ") : "9597ХӨҮ" }}" class="form-control number text-uppercase" oninput="translate2MGL(this.value)" autocomplete="off" autofocus>
+                                        <input type="text" id="number_id" name="number" value="{{ isset($vehicle) ? (isset($vehicle->plate_no) ? $vehicle->plate_no : "0373УНГ") : "0373УНГ" }}" class="form-control number text-uppercase" oninput="translate2MGL(this.value)" autocomplete="off" autofocus>
                                     </div>
                                 </div>
                                 <div class="row row-xs align-items-center mg-b-5">
