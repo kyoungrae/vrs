@@ -166,7 +166,7 @@ table{
                         <tbody>
                             <tr>
                                 <td style=" text-align: center;"><strong>서비스 유형</strong> </td>
-                                <td style="    text-align: center;">신규эр бүртгүүлэх
+                                <td style="    text-align: center;">신규 서비스 등록
                                     <div style=" width: 0;       margin: 2px 27px;">
 
                                         <input type="checkbox" name=""

@@ -171,7 +171,7 @@
                                 <tr>
                                     <td style=" width: 19%;padding: 33px 15px; text-align: center;">서비스 유형:
                                     </td>
-                                    <td style="    text-align: center;"><p>신규эр бүртгүүлэх</p>
+                                    <td style="    text-align: center;"><p>신규 서비스 등록</p>
                                         <div style=" width: 0;       margin: 9px 26px;">
                                            
                                            

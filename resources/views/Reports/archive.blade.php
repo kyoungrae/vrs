@@ -69,7 +69,7 @@
                                         <div class="col-1">
                                             <div class="row row-xs align-items-center mg-b-5">
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
-                                                    <label class="form-label mg-b-0">Хуудас: {{ isset($page_sum) ? $page_sum : 0 }}</label>
+                                                    <label class="form-label mg-b-0">페이지: {{ isset($page_sum) ? $page_sum : 0 }}</label>
                                                 </div>
                                             </div>
                                         </div>

@@ -22,8 +22,8 @@ class MainUserPosition extends Model
     public function getAttribute($key)
     {
         $value = parent::getAttribute($key);
-        if ($key === 'Id' || $key === 'id') return $this->attributes['ID'] ?? null;
-        if ($key === 'Name' || $key === 'name') return $this->attributes['NAME'] ?? null;
+        if ($key === 'Id' || $key === 'id') return $this->attributes['ID'] ?? $this->attributes['id'] ?? null;
+        if ($key === 'Name' || $key === 'name') return $this->attributes['NAME'] ?? $this->attributes['name'] ?? null;
         return $value;
     }
     /**

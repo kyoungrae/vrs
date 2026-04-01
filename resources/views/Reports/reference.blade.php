@@ -115,10 +115,10 @@
                                         <td>{{ $result->build_year }}</td>
                                         <td>{{ $result->color_name }}</td>
                                         <td>{{ $result->last_name }}</td>
-                                        <td>{{ $result->first_name }}</td>
+                                        <td>{{ $result->first_name ?? $result->FIRST_NAME ?? $result->FirstName ?? "" }}</td>
                                         <td>{{ $result->register_no }}</td>
                                         <td>{{ $result->address_detail }}</td>
-                                        <td>{{ $result->phone_no }}</td>
+                                        <td>{{ $result->phone_no ?? $result->PHONE_NO ?? $result->PhoneNo ?? "" }}</td>
                                     </tr>
                                 @endforeach
                             @endif

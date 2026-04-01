@@ -70,7 +70,7 @@ class ReferenceController extends BaseController
                     ]);
                     $message = $this->message("success", "서비스가 성공적으로 등록되었습니다.");
                 }
-                $services = MainService::orderBy("CreatedDate", "DESC")->get();
+                $services = MainService::orderBy("CREATEDDATE", "DESC")->get();
                 return view('System.service', compact('services', 'message'));
             } else {
                 $key = $request->route("code");
@@ -78,7 +78,7 @@ class ReferenceController extends BaseController
                     $key = $this->dec($key);
                     $service = MainService::where("Id", $key)->get()->first();
                 }
-                $services = MainService::whereNull("DELETED_AT")->orderBy("CreatedDate", "DESC")->get();
+                $services = MainService::whereNull("DELETED_AT")->orderBy("CREATEDDATE", "DESC")->get();
                 return view('System.service', compact('services', 'service'));
             }
         } catch (\Exception $ex){
@@ -137,7 +137,7 @@ class ReferenceController extends BaseController
                             'Action_Id' => $old->action_id,
                             'Position_Id' => $old->position_id,
                             'Type_Id' => $old->type_id,
-                            'CreatedDate' => $code,
+                            'CREATEDDATE' => $code,
                             'CreatedBy' => $old->createdby,
                             'UpdatedBy' => $userPkId
                         ]);
@@ -160,9 +160,9 @@ class ReferenceController extends BaseController
                     $message = $this->message("success", "직위(공무)가 성공적으로 등록되었습니다.");
                 }
                 if(session()->get("auth")->userpositionid == 1 || session()->get("auth")->userpositionid == 103){
-                    $positions = MainUserPosition::whereNull("DELETED_AT")->orderBy("CreatedDate", "DESC")->get();
+                    $positions = MainUserPosition::whereNull("DELETED_AT")->orderBy("CREATEDDATE", "DESC")->get();
                 } else {
-                    $positions = MainUserPosition::whereNull("DELETED_AT")->where("ID", "!=", 1)->where("ID", "!=", 103)->orderBy("CreatedDate", "DESC")->get();
+                    $positions = MainUserPosition::whereNull("DELETED_AT")->where("ID", "!=", 1)->where("ID", "!=", 103)->orderBy("CREATEDDATE", "DESC")->get();
                 }
                 return view('System.position', compact('positions', 'message'));
             } else {
@@ -174,9 +174,9 @@ class ReferenceController extends BaseController
                     $userMenus = $userMenus->orderBy("ORDR", "ASC")->get();
                 }
                 if(session()->get("auth")->userpositionid == 1 || session()->get("auth")->userpositionid == 103){
-                    $positions = MainUserPosition::whereNull("DELETED_AT")->orderBy("CreatedDate", "DESC")->get();
+                    $positions = MainUserPosition::whereNull("DELETED_AT")->orderBy("CREATEDDATE", "DESC")->get();
                 } else {
-                    $positions = MainUserPosition::whereNull("DELETED_AT")->where("ID", "!=", 1)->where("ID", "!=", 103)->orderBy("CreatedDate", "DESC")->get();
+                    $positions = MainUserPosition::whereNull("DELETED_AT")->where("ID", "!=", 1)->where("ID", "!=", 103)->orderBy("CREATEDDATE", "DESC")->get();
                 }
                 return view('System.position', compact('positions', 'position', 'userMenus', 'services'));
             }
@@ -1059,11 +1059,11 @@ class ReferenceController extends BaseController
                 ]);
                 $message = $this->message("success", "기관이 성공적으로 추가되었습니다.");
             }
-            $archives = RefReferenceOrg::orderBy("CreatedDate", "DESC")->get();
+            $archives = RefReferenceOrg::orderBy("CREATEDDATE", "DESC")->get();
             return view("System.archiveorg", compact('archives', 'message'));
         } else {
             $env = $request->route("code");
-            $archives = RefReferenceOrg::orderBy("CreatedDate", "DESC")->get();
+            $archives = RefReferenceOrg::orderBy("CREATEDDATE", "DESC")->get();
             if($env != ""){
                 $archive = RefReferenceOrg::where("ID", self::dec($env))->get()->first();
                 return view("System.archiveorg", compact('archives', 'archive'));

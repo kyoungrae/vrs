@@ -96,8 +96,8 @@
                                     <tr style="text-align: center">
                                         <th style="width:10%;">№</th>
                                         <th>아카이브 번호</th>
-                                        <th>Өмнөх УД</th>
-                                        <th>Одоогийн УД</th>
+                                        <th>이전 날짜</th>
+                                        <th>현재 날짜</th>
                                         <th>증명서 번호</th>
                                         <th>서비스</th>
                                     </tr>
