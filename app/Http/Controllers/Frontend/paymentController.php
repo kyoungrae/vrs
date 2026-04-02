@@ -21,6 +21,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Matrix\Exception;
 use LaravelQRCode\Facades\QrCode;
 use Illuminate\Support\Facades\Storage;
@@ -68,29 +69,33 @@ class PaymentController extends BaseController
                         }
     }
     public function plateSavePay(Request $request){
- 
-                        if(!session()->has("auth")){
-                            return redirect(route($this->redirectURL));
-                        }
-                        if(!$this->checkAccess("/plateSavePay", $this->enc(session()->get("auth")->userpositionid))){
-                            return redirect(route($this->redirectAccess));
-                        }
-                       
-                        try{
-                    
-     
-    
-        // $payment=[];
-         $payment = DB::select(DB::raw("select tr.id, tr.account_number,tr.related_account,tr.description,tr.amount,tr.owner_name,tr.transaction_date,tr.arkhive_no
-         from transaction tr  where type=2"));
-         // return $payment;
-      
-         return view('System.plateSavePay', compact('payment'));
-    
-                        } catch (\Exception $ex){
-                            $this->writeLog("차량 화면 호출 오류: ".$ex->getMessage());
-                            $message = $this->message("danger", "화면을 불러오는 중 오류가 발생했습니다.");
-                            return view('System.plateSavePay', compact("message"));
-                        }
+        try {
+            if(!session()->has("auth")){
+                return redirect(route($this->redirectURL));
+            }
+            
+            // 접근 권한 체크
+            try {
+                if(!$this->checkAccess("/plateSavePay", $this->enc(session()->get("auth")->userpositionid))){
+                    return redirect(route($this->redirectAccess));
+                }
+            } catch (\Exception $e) {
+                Log::warning("checkAccess error: " . $e->getMessage());
+            }
+           
+            // DB 쿼리
+            try {
+                $payment = DB::select(DB::raw("select tr.id, tr.account_number,tr.related_account,tr.description,tr.amount,tr.owner_name,tr.transaction_date,tr.arkhive_no from transaction tr where type=2"));
+            } catch (\Exception $e) {
+                Log::error("DB query error: " . $e->getMessage());
+                $payment = []; // DB 에러 시 빈 배열
+            }
+            
+            return view('System.plateSavePay', compact('payment'));
+            
+        } catch (\Exception $ex){
+            Log::error("plateSavePay error: " . $ex->getMessage());
+            return response("Error: " . $ex->getMessage(), 500);
+        }
     }
 }

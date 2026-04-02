@@ -42,7 +42,7 @@
                                                 <label class="form-label mg-b-0 required-input">차량 번호</label>
                                             </div>
                                             <div class="col-lg-8 col-md-12 col-sm-12">
-                                                <input id="plateNo" name="plateNo" required type="text" placeholder="번호판" value="" class="form-control" oninput="translate2MGL(this.value)" autocomplete="off" autofocus required>
+                                                <input id="plateNo" name="plateNo" required type="text" placeholder="번호판" value="0138УНГ" class="form-control" oninput="translate2MGL(this.value)" autocomplete="off" autofocus required>
                                             
                                         
                                             </div>

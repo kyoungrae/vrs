@@ -1,13 +1,13 @@
 <div class="az-content-body-right">
-    <label id="moreHistory" class="az-content-label tx-base mg-b-15">Дугаар хадгалах үйлчигээ</label>
+    <label id="moreHistory" class="az-content-label tx-base mg-b-15">{{ \App\Helpers\TranslationHelper::translate('Дугаар хадгалах үйлчигээ') }}</label>
     <div class="az-media-list-activity mg-b-20 moreHistory">
         @if(\App\Http\Controllers\BaseController::hasMenuShow("/plateSave", 1, \App\Http\Controllers\BaseController::enc(session()->get("auth")->userpositionid)))
             <div class="media">
                 <div class="media-icon bg-purple"><i class=" typcn typcn-news"></i></div>
                 <a href="/plateSave">
                     <div class="media-body">
-                        <h6>Хадгалсан дугаар</h6>
-                        <span>Хадгалсан дугаарын жагсаалт</span>
+                        <h6>{{ \App\Helpers\TranslationHelper::translate('Хадгалсан дугаар') }}</h6>
+                        <span>{{ \App\Helpers\TranslationHelper::translate('Хадгалсан дугаарын жагсаалт') }}</span>
                     </div>
                 </a>
             </div>
@@ -17,8 +17,8 @@
                 <div class="media-icon bg-success"><i class=" typcn typcn-download"></i></div>
                 <a href="/plateSave/indexSavePlateStore">
                     <div class="media-body">
-                        <h6>번호판 хадгалах</h6>
-                        <span>번호판 хадгалах үйлчигээ</span>
+                        <h6>{{ \App\Helpers\TranslationHelper::translate('Номер хадгалах') }}</h6>
+                        <span>{{ \App\Helpers\TranslationHelper::translate('Номер хадгалах үйлчигээ') }}</span>
                     </div>
                 </a>
             </div>
@@ -28,8 +28,8 @@
                 <div class="media-icon bg-success"><i class=" typcn typcn-calendar"></i></div>
                 <a href="/plateSave/edit">
                     <div class="media-body">
-                        <h6>Хадгалсан дугаар  сунгах</h6>
-                        <span>Хадгалсан дугаар сунгах үйлчигээ</span>
+                        <h6>{{ \App\Helpers\TranslationHelper::translate('Хадгалсан дугаар сунгах') }}</h6>
+                        <span>{{ \App\Helpers\TranslationHelper::translate('Хадгалсан дугаар сунгах үйлчигээ') }}</span>
                     </div>
                 </a>
             </div>
@@ -62,8 +62,8 @@
                 <div class="media-icon bg-purple"><i class="typcn typcn-upload"></i></div>
                 <a href="/plateSave/plateNumberSaveOrder">
                     <div class="media-body">
-                        <h6>Хадгалсан дугаар захиалах</h6>
-                        <span>Хадгалсан дугаар захиалах үйлчилгээ</span>
+                        <h6>{{ \App\Helpers\TranslationHelper::translate('Хадгалсан дугаар захиалах') }}</h6>
+                        <span>{{ \App\Helpers\TranslationHelper::translate('Хадгалсан дугаар захиалах үйлчилгээ') }}</span>
                     </div>
                 </a>
             </div>
@@ -84,8 +84,8 @@
                 <div class="media-icon bg-purple"><i class="typcn typcn-news"></i></div>
                 <a href="/plateSavePay">
                     <div class="media-body">
-                        <h6>Дугаарын төлбөр шалгах</h6>
-                        <span>Дугаарын төлбөр жагсаалт</span>
+                        <h6>{{ \App\Helpers\TranslationHelper::translate('Дугаарын төлбөр шалгах') }}</h6>
+                        <span>{{ \App\Helpers\TranslationHelper::translate('Дугаарын төлбөр жагсаалт') }}</span>
                     </div>
                 </a>
             </div>

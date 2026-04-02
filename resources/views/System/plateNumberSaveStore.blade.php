@@ -27,7 +27,7 @@
                     <h6 class="card-title">
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12">
-                              번호판 보관 서비스
+                              번호판 보관 서비스!!
                             </div>
                         </div>
                     </h6>
@@ -45,7 +45,7 @@
                                                 <label class="form-label mg-b-0 required-input">번호판</label>
                                             </div>
                                             <div class="col-lg-8 col-md-12 col-sm-12">
-                                                <input id="plateNo" name="plateNo" required type="text" placeholder="번호판" value="" class="form-control" oninput="translate2MGL(this.value)" autocomplete="off" autofocus required>
+                                                <input id="plateNo" name="plateNo" required type="text" placeholder="번호판" value="1822УАУ" class="form-control" oninput="translate2MGL(this.value)" autocomplete="off" autofocus required>
                                                 <input id="vehId" name="vehId" style="display: none"  type="text"  value="" class="form-control"  autocomplete="off" autofocus>
                                                 {{-- <input id="customerRegnum" name="customerRegnum" style="display: none"  type="text"  value="" class="form-control"  autocomplete="off" autofocus>
                                                 <input id="customerLastname" name="customerLastname"  style="display: none"  type="text"  value="" class="form-control"  autocomplete="off" autofocus>

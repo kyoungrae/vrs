@@ -216,183 +216,222 @@ public function transactionCheck(Request $request){
     }
     public function plateSaveVehicleSearch(Request $request)
     {
-        if(!session()->has("auth")){
-            return response()->json(["message" => "Not valid request."], 401);
-        }
-       // return $request;
-       if($request->isMethod("POST")){
-        $valid=$request->param2;
-        if(self::dec($valid) == Carbon::now()->format("Y-m-d")){
-        $plateNo = $request->param1;
-        //$endtDate=$request->end_year;
-       // return $plateNo; 
-       $seriesNumberCheck = DB::table("series_number")->where("NAME", $plateNo)->first();
-        $seriesCheck = DB::select(DB::raw("SELECT * FROM series where ((substr(name,1,2) like 'УЕ%' or substr(name,1,2) like 'УА%' or substr(name,1,2) like '울란바토르%' or substr(name,1,2) like 'УН%')) and type='1' and id='".$seriesNumberCheck->series_id."' "));
-                   //    return $seriesCheck;
-        $auctionCheck = SeriesNumber::where("name",$plateNo)->where("is_hidden", 1)->where("isauction", 1)->where("is_given",0)->get();
-        $vrsOrderCheck = SeriesNumber::where("name",$plateNo)->where("is_hidden", 0)->where("is_order",1)->whereNotNull("order_cabin")->whereNotNull("order_user")->whereNotNull("order_date")->where("isauction", 0)->get();
-            
-     //   return json_encode( $auctionCheck );
-    //  if (count($seriesCheck) > 0) {
-    //     return response()->json([
-    //         'status' => 400,
-    //         'message' => "Уг 번호ыг хадаглах 경우омжгүй 입니다."
-            
-    //     ]);
-    //  } else {
-        # code...
-     
-     
-        if (count($auctionCheck) > 0 ) {
-
-            // $client = new nusoap_client("https://service.transdep.mn/api/WS000_AUCTION.php?wsdl", true);
-
-            // $params = array();
-            // $params["plate_no"]= $plateNo;
-            // //$params["end_year"] = $endtDate;
-            // $params["token"] = "7716266182106fcee00ca1b083f322184b6b785bdec54ca8a87c9582b5c96f2a80773fa24e06fb230d080dced41b0e3d52154aa7dffbd1d3994d54ed57732bb3";
-    
-            // $result_json = $client->call('getWinnerInfo',  $params);
-            // //$result = json_encode($result_json);
-    
-            // return $result_json;
-            return response()->json([
-                'status' => 400,
-                'message' => "Уг 번호ыг хадаглах 경우омжгүй 입니다."
-                
-            ]);
-        }else{
-
-            if (count($vrsOrderCheck) > 0 ) {
-
-            $orderVrs=$vrsOrderCheck->first(); 
-
-            // return response()->json([
-            //     'is_auction' => 0,
-            //     'last_name' => "",
-            //     'first_name' =>"",
-            //     'register_no' => $orderVrs->order_user,
-            //     'phone_no' => "",
-            //     'order_date' => $orderVrs->order_date,
-            //     'order_cabin' => $orderVrs->order_cabin,
-            // ]);
-            return response()->json([
-                'status' => 400,
-                'message' => "Уг 번호ыг хадаглах 경우омжгүй 입니다."
-                
-            ]);
-              // return json_encode($orderVrs);
-            } else {
-                $vehicle = DB::table("REG_VEHICLE_VIEW")->where("PLATE_NO", $plateNo)->first();
-                $seriesCheck = DB::table("series_number")->where("NAME", $plateNo)->where("ORDER_USER", "Turjuram")->where("IS_HIDDEN", 1)->get();
-
-
-                //  return json_encode($vehicle);
-               // return $vehicle;
-    //   if ($vehicle->owner_type_id==2) {
-    //     # code...
-    //   }
-                  $owners = DB::table("REG_VEHICLE_OWNERSHIP_VIEW")
-                  ->where("VEHICLE_ID", $vehicle->id )
-                  ->orderBy("START_DATE", "DESC")
-                  ->orderBy("SHIP_ID", "DESC")
-                  ->first();
-                  $result = json_encode($owners);
-               //  return  $result;
-      if (count($seriesCheck) > 0) {
-        return response()->json([
-            'is_auction' => 0,
-            'message' => "오류"
-            
-        ]);
-      }else{
-        return response()->json([
-            'is_auction' => 0,
-            'last_name' => $owners->last_name,
-            'first_name' => $owners->first_name,
-            'register_no' => $owners->register_no,
-            'phone_no' => $owners->phone_no,
-            'vehicle_id' => $vehicle->id,
-        ]);
-      }
-               
+        try {
+            if(!session()->has("auth")){
+                return response()->json(["message" => "Not valid request."], 401);
             }
-            
+           // return $request;
+           if($request->isMethod("POST")){
+            $valid=$request->param2;
+            if(self::dec($valid) == Carbon::now()->format("Y-m-d")){
+            $plateNo = $request->param1;
+            //$endtDate=$request->end_year;
+           // return $plateNo; 
+           $seriesNumberCheck = DB::table("series_number")->where("NAME", $plateNo)->first();
+            if (!$seriesNumberCheck) {
+                return response()->json(['status' => 404, 'message' => 'Номер олдсонгүй.'], 404);
+            }
+            $seriesCheck = DB::select(DB::raw("SELECT * FROM series where ((substr(name,1,2) like 'УЕ%' or substr(name,1,2) like 'УА%' or substr(name,1,2) like '울란바토르%' or substr(name,1,2) like 'УН%')) and type='1' and id='".$seriesNumberCheck->series_id."' "));
+                       //    return $seriesCheck;
+            $auctionCheck = SeriesNumber::where("name",$plateNo)->where("is_hidden", 1)->where("isauction", 1)->where("is_given",0)->get();
+            $vrsOrderCheck = SeriesNumber::where("name",$plateNo)->where("is_hidden", 0)->where("is_order",1)->whereNotNull("order_cabin")->whereNotNull("order_user")->whereNotNull("order_date")->where("isauction", 0)->get();
+                
+         //   return json_encode( $auctionCheck );
+        //  if (count($seriesCheck) > 0) {
+        //     return response()->json([
+        //         'status' => 400,
+        //         'message' => "Уг номерыг хадгалах боломжгүй байна."
+                
+        //     ]);
+        //  } else {
+            # code...
          
-        }
-    //}
-        
+         
+            if (count($auctionCheck) > 0 ) {
+
+                // $client = new nusoap_client("https://service.transdep.mn/api/WS000_AUCTION.php?wsdl", true);
+
+                // $params = array();
+                // $params["plate_no"]= $plateNo;
+                // //$params["end_year"] = $endtDate;
+                // $params["token"] = "7716266182106fcee00ca1b083f322184b6b785bdec54ca8a87c9582b5c96f2a80773fa24e06fb230d080dced41b0e3d52154aa7dffbd1d3994d54ed57732bb3";
     
+                // $result_json = $client->call('getWinnerInfo',  $params);
+                // //$result = json_encode($result_json);
+    
+                // return $result_json;
+                return response()->json([
+                    'status' => 400,
+                    'message' => "Уг номерыг хадгалах боломжгүй байна."
+                    
+                ]);
+            }else{
+
+                if (count($vrsOrderCheck) > 0 ) {
+
+                $orderVrs=$vrsOrderCheck->first(); 
+
+                // return response()->json([
+                //     'is_auction' => 0,
+                //     'last_name' => "",
+                //     'first_name' =>"",
+                //     'register_no' => $orderVrs->order_user,
+                //     'phone_no' => "",
+                //     'order_date' => $orderVrs->order_date,
+                //     'order_cabin' => $orderVrs->order_cabin,
+                // ]);
+                return response()->json([
+                    'status' => 400,
+                    'message' => "Уг номерыг хадгалах боломжгүй байна."
+                    
+                ]);
+                  // return json_encode($orderVrs);
+                } else {
+                    $vehicle = DB::table("REG_VEHICLE_VIEW")->where("PLATE_NO", $plateNo)->first();
+                    if (!$vehicle) {
+                        return response()->json(['status' => 404, 'message' => 'Тээврийн хэрэгсэл олдсонгүй.'], 404);
+                    }
+                    $seriesCheck = DB::table("series_number")->where("NAME", $plateNo)->where("ORDER_USER", "Turjuram")->where("IS_HIDDEN", 1)->get();
+
+
+                    //  return json_encode($vehicle);
+                   // return $vehicle;
+        //   if ($vehicle->owner_type_id==2) {
+        //     # code...
+        //   }
+                      $owners = DB::table("REG_VEHICLE_OWNERSHIP_VIEW")
+                      ->where("VEHICLE_ID", $vehicle->id )
+                      ->orderBy("START_DATE", "DESC")
+                      ->orderBy("SHIP_ID", "DESC")
+                      ->first();
+                      if (!$owners) {
+                          return response()->json(['status' => 404, 'message' => 'Эзэмшигч олдсонгүй.'], 404);
+                      }
+                      $result = json_encode($owners);
+                   //  return  $result;
+          if (count($seriesCheck) > 0) {
+            return response()->json([
+                'is_auction' => 0,
+                'message' => "Алдаа"
+                
+            ]);
+          }else{
+            return response()->json([
+                'is_auction' => 0,
+                'last_name' => $owners->last_name,
+                'first_name' => $owners->first_name,
+                'register_no' => $owners->register_no,
+                'phone_no' => $owners->phone_no,
+                'vehicle_id' => $vehicle->id,
+            ]);
+          }
+               
+                }
+                
+             
+            }
+        //}
+                
+            
+        
+            } else {
+                return response()->json(["message" => "Invalid request token."], 400);
+            }
+           } else {
+               return response()->json(["message" => "Method not allowed."], 405);
+           }
+        } catch (\Exception $ex) {
+            Log::error("plateSaveVehicleSearch API error: " . $ex->getMessage());
+            Log::error("Stack trace: " . $ex->getTraceAsString());
+            return response()->json(["message" => "Server error: " . $ex->getMessage()], 500);
         }
-       }
     }
     public function plateSaveVehicleOrder(Request $request)
     {
-      
-        if(!session()->has("auth")){
-            return response()->json(["message" => "Not valid request."], 401);
-        }
-     //   return json_encode( $request);
-       if($request->isMethod("POST")){
-        $valid=$request->param2;
-        if(self::dec($valid) == Carbon::now()->format("Y-m-d")){
-        $plateNo = $request->param1;
-        //$endtDate=$request->end_year;
-       // return $plateNo; 
-        //return "fgfdgdfgd";
-        $vrsOrderCheck = SeriesNumber::where("name",$plateNo)->where("is_hidden", 1)->where("is_save", 1)->get();
-        $plateSaveNumber = PlateNumberSave::where("plate_no", $plateNo)->where("is_delete",0)->where("is_active",1)->get();
-       // return $vrsOrderCheck;
-      //  return json_encode( $plateSaveNumber );
-        if (count($vrsOrderCheck) > 0 && count($plateSaveNumber) > 0 ) {
-            $plateSaveNumber=$plateSaveNumber->first();
-            return response()->json([
-                'archive_number' => $plateSaveNumber->archive_number,
-                'begin_date' => $plateSaveNumber->begin_date,
-                'end_date' => $plateSaveNumber->end_date,
-                'customer_lastname' => $plateSaveNumber->customer_lastname,
-                'customer_firstname' => $plateSaveNumber->customer_firstname,
-                'customer_phone' => $plateSaveNumber->customer_phone,
-                'customer_regnum' => $plateSaveNumber->customer_regnum,
-               
-            ]);
-        //     SeriesNumber::where("NAME", $plate_no)->update([
-        //         'IS_ORDER' => 1,
-        //         'ORDER_USER' => null,
-        //         'IS_GIVEN' => 1,
-        //         'IS_LOCAL' => 0,
-        //         'LOCAL_USER_ID' => null,
-        //         'VEHICLE_ID' => $vehicle->id,
-        //         'UPDATED_BY_ID' => $userPkId
-        //     ]);
-        // }else{
+        try {
+            if(!session()->has("auth")){
+                return response()->json(["message" => "Not valid request."], 401);
+            }
+         //   return json_encode( $request);
+           if($request->isMethod("POST")){
+            $valid=$request->param2;
+            if(self::dec($valid) == Carbon::now()->format("Y-m-d")){
+            $plateNo = $request->param1;
+            //$endtDate=$request->end_year;
+           // return $plateNo; 
+            //return "fgfdgdfgd";
+            $vrsOrderCheck = SeriesNumber::where("name",$plateNo)->where("is_hidden", 1)->where("is_save", 1)->get();
+            $plateSaveNumber = PlateNumberSave::where("plate_no", $plateNo)->where("is_delete",0)->where("is_active",1)->get();
+           // return $vrsOrderCheck;
+          //  return json_encode( $plateSaveNumber );
+            if (count($vrsOrderCheck) > 0 && count($plateSaveNumber) > 0 ) {
+                $plateSaveNumber=$plateSaveNumber->first();
+                return response()->json([
+                    'archive_number' => $plateSaveNumber->archive_number,
+                    'begin_date' => $plateSaveNumber->begin_date,
+                    'end_date' => $plateSaveNumber->end_date,
+                    'customer_lastname' => $plateSaveNumber->customer_lastname,
+                    'customer_firstname' => $plateSaveNumber->customer_firstname,
+                    'customer_phone' => $plateSaveNumber->customer_phone,
+                    'customer_regnum' => $plateSaveNumber->customer_regnum,
+                   
+                ]);
+            //     SeriesNumber::where("NAME", $plate_no)->update([
+            //         'IS_ORDER' => 1,
+            //         'ORDER_USER' => null,
+            //         'IS_GIVEN' => 1,
+            //         'IS_LOCAL' => 0,
+            //         'LOCAL_USER_ID' => null,
+            //         'VEHICLE_ID' => $vehicle->id,
+            //         'UPDATED_BY_ID' => $userPkId
+            //     ]);
+            // }else{
  
-        }
+            } else {
+                return response()->json(['status' => 404, 'message' => 'Хадгалсан дугаар олдсонгүй.'], 404);
+            }
+            
         
-    
+            } else {
+                return response()->json(["message" => "Invalid request token."], 400);
+            }
+           } else {
+               return response()->json(["message" => "Method not allowed."], 405);
+           }
+        } catch (\Exception $ex) {
+            Log::error("plateSaveVehicleOrder API error: " . $ex->getMessage());
+            return response()->json(["message" => "Server error: " . $ex->getMessage()], 500);
         }
-       }
     }
     public function payment(Request $request)
     {
-        if(!session()->has("auth")){
-            return response()->json(["message" => "Not valid request."], 401);
-        }
-       // return $request->param;
-       if($request->isMethod("POST")){
-        $valid=$request->param;
-        if(self::dec($valid) == Carbon::now()->format("Y-m-d")){
+        try {
+            if(!session()->has("auth")){
+                return response()->json(["message" => "Not valid request."], 401);
+            }
+           // return $request->param;
+           if($request->isMethod("POST")){
+            $valid=$request->param;
+            if(self::dec($valid) == Carbon::now()->format("Y-m-d")){
 
-            $data=array();
-            $paymentData = DB::select(DB::raw("select tr.id,epay.id, epay.vehicle_id, tr.account_number,tr.related_account,tr.description,tr.amount,tr.owner_name,tr.transaction_date,tr.arkhive_no,epay.arkhive_no,epay.created_at,
-            epay.pay_type_name,service.name,vehicle.plate_no
-             from transaction tr join epay_transaction epay on tr.id=epay.transaction_id join system_service service on service.id = epay.service_id
-             join reg_vehicle vehicle on epay.vehicle_id = vehicle.id where tr.related_account is not null"));
-             $transaction = DB::select(DB::raw("SELECT * FROM transaction WHERE arkhive_no is null and related_account is not null"));
-             array_push($data,['paymentData'=>$paymentData],['transaction'=>$transaction] );
-            return $data;
+                $data=array();
+                $paymentData = DB::select(DB::raw("select tr.id,epay.id, epay.vehicle_id, tr.account_number,tr.related_account,tr.description,tr.amount,tr.owner_name,tr.transaction_date,tr.arkhive_no,epay.arkhive_no,epay.created_at,
+                epay.pay_type_name,service.name,vehicle.plate_no
+                 from transaction tr join epay_transaction epay on tr.id=epay.transaction_id join system_service service on service.id = epay.service_id
+                 join reg_vehicle vehicle on epay.vehicle_id = vehicle.id where tr.related_account is not null"));
+                 $transaction = DB::select(DB::raw("SELECT * FROM transaction WHERE arkhive_no is null and related_account is not null"));
+                 array_push($data,['paymentData'=>$paymentData],['transaction'=>$transaction] );
+                return $data;
+            } else {
+                return response()->json(["message" => "Invalid request token."], 400);
+            }
+           }
+           return response()->json(["message" => "Method not allowed."], 405);
+        } catch (\Exception $ex) {
+            Log::error("paymentData API error: " . $ex->getMessage());
+            Log::error("Stack trace: " . $ex->getTraceAsString());
+            return response()->json(["message" => "Server error: " . $ex->getMessage()], 500);
         }
-       }
     }
     public function vehCheck(Request $request)
     {

@@ -101,10 +101,10 @@
                                              </td> 
                                             <td>{{ $plateNumberOrderList->cabin }}</td>
                                            
-                                            <td>{{ $plateNumberOrderList->customer_lastname }}</td>
-                                            <td>{{ $plateNumberOrderList->customer_firstname }}</td>
+                                            <td>{{ App\Helpers\TranslationHelper::translate($plateNumberOrderList->customer_lastname) }}</td>
+                                            <td>{{ App\Helpers\TranslationHelper::translate($plateNumberOrderList->customer_firstname) }}</td>
                                             <td>{{ $plateNumberOrderList->customer_regnum }}</td>
-                                            <td>{{ \Illuminate\Support\Str::limit($plateNumberOrderList->lastname, 1, $end='.') }} {{ $plateNumberOrderList->firstname}}</td>                                   
+                                            <td>{{ \Illuminate\Support\Str::limit(App\Helpers\TranslationHelper::translate($plateNumberOrderList->lastname), 1, $end='.') }} {{ App\Helpers\TranslationHelper::translate($plateNumberOrderList->firstname)}}</td>                                   
                                             <td> {{ $plateNumberOrderList->create_date}}</td>
                                             <td>
                                                 @if (session()->get('auth')->id == $plateNumberOrderList->created_by)
