@@ -12,7 +12,7 @@
                     <select id="location_own" name="location" required class="form-control select2-no-search">
                         @if(ISSET($countries)) 
                             @foreach($countries as $country)
-                                <option value="{{ $country->id ?? $country->ID ?? $country->Id }}">{{ $country->name ?? $country->NAME ?? $country->Name }}</option>
+                                <option value="{{ $country->id ?? $country->ID ?? $country->Id }}">{{ \App\Helpers\TranslationHelper::translate($country->name ?? $country->NAME ?? $country->Name) }}</option>
                             @endforeach
                         @endif
                     </select>
@@ -27,7 +27,7 @@
                         <option label="선택하세요"></option>
                         @if(ISSET($types))
                             @foreach($types as $type)
-                                <option value="{{ $type->id }}">{{ $type->name }}</option>
+                                <option value="{{ $type->id }}">{{ \App\Helpers\TranslationHelper::translate($type->name) }}</option>
                             @endforeach
                         @endif
                     </select> 
@@ -103,7 +103,7 @@
                         @if(ISSET($provinces))
                             @foreach($provinces as $province)
                     
-                            <option value="{{ $province->id ?? $province->ID ?? $province->Id  }}">{{ $province->name ?? $province->NAME ?? $province->Name }}</option>
+                            <option value="{{ $province->id ?? $province->ID ?? $province->Id  }}">{{ \App\Helpers\TranslationHelper::translate($province->name ?? $province->NAME ?? $province->Name) }}</option>
                    
                              
                             @endforeach
