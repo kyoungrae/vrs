@@ -45,7 +45,7 @@
                                         <select class="form-control select2" name="province">
                                             @if(ISSET($provinces))
                                                 @foreach($provinces as $province)
-                                                    <option value="{{ $province->id }}" {{ isset($archive) ? ($province->id == $archive->provinceid ? "selected" : "") : "" }}>{{ $province->name }}</option>
+                                                    <option value="{{ $province->id }}" {{ isset($archive) ? ($province->id == $archive->provinceid ? "selected" : "") : "" }}>{{ \App\Helpers\TranslationHelper::translate($province->name) }}</option>
                                                 @endforeach
                                             @endif
                                         </select>
@@ -59,7 +59,7 @@
                                         <select class="form-control select2" name="department">
                                             @if(ISSET($departments))
                                                 @foreach($departments as $department)
-                                                    <option value="{{ $department->id }}" {{ isset($archive) ? ($department->id == $archive->departmentid ? "selected" : "") : "" }}>{{ $department->name }}</option>
+                                                    <option value="{{ $department->id }}" {{ isset($archive) ? ($department->id == $archive->departmentid ? "selected" : "") : "" }}>{{  \App\Helpers\TranslationHelper::translate($department->name) }}</option>
                                                 @endforeach
                                             @endif
                                         </select>
