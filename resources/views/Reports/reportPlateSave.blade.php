@@ -24,7 +24,7 @@
                         <h6 class="card-title">
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12">
-                                    УЛСЫН ДУГААРЫН ХАДАГЛАЛТ ТАЙЛАН 
+                                    {{ \App\Helpers\TranslationHelper::translate('УЛСЫН ДУГААРЫН ХАДАГЛАЛТ ТАЙЛАН') }}
                                 </div>
                             </div>
                         </h6>
@@ -103,8 +103,8 @@
                                         <th>시작됨</th>
                                         <th>종료</th>
                                         <th>상태</th>
-                                        <th>Хоног</th>
-                                        <th>Сунгалтын эрх</th>
+                                        <th>{{ \App\Helpers\TranslationHelper::translate('Хоног')}}</th>
+                                        <th>{{ \App\Helpers\TranslationHelper::translate('Сунгалтын эрх')}}</th>
                                         <th>결제</th>
                                         <th>아카이브</th>
                                         <th>담당자</th>
@@ -117,9 +117,9 @@
                                         @foreach($results as $plateNumberSaveList)
                                             <tr>
                                                 <td>{{ $plateNumberSaveList->plate_no }}</td>
-                                                <td>{{ \Illuminate\Support\Str::limit($plateNumberSaveList->customer_lastname, 1, $end='.') }} {{ $plateNumberSaveList->customer_firstname}}</td>
+                                                <td>{{ \Illuminate\Support\Str::limit($plateNumberSaveList->customer_lastname, 1, $end='.') }} {{ \App\Helpers\TranslationHelper::translate($plateNumberSaveList->customer_firstname)}}</td>
                                                 {{-- <td>{{ $plateNumberSaveList->customer_lastname }}</td>
-                                                <td>{{ $plateNumberSaveList->customer_firstname }}</td> --}}
+                                                <td>{{  \App\Helpers\TranslationHelper::translate($plateNumberSaveList->customer_firstname) }}</td> --}}
                                                 <td>{{ $plateNumberSaveList->customer_regnum }}</td>
                                                 <td>{{ $plateNumberSaveList->customer_phone }}</td>
                                                 <td>{{date('Y-m-d', strtotime($plateNumberSaveList->begin_date)) }}</td>
@@ -128,9 +128,9 @@
                                                 <td>
                                                  
                                                     @if (\Carbon\Carbon::parse($plateNumberSaveList->end_date)->format("Y-m-d") <= \Carbon\Carbon::now()->format("Y-m-d"))
-                                                    <strong style="color:red">  Хугацаа дууссан </strong>   
+                                                    <strong style="color:red">  {{ \App\Helpers\TranslationHelper::translate('Хугацаа дууссан')}} </strong>   
                                                     @else
-                                                    <strong style="color: green">Хугацаа дуусаагүй</strong>
+                                                    <strong style="color: green">{{ \App\Helpers\TranslationHelper::translate('Хугацаа дуусаагүй')}}</strong>
                                                     @endif
                                                 </td>
                                                 <td>
@@ -159,7 +159,7 @@
                                                         </strong>
                                                 </td>
                                                 <td><a href="/archive/documentAr/{{$plateNumberSaveList->archive_number}}" target="_blank"  >{{ $plateNumberSaveList->archive_number }}</a></td>
-                                                <td>{{ \Illuminate\Support\Str::limit($plateNumberSaveList->lastname, 1, $end='.') }} {{ $plateNumberSaveList->firstname}}</td>
+                                                <td>{{ \Illuminate\Support\Str::limit($plateNumberSaveList->lastname, 1, $end='.') }} {{ \App\Helpers\TranslationHelper::translate($plateNumberSaveList->firstname)}}</td>
                                                 <td> {{ $plateNumberSaveList->create_date}}</td>
                                                 {{-- <td>
                                                     <a href="/plateSave/edit/{{ \App\Http\Controllers\BaseController::enc($plateNumberSaveList->id) }}">
