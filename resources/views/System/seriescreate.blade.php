@@ -72,7 +72,7 @@
                                         <select id="type" name="type" required class="form-control select2">
                                             @if(ISSET($types))
                                                 @foreach($types as $type)
-                                                    <option value="{{ $type->id }}" {{ isset($curr_series) ? ($type->id == $curr_series->type ? "selected" : "") : "" }}>{{ $type->name }}</option>
+                                                    <option value="{{ $type->id }}" {{ isset($curr_series) ? ($type->id == $curr_series->type ? "selected" : "") : "" }}>{{\App\Helpers\TranslationHelper::translate($type->name) }}</option>
                                                 @endforeach
                                             @endif
                                         </select>

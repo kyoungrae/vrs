@@ -54,11 +54,11 @@
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $interval->province }}</td>
-                                                <td>{{ $interval->name }}</td>
+                                                <td>{{ \App\Helpers\TranslationHelper::translate($interval->name) }}</td>
                                                 <td>{{ $interval->from_number."-".$interval->to_number }}</td>
-                                                <td>{{ $interval->is_opened }}</td>
-                                                <td>{{ $interval->is_order }}</td>
-                                                <td>{{ $interval->is_auto }}</td>
+                                                <td>{{ \App\Helpers\TranslationHelper::translate($interval->is_opened) }}</td>
+                                                <td>{{ \App\Helpers\TranslationHelper::translate($interval->is_order) }}</td>
+                                                <td>{{ \App\Helpers\TranslationHelper::translate($interval->is_auto) }}</td>
                                                 <td>
                                                     <a href="/series/open/edit/{{ \App\Http\Controllers\BaseController::enc($interval->id) }}">
                                                         <i class="typcn typcn-edit text-primary"></i>

@@ -60,7 +60,7 @@
                                                     <option value="">전체</option>
                                                     @if(isset($departments))
                                                         @foreach($departments as $department)
-                                                            <option value="{{ $department->id }}" {{ isset($s_department) ? ($s_department == $department->id ? "selected" : "") : ""}}>{{ $department->name }}</option>
+                                                            <option value="{{ $department->id }}" {{ isset($s_department) ? ($s_department == $department->id ? "selected" : "") : ""}}>{{ \App\Helpers\TranslationHelper::translate($department->name) }}</option>
                                                         @endforeach
                                                     @endif
                                                 </select>
@@ -94,11 +94,11 @@
                                     @foreach($series as $item)
                                         <tr style="cursor:pointer;" onclick="numberList('{{ \App\Http\Controllers\BaseController::enc($item->id) }}')">
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $item->lastname }}</td>
-                                            <td>{{ $item->firstname }}</td>
-                                            <td>{{ $item->department }}</td>
-                                            <td>{{ $item->name }}</td>
-                                            <td>{{ $item->position }}</td>
+                                            <td>{{ \App\Helpers\TranslationHelper::translate($item->lastname) }}</td>
+                                            <td>{{ \App\Helpers\TranslationHelper::translate($item->firstname) }}</td>
+                                            <td>{{ \App\Helpers\TranslationHelper::translate($item->department) }}</td>
+                                            <td>{{ \App\Helpers\TranslationHelper::translate($item->name) }}</td>
+                                            <td>{{ \App\Helpers\TranslationHelper::translate($item->position) }}</td>
                                             <td style="text-align: center;">
                                                 <a href="/series/send/edit/{{ \App\Http\Controllers\BaseController::enc($item->id) }}" target="_blank">
                                                     <i class="typcn typcn-edit text-primary"></i>

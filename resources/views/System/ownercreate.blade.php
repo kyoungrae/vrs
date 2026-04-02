@@ -49,7 +49,7 @@
                                         <select id="location" name="location" required class="form-control select2-no-search">
                                             @if(ISSET($countries))
                                                 @foreach($countries as $country)
-                                                    <option value="{{ $country->id }}" {{ isset($owner) ? ($country->id == $owner->country_id ? "selected" : "") : "" }}>{{ $country->name }}</option>
+                                                    <option value="{{ $country->id }}" {{ isset($owner) ? ($country->id == $owner->country_id ? "selected" : "") : "" }}>{{ \App\Helpers\TranslationHelper::translate($country->name) }}</option>
                                                 @endforeach
                                             @endif
                                         </select>
@@ -64,7 +64,7 @@
                                             <option label="선택하세요"></option>
                                             @if(ISSET($types))
                                                 @foreach($types as $type)
-                                                    <option value="{{ $type->id }}" {{ isset($owner) ? ($type->id == $owner->owner_type_id ? "selected" : "") : "" }}>{{ $type->name }}</option>
+                                                    <option value="{{ $type->id }}" {{ isset($owner) ? ($type->id == $owner->owner_type_id ? "selected" : "") : "" }}>{{ \App\Helpers\TranslationHelper::translate($type->name) }}</option>
                                                 @endforeach
                                             @endif
                                         </select>
@@ -154,7 +154,7 @@
                                             <option label="선택하세요"></option>
                                             @if(ISSET($provinces))
                                                 @foreach($provinces as $province)
-                                                    <option value="{{ $province->id }}" >{{ $province->name }}</option>
+                                                    <option value="{{ $province->id }}" >{{ \App\Helpers\TranslationHelper::translate($province->name) }}</option>
                                                 @endforeach
                                             @endif
                                         </select>

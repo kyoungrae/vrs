@@ -47,7 +47,7 @@
                                                 <option label="선택하세요"></option>
                                                 @if(ISSET($provinces))
                                                     @foreach($provinces as $province)
-                                                        <option value="{{ $province->id }}">{{ $province->name }}</option>
+                                                        <option value="{{ $province->id }}">{{ \App\Helpers\TranslationHelper::translate($province->name) }}</option>
                                                     @endforeach
                                                 @endif
                                             </select>

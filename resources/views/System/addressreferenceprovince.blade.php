@@ -34,7 +34,7 @@
                                 @if(ISSET($provinces))
                                     @foreach($provinces as $province)
                                         <tr>
-                                            <td>{{ $province->name }}</td>
+                                            <td>{{ \App\Helpers\TranslationHelper::translate($province->name) }}</td>
                                             <td>{{ $province->abbr }}</td>
                                         </tr>
                                     @endforeach

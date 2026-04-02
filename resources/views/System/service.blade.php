@@ -105,10 +105,10 @@
                                     @if(ISSET($services))
                                         @foreach($services as $service)
                                             <tr>
-                                                <td>{{ $service->code }}</td>
-                                                <td>{{ $service->name }}</td>
-                                                <td>{{ $service->serviceprefix }}</td>
-                                                <td>{{ $service->fee }}</td>
+                                                <td>{{ \App\Helpers\TranslationHelper::translate($service->code) }}</td>
+                                                <td>{{ \App\Helpers\TranslationHelper::translate($service->name) }}</td>
+                                                <td>{{ \App\Helpers\TranslationHelper::translate($service->serviceprefix) }}</td>
+                                                <td>{{ \App\Helpers\TranslationHelper::translate($service->fee) }}</td>
                                                 <td>
                                                     <a href="/reference/service/edit/{{ \App\Http\Controllers\BaseController::enc($service->id) }}">
                                                         <i class="typcn typcn-edit text-primary"></i>

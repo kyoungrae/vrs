@@ -120,9 +120,9 @@
                                             <label class="ckbox">
                                                 <input type="checkbox" name="menus[]" value="{{ $menu->id }}" {{ \App\Http\Controllers\BaseController::hasMenu($menu->id, 1, \App\Http\Controllers\BaseController::enc($position->id)) }}>
                                                 @if($menu->is_parent == 1)
-                                                    <span><b>{{ $menu->name }}</b></span>
+                                                    <span><b>{{ \App\Helpers\TranslationHelper::translate($menu->name) }}</b></span>
                                                 @else
-                                                    <span>{{ $menu->name }}</span>
+                                                    <span>{{ \App\Helpers\TranslationHelper::translate($menu->name) }}</span>
                                                 @endif
                                             </label>
                                         @endforeach
@@ -139,7 +139,7 @@
                                         @foreach($services as $service)
                                           <!-- {{var_dump($service)}} -->
                                             <label class="ckbox">
-                                                <input type="checkbox" name="services[]" value="{{ $service->id }}" {{ \App\Http\Controllers\BaseController::hasMenu($service->id, 2, \App\Http\Controllers\BaseController::enc($position->id)) }}><span>{{ $service->name }}</span>
+                                                <input type="checkbox" name="services[]" value="{{ $service->id }}" {{ \App\Http\Controllers\BaseController::hasMenu($service->id, 2, \App\Http\Controllers\BaseController::enc($position->id)) }}><span>{{ \App\Helpers\TranslationHelper::translate($service->name) }}</span>
                                             </label>
                                         @endforeach
                                     @endif

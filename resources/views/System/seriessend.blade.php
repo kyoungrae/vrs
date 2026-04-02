@@ -51,7 +51,7 @@
                                             <option label="선택하세요"></option>
                                             @if(isset($departments))
                                                 @foreach($departments as $item)
-                                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                                    <option value="{{ $item->id }}">{{ \App\Helpers\TranslationHelper::translate($item->name) }}</option>
                                                 @endforeach
                                             @endif
                                         </select>

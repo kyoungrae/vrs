@@ -38,7 +38,7 @@
                                     @foreach($countries as $country)
                                         <tr>
                                             <td>{{ $country->code }}</td>
-                                            <td>{{ $country->name }}</td>
+                                            <td>{{ \App\Helpers\TranslationHelper::translate($country->name) }}</td>
                                             <td>{{ $country->status }}</td>
                                         </tr>
                                     @endforeach

@@ -37,8 +37,8 @@
                                 @if(ISSET($districts))
                                     @foreach($districts as $district)
                                         <tr>
-                                            <td>{{ $district->provincename }}</td>
-                                            <td>{{ $district->districtname }}</td>
+                                            <td>{{ \App\Helpers\TranslationHelper::translate($district->provincename) }}</td>
+                                            <td>{{ \App\Helpers\TranslationHelper::translate($district->districtname) }}</td>
                                         </tr>
                                     @endforeach
                                 @endif

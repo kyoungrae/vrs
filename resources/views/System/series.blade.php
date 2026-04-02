@@ -50,11 +50,11 @@
                                     @foreach($seriess as $series)
                                         <tr>
                                             <td>{{ $series->name }}</td>
-                                            <td>{{ $series->province }}</td>
-                                            <td>{{ $series->type }}</td>
-                                            <td>{{ $series->is_duplicate }}</td>
-                                            <td>{{ $series->is_old }}</td>
-                                            <td>{{ $series->is_check }}</td>
+                                            <td>{{ \App\Helpers\TranslationHelper::translate($series->province) }}</td>
+                                            <td>{{ \App\Helpers\TranslationHelper::translate($series->type) }}</td>
+                                            <td>{{ \App\Helpers\TranslationHelper::translate($series->is_duplicate) }}</td>
+                                            <td>{{ \App\Helpers\TranslationHelper::translate($series->is_old) }}</td>
+                                            <td>{{ \App\Helpers\TranslationHelper::translate($series->is_check) }}</td>
                                             <td>
                                                 <a href="/series/edit/{{ \App\Http\Controllers\BaseController::enc($series->id) }}">
                                                     <i class="typcn typcn-edit text-primary"></i>

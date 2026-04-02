@@ -75,7 +75,7 @@
                                             @foreach($archives as $archive)
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
-                                                    <td>{{ $archive->name }}</td>
+                                                    <td>{{ \App\Helpers\TranslationHelper::translate($archive->name) }}</td>
                                                     <td>{{ $archive->createddate }}</td>
                                                     <td style="text-align: center;">
                                                         <a href="/reference/org/edit/{{ \App\Http\Controllers\BaseController::enc($archive->id) }}">
