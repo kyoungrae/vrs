@@ -79,7 +79,7 @@
                                     <thead>
                                     <tr style="text-align: center;">
                                         <th>유형</th>
-                                        <th>Үзүүлэлт</th>
+                                        <th>{{ \App\Helpers\TranslationHelper::translate('Үзүүлэлт')}}</th>
                                         <th>아르항가이</th>
                                         <th>바양울기</th>
                                         <th>바얀홍고르</th>

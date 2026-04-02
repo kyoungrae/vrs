@@ -30,7 +30,7 @@
                         <h6 class="card-title">
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12">
-                                    ӨДРИЙН ШИЛЖИЛТИЙН ТАЙЛАН
+                                    {{ \App\Helpers\TranslationHelper::translate('ӨДРИЙН ШИЛЖИЛТИЙН ТАЙЛАН') }}
                                 </div>
                             </div>
                         </h6>
@@ -48,7 +48,7 @@
                                                     <select class="form-control select2" name="branch">
                                                         @if(ISSET($archives))
                                                             @foreach($archives as $archive)
-                                                                <option value="{{ $archive->abbr }}" {{ isset($abbr) ? $abbr == $archive->abbr ? "selected" : "" : "" }}>{{ $archive->archive }}</option>
+                                                                <option value="{{ $archive->abbr }}" {{ isset($abbr) ? $abbr == $archive->abbr ? "selected" : "" : "" }}>{{ \App\Helpers\TranslationHelper::translate($archive->archive) }}</option>
                                                             @endforeach
                                                         @endif
                                                     </select>
@@ -111,14 +111,14 @@
                                                 <td>{{ $data->plate_no }}</td>
                                                 <td>{{ $data->insert_plate_no }}</td>
                                                 <td>{{ $data->insert_certificate_no }}</td>
-                                                <td>{{ $data->name }}</td>
+                                                <td>{{ \App\Helpers\TranslationHelper::translate($data->name) }}</td>
                                             </tr>
                                         @endforeach
                                     @endif
                                     </tbody>
                                     <tfoot>
                                     <tr>
-                                        <td><strong>번호판 солилт</strong></td>
+                                        <td><strong>번호판 {{ \App\Helpers\TranslationHelper::translate('солилт') }}</strong></td>
                                         <td colspan="5">{{ isset($total_array) ? $total_array[0] : 0 }}</td>
                                     </tr>
                                     <tr>

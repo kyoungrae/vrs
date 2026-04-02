@@ -132,7 +132,7 @@
                                         @foreach($results as $result)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $result->name.' '.$result->lastname }}</td>
+                                                <td>{{ \App\Helpers\TranslationHelper::translate($result->name).' '.\App\Helpers\TranslationHelper::translate($result->lastname) }}</td>
                                                 <td>{{ \Carbon\Carbon::parse($result->archive_date)->format("Y-m-d") }}</td>
                                                 <td>{{ $result->new_v }}</td>
                                                 <td>{{ $result->move_v }}</td>

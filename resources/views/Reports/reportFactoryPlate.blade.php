@@ -24,7 +24,7 @@
                         <h6 class="card-title">
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12">
-                                     ДУГААРЫН ХЭВЛЭЛТ ТАЙЛАН /УЛСЫН ДУГААРААР/
+                                     {{ \App\Helpers\TranslationHelper::translate('ДУГААРЫН ХЭВЛЭЛТ ТАЙЛАН /УЛСЫН ДУГААРААР/') }}
                                 </div>
                             </div>
                         </h6>
@@ -85,7 +85,7 @@
                                     <tr style="text-align: center;">
                                         <th>№</th>
                                         <th>번호판</th>
-                                        <th>Дугаарын үйлдвэр нэр</th>
+                                        <th>{{ \App\Helpers\TranslationHelper::translate('Дугаарын үйлдвэр нэр')}}</th>
                                       
                                         <th>일자</th>
                                    

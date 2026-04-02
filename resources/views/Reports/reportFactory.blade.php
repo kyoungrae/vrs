@@ -24,7 +24,7 @@
                         <h6 class="card-title">
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12">
-                                    НИЙТ ДУГААРЫН ҮЙЛДВЭРҮҮДИЙН НЭГДСЭН ТАЙЛАН /ААНБ/
+                                    {{ \App\Helpers\TranslationHelper::translate('НИЙТ ДУГААРЫН ҮЙЛДВЭРҮҮДИЙН НЭГДСЭН ТАЙЛАН /ААНБ/') }}
                                 </div>
                             </div>
                         </h6>
@@ -36,7 +36,7 @@
                                         <div class="col-4">
                                             <div class="row row-xs align-items-center mg-b-5">
                                                 <div class="col-lg-5 col-md-12 col-sm-12">
-                                                    <label class="form-label mg-b-0 required-input">번호ын үйлдвэр сонгох</label>
+                                                    <label class="form-label mg-b-0 required-input">번호{{ \App\Helpers\TranslationHelper::translate('ын үйлдвэр сонгох') }}</label>
                                                 </div>
                                                 <div class="col-lg-7 col-md-12 col-sm-12">
                                                     <select class="form-control select2" name="depUser">
@@ -90,10 +90,10 @@
                                     <thead>
                                     <tr style="text-align: center;">
                                         <th>№</th>
-                                        <th>Дугаарын үйлдвэр нэр</th>
-                                        <th>Хэвлэсэн тоо</th>
+                                        <th>{{ \App\Helpers\TranslationHelper::translate('Дугаарын үйлдвэр нэр')}}</th>
+                                        <th>{{ \App\Helpers\TranslationHelper::translate('Хэвлэсэн тоо')}}</th>
                                         <th>전화</th>
-                                        <th>주소, байршил</th>
+                                        <th>주소, {{ \App\Helpers\TranslationHelper::translate('байршил')}}</th>
                                         <th>상세</th>
                                     </tr>
                                     </thead>

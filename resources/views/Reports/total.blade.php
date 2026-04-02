@@ -24,7 +24,7 @@
                         <h6 class="card-title">
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12">
-                                    НИЙТ ТЭЭВРИЙН ХЭРЭГСЛИЙН ТАЙЛАН /Төрлөөр/
+                                    {{ \App\Helpers\TranslationHelper::translate('НИЙТ ТЭЭВРИЙН ХЭРЭГСЛИЙН ТАЙЛАН /Төрлөөр/') }}
                                 </div>
                             </div>
                         </h6>
@@ -82,7 +82,7 @@
                                         @foreach($datas as $data)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $data->purpose_name }}</td>
+                                                <td>{{ \App\Helpers\TranslationHelper::translate($data->purpose_name) }}</td>
                                                 <td>{{ $data->count }}</td>
                                             </tr>
                                         @endforeach

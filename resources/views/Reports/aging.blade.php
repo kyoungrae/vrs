@@ -30,7 +30,7 @@
                         <h6 class="card-title">
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12">
-                                    НАСЖИЛТЫН ТАЙЛАН
+                                    {{ \App\Helpers\TranslationHelper::translate('НАСЖИЛТЫН ТАЙЛАН') }}
                                 </div>
                             </div>
                         </h6>
@@ -42,7 +42,7 @@
                                         <div class="col-3">
                                             <div class="row row-xs align-items-center mg-b-5">
                                                 <div class="col-lg-4 col-md-12 col-sm-12">
-                                                    <label class="form-label mg-b-0 required-input">Хот/Аймаг</label>
+                                                    <label class="form-label mg-b-0 required-input">{{ \App\Helpers\TranslationHelper::translate('Хот/Аймаг') }}</label>
                                                 </div>
                                                 <div class="col-lg-8 col-md-12 col-sm-12">
                                                     <select class="form-control select2" name="province" id="province">
@@ -86,7 +86,7 @@
                                     <thead>
                                     <tr style="text-align: center;">
                                         <th>№</th>
-                                        <th>Аймаг</th>
+                                        <th>{{ \App\Helpers\TranslationHelper::translate('Аймаг')}}</th>
                                         <th>운송수단 유형</th>
                                         <th>0-3 년</th>
                                         <th>비율</th>

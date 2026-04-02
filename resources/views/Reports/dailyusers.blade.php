@@ -30,7 +30,7 @@
                         <h6 class="card-title">
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12">
-                                    МЭРГЭЖИЛТНИЙ ТАЙЛАН
+                                    {{ \App\Helpers\TranslationHelper::translate('МЭРГЭЖИЛТНИЙ ТАЙЛАН') }}
                                 </div>
                             </div>
                         </h6>
@@ -48,7 +48,7 @@
                                                     <select class="form-control select2" name="user">
                                                         @if(ISSET($users))
                                                             @foreach($users as $user)
-                                                                <option value="{{ $user->id }}" {{ isset($curr_user) ? $curr_user == $user->id ? "selected" : "" : "" }}>{{ $user->firstname." ".$user->lastname }}</option>
+                                                                <option value="{{ $user->id }}" {{ isset($curr_user) ? $curr_user == $user->id ? "selected" : "" : "" }}>{{ \App\Helpers\TranslationHelper::translate($user->firstname)." ".\App\Helpers\TranslationHelper::translate($user->lastname) }}</option>
                                                             @endforeach
                                                         @endif
                                                     </select>

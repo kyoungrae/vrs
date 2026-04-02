@@ -48,7 +48,7 @@
                                                     <select class="form-control select2" name="user">
                                                         @if(ISSET($users))
                                                             @foreach($users as $user)
-                                                                <option value="{{ $user->id }}" {{ isset($curr_user) ? $curr_user == $user->id ? "selected" : "" : "" }}>{{ $user->firstname." ".$user->lastname. " /".$user->department." - ".$user->position."/" }}</option>
+                                                                <option value="{{ $user->id }}" {{ isset($curr_user) ? $curr_user == $user->id ? "selected" : "" : "" }}>{{ \App\Helpers\TranslationHelper::translate($user->firstname)." ".\App\Helpers\TranslationHelper::translate($user->lastname). " /".\App\Helpers\TranslationHelper::translate($user->department)." - ".\App\Helpers\TranslationHelper::translate($user->position)."/" }}</option>
                                                             @endforeach
                                                         @endif
                                                     </select>

@@ -30,7 +30,7 @@
                         <h6 class="card-title">
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12">
-                                    ӨДРИЙН ИМПОРТЫН ТАЙЛАН
+                                    {{ \App\Helpers\TranslationHelper::translate('ӨДРИЙН ИМПОРТЫН ТАЙЛАН') }}
                                 </div>
                             </div>
                         </h6>
@@ -48,7 +48,7 @@
                                                     <select class="form-control select2" name="branch">
                                                         @if(ISSET($archives))
                                                             @foreach($archives as $archive)
-                                                                <option value="{{ $archive->abbr }}" {{ isset($abbr) ? $abbr == $archive->abbr ? "selected" : "" : "" }}>{{ $archive->archive }}</option>
+                                                                <option value="{{ $archive->abbr }}" {{ isset($abbr) ? $abbr == $archive->abbr ? "selected" : "" : "" }}>{{ \App\Helpers\TranslationHelper::translate($archive->archive) }}</option>
                                                             @endforeach
                                                         @endif
                                                     </select>
@@ -95,7 +95,7 @@
                                     <thead>
                                     <tr style="text-align: center;">
                                         <th style="width:10%;">№</th>
-                                        <th>아카이브ын огноо</th>
+                                        <th>아카이브{{ \App\Helpers\TranslationHelper::translate('ын огноо') }}</th>
                                         <th>아카이브 번호</th>
                                         <th>번호판</th>
                                         <th>증명서 번호</th>

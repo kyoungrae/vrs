@@ -45,7 +45,7 @@
                                                 <label class="form-label mg-b-0 required-input">차량 번호</label>
                                             </div>
                                             <div class="col-lg-8 col-md-12 col-sm-12">
-                                                <input id="plateNo" name="plateNo" required type="text" placeholder="차량 번호" value="" class="form-control" oninput="translate2MGL(this.value)" autocomplete="off" autofocus required>
+                                                <input id="plateNo" name="plateNo" required type="text" placeholder="차량 번호" value="0309УНГ" class="form-control" oninput="translate2MGL(this.value)" autocomplete="off" autofocus required>
                                                 {{-- <input id="customerRegnum" name="customerRegnum" style="display: none"  type="text"  value="" class="form-control"  autocomplete="off" autofocus>
                                                 <input id="customerLastname" name="customerLastname"  style="display: none"  type="text"  value="" class="form-control"  autocomplete="off" autofocus>
                                                 <input id="customerFirstname" name="customerFirstname" style="display: none"  type="text"  value="" class="form-control"  autocomplete="off" autofocus>

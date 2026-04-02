@@ -24,7 +24,7 @@
                         <h6 class="card-title">
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12">
-                                    АРХИВЫН ТАЙЛАН
+                                    {{ \App\Helpers\TranslationHelper::translate('АРХИВЫН ТАЙЛАН') }}
                                 </div>
                             </div>
                         </h6>
@@ -100,7 +100,7 @@
                                         <th>면수</th>
                                         <th>시작 번호</th>
                                         <th>종료 번호</th>
-                                        <th>Устгах гэрчилгээ №</th>
+                                        <th>{{ \App\Helpers\TranslationHelper::translate('Устгах гэрчилгээ №') }}</th>
                                     </tr>
                                     </thead>
                                     <tbody>

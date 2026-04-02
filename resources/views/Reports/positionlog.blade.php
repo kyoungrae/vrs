@@ -97,9 +97,9 @@
                                         <th>№</th>
                                         <th>일자</th>
                                         <th>직위명 /변경 전/</th>
-                                        <th>직위(공무)ын нэр /신규/</th>
+                                        <th>직위(공무){{ \App\Helpers\TranslationHelper::translate('ын нэр') }} /신규/</th>
                                         <th>작업</th>
-                                        <th>Үүсгэсэн</th>
+                                        <th>{{ \App\Helpers\TranslationHelper::translate('Үүсгэсэн')}}</th>
                                         <th>수정됨</th>
                                     </tr>
                                     </thead>

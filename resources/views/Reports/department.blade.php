@@ -49,7 +49,7 @@
                                                         @if(ISSET($departments))
                                                             <option value="0">전체</option>
                                                             @foreach($departments as $department)
-                                                                <option value="{{ $department->abbr }}" {{ isset($curr_dep) ? $curr_dep == $department->abbr ? "selected" : "" : "" }}>{{ $department->archive }}</option>
+                                                                <option value="{{ $department->abbr }}" {{ isset($curr_dep) ? $curr_dep == $department->abbr ? "selected" : "" : "" }}>{{ \App\Helpers\TranslationHelper::translate($department->archive) }}</option>
                                                             @endforeach
                                                         @endif
                                                     </select>
