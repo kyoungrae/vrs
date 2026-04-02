@@ -23,10 +23,10 @@
                         <h6 class="card-title">
                             <div class="row">
                                 <div class="col-lg-7 col-md-6 col-sm-12">
-                                    ХЭРЭГЛЭГЧДИЙН ЖАГСААЛТ
+                                    {{ \App\Helpers\TranslationHelper::translate("ХЭРЭГЛЭГЧДИЙН ЖАГСААЛТ") }}
                                 </div>
                                 <div id="headerButton" class="col-lg-5 col-md-6 col-sm-12 rightAlign">
-                                    <a href="/user"><span id="btnPrint" class="headerButton"><i class="icon ion-ios-paper headerButtonIcon"></i> ШИНЭ ХЭРЭГЛЭГЧ</span></a>
+                                    <a href="/user"><span id="btnPrint" class="headerButton"><i class="icon ion-ios-paper headerButtonIcon"></i> 신규사용자</span></a>
                                 </div>
                             </div>
                         </h6>
@@ -40,12 +40,12 @@
                                     <tr>
                                         <th>성</th>
                                         <th>이름</th>
-                                        <th>Хэрэглэгчийн нэр</th>
+                                        <th>{{ \App\Helpers\TranslationHelper::translate("Хэрэглэгчийн нэр") }}</th>
                                         <th>지점</th>
-                                        <th>Хэлтэс</th>
+                                        <th>{{ \App\Helpers\TranslationHelper::translate("Хэлтэс") }}</th>
                                         <th>직위(공무)</th>
                                         <th>상태</th>
-                                        <th>Үндсэн 기관/단체</th>
+                                        <th>{{ \App\Helpers\TranslationHelper::translate("Үндсэн") }} 기관/단체</th>
                                         <th>작업</th>
                                     </tr>
                                     </thead>
@@ -54,14 +54,14 @@
                                         @foreach($users->chunk(100) as $rows)
                                             @foreach($rows as $user)
                                                 <tr>
-                                                    <td>{{ $user->lastname }}</td>
-                                                    <td>{{ $user->firstname }}</td>
-                                                    <td>{{ $user->username }}</td>
-                                                    <td>{{ $user->name }}</td>
-                                                    <td>{{ $user->department }}</td>
-                                                    <td>{{ $user->position }}</td>
-                                                    <td>{{ $user->isactive == 1 ? "ИДЭВХТЭЙ" : "ИДЭВХГҮЙ" }}</td>
-                                                    <td>{{ $user->isatvt == 1 ? "ATUT" : ($user->iscity == 1 ? "Нийслэл" : "기타") }}</td>
+                                                    <td>{{ \App\Helpers\TranslationHelper::translate($user->lastname) }}</td>
+                                                    <td>{{ \App\Helpers\TranslationHelper::translate($user->firstname) }}</td>
+                                                    <td>{{ \App\Helpers\TranslationHelper::translate($user->username) }}</td>
+                                                    <td>{{ \App\Helpers\TranslationHelper::translate($user->name) }}</td>
+                                                    <td>{{ \App\Helpers\TranslationHelper::translate($user->department) }}</td>
+                                                    <td>{{ \App\Helpers\TranslationHelper::translate($user->position) }}</td>
+                                                    <td>{{ \App\Helpers\TranslationHelper::translate($user->isactive == 1 ? "ИДЭВХТЭЙ" : "ИДЭВХГҮЙ") }}</td>
+                                                    <td>{{ $user->isatvt == 1 ? "ATUT" : ($user->iscity == 1 ? \App\Helpers\TranslationHelper::translate("Нийслэл") : "기타") }}</td>
                                                     <td>
                                                         <a href="/user/edit/{{ \App\Http\Controllers\BaseController::enc($user->id) }}">
                                                             <i class="typcn typcn-edit text-primary"></i>

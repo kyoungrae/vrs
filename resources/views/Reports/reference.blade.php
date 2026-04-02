@@ -44,7 +44,7 @@
                         <img class="img gmlogo" style="display: block; margin: 0 auto;width: 80px;" src="{{session()->get('auth')->iscity == 1 ? asset('img/niislel.jpg') : asset('img/logo.png') }}">
                     </div>
                     <div class="col-6">
-                        <p class="gm-position-title" style="text-align: right;width: auto;float: right;font-size: 18px;margin-right: -37px;">{!!session()->get('auth')->iscity == 1 ? "Нийслэлийн автотээврийн </br>хэрэгслийн 등록·관리 센터 ":"АВТО ТЭЭВРИЙН ҮНДЭСНИЙ ТӨВ"!!}</p>
+                        <p class="gm-position-title" style="text-align: right;width: auto;float: right;font-size: 18px;margin-right: -37px;">{!!session()->get('auth')->iscity == 1 ? \App\Helpers\TranslationHelper::translate("Нийслэлийн автотээврийн хэрэгслийн бүртгэл·хяналтын төв") : \App\Helpers\TranslationHelper::translate("АВТО ТЭЭВРИЙН ҮНДЭСНИЙ ТӨВ")!!}</p>
                     </div>
                 </div>
                 <hr id="line" class="mg-y-10" style="background: #000;height: 2px;">

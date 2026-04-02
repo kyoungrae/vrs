@@ -67,7 +67,8 @@
         "sort-packages": true,
         "optimize-autoloader": true,
         "allow-plugins": {
-            "kylekatarnls/update-helper": false
+            "kylekatarnls/update-helper": false,
+            "symfony/thanks": true
         }
     }
 }

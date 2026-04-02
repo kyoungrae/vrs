@@ -32,6 +32,8 @@ if (file_exists($pairsFile)) {
 // 주요 테이블 목록 (몽골어 데이터가 있을 만한 테이블)
 $targetTables = [
     'SYSTEM_POSITION',
+    'SYSTEM_USER',
+    'SYSTEM_ARCHIVE',
     'REF_COUNTRY', 
     'REF_COLOR',
     'REF_PURPOSE',

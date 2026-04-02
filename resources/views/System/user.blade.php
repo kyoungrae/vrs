@@ -81,7 +81,7 @@
                                                 <option value=""></option>
                                                 @if(ISSET($systemDepType))
                                                     @foreach($systemDepType as $systemDepType)
-                                                        <option value="{{ $systemDepType->id }}">{{ $systemDepType->name }}</option>
+                                                        <option value="{{ $systemDepType->id }}">{{ \App\Helpers\TranslationHelper::translate($systemDepType->name) }}</option>
                                                     @endforeach
                                                 @endif
                                             </select>
@@ -98,7 +98,7 @@
                                             <select class="form-control select2 " name="province" id="branch" data-dependet="branch">
                                                 @if(ISSET($provinces))
                                                     @foreach($provinces as $province)
-                                                        <option value="{{ $province->id }}" {{ isset($user) ? ($province->id == $user->provinceid ? "selected" : "") : "" }}>{{ $province->name }}</option>
+                                                        <option value="{{ $province->id }}" {{ isset($user) ? ($province->id == $user->provinceid ? "selected" : "") : "" }}>{{ \App\Helpers\TranslationHelper::translate($province->name) }}</option>
                                                     @endforeach
                                                 @endif
                                             </select>

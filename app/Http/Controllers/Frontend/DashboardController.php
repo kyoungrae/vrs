@@ -39,6 +39,18 @@ class DashboardController extends BaseController
                     return redirect(route("dashboard"));
                 }
             } else {
+                $archives = collect();
+                $auth = session()->get('auth');
+                if ($auth && ! BaseController::isDevBypassLogin()) {
+                    $provinceId = $auth->provinceid ?? $auth->ProvinceId ?? null;
+                    if ($provinceId !== null) {
+                        $archives = SystemArchive::where('PROVINCEID', $provinceId)
+                            ->whereNull('deleted_at')
+                            ->orderBy('archive', 'ASC')
+                            ->get();
+                    }
+                }
+
                 if (BaseController::isDevBypassLogin()) {
                     // DB 없는 로컬 데모 모드: Oracle 연결 시도 자체를 생략해 대기/타임아웃 방지.
                     $totalVehicle = $totalOwners = $totalNumbers = '0';
@@ -57,7 +69,7 @@ class DashboardController extends BaseController
                     $totalNumbers = number_format($totalNumbers);
                 }
 
-                return view('System.dashboard',compact('totalVehicle','totalNumbers','totalOwners'));
+                return view('System.dashboard', compact('totalVehicle', 'totalNumbers', 'totalOwners', 'archives'));
             }
         } catch (\Exception $ex){
             $this->writeLog("Dashboard \ub4dc\uc6b0\ub4f0 \uc624\ub958\uac00 \ubc1c\uc0dd\ud588\uc2b5\ub2c8\ub2e4. ".$ex);

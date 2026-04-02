@@ -150,7 +150,7 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content modal-content-demo">
                     <div class="modal-header">
-                        <h6 class="modal-title">지점 선택</h6>
+                        <h6 class="modal-title">지점 선택111111</h6>
                     </div>
                     <div class="modal-body">
                         {{ csrf_field() }}
@@ -161,18 +161,19 @@
                                         <label class="form-label mg-b-0 required-input">지점</label>
                                     </div>
                                     <div class="col-lg-7 col-md-12 col-sm-12">
+                                        @php
+                                            $archivesExists = isset($archives);
+                                            $archivesCount = $archivesExists ? count($archives) : 0;
+                                        @endphp
                                         <select class="form-control select2" name="branch">
                                             @if(ISSET($archives))
                                             @foreach($archives as $archive)
-                                            @if ($archive->is_type == 1 && session()->get("auth")->isatvt == 1 && session()->get("auth")->iscity == 0)
-                                                <option value="{{ \App\Http\Controllers\BaseController::enc($archive->id) }}">{{ $archive->archive }}</option>
-                                            @elseif ($archive->is_type == 2 && session()->get("auth")->iscity == 1 && session()->get("auth")->isatvt == 0 )
-                                                <option value="{{ \App\Http\Controllers\BaseController::enc($archive->id) }}">{{ $archive->archive }}</option>
-                                            @elseif ($archive->is_type == 1 && session()->get("auth")->isatvt == 0 && session()->get("auth")->iscity == 0)
-                                                <option value="{{ \App\Http\Controllers\BaseController::enc($archive->id) }}">{{ $archive->archive }} </option>
-                                            @endif
-                                                   
-                                                @endforeach
+                                                @php 
+                                                    $translated = \App\Helpers\TranslationHelper::translate($archive->archive);
+                                                    $label = !empty($translated) ? $translated : ($archive->archive ?? '#' . ($archive->id ?? $archive->ID ?? ''));
+                                                @endphp
+                                                <option value="{{ \App\Http\Controllers\BaseController::enc($archive->id) }}">{{ $label }}</option>
+                                            @endforeach
                                             @endif
                                         </select>
                                     </div>

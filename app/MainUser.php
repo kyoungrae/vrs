@@ -22,6 +22,8 @@ class MainUser extends Authenticatable
     const UPDATED_AT = 'MODIFIEDDATE';
     protected $table = 'SYSTEM_USER';
     protected $connection = 'oracle';
+    public $incrementing = true;
+    protected $sequence = 'SYSTEM_USER_SEQ';
 
     public function getAttribute($key)
     {

@@ -102,7 +102,7 @@
 </div>
 
 <div class="az-header-right">
-    <b>{{ session()->has('archive') == 1? (session()->get('archive') != 'many'? session()->get('archive')->archive: ''): '' }}</b>
+    <b>{{ session()->has('archive') == 1? (session()->get('archive') != 'many'? \App\Helpers\TranslationHelper::translate(session()->get('archive')->archive): ''): '' }}</b>
     <div class="dropdown az-profile-menu">
         <a href="" class="az-img-user"><img src="{{ asset('img/noavatar.png') }}" alt=""></a>
         <div class="dropdown-menu">

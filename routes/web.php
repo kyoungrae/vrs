@@ -22,6 +22,22 @@ Route::get('/', 'Frontend\IndexController@index');
 
 /** Local only: APP_ENV=local + DEV_BYPASS_LOGIN=true — see .env.example */
 Route::get('/dev/local-login', 'DevLocalAuthController@login')->name('dev.local-login');
+Route::get('/dev/create-test-user', 'DevLocalAuthController@createTestUser')->name('dev.create-test-user');
+Route::get('/dev/debug-archives', 'DevLocalAuthController@debugArchives')->name('dev.debug-archives');
+Route::get('/dev/scan-mongolian', function() {
+    require_once base_path('scripts/scan_mongolian_data.php');
+    return 'Scan complete - check scripts/mn_ko_pairs.tsv';
+})->name('dev.scan-mongolian');
+Route::get('/dev/extract-db-text', function() {
+    try {
+        ob_start();
+        require_once base_path('scripts/extract_db_text.php');
+        $output = ob_get_clean();
+        return response('<pre>' . $output . '</pre>');
+    } catch (Exception $e) {
+        return response('<pre>에러 발생: ' . $e->getMessage() . '\n\n' . $e->getTraceAsString() . '</pre>', 500);
+    }
+})->name('dev.extract-db-text');
 
 Route::get('/auction', 'Frontend\AuctionController@auction');
 Route::post('/auction', 'Frontend\AuctionController@auction')->name('auction');
