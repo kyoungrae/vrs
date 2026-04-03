@@ -5834,17 +5834,17 @@ protected function exportToExcelEpayReportr(Request $request){
                         //     and factory.print_id = nvl('".$departUser."', factory.print_id) GROUP BY factory.print_id,us.firstname,department.name,department.dep_phone,department.dep_address
                         //      "));
                              $results = DB::select(DB::raw(
-                                " SELECT reg_vehicle_view.province_name, reg_vehicle_view.first_name,  count(platecolor) as count,platecolor,to_char(create_date, 'YYYY-MM-DD') as create_date from system_plate_factory  INNER JOIN reg_vehicle_view   ON system_plate_factory.plate_no = reg_vehicle_view.plate_no 
-                        where platecolor  is not null and  create_date  between TO_DATE ('".$startDate."', 'YYYY-MM-DD')  and TO_DATE ('".$endDate."', 'YYYY-MM-DD')+.9999999   and platecolor = nvl('".$plateColor."', platecolor) GROUP BY reg_vehicle_view.first_name,reg_vehicle_view.province_name, platecolor,to_char(create_date, 'YYYY-MM-DD')  ORDER BY create_date DESC
+                                " SELECT reg_vehicle_view.province_id, reg_vehicle_view.first_name,  count(platecolor) as count,platecolor,to_char(create_date, 'YYYY-MM-DD') as create_date from system_plate_factory  INNER JOIN reg_vehicle_view   ON system_plate_factory.plate_no = reg_vehicle_view.plate_no 
+                        where platecolor  is not null and  create_date  between TO_DATE ('".$startDate."', 'YYYY-MM-DD')  and TO_DATE ('".$endDate."', 'YYYY-MM-DD')+.9999999   and platecolor = nvl('".$plateColor."', platecolor) GROUP BY reg_vehicle_view.first_name,reg_vehicle_view.province_id, platecolor,to_char(create_date, 'YYYY-MM-DD')  ORDER BY create_date DESC
                                  "));
                      // return $results;
                      //  dd($results);
                         return view('Reports.reportPlateColor', compact('departments','plateColor','depName', 'results','startDate','endDate'));
                     } else {
                               $results = DB::select(DB::raw(
-                        " SELECT reg_vehicle_view.province_name,reg_vehicle_view.first_name, count(platecolor) as count,platecolor,to_char(create_date, 'YYYY-MM-DD') as create_date from system_plate_factory INNER JOIN reg_vehicle_view   ON system_plate_factory.plate_no = reg_vehicle_view.plate_no 
+                        " SELECT reg_vehicle_view.province_id,reg_vehicle_view.first_name, count(platecolor) as count,platecolor,to_char(create_date, 'YYYY-MM-DD') as create_date from system_plate_factory INNER JOIN reg_vehicle_view   ON system_plate_factory.plate_no = reg_vehicle_view.plate_no 
                         where   platecolor
-                         is not null  GROUP BY reg_vehicle_view.first_name,reg_vehicle_view.province_name,
+                         is not null  GROUP BY reg_vehicle_view.first_name,reg_vehicle_view.province_id,
                    platecolor,to_char(create_date, 'YYYY-MM-DD')  ORDER BY create_date DESC  FETCH NEXT 1000 ROWS ONLY
                          "));
                         return view('Reports.reportPlateColor', compact('departments','depName','results'));
@@ -5939,15 +5939,15 @@ protected function exportToExcelEpayReportr(Request $request){
                               //열 서식 지정
                               $sheet->setColumnFormat(array('0', '@', '@', '@', '@','@'));
                               //위에서 준비한 Array 값을 Excel 파일로보내기
-                              $datas = DB::select(DB::raw(" SELECT reg_vehicle_view.province_name,reg_vehicle_view.purpose_name,reg_vehicle_view.first_name,  count(platecolor) as count,
+                              $datas = DB::select(DB::raw(" SELECT reg_vehicle_view.province_id,reg_vehicle_view.purpose_name,reg_vehicle_view.first_name,  count(platecolor) as count,
                               platecolor,to_char(create_date, 'YYYY-MM-DD') as create_date 
                               from system_plate_factory  INNER JOIN reg_vehicle_view   ON system_plate_factory.plate_no = reg_vehicle_view.plate_no 
                               where platecolor  is not null and 
                               create_date  between TO_DATE ('".$startDate."', 'YYYY-MM-DD')  and TO_DATE ('".$endDate."', 'YYYY-MM-DD')+.9999999  
-                              and platecolor = nvl('".$plateColor."', platecolor) GROUP BY to_char(create_date, 'YYYY-MM-DD'),reg_vehicle_view.province_name,reg_vehicle_view.purpose_name,platecolor,reg_vehicle_view.first_name ORDER BY create_date DESC
+                              and platecolor = nvl('".$plateColor."', platecolor) GROUP BY to_char(create_date, 'YYYY-MM-DD'),reg_vehicle_view.province_id,reg_vehicle_view.purpose_name,platecolor,reg_vehicle_view.first_name ORDER BY create_date DESC
                                      "));
-                            //   $datas = DB::select(DB::raw(" SELECT reg_vehicle_view.province_name, reg_vehicle_view.first_name,  count(platecolor) as count,platecolor,to_char(create_date, 'YYYY-MM-DD') as create_date from system_plate_factory  INNER JOIN reg_vehicle_view   ON system_plate_factory.plate_no = reg_vehicle_view.plate_no 
-                            //   where platecolor  is not null and  create_date  between TO_DATE ('".$startDate."', 'YYYY-MM-DD')  and TO_DATE ('".$endDate."', 'YYYY-MM-DD')+.9999999   and platecolor = nvl('".$plateColor."', platecolor) GROUP BY reg_vehicle_view.first_name,reg_vehicle_view.province_name, platecolor,to_char(create_date, 'YYYY-MM-DD')  ORDER BY create_date DESC
+                            //   $datas = DB::select(DB::raw(" SELECT reg_vehicle_view.province_id, reg_vehicle_view.first_name,  count(platecolor) as count,platecolor,to_char(create_date, 'YYYY-MM-DD') as create_date from system_plate_factory  INNER JOIN reg_vehicle_view   ON system_plate_factory.plate_no = reg_vehicle_view.plate_no 
+                            //   where platecolor  is not null and  create_date  between TO_DATE ('".$startDate."', 'YYYY-MM-DD')  and TO_DATE ('".$endDate."', 'YYYY-MM-DD')+.9999999   and platecolor = nvl('".$plateColor."', platecolor) GROUP BY reg_vehicle_view.first_name,reg_vehicle_view.province_id, platecolor,to_char(create_date, 'YYYY-MM-DD')  ORDER BY create_date DESC
                             //          "));
                               $init = array();
                               $i = 1;

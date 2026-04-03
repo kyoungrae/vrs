@@ -36,7 +36,7 @@
                                         {{-- <div class="col-4">
                                             <div class="row row-xs align-items-center mg-b-5">
                                                 <div class="col-lg-5 col-md-12 col-sm-12">
-                                                    <label class="form-label mg-b-0 required-input">담당자 сонгох</label>
+                                                    <label class="form-label mg-b-0 required-input">{{ \App\Helpers\TranslationHelper::translate('сонгох') }}</label>
                                                 </div>
                                                 <div class="col-lg-7 col-md-12 col-sm-12">
                                                     <select class="form-control select2" name="plateColor" value="{{ isset($plateColor) ? $plateColor : "" }}"> 
@@ -59,7 +59,7 @@
                                         <div class="col-3">
                                             <div class="row row-xs align-items-center mg-b-5">
                                                 <div class="col-lg-5 col-md-12 col-sm-12">
-                                                    <label class="form-label mg-b-0 required-input">시작 일자</label>
+                                                    <label class="form-label mg-b-0 required-input">{{ \App\Helpers\TranslationHelper::translate('Эхлэх огноо') }}</label>
                                                 </div>
                                                 <div class="col-lg-7 col-md-12 col-sm-12">
                                                     <input id="sdate" name="startDate" type="text" value="{{ isset($startDate) ? $startDate : "" }}" class="form-control fc-datepicker" required>
@@ -69,7 +69,7 @@
                                         <div class="col-3">
                                             <div class="row row-xs align-items-center mg-b-5">
                                                 <div class="col-lg-5 col-md-12 col-sm-12">
-                                                    <label class="form-label mg-b-0 required-input">종료 일자</label>
+                                                    <label class="form-label mg-b-0 required-input">{{ \App\Helpers\TranslationHelper::translate('Дуусах огноо') }}</label>
                                                 </div>
                                                 <div class="col-lg-7 col-md-12 col-sm-12">
                                                     <input id="edate" name="endDate" type="text" class="form-control fc-datepicker"  value="{{ isset($endDate) ? $endDate : "" }}" required>
@@ -79,13 +79,13 @@
                                         <div class="col-3">
                                             <div class="row row-xs align-items-center mg-b-5">
                                                 <div class="col-lg-4 col-md-12 col-sm-12">
-                                                    <button type="submit" class="btn btn-primary btn-block btnnopadding">검색</button>
+                                                    <button type="submit" class="btn btn-primary btn-block btnnopadding">{{ \App\Helpers\TranslationHelper::translate('Хайх') }}</button>
                                                 </div>
                                                 <div class="col-lg-4 col-md-12 col-sm-12">
-                                                    <button type="button" onclick="exportToExcel()" class="btn btn-primary btn-block btnnopadding"><i class="far fa-file-excel"></i> 엑셀</button>
+                                                    <button type="button" onclick="exportToExcel()" class="btn btn-primary btn-block btnnopadding"><i class="far fa-file-excel"></i> {{ \App\Helpers\TranslationHelper::translate('Excel') }}</button>
                                                 </div>
                                                 <div class="col-lg-4 col-md-12 col-sm-12">
-                                                    <button type="button" onclick="clearFields()" class="btn btn-primary btn-block btnnopadding">지우기</button>
+                                                    <button type="button" onclick="clearFields()" class="btn btn-primary btn-block btnnopadding">{{ \App\Helpers\TranslationHelper::translate('Арилгах') }}</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -95,20 +95,20 @@
                                 <table id="referenceTable" class="display responsive table" style="width:100%;">
                                     <thead>
                                     <tr>
-                                        <th>번호판</th>
-                                        <th>성,이름</th>
+                                        <th>{{ \App\Helpers\TranslationHelper::translate('Улсын дугаар') }}</th>
+                                        <th>{{ \App\Helpers\TranslationHelper::translate('Овог, нэр') }}</th>
                                         {{-- <th>이름</th> --}}
-                                        <th>Регистер</th>
-                                        <th>전화</th>
-                                        <th>시작됨</th>
-                                        <th>종료</th>
-                                        <th>상태</th>
+                                        <th>{{ \App\Helpers\TranslationHelper::translate('Регистрийн дугаар') }}</th>
+                                        <th>{{ \App\Helpers\TranslationHelper::translate('Утас') }}</th>
+                                        <th>{{ \App\Helpers\TranslationHelper::translate('Эхэлсэн') }}</th>
+                                        <th>{{ \App\Helpers\TranslationHelper::translate('Дуусах') }}</th>
+                                        <th>{{ \App\Helpers\TranslationHelper::translate('Төлөв') }}</th>
                                         <th>{{ \App\Helpers\TranslationHelper::translate('Хоног')}}</th>
                                         <th>{{ \App\Helpers\TranslationHelper::translate('Сунгалтын эрх')}}</th>
-                                        <th>결제</th>
-                                        <th>아카이브</th>
-                                        <th>담당자</th>
-                                        <th>일자</th>
+                                        <th>{{ \App\Helpers\TranslationHelper::translate('Төлбөр') }}</th>
+                                        <th>{{ \App\Helpers\TranslationHelper::translate('Архив') }}</th>
+                                        <th>{{ \App\Helpers\TranslationHelper::translate('Хариуцсан ажилтан') }}</th>
+                                        <th>{{ \App\Helpers\TranslationHelper::translate('Огноо') }}</th>
                                         {{-- <th>작업</th> --}}
                                     </tr>
                                     </thead>
@@ -187,7 +187,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document" style=" max-width: 1050px; ">
         <div class="modal-content modal-content-demo">
             <div class="modal-header">
-                <h6 class="modal-title">번호 공장 상세</h6>
+                <h6 class="modal-title">{{ \App\Helpers\TranslationHelper::translate('Номерын үйлдвэр дэлгэрэнгүй') }}</h6>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -197,8 +197,7 @@
 
                 <div style="
                 padding: 10px 7px;
-                font-weight: 600;">@if(ISSET($startDate)){{ $startDate }}@else{{ "none" }}@endif -наас @if(ISSET($endDate)){{ $endDate }}@else{{ "none" }}@endif -까지 인쇄된 번호의 상세 정보
-              </div>
+                font-weight: 600;">@if(ISSET($startDate)){{ $startDate }}@else{{ "none" }}@endif {{ \App\Helpers\TranslationHelper::translate('-наас') }} @if(ISSET($endDate)){{ $endDate }}@else{{ "none" }}@endif {{ \App\Helpers\TranslationHelper::translate('-까지 인쇄된 번호의 상세 정보') }}</div>
 
                     <div class="row" style="border:0px solid black" >
                         <div class="col-12"  style="width:100%;" id="reportDetial"></div>
@@ -225,8 +224,8 @@
                
             </div>
             <div class="modal-footer">
-                <button id="button-excel" class="btn btn-primary"><i class="far fa-file-excel"></i> 엑셀</button>
-                <button type="button" class="btn btn-outline-light" data-dismiss="modal">닫기</button>
+                <button id="button-excel" class="btn btn-primary"><i class="far fa-file-excel"></i> {{ \App\Helpers\TranslationHelper::translate('Excel') }}</button>
+                <button type="button" class="btn btn-outline-light" data-dismiss="modal">{{ \App\Helpers\TranslationHelper::translate('Хаах') }}</button>
 
             </div>
         </div>
@@ -522,7 +521,7 @@
     $(function(){
         'use strict'
         $('.select2').select2({
-            placeholder: '전부'
+            placeholder: '{{ \App\Helpers\TranslationHelper::translate('Бүх') }}',
         });
         $( "#sdate" ).datepicker({
             changeMonth: true,
@@ -539,17 +538,17 @@
         $('#referenceTable').DataTable({
             responsive: true,
             language: {
-                searchPlaceholder: '검색...',
+                searchPlaceholder: '{{ \App\Helpers\TranslationHelper::translate('Хайх') }}...',
                 sSearch: '',
-                lengthMenu: '_MENU_ 1/페이지에 표시',
+                lengthMenu: '_MENU_ {{ \App\Helpers\TranslationHelper::translate('-1 хуудас дахь мөр') }}',
             }
         });
         $('#referenceTable2').DataTable({
             responsive: true,
             language: {
-                searchPlaceholder: '검색...',
+                searchPlaceholder: '{{ \App\Helpers\TranslationHelper::translate('Хайх') }}...',
                 sSearch: '',
-                lengthMenu: '_MENU_ 1/페이지에 표시',
+                lengthMenu: '_MENU_ {{ \App\Helpers\TranslationHelper::translate('-1 хуудас дахь мөр') }}',
             }
         });
 

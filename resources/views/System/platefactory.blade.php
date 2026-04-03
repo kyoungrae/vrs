@@ -48,7 +48,7 @@
                                                         <label class="form-label mg-b-0 required-input">번호</label>
                                                     </div>
                                                     <div class="col-lg-9 col-md-12 col-sm-12">
-                                                        <input type="text" id="plate" name="plate" required value="" class="form-control" oninput="translate2MGL(this.value)" autocomplete="off">
+                                                        <input type="text" id="plate" name="plate" required value="0589АР" class="form-control" oninput="translate2MGL(this.value)" autocomplete="off">
                                                     </div>
                                                 </div>
                                             </div>
@@ -61,7 +61,7 @@
                                                         <select id="type" name="type" required class="form-control select2">
                                                             @if(ISSET($types))
                                                                 @foreach($types as $type)
-                                                                    <option value="{{ $type->id }}">{{ $type->name }}</option>
+                                                                    <option value="{{ $type->id }}">{{ \App\Helpers\TranslationHelper::translate($type->name) }}</option>
                                                                 @endforeach
                                                             @endif
                                                         </select>
@@ -512,6 +512,7 @@
             }).join("");
             $("#plate").val(word);
         }
+    });
     </script>
 </div>
 </body>

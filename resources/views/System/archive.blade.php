@@ -116,9 +116,9 @@
                                         @foreach($archives as $archive)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $archive->province }}</td>
-                                                <td>{{ $archive->department }}</td>
-                                                <td>{{ $archive->archive }}</td>
+                                                <td>{{ \App\Helpers\TranslationHelper::translate($archive->province) }}</td>
+                                                <td>{{ \App\Helpers\TranslationHelper::translate($archive->department) }}</td>
+                                                <td>{{ \App\Helpers\TranslationHelper::translate($archive->archive) }}</td>
                                                 <td>{{ $archive->abbr }}</td>
                                                 <td>
                                                     <a href="/settings/archive/edit/{{ \App\Http\Controllers\BaseController::enc($archive->id) }}">

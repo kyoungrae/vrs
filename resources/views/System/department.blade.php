@@ -49,7 +49,7 @@
                                                 <option value=""></option>
                                                 @if(ISSET($systemDepType1))
                                                     @foreach($systemDepType1 as $systemDepType)
-                                                        <option value="{{ $systemDepType->id }}" {{ isset($department) ? ($department->deptype_id == $systemDepType->id ? "selected" : "") : "" }}>{{ $systemDepType->name }}</option>
+                                                        <option value="{{ $systemDepType->id }}" {{ isset($department) ? ($department->deptype_id == $systemDepType->id ? "selected" : "") : "" }}>{{ \App\Helpers\TranslationHelper::translate($systemDepType->name) }}</option>
                                                     @endforeach
                                                 @endif
                                             </select>
@@ -67,7 +67,7 @@
                                                 <option label="선택하세요"></option>
                                                 @if(ISSET($provinces))
                                                     @foreach($provinces as $province)
-                                                        <option value="{{ $province->id }}" {{ isset($department) ? ($department->province_id == $province->id ? "selected" : "") : "" }}>{{ $province->name }}</option>
+                                                        <option value="{{ $province->id }}" {{ isset($department) ? ($department->province_id == $province->id ? "selected" : "") : "" }}>{{ \App\Helpers\TranslationHelper::translate($province->name) }}</option>
                                                     @endforeach
                                                 @endif
                                             </select>
@@ -192,8 +192,8 @@
                                         @if(ISSET($departments))
                                             @foreach($departments as $department)
                                                 <tr>
-                                                    <td>{{ $department->province_name }}</td>
-                                                    <td>{{ $department->name }}</td>
+                                                    <td>{{ \App\Helpers\TranslationHelper::translate($department->province_name) }}</td>
+                                                    <td>{{ \App\Helpers\TranslationHelper::translate($department->name) }}</td>
                                                     <td>
                                                         <a href="/reference/department/edit/{{ \App\Http\Controllers\BaseController::enc($department->id) }}">
                                                             <i class="typcn typcn-edit text-primary"></i>

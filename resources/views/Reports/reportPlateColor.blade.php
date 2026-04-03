@@ -24,7 +24,7 @@
                         <h6 class="card-title">
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12">
-                                    УЛСЫН ДУГААРЫН ДЭВСГЭР ӨНГӨ ТАЙЛАН 
+                                    {{ \App\Helpers\TranslationHelper::translate('УЛСЫН ДУГААРЫН ДЭВСГЭР ӨНГӨ ТАЙЛАН') }}
                                 </div>
                             </div>
                         </h6>
@@ -36,7 +36,7 @@
                                         <div class="col-4">
                                             <div class="row row-xs align-items-center mg-b-5">
                                                 <div class="col-lg-5 col-md-12 col-sm-12">
-                                                    <label class="form-label mg-b-0 required-input">번호ын өнгө сонгох</label>
+                                                    <label class="form-label mg-b-0 required-input">{{ \App\Helpers\TranslationHelper::translate('Дугаарын өнгө сонгох') }}</label>
                                                 </div>
                                                 <div class="col-lg-7 col-md-12 col-sm-12">
                                                     <select class="form-control select2" name="plateColor" value="{{ isset($plateColor) ? $plateColor : "" }}"> 
@@ -59,7 +59,7 @@
                                         <div class="col-2">
                                             <div class="row row-xs align-items-center mg-b-5">
                                                 <div class="col-lg-5 col-md-12 col-sm-12">
-                                                    <label class="form-label mg-b-0 required-input">시작 일자</label>
+                                                    <label class="form-label mg-b-0 required-input">{{ \App\Helpers\TranslationHelper::translate('Эхлэх огноо') }}</label>
                                                 </div>
                                                 <div class="col-lg-7 col-md-12 col-sm-12">
                                                     <input id="sdate" name="startDate" type="text" value="{{ isset($startDate) ? $startDate : "" }}" class="form-control fc-datepicker" required>
@@ -69,7 +69,7 @@
                                         <div class="col-3">
                                             <div class="row row-xs align-items-center mg-b-5">
                                                 <div class="col-lg-5 col-md-12 col-sm-12">
-                                                    <label class="form-label mg-b-0 required-input">종료 일자</label>
+                                                    <label class="form-label mg-b-0 required-input">{{ \App\Helpers\TranslationHelper::translate('Дуусах огноо') }}</label>
                                                 </div>
                                                 <div class="col-lg-7 col-md-12 col-sm-12">
                                                     <input id="edate" name="endDate" type="text" class="form-control fc-datepicker"  value="{{ isset($endDate) ? $endDate : "" }}" required>
@@ -79,13 +79,13 @@
                                         <div class="col-3">
                                             <div class="row row-xs align-items-center mg-b-5">
                                                 <div class="col-lg-4 col-md-12 col-sm-12">
-                                                    <button type="submit" class="btn btn-primary btn-block btnnopadding">검색</button>
+                                                    <button type="submit" class="btn btn-primary btn-block btnnopadding">{{ \App\Helpers\TranslationHelper::translate('Хайх') }}</button>
                                                 </div>
                                                 <div class="col-lg-4 col-md-12 col-sm-12">
-                                                    <button type="button" onclick="exportToExcel()" class="btn btn-primary btn-block btnnopadding"><i class="far fa-file-excel"></i> 엑셀</button>
+                                                    <button type="button" onclick="exportToExcel()" class="btn btn-primary btn-block btnnopadding"><i class="far fa-file-excel"></i> {{ \App\Helpers\TranslationHelper::translate('Excel') }}</button>
                                                 </div>
                                                 <div class="col-lg-4 col-md-12 col-sm-12">
-                                                    <button type="button" onclick="clearFields()" class="btn btn-primary btn-block btnnopadding">지우기</button>
+                                                    <button type="button" onclick="clearFields()" class="btn btn-primary btn-block btnnopadding">{{ \App\Helpers\TranslationHelper::translate('Арилгах') }}</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -96,13 +96,13 @@
                                     <thead>
                                     <tr style="text-align: center;">
                                         <th>№</th>
-                                        <th>지점</th>
-                                        <th>이름</th>
-                                        <th>색상</th>
+                                        <th>{{ \App\Helpers\TranslationHelper::translate('Салбар') }}</th>
+                                        <th>{{ \App\Helpers\TranslationHelper::translate('Нэр') }}</th>
+                                        <th>{{ \App\Helpers\TranslationHelper::translate('Өнгө') }}</th>
                                         
-                                        <th>개수</th>
+                                        <th>{{ \App\Helpers\TranslationHelper::translate('Тоо хэмжээ') }}</th>
                                    
-                                        <th>일자</th>
+                                        <th>{{ \App\Helpers\TranslationHelper::translate('Огноо') }}</th>
                                         {{-- <th>상세</th> --}}
                                     </tr>
                                     </thead>
@@ -111,8 +111,8 @@
                                         @foreach($results as $data)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $data->province_name }}</td>
-                                                <td>{{ $data->first_name }}</td>
+                                                <td>{{ $data->province_id }}</td>
+                                                <td>{{ \App\Helpers\TranslationHelper::translate($data->first_name) }}</td>
                                                 <td>
                                                     @if ($data->platecolor ==1 )
                                                         흰색
@@ -169,7 +169,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document" style=" max-width: 1050px; ">
         <div class="modal-content modal-content-demo">
             <div class="modal-header">
-                <h6 class="modal-title">번호 공장 상세</h6>
+                <h6 class="modal-title">{{ \App\Helpers\TranslationHelper::translate('Номерын үйлдвэр дэлгэрэнгүй') }}</h6>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -207,8 +207,8 @@
                
             </div>
             <div class="modal-footer">
-                <button id="button-excel" class="btn btn-primary"><i class="far fa-file-excel"></i> 엑셀</button>
-                <button type="button" class="btn btn-outline-light" data-dismiss="modal">닫기</button>
+                <button id="button-excel" class="btn btn-primary"><i class="far fa-file-excel"></i> {{ \App\Helpers\TranslationHelper::translate('Excel') }}</button>
+                <button type="button" class="btn btn-outline-light" data-dismiss="modal">{{ \App\Helpers\TranslationHelper::translate('Хаах') }}</button>
 
             </div>
         </div>
@@ -393,32 +393,32 @@
                                 // <th>인쇄 일자</th>
                                 {
                                         dataField: 'plate_no',
-                                        caption: '인쇄 번호',
+                                        caption: '{{ \App\Helpers\TranslationHelper::translate('Хэвлэсэн дугаар') }}',
                                     },
                                     {
                                         dataField: 'dep_register',
-                                        caption: '법인 등록번호',
+                                        caption: '{{ \App\Helpers\TranslationHelper::translate('Хуулийн этгээдийн регистрийн дугаар') }}',
                                     },
                                     {
                                         dataField: 'firstname',
-                                        caption: '법인 명칭',
+                                        caption: '{{ \App\Helpers\TranslationHelper::translate('Хуулийн этгээдийн нэр') }}',
                                     },
                                     {
                                         dataField: 'dep_director',
-                                        caption: '소장',
+                                        caption: '{{ \App\Helpers\TranslationHelper::translate('Дарга') }}',
                                     },
                                     {
                                         dataField: 'phone',
-                                        caption: '전화',
+                                        caption: '{{ \App\Helpers\TranslationHelper::translate('Утас') }}',
                                     },
                                     {
                                         dataField: 'dep_director',
-                                        caption: '인쇄된 번호',
+                                        caption: '{{ \App\Helpers\TranslationHelper::translate('Хэвлэгдсэн дугаар') }}',
                                     },
                                    
                                     {
                                         dataField: 'update_date',
-                                        caption: '인쇄 일자',
+                                        caption: '{{ \App\Helpers\TranslationHelper::translate('Хэвлэсэн огноо') }}',
                                     },
 
                                   
@@ -504,7 +504,7 @@
     $(function(){
         'use strict'
         $('.select2').select2({
-            placeholder: '전부'
+            placeholder: '{{ \App\Helpers\TranslationHelper::translate('Бүх') }}',
         });
         $( "#sdate" ).datepicker({
             changeMonth: true,
@@ -521,17 +521,17 @@
         $('#referenceTable').DataTable({
             responsive: true,
             language: {
-                searchPlaceholder: '검색...',
+                searchPlaceholder: '{{ \App\Helpers\TranslationHelper::translate('Хайх') }}...',
                 sSearch: '',
-                lengthMenu: '_MENU_ 1/페이지에 표시',
+                lengthMenu: '_MENU_ {{ \App\Helpers\TranslationHelper::translate('-1 хуудас дахь мөр') }}',
             }
         });
         $('#referenceTable2').DataTable({
             responsive: true,
             language: {
-                searchPlaceholder: '검색...',
+                searchPlaceholder: '{{ \App\Helpers\TranslationHelper::translate('Хайх') }}...',
                 sSearch: '',
-                lengthMenu: '_MENU_ 1/페이지에 표시',
+                lengthMenu: '_MENU_ {{ \App\Helpers\TranslationHelper::translate('-1 хуудас дахь мөр') }}',
             }
         });
 
