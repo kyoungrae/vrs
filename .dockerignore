@@ -10,3 +10,13 @@ bootstrap/cache/*
 .env
 .env.*
 !.env.production
+
+# 불필요한 파일들 제외
+vendor/
+*.tar
+*.zip
+*.log
+.DS_Store
+Thumbs.db
+VRS/lib/dev-extreme/js/dx.*.debug.js
+VRS/lib/dev-extreme/js/dx.web.debug.js

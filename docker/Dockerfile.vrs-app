@@ -34,6 +34,7 @@ COPY composer.json composer.lock* ./
 RUN composer install --no-interaction --no-dev --optimize-autoloader --no-scripts
 
 COPY . .
+COPY public/img/preloader.gif public/img/preloader.gif
 COPY .env.production .env
 
 RUN composer dump-autoload --optimize \
