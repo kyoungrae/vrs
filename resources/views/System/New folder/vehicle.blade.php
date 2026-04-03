@@ -3075,6 +3075,15 @@ if (hasNYearsPassed(is_build) && total_weight < 3500 && (purposeCheck == 1 || pu
             }
         });
 
+        $('#number_id').keydown(function(event) {
+            if (event.keyCode == 13) {
+                // 차량번호 입력창에서는 작업 모드와 무관하게 조회를 우선한다.
+                $("#main_form").attr('action', '{{ route("vehicle") }}');
+                this.form.submit();
+                return false;
+            }
+        });
+
         $('.number').keydown(function(event) {
             // enter has keyCode = 13, change it if you want to use another button
             if(is_new) {
