@@ -224,10 +224,10 @@
         $(".avtoteeverPreloader").fadeIn();
         $.ajax({
             type: "GET",
-            url: "/api/report/aging/@if(ISSET($curr_pro)){{ $curr_pro }}@else{{ "none" }}@endif/@if(ISSET($startDate)){{ $startDate }}@else{{ "none" }}@endif",
+            url: vrsUrl("/api/report/aging/@if(ISSET($curr_pro)){{ $curr_pro }}@else{{ "none" }}@endif/@if(ISSET($startDate)){{ $startDate }}@else{{ "none" }}@endif"),
             success: function (data) {
                 @if(ISSET($startDate))
-                    window.location = "/api/report/aging/@if(ISSET($curr_pro)){{ $curr_pro }}@else{{ "none" }}@endif/@if(ISSET($startDate)){{ $startDate }}@else{{ "none" }}@endif";
+                    window.location = vrsUrl("/api/report/aging/@if(ISSET($curr_pro)){{ $curr_pro }}@else{{ "none" }}@endif/@if(ISSET($startDate)){{ $startDate }}@else{{ "none" }}@endif");
                     $(".avtoteeverPreloader").fadeOut();
                     $(".containerBody").fadeIn();
                 @else

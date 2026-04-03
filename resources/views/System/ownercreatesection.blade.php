@@ -297,7 +297,7 @@
         $(".avtoteeverPreloader").fadeIn();
        $.ajax({ 
                     type: 'POST',
-                    url: '/api/otpApprove',
+                    url: vrsUrl('/api/otpApprove'),
                     dataType: "text",
                     crossDomain : true,
                     data: {
@@ -341,7 +341,7 @@
 //console.log(regnum);
           $.ajax({
                     type: 'POST',
-                    url: '/api/xypClientOTP',
+                    url: vrsUrl('/api/xypClientOTP'),
                     dataType: "text",
                  
                     data: {
@@ -393,7 +393,7 @@
                 $( "#fingerDataLast" ).text( "지문 정보를 확인 중입니다. . . ." );
                 $.ajax({
                     type: 'POST',
-                    url: '/api/fingerInfoImage',
+                    url: vrsUrl('/api/fingerInfoImage'),
                     dataType: "text",
                     crossDomain : true,
                     data: {
@@ -461,7 +461,7 @@
         if(message.length == 0){
             $.ajax({
                 type: "POST",
-                url: '/api/createowner', 
+                url: vrsUrl('/api/createowner'), 
                 data: {
                     "env": '{{ \App\Http\Controllers\BaseController::enc(session()->get("auth")->id) }}',
                     "owner": owner,
@@ -532,7 +532,7 @@
   
         $.ajax({
             type: "POST",
-            url: '/api/owner',
+            url: vrsUrl('/api/owner'),
             data: {"register": register, "type": type},
             success: function( response ) {
                console.log(response);
@@ -588,7 +588,7 @@
                 } else if(response == "true"){
                     $.ajax({
                         type: "POST",
-                        url: '/api/owner_deps',
+                        url: vrsUrl('/api/owner_deps'),
                         data: {"register": register},
                         success: function( response ) {
                             $("#company_dep").html(response);
@@ -653,7 +653,7 @@
     function districtHTML(location, id, type, selected) {
         $.ajax({
             type: "POST",
-            url: '/api/location',
+            url: vrsUrl('/api/location'),
             data: {"location": location, "type": type, "selected": selected},
             success: function( response ) {
                // console.log(response);

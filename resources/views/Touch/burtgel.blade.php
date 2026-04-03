@@ -10,7 +10,7 @@
 </head>
 <body class="az-body flexcroll" oncontextmenu="return false;">
 <div class="az-iconbar az-iconbar-primary">
-    <a href="/dashboard" class="az-iconbar-logo"><img src="{{ asset('img/logo.png') }}" width="45px" /></a>
+    <a href="{{ url('/dashboard') }}" class="az-iconbar-logo"><img src="{{ asset('img/logo.png') }}" width="45px" /></a>
 </div>
 <div class="az-iconbar-aside az-iconbar-aside-primary">
 </div>

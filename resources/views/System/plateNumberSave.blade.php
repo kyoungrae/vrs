@@ -156,11 +156,11 @@
                                                     ?>
                                                     </strong>
                                             </td>
-                                            <td><a href="/archive/documentAr/{{$plateNumberSaveList->archive_number}}" target="_blank"  >{{ $plateNumberSaveList->archive_number }}</a></td>
+                                            <td><a href="{{ url('/archive/documentAr/' . $plateNumberSaveList->archive_number) }}" target="_blank"  >{{ $plateNumberSaveList->archive_number }}</a></td>
                                             <td>{{ \Illuminate\Support\Str::limit(\App\Helpers\TranslationHelper::translate($plateNumberSaveList->lastname), 1, $end='.') }} {{ \App\Helpers\TranslationHelper::translate($plateNumberSaveList->firstname)}}</td>
                                             <td> {{ $plateNumberSaveList->create_date}}</td>
                                             {{-- <td>
-                                                <a href="/plateSave/edit/{{ \App\Http\Controllers\BaseController::enc($plateNumberSaveList->id) }}">
+                                                <a href="{{ url('/plateSave/edit/' . \App\Http\Controllers\BaseController::enc($plateNumberSaveList->id)) }}">
                                                     <i class="typcn typcn-edit text-primary"></i>
                                                 </a>
                                             </td> --}}
@@ -203,7 +203,7 @@
 <script src="{{ asset('js/avtoteever.js') }}"></script>
 <script>
     function clearFields() {
-        window.location = "/plateSave";
+        window.location = "{{ url('/plateSave') }}";
 
     }
     function edValueKeyPress(type) {

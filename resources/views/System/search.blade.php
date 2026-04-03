@@ -811,7 +811,7 @@
 
         $(document).keydown(function(event) {
             if (event.keyCode == 27) {
-                window.location.href = "/search";
+                window.location.href = "{{ url('/search') }}";
                 return false;
             }
         });
@@ -988,7 +988,7 @@
     function districtHTML(location, id, type, selected) {
         $.ajax({
             type: "POST",
-            url: '/api/location',
+            url: vrsUrl('/api/location'),
             data: {"location": location, "type": type, "selected": selected},
             success: function( response ) {
                 $("#"+id).html(response);
@@ -999,7 +999,7 @@
     function selectModel(type, selected) {
         $.ajax({
             type: "POST",
-            url: '/api/carmodel',
+            url: vrsUrl('/api/carmodel'),
             data: {"type": type, "selected": selected},
             success: function( response ) {
                 $("#model").html(response);
@@ -1010,7 +1010,7 @@
     function selectMark(country, selected) {
         $.ajax({
             type: "POST",
-            url: '/api/carmark',
+            url: vrsUrl('/api/carmark'),
             data: {"country": country, "selected": selected},
             success: function( response ) {
                 $("#mark").html(response);

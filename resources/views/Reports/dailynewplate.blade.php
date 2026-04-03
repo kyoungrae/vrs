@@ -225,10 +225,10 @@
         $(".avtoteeverPreloader").fadeIn();
         $.ajax({
             type: "GET",
-            url: "/api/report/newplate/@if(ISSET($abbr)){{ $abbr }}@else{{ "none" }}@endif/@if(ISSET($startDate)){{ $startDate }}@else{{ "none" }}@endif/@if(ISSET($endDate)){{ $endDate }}@else{{ "none" }}@endif",
+            url: vrsUrl("/api/report/newplate/@if(ISSET($abbr)){{ $abbr }}@else{{ "none" }}@endif/@if(ISSET($startDate)){{ $startDate }}@else{{ "none" }}@endif/@if(ISSET($endDate)){{ $endDate }}@else{{ "none" }}@endif"),
             success: function (data) {
                 @if(ISSET($startDate))
-                    window.location = "/api/report/newplate/@if(ISSET($abbr)){{ $abbr }}@else{{ "none" }}@endif/@if(ISSET($startDate)){{ $startDate }}@else{{ "none" }}@endif/@if(ISSET($endDate)){{ $endDate }}@else{{ "none" }}@endif";
+                    window.location = vrsUrl("/api/report/newplate/@if(ISSET($abbr)){{ $abbr }}@else{{ "none" }}@endif/@if(ISSET($startDate)){{ $startDate }}@else{{ "none" }}@endif/@if(ISSET($endDate)){{ $endDate }}@else{{ "none" }}@endif");
                 $(".avtoteeverPreloader").fadeOut();
                 $(".containerBody").fadeIn();
                 @else

@@ -29,7 +29,7 @@
                                     아파트/단지 정보
                                 </div>
                                 <div id="headerButton" class="col-lg-5 col-md-6 col-sm-12 rightAlign">
-                                    <a href="/reference/address/create/town"><span id="btnPrint" class="headerButton"><i class="icon ion-ios-paper headerButtonIcon"></i> 신규 아파트/단지</span></a>
+                                    <a href="{{ url('/reference/address/create/town') }}"><span id="btnPrint" class="headerButton"><i class="icon ion-ios-paper headerButtonIcon"></i> 신규 아파트/단지</span></a>
                                 </div>
                             </div>
                         </h6>
@@ -57,11 +57,11 @@
                                                 <td>{{ \App\Helpers\TranslationHelper::translate($town->districtunitname ?? "") }}</td>
                                                 <td>{{ \App\Helpers\TranslationHelper::translate($town->townname ?? "") }}</td>
                                                 <td>
-                                                    <a href="/reference/address/town/edit/{{ \App\Http\Controllers\BaseController::enc($town->id) }}">
+                                                    <a href="{{ url('/reference/address/town/edit/' . \App\Http\Controllers\BaseController::enc($town->id)) }}">
                                                         <i class="typcn typcn-edit text-primary"></i>
                                                     </a>
                                                     <a style="cursor: pointer;" onclick="if(confirm('이 기록을 삭제하시겠습니까?')){
-                                                            window.location='/reference/address/town/delete/{{ \App\Http\Controllers\BaseController::enc($town->id) }}'
+                                                            window.location='{{ url('/reference/address/town/delete/' . \App\Http\Controllers\BaseController::enc($town->id)) }}'
                                                             } return false;">
                                                         <i class="typcn typcn-trash text-warning"></i>
                                                     </a>

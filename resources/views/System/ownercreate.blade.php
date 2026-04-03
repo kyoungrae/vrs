@@ -28,7 +28,7 @@
                             {{ isset($owner) ? "소유자 수정" : "신규 소유자 등록" }}
                         </div>
                         <div id="headerButton" class="col-lg-5 col-md-6 col-sm-12 rightAlign">
-                            <a href="/reference/owner"><span id="btnPrint" class="headerButton"><i class="icon ion-ios-paper headerButtonIcon"></i> 소유자 목록</span></a>
+                            <a href="{{ url('/reference/owner') }}"><span id="btnPrint" class="headerButton"><i class="icon ion-ios-paper headerButtonIcon"></i> 소유자 목록</span></a>
                         </div>
                     </div>
                     <form action="{{ route("createowner") }}" method="POST">
@@ -458,7 +458,7 @@
     function districtHTML(location, id, type, selected) {
         $.ajax({
             type: "POST",
-            url: '/api/location',
+            url: vrsUrl('/api/location'),
             data: {"location": location, "type": type, "selected": selected},
             success: function( response ) {
                // console.log(response);

@@ -263,11 +263,11 @@
         $(".avtoteeverPreloader").fadeIn();
         $.ajax({
             type: "GET",
-            url: "/api/report/epay/users/@if(ISSET($op)){{ $op }}@else{{ "none" }}@endif/@if(ISSET($userId)){{ $userId }}@else{{ "none" }}@endif/@if(ISSET($startDate)){{ $startDate }}@else{{ "none" }}@endif/@if(ISSET($endDate)){{ $endDate }}@else{{ "none" }}@endif",
+            url: vrsUrl("/api/report/epay/users/@if(ISSET($op)){{ $op }}@else{{ "none" }}@endif/@if(ISSET($userId)){{ $userId }}@else{{ "none" }}@endif/@if(ISSET($startDate)){{ $startDate }}@else{{ "none" }}@endif/@if(ISSET($endDate)){{ $endDate }}@else{{ "none" }}@endif"),
             success: function (data) {
                // console.log(data);
                 @if(ISSET($startDate))
-                    window.location = "/api/report/epay/users/@if(ISSET($op)){{ $op }}@else{{ "none" }}@endif/@if(ISSET($userId)){{ $userId }}@else{{ "none" }}@endif/@if(ISSET($startDate)){{ $startDate }}@else{{ "none" }}@endif/@if(ISSET($endDate)){{ $endDate }}@else{{ "none" }}@endif";
+                    window.location = vrsUrl("/api/report/epay/users/@if(ISSET($op)){{ $op }}@else{{ "none" }}@endif/@if(ISSET($userId)){{ $userId }}@else{{ "none" }}@endif/@if(ISSET($startDate)){{ $startDate }}@else{{ "none" }}@endif/@if(ISSET($endDate)){{ $endDate }}@else{{ "none" }}@endif");
                     $(".avtoteeverPreloader").fadeOut();
                     $(".containerBody").fadeIn();
                 @else

@@ -100,7 +100,7 @@
                                             <td>{{ \App\Helpers\TranslationHelper::translate($item->name) }}</td>
                                             <td>{{ \App\Helpers\TranslationHelper::translate($item->position) }}</td>
                                             <td style="text-align: center;">
-                                                <a href="/series/send/edit/{{ \App\Http\Controllers\BaseController::enc($item->id) }}" target="_blank">
+                                                <a href="{{ url('/series/send/edit/' . \App\Http\Controllers\BaseController::enc($item->id)) }}" target="_blank">
                                                     <i class="typcn typcn-edit text-primary"></i>
                                                 </a>
                                             </td>
@@ -245,7 +245,7 @@
     function numberList(interval) {
         $.ajax({
             type: "POST",
-            url: '/api/numbers',
+            url: vrsUrl('/api/numbers'),
             data: {"interval": interval},
             success: function( response ) {
                 $("#numberBody").html();

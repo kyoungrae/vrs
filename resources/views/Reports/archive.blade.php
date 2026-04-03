@@ -237,10 +237,10 @@
         $(".avtoteeverPreloader").fadeIn();
         $.ajax({
             type: "GET",
-            url: "/api/report/archivevehicle/@if(ISSET($op)){{ $op }}@else{{ "none" }}@endif/@if(ISSET($start)){{ $start }}@else{{ "none" }}@endif/@if(ISSET($end)){{ $end }}@else{{ "none" }}@endif",
+            url: vrsUrl("/api/report/archivevehicle/@if(ISSET($op)){{ $op }}@else{{ "none" }}@endif/@if(ISSET($start)){{ $start }}@else{{ "none" }}@endif/@if(ISSET($end)){{ $end }}@else{{ "none" }}@endif"),
             success: function (data) {
                 @if(ISSET($start))
-                    window.location = "/api/report/archivevehicle/@if(ISSET($op)){{ $op }}@else{{ "none" }}@endif/@if(ISSET($start)){{ $start }}@else{{ "none" }}@endif/@if(ISSET($end)){{ $end }}@else{{ "none" }}@endif";
+                    window.location = vrsUrl("/api/report/archivevehicle/@if(ISSET($op)){{ $op }}@else{{ "none" }}@endif/@if(ISSET($start)){{ $start }}@else{{ "none" }}@endif/@if(ISSET($end)){{ $end }}@else{{ "none" }}@endif");
                     $(".avtoteeverPreloader").fadeOut();
                     $(".containerBody").fadeIn();
                 @else

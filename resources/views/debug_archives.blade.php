@@ -100,8 +100,8 @@
     </div>
     
     <div class="section">
-        <a href="/dev/create-test-user">Create/Update TEST User</a> | 
-        <a href="/">Back to Home</a>
+        <a href="{{ url('/dev/create-test-user') }}">Create/Update TEST User</a> | 
+        <a href="{{ url('/') }}">Back to Home</a>
     </div>
 </body>
 </html>

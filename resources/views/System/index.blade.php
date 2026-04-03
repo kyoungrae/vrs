@@ -80,7 +80,7 @@
             @if (\App\Http\Controllers\BaseController::isDevBypassLogin())
                 <div class="form-group dev-local-login-wrap">
                     <button type="button" class="btn btn-outline-secondary btn-block btn-sm"
-                        onclick="window.location.href='/dev/local-login'">
+                        onclick="window.location.href='{{ url('/dev/local-login') }}'">
                         로컬 개발: 계정 없이 진입 (DEV_BYPASS_LOGIN)
                     </button>
                 </div>

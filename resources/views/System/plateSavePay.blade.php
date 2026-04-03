@@ -67,7 +67,7 @@
                                     
                                             <td> {{ $payment->amount}}</td>
                                             {{-- <td>
-                                                <a href="/plateSave/edit/{{ \App\Http\Controllers\BaseController::enc($plateNumberOrderList->id) }}">
+                                                <a href="{{ url('/plateSave/edit/' . \App\Http\Controllers\BaseController::enc($plateNumberOrderList->id)) }}">
                                                     <i class="typcn typcn-edit text-primary"></i>
                                                 </a>
                                             </td> --}}

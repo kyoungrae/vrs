@@ -250,12 +250,12 @@
         $(".avtoteeverPreloader").fadeIn();
         $.ajax({
             type: "GET",
-            url: "/api/report/archiveusers/info/@if(ISSET($op)){{ $op }}@else{{ "none" }}@endif/@if(ISSET($curr_user)){{ $curr_user }}@else{{ "none" }}@endif/@if(ISSET($startDate)){{ $startDate }}@else{{ "none" }}@endif/@if(ISSET($endDate)){{ $endDate }}@else{{ "none" }}@endif",
+            url: vrsUrl("/api/report/archiveusers/info/@if(ISSET($op)){{ $op }}@else{{ "none" }}@endif/@if(ISSET($curr_user)){{ $curr_user }}@else{{ "none" }}@endif/@if(ISSET($startDate)){{ $startDate }}@else{{ "none" }}@endif/@if(ISSET($endDate)){{ $endDate }}@else{{ "none" }}@endif"),
             success: function (data) {
                 @if(ISSET($startDate))
                     $(".avtoteeverPreloader").fadeOut();
                 $(".containerBody").fadeIn();
-                window.location = "/api/report/archiveusers/info/@if(ISSET($op)){{ $op }}@else{{ "none" }}@endif/@if(ISSET($curr_user)){{ $curr_user }}@else{{ "none" }}@endif/@if(ISSET($startDate)){{ $startDate }}@else{{ "none" }}@endif/@if(ISSET($endDate)){{ $endDate }}@else{{ "none" }}@endif";
+                window.location = vrsUrl("/api/report/archiveusers/info/@if(ISSET($op)){{ $op }}@else{{ "none" }}@endif/@if(ISSET($curr_user)){{ $curr_user }}@else{{ "none" }}@endif/@if(ISSET($startDate)){{ $startDate }}@else{{ "none" }}@endif/@if(ISSET($endDate)){{ $endDate }}@else{{ "none" }}@endif");
                 @else
                     $(".avtoteeverPreloader").fadeOut();
                 $(".containerBody").fadeIn();

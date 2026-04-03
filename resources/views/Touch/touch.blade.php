@@ -104,7 +104,7 @@
 </head>
 <body class="az-body flexcroll">
 <div class="az-iconbar az-iconbar-primary">
-    <a href="/burtgel" class="az-iconbar-logo"><img src="{{ asset('img/logo.png') }}" width="45px" /></a>
+    <a href="{{ url('/burtgel') }}" class="az-iconbar-logo"><img src="{{ asset('img/logo.png') }}" width="45px" /></a>
 </div>
 <div class="az-iconbar-aside az-iconbar-aside-primary">
 </div>
@@ -514,7 +514,7 @@
             try {
                 $.ajax({
                     type: 'POST',
-                    url: '/api/getSeriesList',
+                    url: vrsUrl('/api/getSeriesList'),
                     dataType: "text",
                     data: {id: ID},
                     success: function (data) {

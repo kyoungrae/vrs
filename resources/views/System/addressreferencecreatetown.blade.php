@@ -192,7 +192,7 @@
     function districtHTML(location, id, type, selected) {
         $.ajax({
             type: "POST",
-            url: '/api/location',
+            url: vrsUrl('/api/location'),
             data: {"location": location, "type": type, "selected": selected},
             success: function( response ) {
                 $("#"+id).html(response);

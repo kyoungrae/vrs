@@ -246,12 +246,12 @@
         $(".avtoteeverPreloader").fadeIn();
         $.ajax({
             type: "GET",
-            url: "/api/report/department/@if(ISSET($curr_dep)){{ $curr_dep }}@else{{ "none" }}@endif/@if(ISSET($startDate)){{ $startDate }}@else{{ "none" }}@endif/@if(ISSET($endDate)){{ $endDate }}@else{{ "none" }}@endif",
+            url: vrsUrl("/api/report/department/@if(ISSET($curr_dep)){{ $curr_dep }}@else{{ "none" }}@endif/@if(ISSET($startDate)){{ $startDate }}@else{{ "none" }}@endif/@if(ISSET($endDate)){{ $endDate }}@else{{ "none" }}@endif"),
             success: function (data) {
                 @if(ISSET($startDate))
                     $(".avtoteeverPreloader").fadeOut();
                 $(".containerBody").fadeIn();
-                window.location = "/api/report/department/@if(ISSET($curr_dep)){{ $curr_dep }}@else{{ "none" }}@endif/@if(ISSET($startDate)){{ $startDate }}@else{{ "none" }}@endif/@if(ISSET($endDate)){{ $endDate }}@else{{ "none" }}@endif";
+                window.location = vrsUrl("/api/report/department/@if(ISSET($curr_dep)){{ $curr_dep }}@else{{ "none" }}@endif/@if(ISSET($startDate)){{ $startDate }}@else{{ "none" }}@endif/@if(ISSET($endDate)){{ $endDate }}@else{{ "none" }}@endif");
                 @else
                     $(".avtoteeverPreloader").fadeOut();
                 $(".containerBody").fadeIn();

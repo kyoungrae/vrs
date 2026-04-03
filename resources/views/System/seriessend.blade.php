@@ -226,7 +226,7 @@
     function loadUsers(department, id, selected, type) {
         $.ajax({
             type: "POST",
-            url: '/api/depusers',
+            url: vrsUrl('/api/depusers'),
             data: {"department": department, "selected": selected},
             success: function( response ) {
                 $("#"+id).html(response);
@@ -242,7 +242,7 @@
     function loadSeries(department, id, selected) {
         $.ajax({
             type: "POST",
-            url: '/api/depseries',
+            url: vrsUrl('/api/depseries'),
             data: {"department": department, "selected": selected},
             success: function( response ) {
                 $("#"+id).html(response);

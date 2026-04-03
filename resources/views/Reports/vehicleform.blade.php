@@ -666,7 +666,7 @@
                 // alert(gaali);
                 $.ajax({
                     type: 'POST',
-                    url: '/api/gaali',
+                    url: vrsUrl('/api/gaali'),
                     dataType: "json",
                     data: {
                         param1: gaali,

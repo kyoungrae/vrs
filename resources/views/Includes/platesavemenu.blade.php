@@ -4,7 +4,7 @@
         @if(\App\Http\Controllers\BaseController::hasMenuShow("/plateSave", 1, \App\Http\Controllers\BaseController::enc(session()->get("auth")->userpositionid)))
             <div class="media">
                 <div class="media-icon bg-purple"><i class=" typcn typcn-news"></i></div>
-                <a href="/plateSave">
+                <a href="{{ url('/plateSave') }}">
                     <div class="media-body">
                         <h6>{{ \App\Helpers\TranslationHelper::translate('Хадгалсан дугаар') }}</h6>
                         <span>{{ \App\Helpers\TranslationHelper::translate('Хадгалсан дугаарын жагсаалт') }}</span>
@@ -15,7 +15,7 @@
         @if(\App\Http\Controllers\BaseController::hasMenuShow("/plateSave/indexSavePlateStore", 1, \App\Http\Controllers\BaseController::enc(session()->get("auth")->userpositionid)))
             <div class="media">
                 <div class="media-icon bg-success"><i class=" typcn typcn-download"></i></div>
-                <a href="/plateSave/indexSavePlateStore">
+                <a href="{{ url('/plateSave/indexSavePlateStore') }}">
                     <div class="media-body">
                         <h6>{{ \App\Helpers\TranslationHelper::translate('Номер хадгалах') }}</h6>
                         <span>{{ \App\Helpers\TranslationHelper::translate('Номер хадгалах үйлчигээ') }}</span>
@@ -26,7 +26,7 @@
         @if(\App\Http\Controllers\BaseController::hasMenuShow("/plateSave/edit", 1, \App\Http\Controllers\BaseController::enc(session()->get("auth")->userpositionid)))
             <div class="media">
                 <div class="media-icon bg-success"><i class=" typcn typcn-calendar"></i></div>
-                <a href="/plateSave/edit">
+                <a href="{{ url('/plateSave/edit') }}">
                     <div class="media-body">
                         <h6>{{ \App\Helpers\TranslationHelper::translate('Хадгалсан дугаар сунгах') }}</h6>
                         <span>{{ \App\Helpers\TranslationHelper::translate('Хадгалсан дугаар сунгах үйлчигээ') }}</span>
@@ -37,7 +37,7 @@
         {{-- @if(\App\Http\Controllers\BaseController::hasMenuShow("/series/create", 1, \App\Http\Controllers\BaseController::enc(session()->get("auth")->userpositionid)))
             <div class="media">
                 <div class="media-icon bg-primary"><i class="typcn typcn-news"></i></div>
-                <a href="/series/create">
+                <a href="{{ url('/series/create') }}">
                     <div class="media-body">
                         <h6>Дугаар захиалга</h6>
                         <span>Дугаар захиалгын дугаар хадгалах</span>
@@ -48,7 +48,7 @@
         @if(\App\Http\Controllers\BaseController::hasMenuShow("/series/open", 1, \App\Http\Controllers\BaseController::enc(session()->get("auth")->userpositionid)))
             <div class="media">
                 <div class="media-icon bg-warning"><i class="typcn typcn-document-add"></i></div>
-                <a href="/series/open">
+                <a href="{{ url('/series/open') }}">
                     <div class="media-body">
                         <h6>Үйлчигээ авсан</h6>
                         <span>Дугаар солих болон 말소 хийлгэсэн дугаар хадгалах</span>
@@ -60,7 +60,7 @@
         @if(\App\Http\Controllers\BaseController::hasMenuShow("/plateSave/plateNumberSaveOrder", 1, \App\Http\Controllers\BaseController::enc(session()->get("auth")->userpositionid)))
             <div class="media">
                 <div class="media-icon bg-purple"><i class="typcn typcn-upload"></i></div>
-                <a href="/plateSave/plateNumberSaveOrder">
+                <a href="{{ url('/plateSave/plateNumberSaveOrder') }}">
                     <div class="media-body">
                         <h6>{{ \App\Helpers\TranslationHelper::translate('Хадгалсан дугаар захиалах') }}</h6>
                         <span>{{ \App\Helpers\TranslationHelper::translate('Хадгалсан дугаар захиалах үйлчилгээ') }}</span>
@@ -71,7 +71,7 @@
         @if(\App\Http\Controllers\BaseController::hasMenuShow("/plateSave/plateNumberOrderList", 1, \App\Http\Controllers\BaseController::enc(session()->get("auth")->userpositionid)))
             <div class="media">
                 <div class="media-icon bg-success"><i class="typcn typcn-news"></i></div>
-                <a href="/plateSave/plateNumberOrderList">
+                <a href="{{ url('/plateSave/plateNumberOrderList') }}">
                     <div class="media-body">
                         <h6>주문된 번호 목록</h6>
                         <span>주문된 번호 목록</span>
@@ -82,7 +82,7 @@
         @if(\App\Http\Controllers\BaseController::hasMenuShow("/plateSavePay", 1, \App\Http\Controllers\BaseController::enc(session()->get("auth")->userpositionid)))
             <div class="media">
                 <div class="media-icon bg-purple"><i class="typcn typcn-news"></i></div>
-                <a href="/plateSavePay">
+                <a href="{{ url('/plateSavePay') }}">
                     <div class="media-body">
                         <h6>{{ \App\Helpers\TranslationHelper::translate('Дугаарын төлбөр шалгах') }}</h6>
                         <span>{{ \App\Helpers\TranslationHelper::translate('Дугаарын төлбөр жагсаалт') }}</span>

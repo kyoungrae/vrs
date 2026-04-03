@@ -375,7 +375,7 @@
             if(plate.length > 0 && type.length > 0){
                 $.ajax({
                     type: "POST",
-                    url: '/api/checkprintplate',
+                    url: vrsUrl('/api/checkprintplate'),
                     data: {"plate": plate, "type": type},
                     success: function( response ) {
                     

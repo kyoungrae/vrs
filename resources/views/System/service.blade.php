@@ -110,11 +110,11 @@
                                                 <td>{{ \App\Helpers\TranslationHelper::translate($service->serviceprefix) }}</td>
                                                 <td>{{ \App\Helpers\TranslationHelper::translate($service->fee) }}</td>
                                                 <td>
-                                                    <a href="/reference/service/edit/{{ \App\Http\Controllers\BaseController::enc($service->id) }}">
+                                                    <a href="{{ url('/reference/service/edit/' . \App\Http\Controllers\BaseController::enc($service->id)) }}">
                                                         <i class="typcn typcn-edit text-primary"></i>
                                                     </a>
                                                     <a style="cursor: pointer;" onclick="if(confirm('이 기록을 삭제하시겠습니까?')){
-                                                        window.location='/reference/service/delete/{{ \App\Http\Controllers\BaseController::enc($service->id) }}'
+                                                        window.location='{{ url('/reference/service/delete/' . \App\Http\Controllers\BaseController::enc($service->id)) }}'
                                                     } return false;">
                                                         <i class="typcn typcn-trash text-warning"></i>
                                                     </a>

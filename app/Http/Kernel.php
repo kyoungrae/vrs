@@ -32,6 +32,7 @@ class Kernel extends HttpKernel
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
         \App\Http\Middleware\TrustProxies::class,
+        \App\Http\Middleware\ForceLocalApplicationUrl::class,
         \Illuminate\Session\Middleware\StartSession::class, // <-- Remove this
     ];
 
@@ -44,7 +45,7 @@ class Kernel extends HttpKernel
         'web' => [
             \App\Http\Middleware\EncryptCookies::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
-//            \Illuminate\Session\Middleware\StartSession::class,
+            //            \Illuminate\Session\Middleware\StartSession::class,
             // DB 없이 로컬 데모 시 기존 로그인 세션 복원 단계에서 Oracle 대기로 멈출 수 있어 비활성화.
             // 필요 시 Oracle 연결 환경에서 다시 활성화 가능.
             // \Illuminate\Session\Middleware\AuthenticateSession::class,

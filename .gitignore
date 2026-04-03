@@ -11,6 +11,10 @@
 /vendor/
 /node_modules/
 
+# Docker/배포용 대용량 아카이브 — 저장소에 두면 diff·커밋 UI가 멈춤
+*.tar
+*.tar.gz
+
 # Build / runtime artifacts
 /storage/logs/*
 /storage/framework/cache/*
@@ -26,3 +30,4 @@ tmp/
 *.swp
 *.swn
 *~
+*.tar

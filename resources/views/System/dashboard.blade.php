@@ -220,7 +220,7 @@
 
     $.ajax({
             type: 'POST',
-            url: '/api/getRequestList',
+            url: vrsUrl('/api/getRequestList'),
             dataType: "json",
             data: {
                // param1: "param",

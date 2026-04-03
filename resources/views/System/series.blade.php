@@ -56,7 +56,7 @@
                                             <td>{{ \App\Helpers\TranslationHelper::translate($series->is_old) }}</td>
                                             <td>{{ \App\Helpers\TranslationHelper::translate($series->is_check) }}</td>
                                             <td>
-                                                <a href="/series/edit/{{ \App\Http\Controllers\BaseController::enc($series->id) }}">
+                                                <a href="{{ url('/series/edit/' . \App\Http\Controllers\BaseController::enc($series->id)) }}">
                                                     <i class="typcn typcn-edit text-primary"></i>
                                                 </a>
                                             </td>

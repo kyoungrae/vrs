@@ -195,11 +195,11 @@
                                                     <td>{{ \App\Helpers\TranslationHelper::translate($department->province_name) }}</td>
                                                     <td>{{ \App\Helpers\TranslationHelper::translate($department->name) }}</td>
                                                     <td>
-                                                        <a href="/reference/department/edit/{{ \App\Http\Controllers\BaseController::enc($department->id) }}">
+                                                        <a href="{{ url('/reference/department/edit/' . \App\Http\Controllers\BaseController::enc($department->id)) }}">
                                                             <i class="typcn typcn-edit text-primary"></i>
                                                         </a>
                                                         <a style="cursor: pointer;" onclick="if(confirm('이 기록을 삭제하시겠습니까?')){
-                                                                window.location='/reference/department/delete/{{ \App\Http\Controllers\BaseController::enc($department->id) }}'
+                                                                window.location='{{ url('/reference/department/delete/' . \App\Http\Controllers\BaseController::enc($department->id)) }}'
                                                                 } return false;">
                                                             <i class="typcn typcn-trash text-warning"></i>
                                                         </a>

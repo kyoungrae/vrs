@@ -132,7 +132,7 @@
                                                         @endif
                                                     </td>
                                                     <td>
-                                                        <a href="/send/issue/{{ \App\Http\Controllers\BaseController::enc($issue->id) }}">
+                                                        <a href="{{ url('/send/issue/' . \App\Http\Controllers\BaseController::enc($issue->id)) }}">
                                                             <i class="typcn typcn-edit text-primary"></i>
                                                         </a>
                                                     </td>

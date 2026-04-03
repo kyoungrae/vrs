@@ -15,8 +15,8 @@ Route::get('/test', 'TestController@index');
 /*Нүүр хуудас харуулах*/
 
 Route::get('/home', function () {
-    return redirect('/dashboard');
-});
+    return redirect()->route('dashboard');
+})->name('home');
 
 Route::get('/', 'Frontend\IndexController@index');
 

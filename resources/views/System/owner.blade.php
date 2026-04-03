@@ -28,7 +28,7 @@
                                     소유자 목록
                                 </div>
                                 <div id="headerButton" class="col-lg-5 col-md-6 col-sm-12 rightAlign">
-                                    <a href="/reference/createowner"><span id="btnPrint" class="headerButton"><i class="icon ion-ios-paper headerButtonIcon"></i> 신규 소유자</span></a>
+                                    <a href="{{ url('/reference/createowner') }}"><span id="btnPrint" class="headerButton"><i class="icon ion-ios-paper headerButtonIcon"></i> 신규 소유자</span></a>
                                 </div>
                             </div>
                             <div class="row row-sm">
@@ -105,7 +105,7 @@
                                                     <td>{{ $owner->first_name }}</td>
                                                     <td>{{ $owner->phone_no }}</td>
                                                     <td>
-                                                        <a href="/reference/createowner/edit/{{ \App\Http\Controllers\BaseController::enc($owner->id) }}">
+                                                        <a href="{{ url('/reference/createowner/edit/' . \App\Http\Controllers\BaseController::enc($owner->id)) }}">
                                                             <i class="typcn typcn-edit text-primary"></i>
                                                         </a>
                                                         {{--<a style="cursor: pointer;" onclick="if(confirm('이 레코드를 삭제하시겠습니까?')){--}}
@@ -306,7 +306,7 @@
         function districtHTML(location, id, type, selected) {
             $.ajax({
                 type: "POST",
-                url: '/api/location',
+                url: vrsUrl('/api/location'),
                 data: {"location": location, "type": type, "selected": selected},
                 success: function( response ) {
                     $("#"+id).html(response);

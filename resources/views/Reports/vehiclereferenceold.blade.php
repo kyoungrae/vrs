@@ -279,10 +279,10 @@
         $(".avtoteeverPreloader").fadeIn();
         $.ajax({
             type: "GET",
-            url: "/api/report/exportToExcelVehicleRefOld/"+register+"/"+lastName+"/"+firstName,
+            url: vrsUrl('/api/report/exportToExcelVehicleRefOld/')+register+"/"+lastName+"/"+firstName,
             success: function (data) {
                 if(register != "none" || lastName != "none" || firstName != "none"){
-                    window.location = "/api/report/exportToExcelVehicleRefOld/"+register+"/"+lastName+"/"+firstName;
+                    window.location = "{{ url('/api/report/exportToExcelVehicleRefOld/') }}"+register+"/"+lastName+"/"+firstName;
                     $(".avtoteeverPreloader").fadeOut();
                     $(".containerBody").fadeIn();
                 } else{
@@ -467,7 +467,7 @@
             $(".avtoteeverPreloader").fadeIn();
             $.ajax({
                 type: 'POST',
-                url: '/api/reference/log',
+                url: vrsUrl('/api/reference/log'),
                 data: {RefType: RefType, TypeId: TypeId, Register: Register, RequestType: RequestType, RequestText: RequestText, DocNumber: Number, VehicleCount: VehicleCount, Description: Description, CreatedBy: CreatedBy, CreatedDate: CreatedDate},
                 success: function (data) {
                     if(data == "1"){

@@ -214,7 +214,7 @@
           // alert(plate);
            $.ajax({
                type: 'post',
-               url: '/api/plateSaveVehicleSearch',
+               url: vrsUrl('/api/plateSaveVehicleSearch'),
                dataType: "json",
                data: {
                    param1: plate,

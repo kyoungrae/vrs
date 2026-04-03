@@ -565,13 +565,13 @@ $(".avtoteeverPreloader").fadeOut();
        
         $.ajax({
             type: "GET",
-            url: "/api/report/allPlateFactory/@if(ISSET($startDate)){{ $startDate }}@else{{ "none" }}@endif/@if(ISSET($endDate)){{ $endDate }}@else{{ "none" }}@endif",
+            url: vrsUrl("/api/report/allPlateFactory/@if(ISSET($startDate)){{ $startDate }}@else{{ "none" }}@endif/@if(ISSET($endDate)){{ $endDate }}@else{{ "none" }}@endif"),
             success: function (data) {
                 console.log(data);
                 @if(ISSET($startDate))
                     $(".avtoteeverPreloader").fadeOut();
                     $(".containerBody").fadeIn();
-                    window.location = "/api/report/allPlateFactory/@if(ISSET($startDate)){{ $startDate }}@else{{ "none" }}@endif/@if(ISSET($endDate)){{ $endDate }}@else{{ "none" }}@endif";
+                    window.location = vrsUrl("/api/report/allPlateFactory/@if(ISSET($startDate)){{ $startDate }}@else{{ "none" }}@endif/@if(ISSET($endDate)){{ $endDate }}@else{{ "none" }}@endif");
                 @else
                     $(".avtoteeverPreloader").fadeOut();
                     $(".containerBody").fadeIn();

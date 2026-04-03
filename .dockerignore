@@ -9,3 +9,4 @@ bootstrap/cache/*
 *.md
 .env
 .env.*
+!.env.production

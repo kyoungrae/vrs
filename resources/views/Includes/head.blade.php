@@ -1,5 +1,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{{-- 서브경로 배포(예: /vrs/) 대비: JS에서 vrsUrl('/api/...') 사용 --}}
+<script>window.VRS_BASE = @json(rtrim(url('/'), '/'));</script>
 @if (! config('app.skip_external_fonts', false))
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

@@ -371,12 +371,12 @@
         $(".avtoteeverPreloader").fadeIn();
         $.ajax({
             type: "GET",
-            url: "/api/report/total/province/@if(ISSET($start)){{ $start }}@else{{ "none" }}@endif/@if(ISSET($end)){{ $end }}@else{{ "none" }}@endif",
+            url: vrsUrl("/api/report/total/province/@if(ISSET($start)){{ $start }}@else{{ "none" }}@endif/@if(ISSET($end)){{ $end }}@else{{ "none" }}@endif"),
             success: function (data) {
                 $(".avtoteeverPreloader").fadeOut();
                 $(".containerBody").fadeIn();
                 @if(ISSET($start))
-                    window.location = "/api/report/total/province/@if(ISSET($start)){{ $start }}@else{{ "none" }}@endif/@if(ISSET($end)){{ $end }}@else{{ "none" }}@endif";
+                    window.location = vrsUrl("/api/report/total/province/@if(ISSET($start)){{ $start }}@else{{ "none" }}@endif/@if(ISSET($end)){{ $end }}@else{{ "none" }}@endif");
                 @else
                     alert("보고서 эхлэх огноо, хот/аймаг сонгоно уу!");
                 @endif

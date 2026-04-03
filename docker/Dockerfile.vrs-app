@@ -1,0 +1,44 @@
+# VRS app image (Laravel 5.5 + PHP 7.4 + OCI8)
+# Build (Mac): docker build --platform linux/amd64 -f docker/Dockerfile.vrs-app -t vrs-app .
+
+FROM --platform=linux/amd64 vrs-php74-oci8:latest
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    git \
+    libfreetype6-dev \
+    libjpeg62-turbo-dev \
+    libpng-dev \
+    libxml2-dev \
+    libonig-dev \
+    unzip \
+    libzip-dev \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install -j$(nproc) \
+        gd \
+        mbstring \
+        tokenizer \
+        xml \
+        zip \
+    && curl -sS https://getcomposer.org/installer | php -- --1 --install-dir=/usr/local/bin --filename=composer \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /var/www/html
+
+RUN mkdir -p database/seeds database/factories
+
+RUN mkdir -p app/Helpers
+
+COPY app/Helpers/TranslationHelper.php app/Helpers/TranslationHelper.php
+
+COPY composer.json composer.lock* ./
+RUN composer install --no-interaction --no-dev --optimize-autoloader --no-scripts
+
+COPY . .
+COPY .env.production .env
+
+RUN composer dump-autoload --optimize \
+    && php artisan package:discover
+
+EXPOSE 8000
+
+CMD ["sh", "-c", "php artisan serve --host=0.0.0.0 --port=8000"]

@@ -211,12 +211,12 @@
         $(".avtoteeverPreloader").fadeIn();
         $.ajax({
             type: "GET",
-            url: "/api/report/vehicleremove/@if(ISSET($startDate)){{ $startDate }}@else{{ "none" }}@endif/@if(ISSET($endDate)){{ $endDate }}@else{{ "none" }}@endif",
+            url: vrsUrl("/api/report/vehicleremove/@if(ISSET($startDate)){{ $startDate }}@else{{ "none" }}@endif/@if(ISSET($endDate)){{ $endDate }}@else{{ "none" }}@endif"),
             success: function (data) {
                 @if(ISSET($startDate))
                     $(".avtoteeverPreloader").fadeOut();
                 $(".containerBody").fadeIn();
-                window.location = "/api/report/vehicleremove/@if(ISSET($startDate)){{ $startDate }}@else{{ "none" }}@endif/@if(ISSET($endDate)){{ $endDate }}@else{{ "none" }}@endif";
+                window.location = vrsUrl("/api/report/vehicleremove/@if(ISSET($startDate)){{ $startDate }}@else{{ "none" }}@endif/@if(ISSET($endDate)){{ $endDate }}@else{{ "none" }}@endif");
                 @else
                     $(".avtoteeverPreloader").fadeOut();
                 $(".containerBody").fadeIn();

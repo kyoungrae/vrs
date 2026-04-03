@@ -89,11 +89,11 @@
                                                 <tr>
                                                     <td>{{ \App\Helpers\TranslationHelper::translate($row->name ?? $row->NAME ?? "") }}</td>
                                                     <td>
-                                                        <a href="/reference/position/edit/{{ \App\Http\Controllers\BaseController::enc($row->id) }}">
+                                                        <a href="{{ url('/reference/position/edit/' . \App\Http\Controllers\BaseController::enc($row->id)) }}">
                                                             <i class="typcn typcn-edit text-primary"></i>
                                                         </a>
                                                         <a style="cursor: pointer;" onclick="if(confirm('이 기록을 삭제하시겠습니까?')){
-                                                                window.location='/reference/position/delete/{{ \App\Http\Controllers\BaseController::enc($row->id) }}'
+                                                                window.location='{{ url('/reference/position/delete/' . \App\Http\Controllers\BaseController::enc($row->id)) }}'
                                                                 } return false;">
                                                             <i class="typcn typcn-trash text-warning"></i>
                                                         </a>

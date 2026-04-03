@@ -612,7 +612,7 @@ $(".avtoteeverPreloader").fadeOut();
         $(".avtoteeverPreloader").fadeIn();
         $.ajax({
             type: "GET",
-            url: "/api/report/exportToExcelFlateColor/@if(ISSET($plateColor)){{$plateColor}}@else{{"none"}}@endif/@if(ISSET($startDate)){{ $startDate }}@else{{ "none" }}@endif/@if(ISSET($endDate)){{ $endDate }}@else{{ "none" }}@endif",
+            url: vrsUrl("/api/report/exportToExcelFlateColor/@if(ISSET($plateColor)){{$plateColor}}@else{{"none"}}@endif/@if(ISSET($startDate)){{ $startDate }}@else{{ "none" }}@endif/@if(ISSET($endDate)){{ $endDate }}@else{{ "none" }}@endif"),
             success: function (data) {
               
               
@@ -620,7 +620,7 @@ $(".avtoteeverPreloader").fadeOut();
                 @if(ISSET($startDate))
                     $(".avtoteeverPreloader").fadeOut();
                     $(".containerBody").fadeIn();
-                    window.location = "/api/report/exportToExcelFlateColor/@if(ISSET($plateColor)){{$plateColor}}@else{{"none"}}@endif/@if(ISSET($startDate)){{ $startDate }}@else{{ "none" }}@endif/@if(ISSET($endDate)){{ $endDate }}@else{{ "none" }}@endif";
+                    window.location = vrsUrl("/api/report/exportToExcelFlateColor/@if(ISSET($plateColor)){{$plateColor}}@else{{"none"}}@endif/@if(ISSET($startDate)){{ $startDate }}@else{{ "none" }}@endif/@if(ISSET($endDate)){{ $endDate }}@else{{ "none" }}@endif");
                 @else
                     $(".avtoteeverPreloader").fadeOut();
                     $(".containerBody").fadeIn();

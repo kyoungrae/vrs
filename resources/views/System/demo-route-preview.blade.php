@@ -36,11 +36,11 @@
     </div>
 
     <div class="demo-actions" style="margin-top: 16px;">
-        <a class="btn btn-az-primary" href="/dashboard">대시보드</a>
+        <a class="btn btn-az-primary" href="{{ url('/dashboard') }}">대시보드</a>
         <a class="btn btn-outline-secondary" href="{{ ($requestedUrl ?? url('/')) . (strpos(($requestedUrl ?? ''), '?') !== false ? '&' : '?') . 'demo=off' }}">
             실제 페이지 열기 (demo=off)
         </a>
-        <a class="btn btn-outline-danger" href="/logout">로그아웃</a>
+        <a class="btn btn-outline-danger" href="{{ url('/logout') }}">로그아웃</a>
     </div>
 </div>
 @endsection

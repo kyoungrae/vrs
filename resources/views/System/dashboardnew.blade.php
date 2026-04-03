@@ -12,7 +12,7 @@
 <body class="az-body az-body-sidebar flexcroll">
 <div class="az-sidebar" style=" background: #f8f8f8; ">
     <div class="az-sidebar-header">
-        <a href="/dashboard" class="az-logo"><img src="{{ asset('img/logo.png') }}" width="45px" /></a>
+        <a href="{{ url('/dashboard') }}" class="az-logo"><img src="{{ asset('img/logo.png') }}" width="45px" /></a>
     </div><!-- az-sidebar-header -->
     <div class="az-sidebar-body">
         <ul class="nav">
@@ -20,39 +20,39 @@
             <li class="nav-item">
                 <a href="" class="nav-link with-sub"><i class="typcn typcn-user"></i>사용자</a>
                 <nav class="nav-sub">
-                    <a href="/user" class="nav-link">사용자 등록</a>
-                    <a href="/userlist" class="nav-link">사용자 목록</a>
+                    <a href="{{ url('/user') }}" class="nav-link">사용자 등록</a>
+                    <a href="{{ url('/userlist') }}" class="nav-link">사용자 목록</a>
                 </nav>
             </li><!-- nav-item -->
             <li class="nav-item">
-                <a href="/vehicle" class="nav-link"><i class="ion-ios-car"></i>차량</a>
+                <a href="{{ url('/vehicle') }}" class="nav-link"><i class="ion-ios-car"></i>차량</a>
             </li><!-- nav-item -->
             <li class="nav-item">
-                <a href="/search" class="nav-link"><i class="typcn typcn-filter"></i>검색</a>
+                <a href="{{ url('/search') }}" class="nav-link"><i class="typcn typcn-filter"></i>검색</a>
             </li><!-- nav-item -->
             <li class="nav-item">
                 <a href="" class="nav-link with-sub"><i class="typcn typcn-book"></i>참조</a>
                 <nav class="nav-sub">
-                    <a href="/reference/service" class="nav-link">서비스</a>
-                    <a href="/reference/position" class="nav-link">직위</a>
-                    <a href="/reference/address" class="nav-link">주소 참조</a>
-                    <a href="/reference/factorycountry" class="nav-link">제조국</a>
-                    <a href="/reference/owner" class="nav-link">소유자 참조</a>
-                    <a href="/reference/series" class="nav-link">시리즈 참조</a>
+                    <a href="{{ url('/reference/service') }}" class="nav-link">서비스</a>
+                    <a href="{{ url('/reference/position') }}" class="nav-link">직위</a>
+                    <a href="{{ url('/reference/address') }}" class="nav-link">주소 참조</a>
+                    <a href="{{ url('/reference/factorycountry') }}" class="nav-link">제조국</a>
+                    <a href="{{ url('/reference/owner') }}" class="nav-link">소유자 참조</a>
+                    <a href="{{ url('/reference/series') }}" class="nav-link">시리즈 참조</a>
                 </nav>
             </li><!-- nav-item -->
             <li class="nav-item">
                 <a href="" class="nav-link with-sub"><i class="typcn typcn-chart-area-outline"></i>보고서</a>
                 <nav class="nav-sub">
-                    <a href="/report/vehicle/total" class="nav-link">전체 차량</a>
-                    <a href="/report/vehicle/archive" class="nav-link">색인</a>
+                    <a href="{{ url('/report/vehicle/total') }}" class="nav-link">전체 차량</a>
+                    <a href="{{ url('/report/vehicle/archive') }}" class="nav-link">색인</a>
                 </nav>
             </li><!-- nav-item -->
             <li class="nav-item">
                 <a href="" class="nav-link with-sub"><i class="typcn typcn-cog-outline"></i>시스템 참조</a>
                 <nav class="nav-sub">
-                    <a href="/settings/department" class="nav-link">부서</a>
-                    <a href="/settings/archive" class="nav-link">아카이브 지점</a>
+                    <a href="{{ url('/settings/department') }}" class="nav-link">부서</a>
+                    <a href="{{ url('/settings/archive') }}" class="nav-link">아카이브 지점</a>
                 </nav>
             </li><!-- nav-item -->
             <li class="nav-item">
@@ -152,11 +152,11 @@
                                         <td>{{ $user->position }}</td>
                                         <td>{{ $user->isactive == 1 ? "활성" : "비활성" }}</td>
                                         <td>
-                                            <a href="/user/edit/{{ \App\Http\Controllers\BaseController::enc($user->id) }}">
+                                            <a href="{{ url('/user/edit/' . \App\Http\Controllers\BaseController::enc($user->id)) }}">
                                                 <i class="typcn typcn-edit text-primary"></i>
                                             </a>
                                             <a style="cursor: pointer;" onclick="if(confirm('이 레코드를 삭제하시겠습니까?')){
-                                                    window.location='/user/delete/{{ \App\Http\Controllers\BaseController::enc($user->id) }}'
+                                                    window.location='{{ url('/user/delete/' . \App\Http\Controllers\BaseController::enc($user->id)) }}'
                                                     } return false;">
                                                 <i class="typcn typcn-trash text-warning"></i>
                                             </a>

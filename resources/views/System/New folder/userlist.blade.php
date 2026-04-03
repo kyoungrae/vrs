@@ -26,7 +26,7 @@
                                     {{ \App\Helpers\TranslationHelper::translate("ХЭРЭГЛЭГЧДИЙН ЖАГСААЛТ") }}
                                 </div>
                                 <div id="headerButton" class="col-lg-5 col-md-6 col-sm-12 rightAlign">
-                                    <a href="/user"><span id="btnPrint" class="headerButton"><i class="icon ion-ios-paper headerButtonIcon"></i> 신규사용자</span></a>
+                                    <a href="{{ url('/user') }}"><span id="btnPrint" class="headerButton"><i class="icon ion-ios-paper headerButtonIcon"></i> 신규사용자</span></a>
                                 </div>
                             </div>
                         </h6>
@@ -63,11 +63,11 @@
                                                     <td>{{ \App\Helpers\TranslationHelper::translate($user->isactive == 1 ? "ИДЭВХТЭЙ" : "ИДЭВХГҮЙ") }}</td>
                                                     <td>{{ $user->isatvt == 1 ? "ATUT" : ($user->iscity == 1 ? \App\Helpers\TranslationHelper::translate("Нийслэл") : "기타") }}</td>
                                                     <td>
-                                                        <a href="/user/edit/{{ \App\Http\Controllers\BaseController::enc($user->id) }}">
+                                                        <a href="{{ url('/user/edit/' . \App\Http\Controllers\BaseController::enc($user->id)) }}">
                                                             <i class="typcn typcn-edit text-primary"></i>
                                                         </a>
                                                         <a style="cursor: pointer;" onclick="if(confirm('이 레코드를 삭제하시겠습니까?')){
-                                                                window.location='/user/delete/{{ \App\Http\Controllers\BaseController::enc($user->id) }}'
+                                                                window.location='{{ url('/user/delete/' . \App\Http\Controllers\BaseController::enc($user->id)) }}'
                                                                 } return false;">
                                                             <i class="typcn typcn-trash text-warning"></i>
                                                         </a>

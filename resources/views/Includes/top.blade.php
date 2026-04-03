@@ -140,14 +140,14 @@
                 </h6>
                 <span style="text-align: center;">{{ $positionLabel }}</span>
             </div>
-            <a href="/user/password" class="dropdown-item"><i class="typcn typcn-edit"></i> 비밀번호 변경</a>
+            <a href="{{ url('/user/password') }}" class="dropdown-item"><i class="typcn typcn-edit"></i> 비밀번호 변경</a>
             @if ($authProvinceId != 22 || $authPosition =="부서장" || 
             $authPosition =="담당자" || $authPosition =="DK 수석" || $authPosition =="수도 등록 담당자" || $authPosition =="수도 아카이브 담당자" || $authPosition =="수도 수석 등록 담당자" || $authPosition == "센터장")
-                <a href="/user/mynumbers" class="dropdown-item"><i class="typcn typcn-book"></i> 전송한 번호</a>
+                <a href="{{ url('/user/mynumbers') }}" class="dropdown-item"><i class="typcn typcn-book"></i> 전송한 번호</a>
             @endif
             <a href="#document" class="dropdown-item" data-toggle="modal" data-effect="effect-scale"><i
                     class="far fa-question-circle"></i>사용 안내 </a>
-            <a href="/logout" class="dropdown-item"><i class="typcn typcn-power-outline"></i> 로그아웃</a>
+            <a href="{{ url('/logout') }}" class="dropdown-item"><i class="typcn typcn-power-outline"></i> 로그아웃</a>
         </div>
     </div>
 </div>
@@ -163,7 +163,7 @@
 
         $.ajax({
             type: 'POST',
-            url: '/api/getRequestList',
+            url: vrsUrl('/api/getRequestList'),
             dataType: "json",
             data: { 
                 // param1: "param",
@@ -700,7 +700,7 @@
                                                 .plate_no);
                                         }
                                        
-                                            // window.location.href = "/vehicle";
+                                            // window.location.href = "{{ url('/vehicle') }}";
                                             // return false;
                                             let requestData = { new_owner:dataList.new_owner_regnum , service_code: dataList.service_code,approveCode:dataList.request_code,signed_data:"data" };
                                     	

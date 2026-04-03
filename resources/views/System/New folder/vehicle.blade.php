@@ -185,7 +185,7 @@
 
                             @if(session()->get("auth")->isatvt == 1 || session()->get("auth")->iscity == 1 )
                                 <div id="headerButton" class="col-lg-6 col-md-6 col-sm-12 rightAlign">
-                                    <a href="/report/form" target="_blank">
+                                    <a href="{{ url('/report/form') }}" target="_blank">
                                         <span class="headerButton"><i class="icon ion-ios-list-box headerButtonIcon"></i> 서식</span>
                                     </a>
                                     <a href="#printModal" data-toggle="modal" data-effect="effect-scale">
@@ -3039,7 +3039,7 @@ if (hasNYearsPassed(is_build) && total_weight < 3500 && (purposeCheck == 1 || pu
    
         $(document).keydown(function(event) {
             if (event.keyCode == 27) {
-                window.location.href = "/vehicle";
+                window.location.href = "{{ url('/vehicle') }}";
                 return false;
             }
         });
@@ -3054,7 +3054,7 @@ if (hasNYearsPassed(is_build) && total_weight < 3500 && (purposeCheck == 1 || pu
             }
 
             if (event.keyCode == 27) {
-                window.location.href = "/vehicle";
+                window.location.href = "{{ url('/vehicle') }}";
                 return false;
             }
         });
@@ -3085,7 +3085,7 @@ if (hasNYearsPassed(is_build) && total_weight < 3500 && (purposeCheck == 1 || pu
             }
 
             if (event.keyCode == 27) {
-                window.location.href = "/vehicle";
+                window.location.href = "{{ url('/vehicle') }}";
                 return false;
             }
         });
@@ -3196,7 +3196,7 @@ if (hasNYearsPassed(is_build) && total_weight < 3500 && (purposeCheck == 1 || pu
             var printerID = this.value;
             $.ajax({
                 type: 'POST',
-                url: '/api/getPrinterConfig',
+                url: vrsUrl('/api/getPrinterConfig'),
                 dataType: "json",
                 data: {printerID: printerID},
                 success: function (data) {
@@ -3219,7 +3219,7 @@ if (hasNYearsPassed(is_build) && total_weight < 3500 && (purposeCheck == 1 || pu
             var printerID = this.value;
             $.ajax({
                 type: 'POST',
-                url: '/api/getPrinterConfig',
+                url: vrsUrl('/api/getPrinterConfig'),
                 dataType: "json",
                 data: {printerID: printerID},
                 success: function (data) {
@@ -3246,7 +3246,7 @@ if (hasNYearsPassed(is_build) && total_weight < 3500 && (purposeCheck == 1 || pu
             try {
                 $.ajax({
                     type: 'POST',
-                    url: '/api/savePrinterConfig',
+                    url: vrsUrl('/api/savePrinterConfig'),
                     dataType: "text",
                     data: {id: printerDevice,x: printerX,y: printerY,line: printerLine,text: printerText},
                     success: function (data) {
@@ -3272,7 +3272,7 @@ if (hasNYearsPassed(is_build) && total_weight < 3500 && (purposeCheck == 1 || pu
             try {
                 $.ajax({
                     type: 'POST',
-                    url: '/api/savePrinterConfig',
+                    url: vrsUrl('/api/savePrinterConfig'),
                     dataType: "text",
                     data: {id: printerDevice2,x: printerX2,y: printerY2,line: printerLine2,text: printerText2},
                     success: function (data) {
@@ -3389,7 +3389,7 @@ if (hasNYearsPassed(is_build) && total_weight < 3500 && (purposeCheck == 1 || pu
     function getVehicleInfo(type, plate) {
         $.ajax({
             type: "POST",
-            url: '/api/rest_vehicle_info_data_test',
+            url: vrsUrl('/api/rest_vehicle_info_data_test'),
             data: {"plate": plate},
             success: function( response ) {
                 if(response == "false"){
@@ -3428,7 +3428,7 @@ if (hasNYearsPassed(is_build) && total_weight < 3500 && (purposeCheck == 1 || pu
    
             $.ajax({
                 type: 'post',
-                url: '/api/transaction',
+                url: vrsUrl('/api/transaction'),
                 dataType: "json",
                 data: {
                     param1: vehId,
@@ -3609,7 +3609,7 @@ if (hasNYearsPassed(is_build) && total_weight < 3500 && (purposeCheck == 1 || pu
         $(".avtoteeverPreloader").fadeIn();
         $.ajax({
             type: 'POST',
-            url: '/api/gaali',
+            url: vrsUrl('/api/gaali'),
             dataType: "json",
             data: {
                 param1: param,
@@ -3761,7 +3761,7 @@ if (hasNYearsPassed(is_build) && total_weight < 3500 && (purposeCheck == 1 || pu
 
         $.ajax({
             type: 'GET',
-            url: '/api/wayPayLogin',
+            url: vrsUrl('/api/wayPayLogin'),
             dataType: "json",
             // data: {
             //     param1: param,
@@ -3798,7 +3798,7 @@ var plateNo=param;
         $(".avtoteeverPreloader").fadeIn();
         $.ajax({
             type: 'POST',
-            url: '/api/wayPay',
+            url: vrsUrl('/api/wayPay'),
             dataType: "json",
             data: {
                 param1: plate_no,
@@ -3852,7 +3852,7 @@ var plateNo=param;
        const today = '{{ Carbon\Carbon::now()->format("Y-m-d H:i:s")}}';
         $.ajax({
             type: 'POST',
-            url: '/api/penalty',
+            url: vrsUrl('/api/penalty'),
             dataType: "json",
             data: {
                 param1: param,
@@ -3990,7 +3990,7 @@ var html = '<tr>' +
         try {
             $.ajax({
                 type: 'post',
-                url: '/api/tax',
+                url: vrsUrl('/api/tax'),
                 dataType: "json",
                 data: {
                     param1: param,
@@ -4052,7 +4052,7 @@ var html = '<tr>' +
         try {
             $.ajax({
                 type: 'post',
-                url: '/api/serviceNTRLogin',
+                url: vrsUrl('/api/serviceNTRLogin'),
                 dataType: "json",
                 data: {
                   
@@ -4114,7 +4114,7 @@ var html = '<tr>' +
         try {
             $.ajax({
                 type: 'post',
-                url: '/api/ntrLogin3',
+                url: vrsUrl('/api/ntrLogin3'),
                 dataType: "json",
                 data: {
                     param1: param1,
@@ -4153,7 +4153,7 @@ var html = '<tr>' +
         try {
             $.ajax({
                 type: 'post',
-                url: '/api/NtrRestWS',
+                url: vrsUrl('/api/NtrRestWS'),
                 dataType: "json",
                 data: {
                     param1: param1,
@@ -4345,7 +4345,7 @@ var html = '<tr>' +
             $("#importdate").attr("readonly", true);
             $("#main_form").attr('action', '{{ route("vehicle") }}');
         } else {
-            window.location.href = "/vehicle";
+            window.location.href = "{{ url('/vehicle') }}";
             return false;
         }
     }
@@ -4819,7 +4819,7 @@ function checkPayData() {
                 $( "#fingerOtherImage" ).text( "지문 정보를 확인하는 중..." );
                 $.ajax({
                     type: 'POST',
-                    url: '/api/fingerInfoImage',
+                    url: vrsUrl('/api/fingerInfoImage'),
                     dataType: "text",
                     crossDomain : true,
                     data: {
@@ -4900,7 +4900,7 @@ function checkPayData() {
                 $( "#fingerInfo" ).text( "지문 정보를 확인하는 중..." );
                 $.ajax({
                     type: 'POST',
-                    url: '/api/fingerInfoImage',
+                    url: vrsUrl('/api/fingerInfoImage'),
                     dataType: "text",
                     crossDomain : true,
                     data: {
@@ -5275,7 +5275,7 @@ function transactionCheck(vehId,serviceType,payCheck) {
         try {
             $.ajax({
                 type: 'post',
-                url: '/api/transaction',
+                url: vrsUrl('/api/transaction'),
                 dataType: "json",
                 data: {
                     param1: vehId,
@@ -5621,7 +5621,7 @@ document.getElementById("payAmount").value =newArray[1];
         $(".avtoteeverPreloader").fadeIn();
         $.ajax({
             type: 'POST',
-            url: '/api/history/ownertwo',
+            url: vrsUrl('/api/history/ownertwo'),
             data: {owner1: owner},
             timeout: 60000,
             error: function (data) {
@@ -5655,7 +5655,7 @@ document.getElementById("payAmount").value =newArray[1];
         $(".avtoteeverPreloader").fadeIn();
         $.ajax({
             type: 'POST',
-            url: '/api/history/vehiclelimit',
+            url: vrsUrl('/api/history/vehiclelimit'),
             data: {vid: vehicle},
             timeout: 60000,
             error: function (data) {
@@ -5689,7 +5689,7 @@ document.getElementById("payAmount").value =newArray[1];
         $(".avtoteeverPreloader").fadeIn();
         $.ajax({
             type: 'POST',
-            url: '/api/history/vehicleanothers',
+            url: vrsUrl('/api/history/vehicleanothers'),
             data: {vid: vehicle},
             timeout: 60000,
             error: function (data) {
@@ -5723,7 +5723,7 @@ document.getElementById("payAmount").value =newArray[1];
         try {
             $.ajax({
                 type: 'POST',
-                url: '/api/history/vehiclearchive',
+                url: vrsUrl('/api/history/vehiclearchive'),
                 data: {vid: vehicle},
                 timeout: 60000,
                 error: function (data) {
@@ -5756,7 +5756,7 @@ document.getElementById("payAmount").value =newArray[1];
         $(".avtoteeverPreloader").fadeIn();
         $.ajax({
             type: 'POST',
-            url: '/api/history/vehicleowners',
+            url: vrsUrl('/api/history/vehicleowners'),
             data: {vid: vehicle},
             timeout: 60000,
             error: function (data) {
@@ -5786,7 +5786,7 @@ document.getElementById("payAmount").value =newArray[1];
         $(".avtoteeverPreloader").fadeIn();
         $.ajax({
             type: 'POST',
-            url: '/api/history/vehicleowners1',
+            url: vrsUrl('/api/history/vehicleowners1'),
             data: {vid: vehicle},
             timeout: 60000,
             error: function (data) {
@@ -5823,7 +5823,7 @@ document.getElementById("payAmount").value =newArray[1];
         document.cookie = "printerdevice=" + printer;
         $.ajax({
             type: 'POST',
-            url: '/api/createPrintCertificate',
+            url: vrsUrl('/api/createPrintCertificate'),
             data: {id: id,no: no,vehicle: vehicle,plate: plate},
             timeout: 60000,
             error: function (data) {
@@ -5855,7 +5855,7 @@ document.getElementById("payAmount").value =newArray[1];
 
     // $('#number_id').combogrid({
     //     panelWidth: 700,
-    //     url: '/api/numberlist',
+    //     url: vrsUrl('/api/numberlist'),
     //     queryParams: {
     //         number: $("#number_id").val()
     //     },

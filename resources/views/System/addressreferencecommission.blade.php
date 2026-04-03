@@ -29,7 +29,7 @@
                                 읍/면/리/동 정보
                             </div>
                             <div id="headerButton" class="col-lg-5 col-md-6 col-sm-12 rightAlign">
-                                <a href="/reference/address/create/commission"><span id="btnPrint" class="headerButton"><i class="icon ion-ios-paper headerButtonIcon"></i> 신규 읍/면/리/동</span></a>
+                                <a href="{{ url('/reference/address/create/commission') }}"><span id="btnPrint" class="headerButton"><i class="icon ion-ios-paper headerButtonIcon"></i> 신규 읍/면/리/동</span></a>
                             </div>
                         </div>
                     </h6>
@@ -55,11 +55,11 @@
                                             <td>{{ $commission->districtname }}</td>
                                             <td>{{ $commission->districtunitname }}</td>
                                             <td>
-                                                <a href="/reference/address/commission/edit/{{ \App\Http\Controllers\BaseController::enc($commission->id) }}">
+                                                <a href="{{ url('/reference/address/commission/edit/' . \App\Http\Controllers\BaseController::enc($commission->id)) }}">
                                                     <i class="typcn typcn-edit text-primary"></i>
                                                 </a>
                                                 <a style="cursor: pointer;" onclick="if(confirm('이 기록을 삭제하시겠습니까?')){
-                                                        window.location='/reference/address/commission/delete/{{ \App\Http\Controllers\BaseController::enc($commission->id) }}'
+                                                        window.location='{{ url('/reference/address/commission/delete/' . \App\Http\Controllers\BaseController::enc($commission->id)) }}'
                                                         } return false;">
                                                     <i class="typcn typcn-trash text-warning"></i>
                                                 </a>

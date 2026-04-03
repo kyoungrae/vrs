@@ -1,3 +1,18 @@
+/* 서브디렉터리(예: /vrs/) 배포 시 AJAX·location.href용. head에서 VRS_BASE 설정. */
+(function (g) {
+    'use strict';
+    if (typeof g.vrsUrl === 'undefined') {
+        g.vrsUrl = function (path) {
+            var base = (typeof g.VRS_BASE !== 'undefined' && g.VRS_BASE) ? String(g.VRS_BASE).replace(/\/$/, '') : '';
+            path = path || '';
+            if (path.charAt(0) !== '/') {
+                path = '/' + path;
+            }
+            return base + path;
+        };
+    }
+})(typeof window !== 'undefined' ? window : this);
+
 $(function(){
     'use strict'
 

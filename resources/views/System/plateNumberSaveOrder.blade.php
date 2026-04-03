@@ -232,7 +232,7 @@ var maxLength = 7;
           // alert(plate);
            $.ajax({
                type: 'post',
-               url: '/api/plateSaveVehicleOrder',
+               url: vrsUrl('/api/plateSaveVehicleOrder'),
                dataType: "json",
                data: {
                    param1: plate,

@@ -187,7 +187,7 @@
           // alert(plate);
            $.ajax({
                type: 'post',
-               url: '/api/removeVehicleCheck',
+               url: vrsUrl('/api/removeVehicleCheck'),
                dataType: "json",
                data: {
                    param1: plate,

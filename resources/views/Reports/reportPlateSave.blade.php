@@ -158,11 +158,11 @@
                                                         ?>
                                                         </strong>
                                                 </td>
-                                                <td><a href="/archive/documentAr/{{$plateNumberSaveList->archive_number}}" target="_blank"  >{{ $plateNumberSaveList->archive_number }}</a></td>
+                                                <td><a href="{{ url('/archive/documentAr/' . $plateNumberSaveList->archive_number) }}" target="_blank"  >{{ $plateNumberSaveList->archive_number }}</a></td>
                                                 <td>{{ \Illuminate\Support\Str::limit($plateNumberSaveList->lastname, 1, $end='.') }} {{ \App\Helpers\TranslationHelper::translate($plateNumberSaveList->firstname)}}</td>
                                                 <td> {{ $plateNumberSaveList->create_date}}</td>
                                                 {{-- <td>
-                                                    <a href="/plateSave/edit/{{ \App\Http\Controllers\BaseController::enc($plateNumberSaveList->id) }}">
+                                                    <a href="{{ url('/plateSave/edit/' . \App\Http\Controllers\BaseController::enc($plateNumberSaveList->id)) }}">
                                                         <i class="typcn typcn-edit text-primary"></i>
                                                     </a>
                                                 </td> --}}
@@ -629,7 +629,7 @@ $(".avtoteeverPreloader").fadeOut();
         $(".avtoteeverPreloader").fadeIn();
         $.ajax({
             type: "GET",
-            url: "/api/report/exportToExcelPlateSave/@if(ISSET($startDate)){{ $startDate }}@else{{ "none" }}@endif/@if(ISSET($endDate)){{ $endDate }}@else{{ "none" }}@endif",
+            url: vrsUrl("/api/report/exportToExcelPlateSave/@if(ISSET($startDate)){{ $startDate }}@else{{ "none" }}@endif/@if(ISSET($endDate)){{ $endDate }}@else{{ "none" }}@endif"),
             success: function (data) {
               
               
@@ -637,7 +637,7 @@ $(".avtoteeverPreloader").fadeOut();
                 @if(ISSET($startDate))
                     $(".avtoteeverPreloader").fadeOut();
                     $(".containerBody").fadeIn();
-                    window.location = "/api/report/exportToExcelPlateSave/@if(ISSET($startDate)){{ $startDate }}@else{{ "none" }}@endif/@if(ISSET($endDate)){{ $endDate }}@else{{ "none" }}@endif";
+                    window.location = vrsUrl("/api/report/exportToExcelPlateSave/@if(ISSET($startDate)){{ $startDate }}@else{{ "none" }}@endif/@if(ISSET($endDate)){{ $endDate }}@else{{ "none" }}@endif");
                 @else
                     $(".avtoteeverPreloader").fadeOut();
                     $(".containerBody").fadeIn();

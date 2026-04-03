@@ -140,7 +140,7 @@
            // alert(plate);
             $.ajax({
                 type: 'post',
-                url: '/api/auctionCheck',
+                url: vrsUrl('/api/auctionCheck'),
                 dataType: "json",
                 data: {
                     param1: plate,

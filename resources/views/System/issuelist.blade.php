@@ -26,7 +26,7 @@
                                     오류 정보 목록
                                 </div>
                                 <div id="headerButton" class="col-lg-5 col-md-6 col-sm-12 rightAlign">
-                                    <a href="/send/issue"><span id="btnPrint" class="headerButton"><i class="icon ion-ios-paper headerButtonIcon"></i> 오류 보고</span></a>
+                                    <a href="{{ url('/send/issue') }}"><span id="btnPrint" class="headerButton"><i class="icon ion-ios-paper headerButtonIcon"></i> 오류 보고</span></a>
                                 </div>
                             </div>
                         </h6>

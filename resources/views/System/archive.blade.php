@@ -121,11 +121,11 @@
                                                 <td>{{ \App\Helpers\TranslationHelper::translate($archive->archive) }}</td>
                                                 <td>{{ $archive->abbr }}</td>
                                                 <td>
-                                                    <a href="/settings/archive/edit/{{ \App\Http\Controllers\BaseController::enc($archive->id) }}">
+                                                    <a href="{{ url('/settings/archive/edit/' . \App\Http\Controllers\BaseController::enc($archive->id)) }}">
                                                         <i class="typcn typcn-edit text-primary"></i>
                                                     </a>
                                                     <a style="cursor: pointer;" onclick="if(confirm('이 기록을 삭제하시겠습니까?')){
-                                                            window.location='/settings/archive/delete/{{ \App\Http\Controllers\BaseController::enc($archive->id) }}'
+                                                            window.location='{{ url('/settings/archive/delete/' . \App\Http\Controllers\BaseController::enc($archive->id)) }}'
                                                             } return false;">
                                                         <i class="typcn typcn-trash text-warning"></i>
                                                     </a>

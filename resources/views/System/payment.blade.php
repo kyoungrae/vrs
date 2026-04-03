@@ -201,7 +201,7 @@
                                     const vehPlateNo=passwordEditor._changedValue;
                                     $.ajax({
                                         type: 'post',
-                                        url: '/api/vehCheck',
+                                        url: vrsUrl('/api/vehCheck'),
                                         dataType: "json",
                                         data: {
                                             param:0,
@@ -247,7 +247,7 @@
 
                 $.ajax({
                     type: 'POST',
-                    url: '/api/paymentData',
+                    url: vrsUrl('/api/paymentData'),
                     dataType: "json",
                     data: {
                         // param1: "param",
@@ -524,7 +524,7 @@
                                    
                                     $.ajax({
                                         type: 'post',
-                                        url: '/api/vehCheck',
+                                        url: vrsUrl('/api/vehCheck'),
                                         dataType: "json",
                                         data: {
                                             param:1,

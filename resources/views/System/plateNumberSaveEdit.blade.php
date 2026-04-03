@@ -223,7 +223,7 @@
             // alert(plate);
              $.ajax({
                  type: 'post',
-                 url: '/api/plateEditCheck',
+                 url: vrsUrl('/api/plateEditCheck'),
                  dataType: "json",
                  data: {
                      param1: plate,

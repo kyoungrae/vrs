@@ -1,5 +1,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<script>window.VRS_BASE = @json(rtrim(url('/'), '/'));</script>
 <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('img/logo.png') }}">
 <meta name="description" content="자동차 운송 통합 시스템">
 <meta name="author" content="자동차 운송 통합 시스템">

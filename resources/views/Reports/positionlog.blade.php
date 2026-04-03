@@ -227,12 +227,12 @@
         $(".avtoteeverPreloader").fadeIn();
         $.ajax({
             type: "GET",
-            url: "/api/report/position/log/@if(ISSET($pos)){{ $pos }}@else{{ "none" }}@endif/@if(ISSET($start)){{ $start }}@else{{ "none" }}@endif/@if(ISSET($end)){{ $end }}@else{{ "none" }}@endif",
+            url: vrsUrl("/api/report/position/log/@if(ISSET($pos)){{ $pos }}@else{{ "none" }}@endif/@if(ISSET($start)){{ $start }}@else{{ "none" }}@endif/@if(ISSET($end)){{ $end }}@else{{ "none" }}@endif"),
             success: function (data) {
                 @if(ISSET($start))
                     $(".avtoteeverPreloader").fadeOut();
                 $(".containerBody").fadeIn();
-                window.location = "/api/report/position/log/@if(ISSET($pos)){{ $pos }}@else{{ "none" }}@endif/@if(ISSET($start)){{ $start }}@else{{ "none" }}@endif/@if(ISSET($end)){{ $end }}@else{{ "none" }}@endif";
+                window.location = vrsUrl("/api/report/position/log/@if(ISSET($pos)){{ $pos }}@else{{ "none" }}@endif/@if(ISSET($start)){{ $start }}@else{{ "none" }}@endif/@if(ISSET($end)){{ $end }}@else{{ "none" }}@endif");
                 @else
                     $(".avtoteeverPreloader").fadeOut();
                 $(".containerBody").fadeIn();
