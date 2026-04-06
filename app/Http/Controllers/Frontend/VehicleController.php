@@ -72,15 +72,45 @@ class VehicleController extends BaseController
             }
 
             $userPkId = session()->get("auth")->id;
-            
+
             $limit_count = 0;
-            $limits = DB::table("REG_LIMIT_TYPE")->get();
-            $services = MainService::where("IS_SHOW", 1)->orderBy("VIEW_ORDER", "ASC")->get();
-           
-            $provinces = DB::table("ADDRESS_PROVINCE")->orderBy("name", "ASC")->get();
-            $countries = DB::table("REF_COUNTRY")->get();
-            $types = OwnerType::all();
-            $Printers=SystemPrinter::all();
+            try {
+                $limits = DB::table("REG_LIMIT_TYPE")->get();
+            } catch (\Exception $e) {
+                $limits = collect([]);
+                $this->writeLog("Vehicle boot REG_LIMIT_TYPE 조회 오류: ".$e->getMessage());
+            }
+            try {
+                $services = MainService::where("IS_SHOW", 1)->orderBy("VIEW_ORDER", "ASC")->get();
+            } catch (\Exception $e) {
+                $services = collect([]);
+                $this->writeLog("Vehicle boot SYSTEM_SERVICE 조회 오류: ".$e->getMessage());
+            }
+            try {
+                $provinces = DB::table("ADDRESS_PROVINCE")->orderBy("name", "ASC")->get();
+            } catch (\Exception $e) {
+                $provinces = collect([]);
+                $this->writeLog("Vehicle boot ADDRESS_PROVINCE 조회 오류: ".$e->getMessage());
+            }
+            try {
+                $countries = DB::table("REF_COUNTRY")->get();
+            } catch (\Exception $e) {
+                $countries = collect([]);
+                $this->writeLog("Vehicle boot REF_COUNTRY 조회 오류: ".$e->getMessage());
+            }
+            try {
+                $types = OwnerType::all();
+            } catch (\Exception $e) {
+                $types = collect([]);
+                $this->writeLog("Vehicle boot OWNER_TYPE 조회 오류: ".$e->getMessage());
+            }
+            try {
+                $Printers = SystemPrinter::all();
+            } catch (\Exception $e) {
+                $Printers = collect([]);
+                $this->writeLog("Vehicle boot SYSTEM_PRINTER 조회 오류: ".$e->getMessage());
+            }
+            $Diagnostic = null;
             
             //모바일 접속 여부
             $isMobile=false;
@@ -106,7 +136,7 @@ class VehicleController extends BaseController
                     if($hasVehicle > 0){
                         return redirect(url('/vehicle/'.$this->enc($plate_no)));
                     } else {
-                        return view('System.vehicle', compact('vehicle_status','userPkId'));
+                        return view('System.vehicle', compact('vehicle_status','userPkId','Diagnostic'));
                     }
                 }
 
@@ -118,15 +148,16 @@ class VehicleController extends BaseController
                         return redirect(url('/vehicle/'.$this->enc($cabin_no).'/new'));
                     } else {
                         
-                        return view('System.vehicle', compact('vehicle_status','userPkId'));
+                        return view('System.vehicle', compact('vehicle_status','userPkId','Diagnostic'));
                     }
                 } elseif($plate_no == "" && $cabin_no == "") {
-                    return view('System.vehicle', compact('limits', 'services', 'limit_count', 'provinces', 'countries', 'types','Printers','isMobile','userPkId'));
+                    return view('System.vehicle', compact('limits', 'services', 'limit_count', 'provinces', 'countries', 'types','Printers','Diagnostic','isMobile','userPkId'));
                 } else {
                     $vehicle_status = "new";
-                    return view('System.vehicle', compact('vehicle_status','userPkId'));
+                    return view('System.vehicle', compact('vehicle_status','userPkId','Diagnostic'));
                 }
             } else {
+                $vehicle_status = "old";
                 $plate_no = $request->route("plate_no");
                 
                 $cabin_no = $request->route("cabin_no");
@@ -296,7 +327,10 @@ class VehicleController extends BaseController
          } catch (\Exception $ex){
             $this->writeLog("차량 화면 호출 오류: ".$ex->getMessage());
             $message = $this->message("danger", "차량 화면 호출 중 오류가 발생했습니다.");
-            return view('System.vehicle', compact("message",'userPkId'));
+            return view('System.vehicle', [
+                'message' => $message,
+                'userPkId' => isset($userPkId) ? $userPkId : null,
+            ]);
         }
     }
     public function vehiclePlateRecovery(Request $request)

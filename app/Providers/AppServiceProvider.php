@@ -14,12 +14,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // 로컬(APP_ENV=local) 웹 요청은 ForceLocalApplicationUrl 에서 request()->root() 로 맞춤.
-        // 그 외(운영·스테이징)는 .env 의 APP_URL(서브경로 /vrs 포함)을 사용한다.
-        $appUrl = config('app.url');
-        if (! empty($appUrl) && ! $this->app->environment('local')) {
-            \URL::forceRootUrl($appUrl);
-        }
+        // 웹: ForceLocalApplicationUrl 이 요청 호스트·포트·베이스 경로(/vrs 등)에 맞춰 forceRootUrl 처리.
+        // APP_URL 은 artisan·메일 등 비HTTP URL 생성용 기본값으로만 둔다.
     }
 
     /**
