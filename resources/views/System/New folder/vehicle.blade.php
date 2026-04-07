@@ -382,7 +382,7 @@
                                 </div>
                                 <div class="row row-xs align-items-center mg-b-5">
                                     <div class="col-lg-6 col-md-12 col-sm-12">
-                                        <label class="form-label mg-b-0">차체번호</label>
+                                        <label class="form-label mg-b-0">차체번호 (신규등록 시 조회 : LHGRU8845G8011488)</label>
                                     </div>
                                     <div class="col-lg-6 col-md-12 col-sm-12">
                                         <input type="text" id="cabin_no_id" name="cabin_no" class="form-control cabin_no_id" value="{{ isset($vehicle) ? $vehicle->cabin_no : "" }}" oninput="translate2LATIN(this.value)" autocomplete="off">
