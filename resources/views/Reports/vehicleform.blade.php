@@ -126,10 +126,9 @@
                 </div>
                 <div class="col-3" style="padding: 21px 1px;">
 
-                    <p style="text-align: end;"> Зам, тээврийн хөгжлийн сайдын
-                        ..... оны ... 번호 тушаалаар батлагдсан
-                        "자동차운송 хэрэгслийн бүртгэл хөтлөх,
-                        번호판 олгох журам"-ын нэгдүгээр хавсралт
+                    <p style="text-align: end;"> {{ \App\Helpers\TranslationHelper::translate('Зам, тээврийн хөгжлийн сайдын') }}
+                        ..... оны ... {{ \App\Helpers\TranslationHelper::translate('дугаар') }} {{ \App\Helpers\TranslationHelper::translate('тушаалаар батлагдсан') }}
+                        "{{ \App\Helpers\TranslationHelper::translate('Тээврийн хэрэгслийн бүртгэл хөтлөх') }}, {{ \App\Helpers\TranslationHelper::translate('улсын дугаар олгох журам') }}"-ын {{ \App\Helpers\TranslationHelper::translate('нэгдүгээр хавсралт') }}
                     </p>
 
                 </div>
@@ -138,19 +137,18 @@
                         <div class="col-4" style="    margin-top: 4px;">
                             <center> <span>
                                     <h6 style="font-weight: bold; float: right; ">
-                                        огноо:{{ session()->has('vehicle') ? session()->get('vehicle')->updated_date : '' }}
+                                        {{ \App\Helpers\TranslationHelper::translate('огноо') }}:{{ session()->has('vehicle') ? session()->get('vehicle')->updated_date : '' }}
                                     </h6>
                                 </span></center>
                         </div>
                         <div class="col-3" style="">
                             <center><span>
-                                    <h6 style="font-weight: bold;     font-size: 18px;">БҮРТГЭЛИЙН МЭДҮҮЛЭГ</h6>
+                                    <h6 style="font-weight: bold;     font-size: 18px;">{{ \App\Helpers\TranslationHelper::translate('БҮРТГЭЛИЙН МЭДҮҮЛЭГ') }}</h6>
                                 </span></center>
                         </div>
                         <div class="col-4" style="    margin-top: 4px;">
                             <span>
-                                <h6 style="font-weight: bold;">архивын
-                                    번호:{{ session()->has('vehicle') ? session()->get('vehicle')->archive_no : '' }}
+                                <h6 style="font-weight: bold;">{{ \App\Helpers\TranslationHelper::translate('Архивын дугаар') }}:{{ session()->has('vehicle') ? session()->get('vehicle')->archive_no : '' }}
                                 </h6>
                             </span>
                         </div>
@@ -178,25 +176,25 @@
                                                 <div class="checkbox {{isset($historie1) && $historie1->service_id == 1 ? 'checked' :  '' }}"></div>
                                         </div>
                                     </td>
-                                    <td style="    text-align: center;"><p>이전 хөдөлгөөн</p>
+                                    <td style="    text-align: center;"><p>이전 {{ \App\Helpers\TranslationHelper::translate('хөдөлгөөн') }}</p>
 
                                         <div style=" width: 0;       margin: 9px 26px;">
                                             <div class="checkbox {{isset($historie1) && $historie1->service_id == 3 ? 'checked' :  '' }}"></div>
-                                            
+
                                         </div>
                                     </td>
-                                    <td style="    text-align: center;"><p>차량Г нөхөлт, солилт, техникийн өөрчлөлт</p>
+                                    <td style="    text-align: center;"><p>차량 {{ \App\Helpers\TranslationHelper::translate('нөхөлт') }}, {{ \App\Helpers\TranslationHelper::translate('солилт') }}, {{ \App\Helpers\TranslationHelper::translate('техникийн өөрчлөлт') }}</p>
                                         <div style=" width: 0;       margin: 9px 61px;">
-                                        
+
                                                 <div class="checkbox {{isset($historie1) && ($historie1->service_id == 13 || $historie1->service_id == 14 || $historie1->service_id == 4 || $historie1->service_id == 2)  ? 'checked' :  '' }}"></div>
                                         </div>
                                     </td>
-                                    <td style="    text-align: center;     width: 135px;"><p>Дугаар өөрчлөх, хадгалах</p>
+                                    <td style="    text-align: center;     width: 135px;"><p>{{ \App\Helpers\TranslationHelper::translate('Дугаар өөрчлөх') }}, {{ \App\Helpers\TranslationHelper::translate('хадгалах') }}</p>
                                         <div style=" width: 0;       margin: 9px 46px;">
                                             <div class="checkbox {{isset($historie1) && $historie1->service_id == 15 ? 'checked' :  '' }}"></div>
                                         </div>
                                     </td>
-                                    <td style="    text-align: center; "><p>Бүртгэлээс хасах</p>
+                                    <td style="    text-align: center; "><p>{{ \App\Helpers\TranslationHelper::translate('Бүртгэлээс хасах') }}</p>
                                         <div class="checkbox {{isset($historie1) && $historie1->service_id == 9 ? 'checked' :  '' }}"></div>
                                         </div>
                                     </td>
@@ -410,7 +408,7 @@
         <div class="row">
             <div class="col-12" style="margin-top:5px;">
                 <center><span>
-                        <h6 style="font-weight: bold;">ШИЛЖҮҮЛСЭН (Иргэн, 기관, ААН)</h6>
+                        <h6 style="font-weight: bold;">{{ \App\Helpers\TranslationHelper::translate('ШИЛЖҮҮЛСЭН') }} ({{ \App\Helpers\TranslationHelper::translate('Иргэн') }}, {{ \App\Helpers\TranslationHelper::translate('Байгууллага') }}, {{ \App\Helpers\TranslationHelper::translate('ААН') }})</h6>
                     </span></center>
             </div>
             <div class="col-12" style="margin-top:0px;">
@@ -467,7 +465,7 @@
         <div class="row">
             <div class="col-12" style="margin-top:5px;">
                 <center><span>
-                        <h6 style="font-weight: bold;">ШИЛЖҮҮЛЭН АВСАН (Иргэн, 기관, ААН)</h6>
+                        <h6 style="font-weight: bold;">{{ \App\Helpers\TranslationHelper::translate('ШИЛЖҮҮЛЭН АВСАН') }} ({{ \App\Helpers\TranslationHelper::translate('Иргэн') }}, {{ \App\Helpers\TranslationHelper::translate('Байгууллага') }}, {{ \App\Helpers\TranslationHelper::translate('ААН') }})</h6>
                     </span></center>
             </div>
             <div class="col-12" style="margin-top:0px;">
@@ -520,7 +518,7 @@
 
                                             </div>
                                             <div class="col-9" style="margin-top: 2px; padding: 0;"><span
-                                                    style="    float: left;"> Иргэний үнэмлэхээр баталгаажсан</span>
+                                                    style="    float: left;"> {{ \App\Helpers\TranslationHelper::translate('Иргэний үнэмлэхээр баталгаажсан') }}</span>
                                             </div>
                                         </div>
                                     </center>
@@ -534,7 +532,7 @@
                                                     {{ isset($historie1) && $historie1->insert_finger == 1 ? 'checked' : '' }} disabled>
                                             </div>
                                             <div class="col-9" style="margin-top: 2px; padding: 0;"><span
-                                                    style="    float: left;"> 지문으로 баталгаажсан</span></div>
+                                                    style="    float: left;"> {{ \App\Helpers\TranslationHelper::translate('Хурууны хээгээр баталгаажсан') }}</span></div>
                                         </div>
                                     </center>
                                 </td>
@@ -562,7 +560,7 @@
 
                 </div>
                 <div class="col-9" style="margin-top:20px;">
-                    <center><span style=" font-weight: bolder; ">Бүртгэгч:
+                    <center><span style=" font-weight: bolder; ">{{ \App\Helpers\TranslationHelper::translate('Бүртгэгч') }}:
                             {{ session()->has('vehicle') ? session()->get('vehicle')->firstname : '' }}</span></center>
                 </div>
             </div>
