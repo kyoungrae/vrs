@@ -175,29 +175,29 @@
                                         <div style=" width: 0;       margin: 9px 26px;">
                                            
                                            
-                                                <div class="checkbox {{$historie1->service_id == 1 ? 'checked' :  '' }}"></div>
+                                                <div class="checkbox {{isset($historie1) && $historie1->service_id == 1 ? 'checked' :  '' }}"></div>
                                         </div>
                                     </td>
                                     <td style="    text-align: center;"><p>이전 хөдөлгөөн</p>
 
                                         <div style=" width: 0;       margin: 9px 26px;">
-                                            <div class="checkbox {{$historie1->service_id == 3 ? 'checked' :  '' }}"></div>
+                                            <div class="checkbox {{isset($historie1) && $historie1->service_id == 3 ? 'checked' :  '' }}"></div>
                                             
                                         </div>
                                     </td>
                                     <td style="    text-align: center;"><p>차량Г нөхөлт, солилт, техникийн өөрчлөлт</p>
                                         <div style=" width: 0;       margin: 9px 61px;">
                                         
-                                                <div class="checkbox {{$historie1->service_id == 13 || $historie1->service_id == 14 || $historie1->service_id == 4 || $historie1->service_id == 2  ? 'checked' :  '' }}"></div>
+                                                <div class="checkbox {{isset($historie1) && ($historie1->service_id == 13 || $historie1->service_id == 14 || $historie1->service_id == 4 || $historie1->service_id == 2)  ? 'checked' :  '' }}"></div>
                                         </div>
                                     </td>
                                     <td style="    text-align: center;     width: 135px;"><p>Дугаар өөрчлөх, хадгалах</p>
                                         <div style=" width: 0;       margin: 9px 46px;">
-                                            <div class="checkbox {{$historie1->service_id == 15 ? 'checked' :  '' }}"></div>
+                                            <div class="checkbox {{isset($historie1) && $historie1->service_id == 15 ? 'checked' :  '' }}"></div>
                                         </div>
                                     </td>
                                     <td style="    text-align: center; "><p>Бүртгэлээс хасах</p>
-                                        <div class="checkbox {{$historie1->service_id == 9 ? 'checked' :  '' }}"></div>
+                                        <div class="checkbox {{isset($historie1) && $historie1->service_id == 9 ? 'checked' :  '' }}"></div>
                                         </div>
                                     </td>
 
@@ -289,7 +289,7 @@
                                 <td>세관 모드</td>
                                 <td><span id="dclrTypeCd"></span></td>
                                 <td>R 번호</td>
-                                <td>{{ session()->get('vehicle')->declaration_no }}</td>
+                                <td>{{ session()->has('vehicle') ? session()->get('vehicle')->declaration_no : '' }}</td>
                             </tr>
 
                         </table>
@@ -423,35 +423,25 @@
         ->count() > 1)
                                     <tr>
                                         <td style=" width: 25%; ">본관성</td>
-                                        <td colspan="4">{{ session()->has('owners')
-                                    ? session()->get('owners')->get(1)->family_name
-                                    : '' }}</td>
+                                        <td colspan="4">{{ session()->has('owners') && session()->get('owners')->count() > 1 && session()->get('owners')->get(1) ? session()->get('owners')->get(1)->FAMILY_NAME ?? session()->get('owners')->get(1)->family_name ?? '' : '' }}</td>
                                     </tr>
                                     <tr>
                                         <td>부모 이름 <br /><span style="font-size: 8px;">/기관, ААН-ийн
                                                 төрөл/</span></td>
-                                        <td colspan="4">{{ session()->has('owners')
-                                    ? session()->get('owners')->get(1)->last_name
-                                    : '' }}</td>
+                                        <td colspan="4">{{ session()->has('owners') && session()->get('owners')->count() > 1 && session()->get('owners')->get(1) ? session()->get('owners')->get(1)->LAST_NAME ?? session()->get('owners')->get(1)->last_name ?? '' : '' }}</td>
                                     </tr>
                                     <tr>
                                         <td>이름 <br /><span style="font-size: 8px;">/기관, ААН-ийн нэр/</span>
                                         </td>
-                                        <td colspan="4">{{ session()->has('owners')
-                                    ? session()->get('owners')->get(1)->first_name
-                                    : '' }}</td>
+                                        <td colspan="4">{{ session()->has('owners') && session()->get('owners')->count() > 1 && session()->get('owners')->get(1) ? session()->get('owners')->get(1)->FIRST_NAME ?? session()->get('owners')->get(1)->first_name ?? '' : '' }}</td>
                                     </tr>
                                     <tr>
                                         <td>등록번호</td>
-                                        <td colspan="4">{{ session()->has('owners')
-                                    ? session()->get('owners')->get(1)->register_no
-                                    : '' }}</td>
+                                        <td colspan="4">{{ session()->has('owners') && session()->get('owners')->count() > 1 && session()->get('owners')->get(1) ? session()->get('owners')->get(1)->REGISTER_NO ?? session()->get('owners')->get(1)->register_no ?? '' : '' }}</td>
                                     </tr>
                                     <tr>
                                         <td>주소 <br /><span style="font-size: 8px;">/세금 төлдөг хаяг/</span></td>
-                                        <td colspan="4">{{ session()->has('owners')
-                                    ? session()->get('owners')->get(1)->address_detail
-                                    : '' }}</td>
+                                        <td colspan="4">{{ session()->has('owners') && session()->get('owners')->count() > 1 && session()->get('owners')->get(1) ? session()->get('owners')->get(1)->ADDRESS_DETAIL ?? session()->get('owners')->get(1)->address_detail ?? '' : '' }}</td>
                                     </tr>
                                     <tr>
                                         <td rowspan="2" style=" text-align: center; vertical-align: middle; ">전화</td>
@@ -461,15 +451,9 @@
                                         <td>기타</td>
                                     </tr>
                                     <tr>
-                                        <td>{{ session()->has('owners')
-                                    ? session()->get('owners')->get(1)->workphone
-                                    : '' }}</td>
-                                        <td>{{ session()->has('owners')
-                                    ? session()->get('owners')->get(1)->homephone
-                                    : '' }}</td>
-                                        <td>{{ session()->has('owners')
-                                    ? session()->get('owners')->get(1)->cellphone
-                                    : '' }}</td>
+                                        <td>{{ session()->has('owners') && session()->get('owners')->count() > 1 && session()->get('owners')->get(1) ? session()->get('owners')->get(1)->WORKPHONE ?? session()->get('owners')->get(1)->workphone ?? '' : '' }}</td>
+                                        <td>{{ session()->has('owners') && session()->get('owners')->count() > 1 && session()->get('owners')->get(1) ? session()->get('owners')->get(1)->HOMEPHONE ?? session()->get('owners')->get(1)->homephone ?? '' : '' }}</td>
+                                        <td>{{ session()->has('owners') && session()->get('owners')->count() > 1 && session()->get('owners')->get(1) ? session()->get('owners')->get(1)->CELLPHONE ?? session()->get('owners')->get(1)->cellphone ?? '' : '' }}</td>
                                         <td></td>
                                     </tr>
                                 @endif
@@ -492,34 +476,24 @@
                         <tbody>
                             <tr>
                                 <td style=" width: 25%; ">본관성</td>
-                                <td colspan="4">{{ session()->has('owners')
-                            ? session()->get('owners')->first()->family_name
-                            : '' }}</td>
+                                <td colspan="4">{{ session()->has('owners') && session()->get('owners')->first() ? session()->get('owners')->first()->FAMILY_NAME ?? session()->get('owners')->first()->family_name ?? '' : '' }}</td>
                             </tr>
                             <tr>
                                 <td>부모 이름 <br /><span style="font-size: 8px;">/기관, ААН-ийн
                                         төрөл/</span></td>
-                                <td colspan="4">{{ session()->has('owners')
-                            ? session()->get('owners')->first()->last_name
-                            : '' }}</td>
+                                <td colspan="4">{{ session()->has('owners') && session()->get('owners')->first() ? session()->get('owners')->first()->LAST_NAME ?? session()->get('owners')->first()->last_name ?? '' : '' }}</td>
                             </tr>
                             <tr>
                                 <td>이름 <br /><span style="font-size: 8px;">/기관, ААН-ийн нэр/</span></td>
-                                <td colspan="4">{{ session()->has('owners')
-                            ? session()->get('owners')->first()->first_name
-                            : '' }}</td>
+                                <td colspan="4">{{ session()->has('owners') && session()->get('owners')->first() ? session()->get('owners')->first()->FIRST_NAME ?? session()->get('owners')->first()->first_name ?? '' : '' }}</td>
                             </tr>
                             <tr>
                                 <td>등록번호</td>
-                                <td colspan="4">{{ session()->has('owners')
-                            ? session()->get('owners')->first()->register_no
-                            : '' }}</td>
+                                <td colspan="4">{{ session()->has('owners') && session()->get('owners')->first() ? session()->get('owners')->first()->REGISTER_NO ?? session()->get('owners')->first()->register_no ?? '' : '' }}</td>
                             </tr>
                             <tr>
                                 <td>주소 <br /><span style="font-size: 8px;">/세금 төлдөг хаяг/</span></td>
-                                <td colspan="4">{{ session()->has('owners')
-                            ? session()->get('owners')->first()->address_detail
-                            : '' }}</td>
+                                <td colspan="4">{{ session()->has('owners') && session()->get('owners')->first() ? session()->get('owners')->first()->ADDRESS_DETAIL ?? session()->get('owners')->first()->address_detail ?? '' : '' }}</td>
                             </tr>
                             <tr>
                                 <td rowspan="2" style=" text-align: center; vertical-align: middle; ">전화</td>
@@ -529,15 +503,9 @@
                                 <td>기타</td>
                             </tr>
                             <tr>
-                                <td>{{ session()->has('owners')
-                            ? session()->get('owners')->first()->workphone
-                            : '' }}</td>
-                                <td>{{ session()->has('owners')
-                            ? session()->get('owners')->first()->homephone
-                            : '' }}</td>
-                                <td>{{ session()->has('owners')
-                            ? session()->get('owners')->first()->cellphone
-                            : '' }}</td>
+                                <td>{{ session()->has('owners') && session()->get('owners')->first() ? session()->get('owners')->first()->WORKPHONE ?? session()->get('owners')->first()->workphone ?? '' : '' }}</td>
+                                <td>{{ session()->has('owners') && session()->get('owners')->first() ? session()->get('owners')->first()->HOMEPHONE ?? session()->get('owners')->first()->homephone ?? '' : '' }}</td>
+                                <td>{{ session()->has('owners') && session()->get('owners')->first() ? session()->get('owners')->first()->CELLPHONE ?? session()->get('owners')->first()->cellphone ?? '' : '' }}</td>
                                 <td></td>
                             </tr>
                             <tr>
@@ -547,7 +515,7 @@
                                         <div class="row">
                                             <div class="col-3" style="    padding-right: 6px;">
                                                 <input type="checkbox" style="float: right;" name=""
-                                                    {{ $historie1->insert_finger == 2 || $historie1->insert_finger == 0 ? 'checked' : '' }}
+                                                    {{ isset($historie1) && ($historie1->insert_finger == 2 || $historie1->insert_finger == 0) ? 'checked' : '' }}
                                                     disabled>
 
                                             </div>
@@ -563,7 +531,7 @@
                                         <div class="row">
                                             <div class="col-3" style="    padding-right: 6px;">
                                                 <input type="checkbox" style="float: left;" name=""
-                                                    {{ $historie1->insert_finger == 1 ? 'checked' : '' }} disabled>
+                                                    {{ isset($historie1) && $historie1->insert_finger == 1 ? 'checked' : '' }} disabled>
                                             </div>
                                             <div class="col-9" style="margin-top: 2px; padding: 0;"><span
                                                     style="    float: left;"> 지문으로 баталгаажсан</span></div>
@@ -595,7 +563,7 @@
                 </div>
                 <div class="col-9" style="margin-top:20px;">
                     <center><span style=" font-weight: bolder; ">Бүртгэгч:
-                            {{ session()->get('vehicle')->firstname }}</span></center>
+                            {{ session()->has('vehicle') ? session()->get('vehicle')->firstname : '' }}</span></center>
                 </div>
             </div>
         </div>
@@ -656,43 +624,42 @@
 
         <script src="../lib/jquery/jquery.min.js"></script>
         <script src="../lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="../js/vrs.js"></script>
         <script>
             // alert("gdfgdf");
             $(document).ready(function() {
-                var gaali = '{{ session()->get('
-                vehicle ') ? \App\Http\Controllers\BaseController::enc(session()->get('
-                vehicle ')->declaration_no) : '
-                ' }}';
+                var gaali = '{{ session()->has("vehicle") ? \App\Http\Controllers\BaseController::enc(session()->get("vehicle")->declaration_no) : "" }}';
                 // alert(gaali);
-                $.ajax({
-                    type: 'POST',
-                    url: vrsUrl('/api/gaali'),
-                    dataType: "json",
-                    data: {
-                        param1: gaali,
-                        param2: '{{ \App\Http\Controllers\BaseController::enc(\Carbon\Carbon::now()->format('
-                        Y - m - d ')) }}'
-                    },
-                    timeout: 60000,
-                    error: function(data) {
+                if (gaali && gaali.trim() !== '') {
+                    $.ajax({
+                        type: 'POST',
+                        url: vrsUrl('/api/gaali'),
+                        dataType: "json",
+                        data: {
+                            param1: gaali,
+                            param2: '{{ \App\Http\Controllers\BaseController::enc(\Carbon\Carbon::now()->format("Y-m-d")) }}'
+                        },
+                        timeout: 60000,
+                        error: function(data) {
+                            console.log('gaali API error:', data);
+                        },
+                        success: function(data) {
+                            //  console.log(data);
+                            try {
 
-                    },
-                    success: function(data) {
-                        //  console.log(data);
-                        try {
+                                $.each(data, function(key, value) {
 
-                            $.each(data, function(key, value) {
+                                    var dclrTypeCd = value.response["dclrTypeCd"];
+                                    $("#dclrTypeCd").html(dclrTypeCd);
 
-                                var dclrTypeCd = value.response["dclrTypeCd"];
-                                $("#dclrTypeCd").html(dclrTypeCd);
+                                });
+                            } catch (err) {
 
-                            });
-                        } catch (err) {
+                            }
 
                         }
-
-                    }
-                });
+                    });
+                }
             });
 
         </script>

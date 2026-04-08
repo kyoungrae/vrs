@@ -728,6 +728,9 @@ class ReportController extends BaseController
         if(!session()->has("auth")){
             return redirect(route($this->redirectURL));
         }
+        if(!session()->has("vehicle")){
+            return redirect(url('/vehicle'))->with("message", "차량을 먼저 선택해주세요.");
+        }
         $vehId= session()->get("vehicle")->id;
         $historie1 = DB::table("REG_VEHICLE_ARCHIVE")
                             ->select("*")
@@ -744,12 +747,12 @@ class ReportController extends BaseController
      
       $historie1 = collect([
         (object) [
+            'id' => 0,
             'service_id' => 1,
             'insert_service_id' => 0,
             'insert_finger' => 0,
-            
+            'service_name' => ''
         ]
-        
     ]);
         $historie1=$historie1[0];
    }else{
