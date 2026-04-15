@@ -415,11 +415,18 @@ public function transactionCheck(Request $request){
             if(self::dec($valid) == Carbon::now()->format("Y-m-d")){
 
                 $data=array();
-                $paymentData = DB::select(DB::raw("select tr.id,epay.id, epay.vehicle_id, tr.account_number,tr.related_account,tr.description,tr.amount,tr.owner_name,tr.transaction_date,tr.arkhive_no,epay.arkhive_no,epay.created_at,
-                epay.pay_type_name,service.name,vehicle.plate_no
-                 from transaction tr join epay_transaction epay on tr.id=epay.transaction_id join system_service service on service.id = epay.service_id
-                 join reg_vehicle vehicle on epay.vehicle_id = vehicle.id where tr.related_account is not null"));
-                 $transaction = DB::select(DB::raw("SELECT * FROM transaction WHERE arkhive_no is null and related_account is not null"));
+                $paymentData = DB::select(DB::raw("select tr.\"ID\", epay.\"ID\" as epay_id, epay.\"VEHICLE_ID\", tr.\"ACCOUNT_NUMBER\", tr.\"RELATED_ACCOUNT\", tr.\"DESCRIPTION\", tr.\"AMOUNT\", tr.\"OWNER_NAME\", tr.\"TRANSACTION_DATE\", tr.\"ARKHIVE_NO\", epay.\"ARKHIVE_NO\", epay.\"CREATED_AT\",
+                epay.\"PAY_TYPE_NAME\", service.\"NAME\", vehicle.\"PLATE_NO\"
+                 from \"VRS\".\"TRANSACTION\" tr join \"VRS\".\"EPAY_TRANSACTION\" epay on tr.\"ID\"=epay.\"TRANSACTION_ID\" join \"VRS\".\"SYSTEM_SERVICE\" service on service.\"ID\" = epay.\"SERVICE_ID\"
+                 join \"VRS\".\"REG_VEHICLE\" vehicle on epay.\"VEHICLE_ID\" = vehicle.\"ID\" where tr.\"RELATED_ACCOUNT\" is not null"));
+                 $transaction = DB::select(DB::raw("SELECT * FROM \"VRS\".\"TRANSACTION\" WHERE \"ARKHIVE_NO\" is null and \"RELATED_ACCOUNT\" is not null"));
+                 // Oracle 대문자 키를 소문자로 변환
+                 $paymentData = array_map(function($item) {
+                     return array_change_key_case((array)$item, CASE_LOWER);
+                 }, $paymentData);
+                 $transaction = array_map(function($item) {
+                     return array_change_key_case((array)$item, CASE_LOWER);
+                 }, $transaction);
                  array_push($data,['paymentData'=>$paymentData],['transaction'=>$transaction] );
                 return $data;
             } else {
@@ -430,7 +437,11 @@ public function transactionCheck(Request $request){
         } catch (\Exception $ex) {
             Log::error("paymentData API error: " . $ex->getMessage());
             Log::error("Stack trace: " . $ex->getTraceAsString());
-            return response()->json(["message" => "Server error: " . $ex->getMessage()], 500);
+            return response()->json([
+                "message" => "Server error: " . $ex->getMessage(),
+                "file" => $ex->getFile(),
+                "line" => $ex->getLine()
+            ], 500);
         }
     }
     public function vehCheck(Request $request)

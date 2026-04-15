@@ -54,10 +54,9 @@ class PaymentController extends BaseController
         
         
      } else {
-        // $payment=[];
-         $payment = DB::select(DB::raw("select tr.id,epay.id, epay.vehicle_id, tr.account_number,tr.related_account,tr.description,tr.amount,tr.owner_name,tr.transaction_date,tr.arkhive_no,epay.arkhive_no,epay.created_at,
-         epay.pay_type_name,service.name
-          from transaction tr join epay_transaction epay on tr.id=epay.transaction_id join system_service service on service.id = epay.service_id where type=1"));
+         $payment = DB::select(DB::raw("select tr.\"ID\",epay.\"ID\" as epay_id, epay.\"VEHICLE_ID\", tr.\"ACCOUNT_NUMBER\",tr.\"RELATED_ACCOUNT\",tr.\"DESCRIPTION\",tr.\"AMOUNT\",tr.\"OWNER_NAME\",tr.\"TRANSACTION_DATE\",tr.\"ARKHIVE_NO\",epay.\"ARKHIVE_NO\",epay.\"CREATED_AT\",
+         epay.\"PAY_TYPE_NAME\",service.\"NAME\"
+          from \"VRS\".\"TRANSACTION\" tr join \"VRS\".\"EPAY_TRANSACTION\" epay on tr.\"ID\"=epay.\"TRANSACTION_ID\" join \"VRS\".\"SYSTEM_SERVICE\" service on service.\"ID\" = epay.\"SERVICE_ID\" where tr.\"TYPE\"=1"));
         //  return $payment;
       
          return view('System.payment', compact('payment'));

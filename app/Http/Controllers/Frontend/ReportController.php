@@ -2969,14 +2969,14 @@ public function indexEpayUser(Request $request){
      
 //return $curr_pos;
         
-        $results = DB::select(DB::raw("SELECT  etr.created_by,usr.lastname,usr.firstname, service.name as servicename,service.id as serviceid,
-        count(service.id) as servicecount,etr.pay_type_name,sum(etr.amount) as amount, to_char(etr.created_at, 'YYYY-MM-DD') as created_at
-                FROM epay_transaction  etr
-                JOIN system_service service on etr.service_id=service.id
-                JOIN system_user usr on etr.created_by= usr.id WHERE 
-                pay_type=".$op." AND
-                etr.created_at BETWEEN TO_DATE ('".$startDate."', 'yyyy-mm-dd') AND TO_DATE ('".$endDate."', 'yyyy-mm-dd') AND created_by='".$userId."'
-                GROUP BY etr.created_by,service.id, service.name,usr.lastname,usr.firstname,to_char(etr.created_at, 'YYYY-MM-DD'),etr.pay_type_name ORDER BY created_at desc"));
+        $results = DB::select(DB::raw("SELECT  etr.\"CREATED_BY\",usr.\"LASTNAME\",usr.\"FIRSTNAME\", service.\"NAME\" as servicename,service.\"ID\" as serviceid,
+        count(service.\"ID\") as servicecount,etr.\"PAY_TYPE_NAME\",sum(etr.\"AMOUNT\") as amount, to_char(etr.\"CREATED_AT\", 'YYYY-MM-DD') as created_at
+                FROM \"VRS\".\"EPAY_TRANSACTION\" etr
+                JOIN \"VRS\".\"SYSTEM_SERVICE\" service on etr.\"SERVICE_ID\"=service.\"ID\"
+                JOIN \"VRS\".\"SYSTEM_USER\" usr on etr.\"CREATED_BY\"= usr.\"ID\" WHERE
+                \"PAY_TYPE\"=".$op." AND
+                etr.\"CREATED_AT\" BETWEEN TO_DATE ('".$startDate."', 'yyyy-mm-dd') AND TO_DATE ('".$endDate."', 'yyyy-mm-dd') AND \"CREATED_BY\"='".$userId."'
+                GROUP BY etr.\"CREATED_BY\",service.\"ID\", service.\"NAME\",usr.\"LASTNAME\",usr.\"FIRSTNAME\",to_char(etr.\"CREATED_AT\", 'YYYY-MM-DD'),etr.\"PAY_TYPE_NAME\" ORDER BY created_at desc"));
 //$ttt= json_encode($results, true);
        return view('Reports.ePayReport', compact('users', 'results', 'op','userId', 'startDate', 'endDate'));
      // return $results;
@@ -3127,34 +3127,34 @@ protected function exportToExcelEpayReportr(Request $request){
                 $sheet->getStyle('A6:L6')->getFont()->setSize(12);
                // $operation = $op == "1" ? "='1'" : "!='1'";
                
-                $datas = DB::select(DB::raw("SELECT  etr.created_by,usr.lastname,usr.firstname, service.name as servicename,service.id as serviceid,
-                count(service.id) as servicecount,etr.pay_type_name,sum(etr.amount) as amount, to_char(etr.created_at, 'YYYY-MM-DD') as created_at
-                        FROM epay_transaction  etr
-                        JOIN system_service service on etr.service_id=service.id
-                        JOIN system_user usr on etr.created_by= usr.id WHERE 
-                        pay_type=".$op." AND
-                        etr.created_at BETWEEN TO_DATE ('".$startDate."', 'yyyy-mm-dd') AND TO_DATE ('".$endDate."', 'yyyy-mm-dd') AND created_by=".$userId."
-                        GROUP BY etr.created_by,service.id,service.name,usr.lastname,usr.firstname,to_char(etr.created_at, 'YYYY-MM-DD'),etr.pay_type_name ORDER BY created_at desc"));
+                $datas = DB::select(DB::raw("SELECT  etr.\"CREATED_BY\",usr.\"LASTNAME\",usr.\"FIRSTNAME\", service.\"NAME\" as servicename,service.\"ID\" as serviceid,
+                count(service.\"ID\") as servicecount,etr.\"PAY_TYPE_NAME\",sum(etr.\"AMOUNT\") as amount, to_char(etr.\"CREATED_AT\", 'YYYY-MM-DD') as created_at
+                        FROM \"VRS\".\"EPAY_TRANSACTION\" etr
+                        JOIN \"VRS\".\"SYSTEM_SERVICE\" service on etr.\"SERVICE_ID\"=service.\"ID\"
+                        JOIN \"VRS\".\"SYSTEM_USER\" usr on etr.\"CREATED_BY\"= usr.\"ID\" WHERE
+                        \"PAY_TYPE\"=".$op." AND
+                        etr.\"CREATED_AT\" BETWEEN TO_DATE ('".$startDate."', 'yyyy-mm-dd') AND TO_DATE ('".$endDate."', 'yyyy-mm-dd') AND \"CREATED_BY\"=".$userId."
+                        GROUP BY etr.\"CREATED_BY\",service.\"ID\",service.\"NAME\",usr.\"LASTNAME\",usr.\"FIRSTNAME\",to_char(etr.\"CREATED_AT\", 'YYYY-MM-DD'),etr.\"PAY_TYPE_NAME\" ORDER BY created_at desc"));
   
                 $init = array();
                 $all_names = array();
                 $i = 1; 
                 foreach ($datas as $data){
                    // if($data->archive_date != ""){
-                        array_push($all_names, $data->lastname. ' ' .$data->firstname);
+                        array_push($all_names, $data->LASTNAME. ' ' .$data->FIRSTNAME);
                         array_push($init, array(
                             $i,
-                            $data->lastname. ' ' .$data->firstname,
-                            $data->created_at,
-                            $data->serviceid == 1 ? $data->servicecount : 0, 
-                            $data->serviceid == 3 ? $data->servicecount : 0, 
-                            $data->serviceid == 14 ? $data->servicecount : 0,
-                            $data->serviceid == 13 ? $data->servicecount : 0,
-                            $data->serviceid == 2 ?  $data->servicecount : 0,
-                            $data->serviceid == 9 ? $data->servicecount : 0, 
-                            $data->serviceid == 15 ? $data->servicecount : 0,
-                            $data->serviceid == 16 ? $data->servicecount : 0,
-                            $data->amount
+                            $data->LASTNAME. ' ' .$data->FIRSTNAME,
+                            $data->CREATED_AT,
+                            $data->SERVICEID == 1 ? $data->SERVICECOUNT : 0,
+                            $data->SERVICEID == 3 ? $data->SERVICECOUNT : 0,
+                            $data->SERVICEID == 14 ? $data->SERVICECOUNT : 0,
+                            $data->SERVICEID == 13 ? $data->SERVICECOUNT : 0,
+                            $data->SERVICEID == 2 ?  $data->SERVICECOUNT : 0,
+                            $data->SERVICEID == 9 ? $data->SERVICECOUNT : 0,
+                            $data->SERVICEID == 15 ? $data->SERVICECOUNT : 0,
+                            $data->SERVICEID == 16 ? $data->SERVICECOUNT : 0,
+                            $data->AMOUNT
                           
                         ));
                         $i++;

@@ -137,18 +137,18 @@
                                         @foreach($results as $result)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{ \Illuminate\Support\Str::limit($result->lastname, 1, $end='.') }}{{$result->firstname }}</td>
-                                                <td>{{ \Carbon\Carbon::parse($result->created_at)->format("Y-m-d") }}</td>
-                                                <td>{{ $result->serviceid == 1 ? $result->servicecount : 0   }}</td>
-                                                <td>{{ $result->serviceid == 3 ? $result->servicecount : 0 }}</td>
-                                                <td>{{ $result->serviceid == 14 ? $result->servicecount : 0  }}</td>
-                                                <td>{{ $result->serviceid == 13 ? $result->servicecount : 0  }}</td>
-                                                <td>{{ $result->serviceid == 2 ? $result->servicecount : 0  }}</td>
+                                                <td>{{ \Illuminate\Support\Str::limit($result->LASTNAME, 1, $end='.') }}{{$result->FIRSTNAME }}</td>
+                                                <td>{{ \Carbon\Carbon::parse($result->CREATED_AT)->format("Y-m-d") }}</td>
+                                                <td>{{ $result->SERVICEID == 1 ? $result->SERVICECOUNT : 0   }}</td>
+                                                <td>{{ $result->SERVICEID == 3 ? $result->SERVICECOUNT : 0 }}</td>
+                                                <td>{{ $result->SERVICEID == 14 ? $result->SERVICECOUNT : 0  }}</td>
+                                                <td>{{ $result->SERVICEID == 13 ? $result->SERVICECOUNT : 0  }}</td>
+                                                <td>{{ $result->SERVICEID == 2 ? $result->SERVICECOUNT : 0  }}</td>
                                                
-                                                <td>{{ $result->serviceid == 9 ? $result->servicecount : 0  }}</td>
-                                                <td>{{ $result->serviceid == 15 ? $result->servicecount : 0  }}</td>
-                                                <td>{{ $result->serviceid == 16 ? $result->servicecount : 0 }}</td>
-                                                <td><strong style="color:red;">{{ $result->amount ? $result->amount : 0 }}₮</strong> </td>
+                                                <td>{{ $result->SERVICEID == 9 ? $result->SERVICECOUNT : 0  }}</td>
+                                                <td>{{ $result->SERVICEID == 15 ? $result->SERVICECOUNT : 0  }}</td>
+                                                <td>{{ $result->SERVICEID == 16 ? $result->SERVICECOUNT : 0 }}</td>
+                                                <td><strong style="color:red;">{{ $result->AMOUNT ? $result->AMOUNT : 0 }}₮</strong> </td>
                                                
                                             </tr>
                                         @endforeach

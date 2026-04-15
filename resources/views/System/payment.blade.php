@@ -260,13 +260,15 @@
                     },
                     success: function(data) {
                         try {
+                            console.log("API Response:", data);
+                            console.log("paymentData:", data[0] ? data[0]['paymentData'] : 'undefined');
+                            console.log("transaction:", data[1] ? data[1]['transaction'] : 'undefined');
                             if (data.length > 0) {
                                 $(".avtoteeverPreloader").fadeOut();
                                  $(".containerBody").fadeIn();
                             }
-                           // console.log(data);
                             const dataGrid = $('#paymentDataList').dxDataGrid({
-                                dataSource: data[0]['paymentData'],
+                                dataSource: data[0]['paymentData'] || [],
                                 keyExpr: 'id',
                                 showColumnLines: true,
                                 showRowLines: true,
@@ -373,7 +375,7 @@
                                 ],
                             }).dxDataGrid('instance');
                             const transaction = $('#transaction').dxDataGrid({
-                                dataSource: data[1]['transaction'],
+                                dataSource: data[1] ? data[1]['transaction'] || [] : [],
                                 keyExpr: 'id',
                                 showColumnLines: true,
                                 showRowLines: true,
