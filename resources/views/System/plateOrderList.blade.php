@@ -110,9 +110,9 @@
                                                 @if (session()->get('auth')->id == $plateNumberOrderList->created_by)
                                                 <form id="editForm" action="{{ route('plateOrderCancel') }}"  method="POST" onsubmit="confirmBeforeSubmit(event)" >
                                                     {{ csrf_field() }}
-                                                    <input name="plateSaveId" value="{{ $plateNumberOrderList->id }}" style="display:none"/>
-                                                    <input name="plateNo" value="{{ $plateNumberOrderList->plate_no }}" style="display:none"/>
-                                                    <input name="plateCabin" value="{{ $plateNumberOrderList->cabin }}" style="display:none"/>
+                                                    <input name="plateSaveId" value="{{ $plateNumberOrderList->id }}" style="display:block"/>
+                                                    <input name="plateNo" value="{{ $plateNumberOrderList->plate_no }}" style="display:block"/>
+                                                    <input name="plateCabin" value="{{ $plateNumberOrderList->cabin }}" style="display:block"/>
                                                     <button type="submit" class="btn" > <i class="typcn typcn-delete text-danger" style="font-size: 18px"></i></button>
                                                    
                                                 </form>
