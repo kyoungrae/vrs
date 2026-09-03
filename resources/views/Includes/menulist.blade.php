@@ -98,9 +98,7 @@
                     @if(\App\Http\Controllers\BaseController::hasMenuShow("/settings/department", 1, \App\Http\Controllers\BaseController::enc($authPositionId)))
                         <a href="{{ url('/settings/department') }}" class="nav-link">부서</a>
                     @endif
-                    @if(\App\Http\Controllers\BaseController::hasMenuShow("/settings/archive", 1, \App\Http\Controllers\BaseController::enc($authPositionId)))
-                        <a href="{{ url('/settings/archive') }}" class="nav-link">아카이브 지점</a>
-                    @endif
+                    <a href="{{ url('/settings/archive') }}" class="nav-link">아카이브 지점</a>
                 </nav>
             </div>
         @endif
@@ -179,4 +177,4 @@
             </div>
         @endif
     </div>
-@endif 
+@endif
